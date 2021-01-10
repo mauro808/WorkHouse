@@ -28,9 +28,15 @@
                         <form action="" method="POST"> 
                             <a class="btn btn-info" href="{{ route('usuario.detalle', $usuario) }}">Ver</a>
                             <a class="btn btn-warning" href="{{ route('usuario.editar', $usuario) }}">Editar</a>
+                            @csrf 
+                        @if ($usuario->Estado=="Activo")
+                            <a class="btn btn-danger" href="{{ route('usuario.inhabilitacion', $usuario->id) }}">Inhabilitar</a>
+                        @endif
+                        @if ($usuario->Estado=="Inactivo")
+                            <a type="submit" class="btn btn-danger" href="{{ route('usuario.habilitacion', $usuario->id) }}">Habilitar</a>
+                        @endif
                         @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</a>
+                        
                         </form>
                     </td>
                 </tr>

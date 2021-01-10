@@ -141,6 +141,24 @@ class UsuarioController extends Controller
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
 
+    public function habilitar(Request $request, $id)
+    {
+           $usuario= App\Usuario::findOrFail($id); //buscar producto por id
+           $usuario->Estado="Activo";
+           $usuario->update();
+           
+           return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
+    }
+
+    public function inhabilitar(Request $request, $id)
+    {
+           $usuario= App\Usuario::findOrFail($id); //buscar producto por id
+           $usuario->Estado="Inactivo";
+           $usuario->update();
+           
+           return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

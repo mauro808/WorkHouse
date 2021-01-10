@@ -30,3 +30,5 @@ Route::get('/editarUser/{id}', 'UsuarioController@edit')->name('usuario.editar')
 Route::put('/editarUser/{id}', 'UsuarioController@update')->name('usuario.update');
 Route::get('/agregarUsuario', 'PagesController@agregarUsuario')->name('agregarUsuario');
 Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario');
+Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
+Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
