@@ -114,6 +114,8 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = App\Cliente::find($id);
+        $cliente -> delete();
+        return redirect('/clientes')->with('success','Registro Exitoso');
     }
 }

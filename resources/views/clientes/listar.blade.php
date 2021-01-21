@@ -25,12 +25,14 @@
                     <td>{{$cliente->numeroIdentificacion}}</td>
                     <td>{{$cliente->celular}}</td>
                     <td>
-                        <form action="" method="POST"> 
+                        <form action="{{ route('cliente.destroy', $cliente->id) }}" method="POST"> 
                             <a class="btn btn-info" href="{{ route('cliente.detalle', $cliente) }}">Ver</a>
-                            <a class="btn btn-warning" href="{{ route('cliente.editar', $cliente) }}">Editar</a>
-                        @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</a>
+                            <a class="btn btn-warning" href="{{ route('cliente.editar', $cliente) }}">Editar</a>   
+                            
+                            @csrf
+                            @method('DELETE')
+      
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>

@@ -22,6 +22,7 @@ Route::get('/agregarCliente', 'PagesController@agregarCliente')->name('agregarCl
 Route::post('/agregarCliente', 'ClienteController@store')->name('agregarCliente');
 Route::get('/editarCliente/{id}', 'ClienteController@edit')->name('cliente.editar');
 Route::put('/editarCliente/{id}', 'ClienteController@update')->name('cliente.update');
+Route::delete('/eliminarCliente/{id}', 'ClienteController@destroy')->name('cliente.destroy');
 
 // Rutas del Usuario
 Route::get('usuarios', 'PagesController@listarUsuario')->name('usuario.listar');
