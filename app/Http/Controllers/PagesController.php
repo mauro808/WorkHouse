@@ -16,6 +16,11 @@ class PagesController extends Controller
         return view('clientes/listar',compact('clientes'));
     }
 
+    public function listarCategorias(){
+        $categorias = App\Categoria::all();
+        return view('categorias/listar',compact('categorias'));
+    }
+
     public function detalleUsuario($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
         return view('usuarios.detalle', compact('usuario'));

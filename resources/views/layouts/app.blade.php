@@ -48,7 +48,7 @@
     <a class="navbar-brand d-none d-lg-block" href="#"><img src="https://lh3.googleusercontent.com/v25ixg48yZadnLeUvMA3XE2-cZGS-JWpvDXBmAyAxh2imf1l9S2PMxbnS4B1YsduW0XH=s170" alt=""></a>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Categorias</a>
+        <a class="nav-link font-weight-bold" href="{{ route('categoria.listar')}}" style="margin-right:100px">Categorias</a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Ventas</a>

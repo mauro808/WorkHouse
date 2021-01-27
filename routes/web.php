@@ -33,3 +33,6 @@ Route::get('/agregarUsuario', 'PagesController@agregarUsuario')->name('agregarUs
 Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario');
 Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
 Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
+
+// Rutas categorias
+Route::get('/categorias', 'PagesController@listarCategorias')->name('categoria.listar');
