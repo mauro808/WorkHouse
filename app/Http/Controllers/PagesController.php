@@ -26,12 +26,21 @@ class PagesController extends Controller
         return view('usuarios.detalle', compact('usuario'));
     }
 
+    public function detalleCategoria($idCategoria){
+        $categoria = App\Categoria::findOrFail($idCategoria);
+        return view('categorias.detalle', compact('categoria'));
+    }
+
     public function agregarUsuario(){
         return view('usuarios.create');
     }
 
     public function agregarCliente(){
         return view('clientes.create');
+    }
+
+    public function agregarCategoria(){
+        return view('categorias.create');
     }
 
 

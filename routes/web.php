@@ -36,3 +36,6 @@ Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usua
 
 // Rutas categorias
 Route::get('/categorias', 'PagesController@listarCategorias')->name('categoria.listar');
+Route::get('/detalleCat/{id}', 'PagesController@detalleCategoria')->name('categorias.detalle');
+Route::get('/agregarCategoria', 'PagesController@agregarCategoria')->name('agregarCategoria');
+Route::post('/agregarCategoria', 'CategoriaController@store')->name('agregarCategoria');

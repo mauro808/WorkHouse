@@ -21,12 +21,11 @@
                     <td>{{$categoria->nombreCategoria}}</td>
                     <td>
                         <form action="" method="POST"> 
-                            <a class="btn btn-info" href="">Ver</a>
+                            <a class="btn btn-info" href="{{ route('categorias.detalle', $categoria) }}">Ver</a>
                             <a class="btn btn-warning" href="">Editar</a>   
                             
                             @csrf
                             @method('DELETE')
-      
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
@@ -35,7 +34,7 @@
         </tbody>
     </table>
     <div align="center">
-    <a class="btn btn-success p-3 " href="{{ route('agregarCliente')}}">Registrar Nueva categoria</a>
+    <a class="btn btn-success p-3 " href="{{ route('agregarCategoria')}}">Registrar Nueva categoria</a>
     </div>
     </div>
 

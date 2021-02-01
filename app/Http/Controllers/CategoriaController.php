@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,17 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+        ]);
+
+        $categoriaNueva = new App\Categoria;
+        $categoriaNueva->id = $request->id;
+        $categoriaNueva->nombreCategoria = $request->nombreCategoria;
+        $categoriaNueva->Descripcion = $request->Descripcion;
+
+        $categoriaNueva->save();
+        return redirect('/categorias')->with('success','Registro Exitoso');
     }
 
     /**
