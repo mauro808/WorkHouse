@@ -39,3 +39,14 @@ Route::get('/categorias', 'PagesController@listarCategorias')->name('categoria.l
 Route::get('/detalleCat/{id}', 'PagesController@detalleCategoria')->name('categorias.detalle');
 Route::get('/agregarCategoria', 'PagesController@agregarCategoria')->name('agregarCategoria');
 Route::post('/agregarCategoria', 'CategoriaController@store')->name('agregarCategoria');
+
+// Rutas del Producto
+Route::get('productos', 'PagesController@listarProductos')->name('producto.listar');
+Route::get('/detalleProducto/{id}', 'PagesController@detalleProducto')->name('producto.detalle');
+Route::get('/editarProducto/{id}', 'ProductoController@edit')->name('producto.editar');
+Route::put('/editarProducto/{id}', 'ProductoController@update')->name('producto.update');
+Route::get('/agregarProducto', 'PagesController@agregarProducto')->name('agregarProducto');
+Route::post('/agregarProducto', 'ProductoController@store')->name('agregarProducto');
+Route::get('/habilitarProducto/{id}', 'ProductoController@habilitar')->name('producto.habilitacion');
+Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name('producto.inhabilitacion');
+

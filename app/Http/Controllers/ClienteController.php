@@ -103,7 +103,7 @@ class ClienteController extends Controller
         $cliente->direccion = $request->direccion;
            $cliente->save();
            
-           return redirect('/clientes')->with('Mensaje', 'Usuario actualizado');
+           return redirect('/clientes')->with('Mensaje', 'Cliente actualizado');
     }
 
     /**

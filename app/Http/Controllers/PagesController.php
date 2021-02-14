@@ -21,6 +21,11 @@ class PagesController extends Controller
         return view('categorias/listar',compact('categorias'));
     }
 
+    public function listarProductos(){
+        $productos = App\Producto::all();
+        return view('productos/listar',compact('productos'));
+    }
+
     public function detalleUsuario($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
         return view('usuarios.detalle', compact('usuario'));
@@ -29,6 +34,11 @@ class PagesController extends Controller
     public function detalleCategoria($idCategoria){
         $categoria = App\Categoria::findOrFail($idCategoria);
         return view('categorias.detalle', compact('categoria'));
+    }
+
+    public function detalleProducto($idProducto){
+        $producto = App\Producto::findOrFail($idProducto);
+        return view('productos.detalle', compact('producto'));
     }
 
     public function agregarUsuario(){
@@ -43,5 +53,8 @@ class PagesController extends Controller
         return view('categorias.create');
     }
 
+    public function agregarProducto(){
+        return view('productos.create');
+    }
 
 }

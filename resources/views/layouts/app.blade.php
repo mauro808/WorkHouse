@@ -42,7 +42,7 @@
         <a class="nav-link font-weight-bold" href="{{ route('cliente.listar')}}" style="margin-right:100px">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Productos</a>
+        <a class="nav-link font-weight-bold" href="{{ route('producto.listar')}}" style="margin-right:100px">Productos</a>
       </li>
     </ul>
     <a class="navbar-brand d-none d-lg-block" href="#"><img src="https://lh3.googleusercontent.com/v25ixg48yZadnLeUvMA3XE2-cZGS-JWpvDXBmAyAxh2imf1l9S2PMxbnS4B1YsduW0XH=s170" alt=""></a>

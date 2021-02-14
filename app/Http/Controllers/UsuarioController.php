@@ -60,7 +60,7 @@ class UsuarioController extends Controller
         $usuarioNuevo->direccion = $request->direccion;
         $usuarioNuevo->nombreUsuario = $request->nombreUsuario;
         $usuarioNuevo->contrasena = $request->contrasena;
-        $usuarioNuevo->Estado = $request->estado;
+        $usuarioNuevo->estado = $request->estado;
     
         /**$request->validate([
             'idRol'=>'required',
