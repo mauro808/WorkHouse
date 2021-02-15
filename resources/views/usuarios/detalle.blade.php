@@ -13,7 +13,7 @@
     
         <tr>
             <td>Id:</td>
-            <td>{{$usuario->idUsuario}}</td>
+            <td>{{$usuario->id}}</td>
         </tr>
         <tr>
             <td>Id Rol:</td>
