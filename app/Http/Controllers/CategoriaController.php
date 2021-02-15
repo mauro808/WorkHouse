@@ -12,9 +12,10 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idCategoria)
     {
-      
+        $categoria = App\Categoria::findOrFail($idCategoria);
+        return view('categorias.detalle', compact('categoria'));
     }
 
     /**
@@ -67,7 +68,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = App\Categoria::findOrFail($id);
+        return view('categorias.editar', compact('categoria'));
     }
 
     /**
@@ -79,7 +81,13 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria= App\Categoria::findOrFail($id); //buscar producto por id
+        $categoria->id = $request->id;
+        $categoria->nombreCategoria = $request->nombreCategoria;
+        $categoria->Descripcion = $request->Descripcion;
+        $categoria->save();
+           
+           return redirect('/categorias')->with('Mensaje', 'Categoria actualizado');
     }
 
     /**
@@ -90,6 +98,8 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = App\Categoria::find($id);
+        $categoria -> delete();
+        return redirect('/categorias')->with('success','Registro Exitoso');
     }
 }

@@ -24,6 +24,6 @@
         <tr>
 </table>
 <div class="col-lg-11">
-            <a class="btn btn-primary" href="{{url('clientes')}}">Atrás</a>
+            <a class="btn btn-primary" href="{{url('categorias')}}">Atrás</a>
         </div>
 @endsection

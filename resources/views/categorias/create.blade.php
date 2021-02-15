@@ -19,10 +19,10 @@
 <form action="{{ route('agregarCategoria') }}" method="POST" class="w-50 p-3 mr-3 text-center">
 @csrf 
 <div class="form-group">
-    <label for="idUsuario">Nombre Categoria:</label>
+    <label for="nombreCategoria">Nombre Categoria:</label>
     <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="nombre de la categoria"/>
     </br>
-    <label for="nombreCliente">Descripcion Categoria:</label>
+    <label for="Descripcion">Descripcion Categoria:</label>
     <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripcion categoria"></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Registrar</button>

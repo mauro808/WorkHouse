@@ -3,7 +3,7 @@
 
 <div class="row w-50" style="padding-left:60px; "> 
     <div class="col-lg-11 p-5 m-2" align="center" >
-        <h2 class="text-monospace">Listado de Categorias</h2>
+        <h2 class="text-monospace">Listado de Categorías</h2>
     </div>
 </div class="">
     <table class="table table-striped table-bordered w-75" id="example" align="center">
@@ -11,6 +11,7 @@
         <tr>
             <th>Id</th>
             <th>Nombre categoria</th>
+            <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -19,14 +20,15 @@
                 <tr>
                     <td>{{$categoria->id}}</td>
                     <td>{{$categoria->nombreCategoria}}</td>
+                    <td>{{$categoria->Descripcion}}</td>
                     <td>
                         <form action="" method="POST"> 
                             <a class="btn btn-info" href="{{ route('categorias.detalle', $categoria) }}">Ver</a>
-                            <a class="btn btn-warning" href="">Editar</a>   
+                            <a class="btn btn-warning" href="{{ route('categorias.editar', $categoria) }}">Editar</a>   
                             
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            
                         </form>
                     </td>
                 </tr>
