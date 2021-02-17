@@ -31,8 +31,9 @@
     <label for="txtidRol">Rol:</label>
     <select name="idRol" class="form-control">
         <option selected>Choose...</option>
-        <option value="1">Administrador</option>
-        <option value="2">Vendedor</option>
+        @foreach($rols as $rol)
+        <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
+        @endforeach
       </select>
       </div>
       <div class="col-6">

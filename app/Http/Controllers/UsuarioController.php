@@ -37,7 +37,6 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idRol'=>'required',
             'nombre'=>'required',
             'tipoDocumento'=>'required',
             'identificacion'=>'required',
@@ -103,7 +102,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return view('usuario.detalle',compact('usuario'));
+        
     }
 
     /**
@@ -114,7 +113,8 @@ class UsuarioController extends Controller
      */
     public function edit($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
-        return view('usuarios.editar', compact('usuario'));
+        $rols = App\Rol::all();
+        return view('usuarios.editar', compact('usuario', 'rols'));
     }
 
     /**

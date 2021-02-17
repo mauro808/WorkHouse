@@ -22,10 +22,14 @@
                 <tr>
                     <td>{{$usuario->id}}</td>
                     <td>{{$usuario->nombre}}</td>
-                    <td>{{$usuario->idRol}}</td>
+                    @foreach($rols as $rol)
+                    @if($usuario->idRol == $rol->id)
+                    <td>{{$rol->descripcion}}</td>
+                        @endif 
+                        @endforeach 
                     <td>{{$usuario->Estado}}</td>
                     <td>
-                        <form action="" method="POST"> 
+                        <form action="" method="POST">
                             <a class="btn btn-info" href="{{ route('usuario.detalle', $usuario) }}">Ver</a>
                             <a class="btn btn-warning" href="{{ route('usuario.editar', $usuario) }}">Editar</a>
                             @csrf 

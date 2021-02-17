@@ -12,12 +12,16 @@
 <table class="table table-bordered">
     
         <tr>
-            <td>Id:</td>
+           <td>Id:</td>
             <td>{{$usuario->id}}</td>
         </tr>
         <tr>
-            <td>Id Rol:</td>
-            <td>{{$usuario->idRol}}</td>
+            <td>Rol:</td>
+            <td>{{$rol->descripcion}}</td>
+        </tr>
+        <tr>
+        <td>Estado:</td>
+        <td>{{$usuario->Estado}}</td>
         </tr>
         <tr>
             <td>Nombres:</td>

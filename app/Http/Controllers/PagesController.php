@@ -9,7 +9,9 @@ class PagesController extends Controller
 {
     public function listarUsuario(){
         $usuarios = App\Usuario::all();
-        return view('usuarios/listar',compact('usuarios'));
+        $rols = App\Rol::all();
+        return view('usuarios/listar',compact('usuarios','rols'));
+      
     }
     public function listarClientes(){
         $clientes = App\Cliente::all();
@@ -28,7 +30,8 @@ class PagesController extends Controller
 
     public function detalleUsuario($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
-        return view('usuarios.detalle', compact('usuario'));
+        $rol = App\Rol::find($usuario->idRol);
+        return view('usuarios.detalle', compact('usuario','rol'));
     }
 
     public function detalleCategoria($idCategoria){
@@ -42,7 +45,8 @@ class PagesController extends Controller
     }
 
     public function agregarUsuario(){
-        return view('usuarios.create');
+        $rols = App\Rol::all();
+        return view('usuarios.create', compact('rols'));
     }
 
     public function agregarCliente(){

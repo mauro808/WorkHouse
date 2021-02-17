@@ -23,9 +23,14 @@
 <div class="col-6">
 <label for="txtidRol">Rol:</label>
     <select name="idRol" class="form-control">
-        <option value="2" @if ($usuario->idRol==2) selected @endif>Vendedor</option>
-        <option value="1" @if ($usuario->idRol==1) selected @endif>Administrador</option>
-        
+        @foreach($rols as $rol)
+             @if($usuario->idRol == $rol->id)
+             <option value="{{$rol->id}}" selected>{{$rol->descripcion}}</td>
+            @endif 
+            @endforeach  
+        @foreach($rols as $rol)
+        <option value="{{$rol->id}}">{{$rol->descripcion}}</td>
+        @endforeach 
       </select>
       </div>
       <div class="col-6">
