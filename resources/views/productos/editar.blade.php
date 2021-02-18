@@ -22,11 +22,15 @@
 <div class="row">
 <div class="col-6">
 <label for="txtidCategoria">Categoría:</label>
-    <select name="idCategoria" class="form-control">
-        <option value="2" @if ($producto->idCategoria==2) selected @endif>Herramientas Electricas</option>
-        <option value="1" @if ($producto->idCategoria==1) selected @endif>Herramientas de Mano</option>
-        
-      </select>
+   <select name="idCategoria" class="form-control">
+        @foreach($categorias as $categoria)
+             @if($producto->idCategoria == $categoria->id)
+             <option value="{{$categoria->id}}" selected>{{$categoria->nombreCategoria}}</td>
+            @endif 
+            @endforeach  
+        @foreach($categorias as $categoria)
+        <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</td>
+        @endforeach 
       </div>
       <div class="col-6">
     <label for="nombre">Nombre:</label>

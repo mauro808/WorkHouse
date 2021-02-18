@@ -38,7 +38,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idCategoria'=>'required',
+            
             'nombreProducto'=>'required',
             'existencias'=>'required',
             'medida'=>'required',
@@ -67,7 +67,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        return view('producto.detalle',compact('producto'));
+        
     }
 
     /**
@@ -79,7 +79,8 @@ class ProductoController extends Controller
     public function edit($idProducto)
     {
         $producto = App\Producto::findOrFail($idProducto);
-        return view('productos.editar', compact('producto'));
+        $categorias = App\Categoria::all();
+        return view('productos.editar', compact('producto','categorias'));
     }
 
     /**
@@ -138,7 +139,8 @@ class ProductoController extends Controller
 
     public function destroy($id)
     {
-        $producto->delete();
-        return redirect('/producto');
+        $producto = App\Producto::find($id);
+        $producto -> delete();
+        return redirect('/productos')->with('success','Registro Exitoso');
     }
 }

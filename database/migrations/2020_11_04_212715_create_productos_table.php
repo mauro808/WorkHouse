@@ -13,6 +13,11 @@ class CreateProductosTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->String('nombreCategoria');
+        });
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idCategoria'); 
