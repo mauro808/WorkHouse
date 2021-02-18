@@ -25,7 +25,8 @@ class PagesController extends Controller
 
     public function listarProductos(){
         $productos = App\Producto::all();
-        return view('productos/listar',compact('productos'));
+        $categorias = App\Categoria::all();
+        return view('productos/listar',compact('productos','categorias'));
     }
 
     public function detalleUsuario($idUsuario){
@@ -41,7 +42,8 @@ class PagesController extends Controller
 
     public function detalleProducto($idProducto){
         $producto = App\Producto::findOrFail($idProducto);
-        return view('productos.detalle', compact('producto'));
+        $categoria = App\Categoria::find($producto->idCategoria);
+        return view('productos.detalle', compact('producto','categoria'));
     }
 
     public function agregarUsuario(){
@@ -58,7 +60,8 @@ class PagesController extends Controller
     }
 
     public function agregarProducto(){
-        return view('productos.create');
+        $categorias = App\Categoria::all();
+        return view('productos.create', compact('categorias'));
     }
 
 }

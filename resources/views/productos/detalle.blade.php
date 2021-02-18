@@ -13,30 +13,30 @@
     
         <tr>
             <td>Id:</td>
-            <td>{{$producto->idProducto}}</td>
+            <td>{{$producto->id}}</td>
         </tr>
         <tr>
-            <td>Id Rol:</td>
-            <td>{{$producto->idCategoria}}</td>
+            <td>Categoría:</td>
+            <td>{{$categoria->nombreCategoria}}</td>
         </tr>
         <tr>
-            <td>Nombres:</td>
+            <td>Nombre:</td>
             <td>{{$producto->nombreProducto}}</td>
         </tr>
         <tr>
-            <td>Tipo Documento:</td>
+            <td>Existencias:</td>
             <td>{{$producto->existencias}}</td>
         </tr>
         <tr>
-            <td>Identificacion:</td>
+            <td>Unidad de Medida:</td>
             <td>{{$producto->medida}}</td>
         </tr>
         <tr>
-            <td>Correo Electrónico:</td>
+            <td>Iva:</td>
             <td>{{$producto->porcentajeIva}}</td>
         </tr>
         <tr>
-            <td>Teléfono Fijo:</td>
+            <td>Precio Unitario:</td>
             <td>{{$producto->precio	}}</td>
         </tr>
 </table>

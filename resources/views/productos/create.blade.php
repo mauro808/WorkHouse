@@ -31,8 +31,9 @@
     <label for="txtidCategoria">Categoría:</label>
     <select name="idCategoria" class="form-control">
         <option selected>Choose...</option>
-        <option value="1">Herramientas de Mano</option>
-        <option value="2">Herramientas Eléctricas</option>
+         @foreach($categorias as $categoria)
+        <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
+        @endforeach
       </select>
       </div>
       <div class="col-6">

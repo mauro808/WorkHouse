@@ -11,8 +11,8 @@
         <tr>
             <th>Id</th>
             <th>Nombre</th>
+            <th>Categoría</th>
             <th>Existencias</th>
-            <th>Und Medida</th>
             <th>Precio</th>
             <th>Estado</th>
             <th>Acciones</th>
@@ -24,8 +24,13 @@
                 <tr>
                     <td>{{$producto->id}}</td>
                     <td>{{$producto->nombreProducto}}</td>
+                     @foreach($categorias as $categoria)
+                    @if($producto->idCategoria == $categoria->id)
+                    <td>{{$categoria->nombreCategoria}}</td>
+                        @endif 
+                        @endforeach 
+                   
                     <td>{{$producto->existencias}}</td>
-                     <td>{{$producto->medida}}</td>
                       <td>{{$producto->precio}}</td>
                     <td>{{$producto->estado}}</td>
                     <td>

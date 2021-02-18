@@ -167,7 +167,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario->delete();
-        return redirect('/usuario');
+        $usuario = App\Usuario::find($id);
+        $usuario -> delete();
+        return redirect('/usuarios')->with('success','Registro Exitoso');
     }
 }
