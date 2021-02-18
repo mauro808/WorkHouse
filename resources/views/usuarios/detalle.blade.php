@@ -7,7 +7,7 @@
     </div>
         
 </div>
-<table class="table table-striped table-hover w-50" style="margin-top:50px; margin-left:370px" align="center">
+<table class="table table-striped table-hover w-50 mx-auto" style="margin-top:50px">
     
         <tr class="">
            <td>Id:</td>
@@ -55,6 +55,6 @@
         </tr>
 </table>
 <div class="col-lg-11" align="center">
-            <a class="btn btn-primary" style="margin-left:65px; width:200px" href="{{url('usuarios')}}">Atrás</a>
+            <a class="btn btn-primary mx-auto" style="width:200px" href="{{url('usuarios')}}">Atrás</a>
         </div>
 @endsection
