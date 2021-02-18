@@ -11,7 +11,6 @@
         <tr>
             <th>Id</th>
             <th>Nombre categoria</th>
-            <th>Descripcion</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -20,7 +19,7 @@
                 <tr>
                     <td>{{$categoria->id}}</td>
                     <td>{{$categoria->nombreCategoria}}</td>
-                    <td>{{$categoria->Descripcion}}</td>
+                
                     <td>
                         <form action="" method="POST"> 
                             <a class="btn btn-info" href="{{ route('categorias.detalle', $categoria) }}">Ver</a>
