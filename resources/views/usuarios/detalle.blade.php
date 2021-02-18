@@ -2,16 +2,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-lg-11">
-        <h2>Usuario</h2>
+    <div class="col-lg-11" align="center">
+        <h2 class="display-1 text-primary">Usuario</h2>
     </div>
-        <div class="col-lg-11">
-            <a class="btn btn-primary" href="{{url('usuarios')}}">Atrás</a>
-        </div>
+        
 </div>
-<table class="table table-bordered">
+<table class="table table-striped table-hover w-50" style="margin-top:50px; margin-left:370px" align="center">
     
-        <tr>
+        <tr class="">
            <td>Id:</td>
             <td>{{$usuario->id}}</td>
         </tr>
@@ -56,4 +54,7 @@
             <td>{{$usuario->nombreUsuario}}</td>
         </tr>
 </table>
+<div class="col-lg-11" align="center">
+            <a class="btn btn-primary" style="margin-left:65px; width:200px" href="{{url('usuarios')}}">Atrás</a>
+        </div>
 @endsection
