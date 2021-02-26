@@ -54,6 +54,7 @@
             @endforeach
             
         </tbody>
+     
     </table>
   <div align="center">
         <a class="btn btn-primary btn-lg active" href="#">Descargar PDF</a>

@@ -25,7 +25,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-    <br><script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+    <script src = "https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer ></script>
+    <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script>
      <script src="js/librerias/sweetalert2.js"></script>
 </head>
 <body style="background-image: url('https://fondos.io/wp-content/uploads/2019/01/fondos-de-pantalla-claros-hd-1773.jpg');width: 100%; background-repeat: no-repeat; background-size: cover;">
