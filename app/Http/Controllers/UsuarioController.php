@@ -45,7 +45,8 @@ class UsuarioController extends Controller
             'celular'=>'required',
             'direccion'=>'required',
             'nombreUsuario'=>'required',
-            'contrasena'=>'required'
+            'contrasena'=>'required',
+            'contrasenac'=>'required'
         ]);
 
         $usuarioNuevo = new App\Usuario;
@@ -59,6 +60,7 @@ class UsuarioController extends Controller
         $usuarioNuevo->direccion = $request->direccion;
         $usuarioNuevo->nombreUsuario = $request->nombreUsuario;
         $usuarioNuevo->contrasena = $request->contrasena;
+        $usuarioNuevo->contrasenac = $request->contrasenac;
         $usuarioNuevo->estado = $request->estado;
     
         /**$request->validate([

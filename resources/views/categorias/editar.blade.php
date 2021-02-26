@@ -7,10 +7,11 @@
     </div>
 @endif
     <div class="col-lg-11" align="center">
-        <h2>Editar Categoria</h2>
+    </br>
+        <h2 class="text-monospace">Editar Categoría</h2>
     </div>
     <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('categorias') }}">Atrás</a>
+       
     </div>
 </div>  
 <div class="row">
@@ -34,7 +35,9 @@
     <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="{{ $categoria->Descripcion }}"/>
    
 </div>
-<button type="submit" class="btn btn-primary">Actualizar Categoria</button>
+</br>
+<button type="submit" class="btn btn-primary">Actualizar</button>
+ <a class="btn btn-warning" href="{{ url ('categorias') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>

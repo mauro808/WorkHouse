@@ -2,14 +2,12 @@
 @section('content')
 
 <div class="row">
-    <div class="col-lg-11">
-        <h2>Producto</h2>
+    <div class="col-lg-11" align="center">
+          <h2 class="text-monospace">{{$producto->nombreProducto}}</h2>
     </div>
-        <div class="col-lg-11">
-            <a class="btn btn-primary" href="{{url('productos')}}">Atrás</a>
-        </div>
+     
 </div>
-<table class="table table-bordered">
+<table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
     
         <tr>
             <td>Id:</td>
@@ -19,10 +17,7 @@
             <td>Categoría:</td>
             <td>{{$categoria->nombreCategoria}}</td>
         </tr>
-        <tr>
-            <td>Nombre:</td>
-            <td>{{$producto->nombreProducto}}</td>
-        </tr>
+      
         <tr>
             <td>Existencias:</td>
             <td>{{$producto->existencias}}</td>
@@ -40,4 +35,7 @@
             <td>{{$producto->precio	}}</td>
         </tr>
 </table>
+ <div class="col-lg-11" align="center">
+            <a class="btn btn-primary mx-auto" style="width:200px" href="{{url('productos')}}">Atrás</a>
+        </div>
 @endsection

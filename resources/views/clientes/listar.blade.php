@@ -1,12 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="row w-50" style="padding-left:60px; "> 
-    <div class="col-lg-11 p-5 m-2" align="center" >
-        <h2 class="text-monospace">Listado de Clientes</h2>
+<div class="row w-30" style="padding-left:40px; "> 
+    <div class="col-lg-10 p-5 m-2" align="center" >
+        <h2 class="text-monospace">Clientes</h2>
     </div>
 </div class="">
-    <table class="table table-striped table-bordered w-75" id="example" align="center">
+ <div align="right">
+    <a class="btn btn-primary btn-lg active" href="{{ route('agregarCliente')}}">Agregar cliente</a>
+    </div>
+    <table class="table table-striped table-bordered w-80" id="example" align="center">
     <thead>
         <tr>
             <th>Id</th>
@@ -39,8 +42,10 @@
             @endforeach
         </tbody>
     </table>
-    <div align="center">
-    <a class="btn btn-success p-3 " href="{{ route('agregarCliente')}}">Registrar Nuevo cliente</a>
+   
+
+      <div align="center">
+        <a class="btn btn-primary btn-lg active" href="#">Descargar PDF</a>
     </div>
     </div>
 

@@ -17,7 +17,7 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idCliente');
             $table->foreign('idCliente')->references('id')->on('clientes');
-            $table->date('fechaVenta');
+            $table->timestamp('fechaVenta');
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('usuarios');
         });

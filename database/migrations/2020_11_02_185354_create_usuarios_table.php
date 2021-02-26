@@ -31,6 +31,7 @@ class CreateUsuariosTable extends Migration
             $table->string('direccion',30);
             $table->string('nombreUsuario',25);
             $table->string('contrasena',20);
+            $table->string('contrasenac',20);
         });
     }
 

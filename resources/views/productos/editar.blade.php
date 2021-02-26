@@ -6,19 +6,19 @@
 @endif
 <div class="row"> 
     <div class="col-lg-11" align="center">
-        <h2>Editar Producto</h2>
+    </br>
+        <h2 class="text-monospace">Editar Producto</h2>
     </div>
-    <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('productos') }}">Atrás</a>
-    </div>
-</div>  
+</div>
+
 <div class="row">
-<div class="col-lg-4"></div>
+<div class="col-lg-3"></div>
 <div class="col-lg-6">
-<form action="{{ route('producto.update', $producto->id) }}" method="POST" class="w-50 p-3 mr-3 text-center">
+<form action="{{ route('producto.update', $producto->id) }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @method('PUT')
 @csrf 
 <div class="form-group">
+
 <div class="row">
 <div class="col-6">
 <label for="txtidCategoria">Categoría:</label>
@@ -31,12 +31,14 @@
         @foreach($categorias as $categoria)
         <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</td>
         @endforeach 
+        </select>
       </div>
-      <div class="col-6">
+      
+   <div class="col-6">
     <label for="nombre">Nombre:</label>
     <input type="text" class="form-control" value="{{ $producto->nombreProducto }}" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre"/>
     </div>
-    </div>
+   </div>
     <div class="row">
     <div class="col-6">
     <label for="existencias">Existencias:</label>
@@ -46,14 +48,20 @@
     <label for="medida">Medida:</label>
     <input type="text" class="form-control" value="{{ $producto->medida }}" id="medida" name="medida" placeholder="Digite Unidad de Medida"/>
     </div>
-    </div>
+</div>
+        <div class="row">
+    <div class="col-6">
     <label for="porcentajeIva">Iva:</label>
     <input type="text" class="form-control" value="{{ $producto->porcentajeIva }}" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite IVA"/>
+   </div>
+   <div class="col-6">
     <label for="precio">Precio:</label>
     <input type="text" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
-    
-</div>
-<button type="submit" class="btn btn-primary">Actualizar Producto</button>
+      </div>
+      </div> 
+</br>
+<button type="submit" class="btn btn-primary">Actualizar</button>
+  <a class="btn btn-warning" href="{{ url ('productos') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>

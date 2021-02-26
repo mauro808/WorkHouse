@@ -7,16 +7,17 @@
     </div>
 @endif
     <div class="col-lg-11" align="center">
-        <h2>Registrar Nuevo Usuario</h2>
+    </br>
+        <h2 class="text-monospace">Registrar Nuevo Usuario</h2>
     </div>
     <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('usuarios') }}">Atrás</a>
+  
     </div>
 </div>  
 <div class="row">
-<div class="col-lg-4"></div>
+<div class="col-lg-3"></div>
 <div class="col-lg-6">
-<form action="{{ route('agregarUsuario') }}" method="POST" class="w-50 p-3 mr-3 text-center">
+<form action="{{ route('agregarUsuario') }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @csrf 
 
 @error('nombreUsuario')
@@ -30,51 +31,76 @@
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidRol">Rol:</label>
     <select name="idRol" class="form-control">
-        <option selected>Choose...</option>
+        <option selected>Seleccione</option>
         @foreach($rols as $rol)
         <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
         @endforeach
       </select>
       </div>
       <div class="col-6">
-    <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Digite el Nombre"/>
+    <label for="nombre">Nombres y Apellidos:</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Digite Nombres y Apellidos"/>
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="txtTipoDocumento">Tipo Documento:</label>
     <select name="tipoDocumento" class="form-control">
-        <option selected>Escoge...</option>
+        <option selected>Seleccione</option>
         <option>TI</option>
         <option>CC</option>
         <option>Pasaporte</option>
         <option>Cedula Extranjeria</option>
-        <option>Otro</option>
+        
       </select>
       </div>
     <div class="col-6">
-    <label for="identificacion">Identificacion:</label>
-    <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Digite el Documento"/>
+    <label for="identificacion">Identificación:</label>
+    <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Digite el Número de Documento"/>
     </div>
     </div>
-    <label for="correo">Correo electronico:</label>
+    <div class="row">
+    <div class="col-6">
+    <label for="correo">Correo electrónico:</label>
     <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite el Correo"/>
-    <label for="telefonoFijo">Telefono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo"/>
+    </div>
+    <div class="col-6">
+    <label for="telefonoFijo">Teléfono fijo:</label>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Teléfono Fijo"/>
+   </div>
+   </div>
+    <div class="row">
+   <div class="col-6">
     <label for="celular">Celular:</label>
     <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular"/>
-    <label for="direccion">Direccion:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"/>
+    </div>
+    <div class="col-6">
+    <label for="direccion">Dirección:</label>
+    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Dirección"/>
+    </div>
+    </div>
+
+ 
+    <div class="col-5">
     <label for="nombreUsuario">Usuario:</label>
     <input type="text" class="form-control" id="nombreUsuario'" name="nombreUsuario" placeholder="Digite el Usuario"/>
+    </div>
+       <div class="row">
+    <div class="col-6">
     <label for="contrasena">Contraseña:</label>
-    <input type="password" class="form-control" id="contrasena'" name="contrasena" placeholder="Digite la Contraseña"/>
-
+    <input type="password" class="form-control" id="contrasena'" name="contrasena" placeholder="Digite Contraseña"/>
+    </div>
+    <div class="col-6">
+    <label for="contrasenac">Confirme Contraseña:</label>
+    <input type="password" class="form-control" id="contrasenac'" name="contrasenac" placeholder="Confirme Contraseña"/>
+</div>
+</div>
 </div>
 <button type="submit" class="btn btn-primary">Registrar</button>
+      <a class="btn btn-warning" href="{{ url ('usuarios') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>
 </div>
+
 @endsection

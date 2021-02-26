@@ -7,10 +7,10 @@
     </div>
 @endif
     <div class="col-lg-11" align="center">
-        <h2>Registrar Nuevo Cliente</h2>
+        <h2 class="text-monospace">Registrar Nuevo Cliente</h2>
     </div>
     <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('clientes') }}">Atrás</a>
+       
     </div>
 </div>  
 <div class="row">
@@ -50,6 +50,7 @@
     <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"/>
 </div>
 <button type="submit" class="btn btn-primary">Registrar</button>
+ <a class="btn btn-warning" href="{{ url ('clientes') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>

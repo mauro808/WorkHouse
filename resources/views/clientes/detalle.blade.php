@@ -2,27 +2,23 @@
 @section('content')
 
 <div class="row">
-    <div class="col-lg-11">
-        <h2>Cliente</h2>
+       <div class="col-lg-11" align="center">
+    </br>
+        <h2 class="text-monospace">{{$cliente->nombreCliente}}</h2>
     </div>
-        <div class="col-lg-11">
-            <a class="btn btn-primary" href="{{url('clientes')}}">Atrás</a>
-        </div>
+       
 </div>
-<table class="table table-bordered">
+<table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
     
         <tr>
             <td>Id:</td>
             <td>{{$cliente->id}}</td>
         </tr>
         <tr>
-            <td>Id User Create:</td>
+            <td>Creado por:</td>
             <td>{{$cliente->idUsuario}}</td>
         </tr>
-        <tr>
-            <td>Nombres:</td>
-            <td>{{$cliente->nombreCliente}}</td>
-        </tr>
+      
         <tr>
             <td>Tipo Documento:</td>
             <td>{{$cliente->tipoIdentificacion}}</td>
@@ -45,4 +41,8 @@
         </tr>
         <tr>
 </table>
+
+        <div class="col-lg-11" align="center">
+            <a class="btn btn-primary mx-auto" style="width:200px" href="{{url('clientes')}}">Atrás</a>
+        </div>
 @endsection

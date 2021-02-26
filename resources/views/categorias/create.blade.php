@@ -7,10 +7,11 @@
     </div>
 @endif
     <div class="col-lg-11" align="center">
-        <h2>Registrar Nueva Categoria</h2>
+    </br>
+        <h2 class="text-monospace">Registrar Nueva Categoria</h2>
     </div>
     <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('categorias') }}">Atrás</a>
+        
     </div>
 </div>  
 <div class="row">
@@ -26,6 +27,7 @@
     <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripcion categoria"></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Registrar</button>
+<a class="btn btn-warning" href="{{ url ('categorias') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>

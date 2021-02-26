@@ -29,11 +29,20 @@ class PagesController extends Controller
         return view('productos/listar',compact('productos','categorias'));
     }
 
+    public function listarVentas(){
+        $ventas = App\Venta::all();
+        $clientes = App\Cliente::all();
+        $usuarios = App\Usuario::all();
+        return view('ventas/listar',compact('ventas','clientes','usuarios'));
+      
+    }
+
     public function detalleUsuario($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
         $rol = App\Rol::find($usuario->idRol);
         return view('usuarios.detalle', compact('usuario','rol'));
     }
+
 
     public function detalleCategoria($idCategoria){
         $categoria = App\Categoria::findOrFail($idCategoria);
@@ -46,6 +55,13 @@ class PagesController extends Controller
         return view('productos.detalle', compact('producto','categoria'));
     }
 
+    public function detalleVenta($idVenta){
+        $venta = App\Venta::findOrFail($idVenta);
+        $cliente = App\Cliente::find($venta->idCliente);
+        $usuario = App\Usuario::find($venta->idUsuario);
+        return view('ventas.detalle', compact('venta','cliente','usuario'));
+    }
+    
     public function agregarUsuario(){
         $rols = App\Rol::all();
         return view('usuarios.create', compact('rols'));

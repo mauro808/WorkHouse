@@ -11,9 +11,12 @@
 |
 */
 
+Route::get('/', function(){
+    return view('auth.login');
+});
 
 
-Auth::routes();
+
 
 // Rutas del Cliente
 Route::get('/clientes', 'PagesController@listarClientes')->name('cliente.listar');
@@ -52,3 +55,8 @@ Route::post('/agregarProducto', 'ProductoController@store')->name('agregarProduc
 Route::get('/habilitarProducto/{id}', 'ProductoController@habilitar')->name('producto.habilitacion');
 Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name('producto.inhabilitacion');
 
+// Rutas ventas
+Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
+Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
+Route::get('/agregarVenta', 'PagesController@agregarVenta')->name('agregarVenta');
+Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');

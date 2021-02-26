@@ -6,16 +6,15 @@
 @endif
 <div class="row"> 
     <div class="col-lg-11" align="center">
-        <h2>Editar Usuario</h2>
+    </br>
+        <h2 class="text-monospace">Editar Usuario</h2>
     </div>
-    <div class="col-lg-11">
-        <a class="btn btn-success" href="{{ url ('usuarios') }}">Atrás</a>
-    </div>
+    
 </div>  
 <div class="row">
-<div class="col-lg-4"></div>
+<div class="col-lg-3"></div>
 <div class="col-lg-6">
-<form action="{{ route('usuario.update', $usuario->id) }}" method="POST" class="w-50 p-3 mr-3 text-center">
+<form action="{{ route('usuario.update', $usuario->id) }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @method('PUT')
 @csrf 
 <div class="form-group">
@@ -54,21 +53,35 @@
     <input type="text" class="form-control" value="{{ $usuario->identificacion }}" id="identificacion" name="identificacion" placeholder="Digite el Documento"/>
     </div>
     </div>
+    <div class="row">
+    <div class="col-6">
     <label for="correo">Correo electronico:</label>
     <input type="text" class="form-control" value="{{ $usuario->correo }}" id="correo'" name="correo" placeholder="Digite el Correo"/>
+    </div>
+     <div class="col-6">
     <label for="telefonoFijo">Telefono fijo:</label>
     <input type="text" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo"/>
+   
+   </div>
+      <div class="row">
+    <div class="col-6">
     <label for="celular">Celular:</label>
     <input type="text" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular"/>
+   
+   </div>
+     <div class="col-6">
     <label for="direccion">Direccion:</label>
     <input type="text" class="form-control" value="{{ $usuario->direccion }}" id="direccion" name="direccion" placeholder="Digite la Direccion"/>
+    </div>
+      <div class="col-6">
     <label for="nombreUsuario">Usuario:</label>
     <input type="text" class="form-control" value="{{ $usuario->nombreUsuario }}" id="nombreUsuario" name="nombreUsuario" placeholder="Digite el Usuario"/>
-    <label for="contrasena">Contraseña:</label>
-    <input type="text" class="form-control" value="{{ $usuario->contrasena }}" id="contrasena'" name="contrasena" placeholder="Digite la Contraseña"/>
-
+   </div>
 </div>
-<button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+</div>
+</br>
+<button type="submit" class="btn btn-primary">Actualizar</button>
+ <a class="btn btn-warning" href="{{ url ('usuarios') }}">Cancelar</a>
 </form>
 </div>
 <div class="col-lg-2"></div>

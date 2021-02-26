@@ -26,8 +26,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <br><script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+     <script src="js/librerias/sweetalert2.js"></script>
 </head>
-<body style="background-image: url('https://miro.medium.com/max/9216/1*f_IrH5CV6TjPxB19YN4zNw.jpeg');width: 100%; background-repeat: no-repeat; background-size: cover;">
+<body style="background-image: url('https://fondos.io/wp-content/uploads/2019/01/fondos-de-pantalla-claros-hd-1773.jpg');width: 100%; background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -35,6 +36,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+     <li class="nav-item mr-100">
+        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Salir</a>
+      </li>
       <li class="nav-item mr-100">
         <a class="nav-link font-weight-bold" href="{{ route('usuario.listar')}}" style="margin-right:100px">Usuarios</a>
       </li>
@@ -44,9 +48,6 @@
       <li class="nav-item">
         <a class="nav-link font-weight-bold" href="{{ route('producto.listar')}}" style="margin-right:100px">Productos</a>
       </li>
-    </ul>
-    <a class="navbar-brand d-none d-lg-block" href="#"><img src="https://lh3.googleusercontent.com/v25ixg48yZadnLeUvMA3XE2-cZGS-JWpvDXBmAyAxh2imf1l9S2PMxbnS4B1YsduW0XH=s170" alt=""></a>
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link font-weight-bold" href="{{ route('categoria.listar')}}" style="margin-right:100px">Categorías</a>
       </li>
@@ -55,6 +56,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Compras</a>
+      </li>
+    </ul>
+    <a class="navbar-brand d-none d-lg-block" href="#"><img src="https://lh3.googleusercontent.com/v25ixg48yZadnLeUvMA3XE2-cZGS-JWpvDXBmAyAxh2imf1l9S2PMxbnS4B1YsduW0XH=s170" alt=""></a>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item mr-100">
+        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Ayuda</a>
       </li>
     </ul>
   </div>

@@ -1,12 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="row w-50" style="padding-left:60px; "> 
-    <div class="col-lg-11 p-5 m-2" align="center" >
-        <h2 class="text-monospace">Listado de Usuarios</h2>
+<div class="row w-30" style="padding-left:40px; "> 
+    <div class="col-lg-10 p-5 m-2" align="center" >
+        <h2 class="text-monospace">Usuarios</h2>
     </div>
+
 </div class="">
-    <table class="table table-striped table-bordered w-75" id="example" align="center">
+     <div align="right">
+        <a class="btn btn-primary btn-lg active" href="{{ route('agregarUsuario')}}">Agregar Usuario</a>
+    </div>
+    <table class="table table-striped table-bordered w-80" id="example" align="center">
+  
     <thead>
         <tr>
             <th>Id</th>
@@ -37,19 +42,24 @@
                             <a class="btn btn-danger" href="{{ route('usuario.inhabilitacion', $usuario->id) }}">Inhabilitar</a>
                         @endif
                         @if ($usuario->Estado=="Inactivo")
-                            <a type="submit" class="btn btn-danger" href="{{ route('usuario.habilitacion', $usuario->id) }}">Habilitar</a>
+                            <a type="submit" class="btn btn-success" href="{{ route('usuario.habilitacion', $usuario->id) }}">Habilitar</a>
                         @endif
                         @csrf
-                        
+                            
                         </form>
+                               
                     </td>
                 </tr>
+             
             @endforeach
+            
         </tbody>
     </table>
-    <div align="center">
-        <a class="btn btn-success p-3 " href="{{ route('agregarUsuario')}}">Registrar Nuevo usuario</a>
+  <div align="center">
+        <a class="btn btn-primary btn-lg active" href="#">Descargar PDF</a>
     </div>
+
+
     </div>
 
     </div>
