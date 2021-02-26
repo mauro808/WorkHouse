@@ -11,38 +11,38 @@
 <table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
     
         <tr class="">
-           <td>Id:</td>
+           <td><strong>Id:</strong></td>
             <td>{{$usuario->id}}</td>
-             <td>Rol:</td>
+             <td><strong>Rol:</strong></td>
             <td>{{$rol->descripcion}}</td>
         </tr>
        
         <tr>
-        <td>Estado:</td>
+        <td><strong>Estado:</strong></td>
         <td>{{$usuario->Estado}}</td>
-          <td>Usuario:</td>
+          <td><strong>Usuario:</strong></td>
             <td>{{$usuario->nombreUsuario}}</td>
         </tr>
        
         <tr>
-            <td>Tipo Documento:</td>
+            <td><strong>Tipo Documento:</strong></td>
             <td>{{$usuario->tipoDocumento}}</td>
-             <td>Identificacion:</td>
+             <td><strong>Identificación:</strong></td>
             <td>{{$usuario->identificacion}}</td>
         </tr>
        
         <tr>
-            <td>Celular:</td>
+            <td><strong>Celular:</strong></td>
             <td>{{$usuario->celular}}</td>
-             <td>Teléfono Fijo:</td>
+             <td><strong>Teléfono Fijo:</strong></td>
             <td>{{$usuario->telefonoFijo}}</td>
         </tr>
         
         <tr>
             
-            <td>Correo Electrónico:</td>
+            <td><strong>Correo Electrónico:</strong></td>
             <td>{{$usuario->correo}}</td>
-             <td>Dirección:</td>
+             <td><strong>Dirección:</strong></td>
             <td>{{$usuario->direccion}}</td>
         </tr>
        

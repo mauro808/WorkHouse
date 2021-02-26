@@ -15,8 +15,7 @@ Route::get('/', function(){
     return view('auth.login');
 });
 
-
-
+Route::auth();
 
 // Rutas del Cliente
 Route::get('/clientes', 'PagesController@listarClientes')->name('cliente.listar');

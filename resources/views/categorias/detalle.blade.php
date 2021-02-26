@@ -3,19 +3,20 @@
 
 <<div class="row">
     <div class="col-lg-11" align="center">
+    </br>
           <h2 class="text-monospace">{{$categoria->nombreCategoria}}</h2>
     </div>
         
 </div>
-<table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
+<table class="table table-striped table-hover w-50 mx-auto" style="margin-top:50px">
     
         <tr>
-            <td>Id:</td>
+            <td><strong>Id:</strong></td>
             <td>{{$categoria->id}}</td>
         </tr>
     
         <tr>
-            <td>Descripción:</td>
+            <td><strong>Descripción:</strong></td>
             <td>{{$categoria->Descripcion}}</td>
         </tr>
         <tr>

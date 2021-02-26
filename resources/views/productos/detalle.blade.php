@@ -2,36 +2,38 @@
 @section('content')
 
 <div class="row">
+
     <div class="col-lg-11" align="center">
+    </br>
           <h2 class="text-monospace">{{$producto->nombreProducto}}</h2>
     </div>
      
 </div>
-<table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
+<table class="table table-striped table-hover w-50 mx-auto" style="margin-top:50px">
     
         <tr>
-            <td>Id:</td>
+            <td><strong>Id:</strong></td>
             <td>{{$producto->id}}</td>
         </tr>
         <tr>
-            <td>Categoría:</td>
+            <td><strong>Categoría:</strong></td>
             <td>{{$categoria->nombreCategoria}}</td>
         </tr>
       
         <tr>
-            <td>Existencias:</td>
+            <td><strong>Existencias:</strong></td>
             <td>{{$producto->existencias}}</td>
         </tr>
         <tr>
-            <td>Unidad de Medida:</td>
+            <td><strong>Unidad de Medida:</strong></td>
             <td>{{$producto->medida}}</td>
         </tr>
         <tr>
-            <td>Iva:</td>
+            <td><strong>Iva:</strong></td>
             <td>{{$producto->porcentajeIva}}</td>
         </tr>
         <tr>
-            <td>Precio Unitario:</td>
+            <td><strong>Precio Unitario:</strong></td>
             <td>{{$producto->precio	}}</td>
         </tr>
 </table>
