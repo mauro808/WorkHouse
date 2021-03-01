@@ -30,7 +30,7 @@
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidCategoria">Categoría:</label>
-    <select name="idCategoria" class="form-control">
+    <select name="idCategoria" class="form-control" required>
         <option selected>Seleccione</option>
          @foreach($categorias as $categoria)
         <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
@@ -39,27 +39,27 @@
       </div>
       <div class="col-6">
     <label for="nombreProducto">Nombre:</label>
-    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre"/>
+    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" required/>
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="existencias">Existencias:</label>
-    <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Digite las existencias"/>
+    <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Digite las existencias" required/>
       </div>
     <div class="col-6">
     <label for="medida">Medida:</label>
-    <input type="text" class="form-control" id="medida" name="medida" placeholder="Digite la medida"/>
+    <input type="text" class="form-control" id="medida" name="medida" placeholder="Digite la medida" required/>
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="porcentajeIva">Iva:</label>
-    <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA"/>
+    <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA" required/>
      </div>
       <div class="col-6">
     <label for="precio">Precio:</label>
-    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio"/>
+    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" required/>
      </div>
     </div>
 </div>

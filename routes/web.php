@@ -26,6 +26,9 @@ Route::get('/editarCliente/{id}', 'ClienteController@edit')->name('cliente.edita
 Route::put('/editarCliente/{id}', 'ClienteController@update')->name('cliente.update');
 Route::delete('/eliminarCliente/{id}', 'ClienteController@destroy')->name('cliente.destroy');
 
+//Route::resource('/clientes', 'ClienteController');
+
+
 // Rutas del Usuario
 Route::get('usuarios', 'PagesController@listarUsuario')->name('usuario.listar');
 Route::get('/detalleUser/{id}', 'PagesController@detalleUsuario')->name('usuario.detalle');

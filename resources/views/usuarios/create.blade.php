@@ -30,7 +30,7 @@
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidRol">Rol:</label>
-    <select name="idRol" class="form-control">
+    <select name="idRol" class="form-control" required>
         <option selected>Seleccione</option>
         @foreach($rols as $rol)
         <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
@@ -39,13 +39,13 @@
       </div>
       <div class="col-6">
     <label for="nombre">Nombres y Apellidos:</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Digite Nombres y Apellidos"/>
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Digite Nombres y Apellidos" required/>
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="txtTipoDocumento">Tipo Documento:</label>
-    <select name="tipoDocumento" class="form-control">
+    <select name="tipoDocumento" class="form-control" required>
         <option selected>Seleccione</option>
         <option>TI</option>
         <option>CC</option>
@@ -56,43 +56,43 @@
       </div>
     <div class="col-6">
     <label for="identificacion">Identificación:</label>
-    <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Digite el Número de Documento"/>
+    <input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="Digite el Número de Documento" required/>
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="correo">Correo electrónico:</label>
-    <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite el Correo"/>
+    <input type="email" class="form-control" id="correo'" name="correo" placeholder="Digite el Correo" required/>
     </div>
     <div class="col-6">
     <label for="telefonoFijo">Teléfono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Teléfono Fijo"/>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Teléfono Fijo" required/>
    </div>
    </div>
     <div class="row">
    <div class="col-6">
     <label for="celular">Celular:</label>
-    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular"/>
+    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" required/>
     </div>
     <div class="col-6">
     <label for="direccion">Dirección:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Dirección"/>
+    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Dirección" required/>
     </div>
     </div>
 
  
     <div class="col-5">
     <label for="nombreUsuario">Usuario:</label>
-    <input type="text" class="form-control" id="nombreUsuario'" name="nombreUsuario" placeholder="Digite el Usuario"/>
+    <input type="text" class="form-control" id="nombreUsuario'" name="nombreUsuario" placeholder="Digite el Usuario" required/>
     </div>
        <div class="row">
     <div class="col-6">
     <label for="contrasena">Contraseña:</label>
-    <input type="password" class="form-control" id="contrasena'" name="contrasena" placeholder="Digite Contraseña"/>
+    <input type="password" class="form-control" id="contrasena'" name="contrasena" placeholder="Digite Contraseña" required/>
     </div>
     <div class="col-6">
     <label for="contrasenac">Confirme Contraseña:</label>
-    <input type="password" class="form-control" id="contrasenac'" name="contrasenac" placeholder="Confirme Contraseña"/>
+    <input type="password" class="form-control" id="contrasenac'" name="contrasenac" placeholder="Confirme Contraseña" required/>
 </div>
 </div>
 </div>

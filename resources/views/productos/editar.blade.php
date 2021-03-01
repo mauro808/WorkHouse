@@ -22,7 +22,7 @@
 <div class="row">
 <div class="col-6">
 <label for="txtidCategoria">Categoría:</label>
-   <select name="idCategoria" class="form-control">
+   <select name="idCategoria" class="form-control" required>
         @foreach($categorias as $categoria)
              @if($producto->idCategoria == $categoria->id)
              <option value="{{$categoria->id}}" selected>{{$categoria->nombreCategoria}}</td>
@@ -36,7 +36,7 @@
       
    <div class="col-6">
     <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" value="{{ $producto->nombreProducto }}" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre"/>
+    <input type="text" class="form-control" value="{{ $producto->nombreProducto }}" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" required/>
     </div>
    </div>
     <div class="row">

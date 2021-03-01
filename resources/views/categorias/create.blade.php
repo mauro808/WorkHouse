@@ -20,11 +20,16 @@
 <form action="{{ route('agregarCategoria') }}" method="POST" class="w-45 p-3 mr-3 text-center">
 @csrf 
 <div class="form-group">
+</br>
     <label for="nombreCategoria">Nombre Categoría:</label>
-    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre"/>
+    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre" value=" {{ old('nombreCategoria')}} " required />
+   </br>
+    {!! $errors->first('nombreCategoria','<small>:message</small>') !!}
     </br>
     <label for="Descripcion">Descripción Categoría:</label>
-    <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría"></textarea>
+    <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría" value=" {{ old('Descripcion')}} " required></textarea>
+    </br>
+      {!! $errors->first('Descripcion','<small>:message</small>') !!}
 </div>
 <button type="submit" class="btn btn-primary" style="margin: 20px">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">

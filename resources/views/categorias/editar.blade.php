@@ -29,10 +29,10 @@
 <div class="form-group">
     
     <label for="nombreCategoria">Nombre:</label>
-    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" value="{{ $categoria->nombreCategoria }}"/>
+    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" value="{{ $categoria->nombreCategoria }}" required/>
     </br>
     <label for="Descripcion">Descripcion:</label>
-    <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="{{ $categoria->Descripcion }}"/>
+    <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="{{ $categoria->Descripcion }}" required/>
    
 </div>
 </br>

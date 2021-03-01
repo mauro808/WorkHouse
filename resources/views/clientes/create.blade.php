@@ -28,15 +28,15 @@
 <div class="form-group">
 
     <label for="idUsuario"></label>
-    <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" placeholder="Usuario Creador"/>
+    <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" placeholder="Usuario Creador" />
    <div class="row">
      <div class="col-6">
     <label for="nombreCliente">Nombre:</label>
-    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre"/>
+    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre" required/>
      </div>
     <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-    <select name="tipoIdentificacion" class="form-control">
+    <select name="tipoIdentificacion" class="form-control" required>
         <option selected>Seleccione</option>
         <option>TI</option>
         <option>CC</option>
@@ -49,21 +49,21 @@
        <div class="row">
      <div class="col-6">
     <label for="numeroIdentificacion">Identificacion:</label>
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento"/>
+    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" required/>
     </div>
     <div class="col-6">
     <label for="telefonoFijo">Telefono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo"/>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" required/>
      </div>
        </div>
         <div class="row">
      <div class="col-6">
     <label for="celular">Celular:</label>
-    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular"/>
+    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" required/>
        </div>
     <div class="col-6">
     <label for="direccion">Direccion:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"/>
+    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion" required/>
 </div>
 </div>
 </br>

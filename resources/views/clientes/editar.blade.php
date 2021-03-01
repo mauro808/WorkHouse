@@ -28,16 +28,16 @@
 @enderror
 <div class="form-group">
     <label for="idUsuario"></label>
-    <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" value="{{ $cliente->idUsuario }}"/>
+    <input type="hidden" class="form-control" id="idUsuario" name="idUsuario" value="{{ $cliente->idUsuario }}" />
     </br>
     <div class="row">
 <div class="col-6">
     <label for="nombreCliente">Nombre:</label>
-    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}"/>
+    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" required/>
     </div>
       <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-    <select name="tipoIdentificacion" class="form-control">
+    <select name="tipoIdentificacion" class="form-control" required>
     <option @if ($cliente->tipoDocumento=="TI") selected @endif>TI</option>
         <option @if ($cliente->tipoDocumento=="CC") selected @endif>CC</option>
         <option @if ($cliente->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
@@ -49,26 +49,26 @@
     <div class="row">
  <div class="col-6">
     <label for="numeroIdentificacion">Identificacion:</label>
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}"/>
+    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" required/>
         </div>
     
         
 <div class="col-6">
     <label for="telefonoFijo">Telefono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}"/>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" required/>
     </div>
     </div>
      <div class="row">
  <div class="col-6">
     <label for="celular">Celular:</label>
-    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}"/>
+    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" required/>
     
          </div>
   
    
  <div class="col-6">
     <label for="direccion">Direccion:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}"/>
+    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" required/>
 </div>
   </div>
 </br>
