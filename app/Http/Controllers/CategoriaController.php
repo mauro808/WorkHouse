@@ -38,7 +38,7 @@ class CategoriaController extends Controller
     {
         $request->validate([
             'nombreCategoria'=>'required',
-            'Descripcion'=>'required'
+            'Descripcion'=>'required',
         ]);
 
         $categoriaNueva = new App\Categoria;

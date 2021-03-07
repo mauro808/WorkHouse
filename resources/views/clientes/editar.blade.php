@@ -50,10 +50,11 @@
       <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
     <select name="tipoIdentificacion" class="form-control" required>
-    <option @if ($cliente->tipoDocumento=="TI") selected @endif>TI</option>
-        <option @if ($cliente->tipoDocumento=="CC") selected @endif>CC</option>
-        <option @if ($cliente->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
+    <option @if ($cliente->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
+        <option @if ($cliente->tipoDocumento=="Cédula Ciudadanía") selected @endif>Cédula Ciudadanía</option>
         <option @if ($cliente->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjeria</option>
+        <option @if ($cliente->tipoDocumento=="Permiso Permanencia") selected @endif>Permiso Permanenciaa</option>
+        <option @if ($cliente->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
         <option @if ($cliente->tipoDocumento=="Otro") selected @endif>Otro</option>
       </select>
  </div>

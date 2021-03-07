@@ -47,7 +47,7 @@ class UsuarioController extends Controller
             'direccion'=>'required',
             'nombreUsuario'=>'required',
             'contrasena'=>'required',
-            'contrasenac'=>'required'
+            'contrasenac'=>'required',
         ]);
 
         $usuarioNuevo = new App\Usuario;
@@ -64,37 +64,9 @@ class UsuarioController extends Controller
         $usuarioNuevo->contrasenac = $request->contrasenac;
         $usuarioNuevo->estado = $request->estado;
     
-        /**$request->validate([
-            'idRol'=>'required',
-            'nombre'=>'required',
-            'tipoDocumento'=>'required',
-            'identificacion'=>'required',
-            'correo'=>'required',
-            'telefonoFijo'=>'required',
-            'celular'=>'required',
-            'direccion'=>'required',
-            'nombreUsuario'=>'required',
-            'contrasena'=>'required'
     
-           ]);
-    
-           //Llevar los valores de los campos del form a un objeto
-           $usuario = new Usuario([
-               'idRol'=>$request->get('idRol'),
-               'nombre'=>$request->get('nombre'),
-               'tipoDocumento'=>$request->get('tipoDocumento'),
-               'identificacion'=>$request->get('identificacion'),
-               'correo'=>$request->get('correo'),
-               'telefonoFijo'=>$request->get('telefonoFijo'),
-               'celular'=>$request->get('celular'),
-               'direccion'=>$request->get('direccion'),
-               'nombreUsuario'=>$request->get('nombreUsuario'),
-               'contrasena'=>$request->get('contrasena')
-           ]);
-           */
-    
-           $usuarioNuevo->save();
-           return redirect('/usuarios')->with('success','Registro Exitoso');
+        $usuarioNuevo->save();
+        return redirect('/usuarios')->with('success','Registro Exitoso');
     }
 
     /**
@@ -140,7 +112,7 @@ class UsuarioController extends Controller
            $usuario->direccion=$request->direccion;
            $usuario->nombreUsuario=$request->nombreUsuario;
            $usuario->save();
-           
+
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
 
@@ -162,16 +134,5 @@ class UsuarioController extends Controller
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   /* public function destroy($id)
-    {
-        $usuario = App\Usuario::find($id);
-        $usuario -> delete();
-        return redirect('/usuarios')->with('success','Registro Exitoso');
-    }*/
+    
 }

@@ -47,10 +47,11 @@
     <label for="tipoIdentificacion">Tipo Documento:</label>
     <select name="tipoIdentificacion" class="form-control" required>
         <option selected>Seleccione</option>
-        <option>TI</option>
-        <option>CC</option>
-        <option>Pasaporte</option>
+        <option>Tarjeta Identidad</option>
+        <option>Cédula Ciudadanía</option>
         <option>Cedula Extranjería</option>
+        <option>Permiso Permanencia</option>
+        <option>Pasaporte</option>
         <option>Otro</option>
       </select>
      </div>

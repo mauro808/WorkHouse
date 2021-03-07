@@ -8,7 +8,7 @@
     </div>
         
 </div>
-<table class="table table-striped table-hover w-60 mx-auto" style="margin-top:50px">
+<table class="table table-striped table-hover w-50 mx-auto" style="margin-top:50px">
     
         <tr class="">
            <td><strong>Id:</strong></td>

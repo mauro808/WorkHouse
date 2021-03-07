@@ -20,7 +20,7 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nombres</th>
+            <th>Nombres y Apellidos</th>
             <th>Rol</th>
             <th>Estado</th>
             <th>Acciones</th>

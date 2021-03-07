@@ -39,12 +39,13 @@
     </div>
     <div class="row">
     <div class="col-6">
-    <label for="tipoDocumento">Tipo Documento:</label>
+    <label for="txtTipoDocumento">Tipo Documento:</label>
     <select name="tipoDocumento" class="form-control" required>
-        <option @if ($usuario->tipoDocumento=="TI") selected @endif>TI</option>
-        <option @if ($usuario->tipoDocumento=="CC") selected @endif>CC</option>
-        <option @if ($usuario->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
+        <option @if ($usuario->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
+        <option @if ($usuario->tipoDocumento=="Cedula Ciudadania") selected @endif>Cédula Ciudadanía</option>
         <option @if ($usuario->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjeria</option>
+        <option @if ($usuario->tipoDocumento=="Permiso Permanencia") selected @endif>Permiso Permanencia</option>
+        <option @if ($usuario->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
         <option @if ($usuario->tipoDocumento=="Otro") selected @endif>Otro</option>
       </select>
       </div>
@@ -73,7 +74,7 @@
     <label for="direccion">Direccion:</label>
     <input type="text" class="form-control" value="{{ $usuario->direccion }}" id="direccion" name="direccion" placeholder="Digite la Direccion" required/>
     </div>
-      <div class="col-6">
+      <div class="col-12">
     <label for="nombreUsuario">Usuario:</label>
     <input type="text" class="form-control" value="{{ $usuario->nombreUsuario }}" id="nombreUsuario" name="nombreUsuario" placeholder="Digite el Usuario" required/>
    </div>
