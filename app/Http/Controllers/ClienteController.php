@@ -25,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.create');
     }
 
     /**
@@ -38,9 +38,9 @@ class ClienteController extends Controller
     {
         $request->validate([
             'idUsuario'=>'required',
+            'nombreCliente'=>'required',
             'tipoIdentificacion'=>'required',
             'numeroIdentificacion'=>'required',
-            'nombreCliente'=>'required',
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
@@ -77,10 +77,11 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idCliente)
     {
-        $cliente = App\Cliente::findOrFail($id);
-        return view('clientes.editar', compact('cliente'));
+        $cliente = App\Cliente::findOrFail($idCliente);
+        $usuarios = App\Usuario::all();
+        return view('clientes.editar', compact('cliente','usuarios'));
     }
 
     /**
@@ -93,7 +94,6 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $cliente= App\Cliente::findOrFail($id); //buscar producto por id
-        $cliente->id = $request->id;
         $cliente->idUsuario = $request->idUsuario;
         $cliente->nombreCliente = $request->nombreCliente;
         $cliente->tipoIdentificacion = $request->tipoIdentificacion;
@@ -101,7 +101,7 @@ class ClienteController extends Controller
         $cliente->telefonoFijo = $request->telefonoFijo;
         $cliente->celular = $request->celular;
         $cliente->direccion = $request->direccion;
-           $cliente->save();
+        $cliente->save();
            
            return redirect('/clientes')->with('Mensaje', 'Cliente actualizado');
     }
@@ -112,10 +112,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
         $cliente = App\Cliente::find($id);
         $cliente -> delete();
         return redirect('/clientes')->with('success','Registro Exitoso');
-    }
+    }*/
 }

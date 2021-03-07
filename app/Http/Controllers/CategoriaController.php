@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App;
 
 use Illuminate\Http\Request;
-use App\Rules\UpperCase;
 
 class CategoriaController extends Controller
 {
@@ -16,7 +15,7 @@ class CategoriaController extends Controller
     public function index($idCategoria)
     {
         $categoria = App\Categoria::findOrFail($idCategoria);
-        return view('categorias.detalle', compact('categoria'));
+        return view('categoria.listar', compact('categorias'));
     }
 
     /**
@@ -26,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -38,13 +37,15 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
+            'nombreCategoria'=>'required',
+            'Descripcion'=>'required'
         ]);
 
         $categoriaNueva = new App\Categoria;
         $categoriaNueva->id = $request->id;
         $categoriaNueva->nombreCategoria = $request->nombreCategoria;
         $categoriaNueva->Descripcion = $request->Descripcion;
+        $categoriaNueva->estado = $request->estado;
 
         $categoriaNueva->save();
         return redirect('/categorias')->with('success','Registro Exitoso');
@@ -70,7 +71,7 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         $categoria = App\Categoria::findOrFail($id);
-        return view('categorias.editar', compact('categoria'));
+        return view('categoria.editar', compact('categoria'));
     }
 
     /**
@@ -91,16 +92,35 @@ class CategoriaController extends Controller
            return redirect('/categorias')->with('Mensaje', 'Categoria actualizado');
     }
 
+    public function habilitar(Request $request, $id)
+    {
+           $categoria= App\Categoria::findOrFail($id); //buscar producto por id
+           $categoria->estado="Activo";
+           $categoria->update();
+           
+           return redirect('/categorias')->with('Mensaje', 'categoria actualizada');
+    }
+
+    public function inhabilitar(Request $request, $id)
+    {
+           $categoria= App\Categoria::findOrFail($id); //buscar producto por id
+           $categoria->estado="Inactivo";
+           $categoria->update();
+           
+           return redirect('/categorias')->with('Mensaje', 'categoria actualizadao');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
         $categoria = App\Categoria::find($id);
         $categoria -> delete();
         return redirect('/categorias')->with('success','Registro Exitoso');
-    }
+    }*/
 }

@@ -29,46 +29,40 @@
     <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script>
      <script src="js/librerias/sweetalert2.js"></script>
 </head>
-<body style="background-image: url('https://fondos.io/wp-content/uploads/2019/01/fondos-de-pantalla-claros-hd-1773.jpg');width: 100%; background-repeat: no-repeat; background-size: cover;">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    WorkHouse
-  </button>
+<body style="background-image: url('https://image.freepik.com/foto-gratis/disposicion-herramientas-fondo-espacio-copia-amarilla_23-2148393104.jpg');width: 100%; Background-color: transparent; background-repeat: no-repeat; background-size: cover;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#E6D938;">
+
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
      <li class="nav-item mr-100">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Salir</a>
+        <a class="nav-link font-monospace" href="#" style="margin-right:100px">Salir</a>
       </li>
       <li class="nav-item mr-100">
-        <a class="nav-link font-weight-bold" href="{{ route('usuario.listar')}}" style="margin-right:100px">Usuarios</a>
+        <a class="nav-link font-monospace" href="{{ route('usuario.listar')}}" style="margin-right:100px">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="{{ route('cliente.listar')}}" style="margin-right:100px">Clientes</a>
+        <a class="nav-link font-monospace" href="{{ route('cliente.listar')}}" style="margin-right:100px">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="{{ route('producto.listar')}}" style="margin-right:100px">Productos</a>
+        <a class="nav-link font-monospace" href="{{ route('producto.listar')}}" style="margin-right:100px">Productos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="{{ route('categoria.listar')}}" style="margin-right:100px">Categorías</a>
+        <a class="nav-link font-monospace" href="{{ route('categoria.listar')}}" style="margin-right:100px">Categorías</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Ventas</a>
+        <a class="nav-link font-monospace" href="#" style="margin-right:100px" >Ventas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Compras</a>
+        <a class="nav-link font-monospace" href="#" style="margin-right:100px">Compras</a>
       </li>
-    </ul>
-    <a class="navbar-brand d-none d-lg-block" href="#"><img src="https://lh3.googleusercontent.com/v25ixg48yZadnLeUvMA3XE2-cZGS-JWpvDXBmAyAxh2imf1l9S2PMxbnS4B1YsduW0XH=s170" alt=""></a>
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-        <li class="nav-item mr-100">
-        <a class="nav-link font-weight-bold" href="#" style="margin-right:100px">Ayuda</a>
+      <li class="nav-item mr-100">
+        <a class="nav-link font-monospace" href="#" style="margin-right:100px">Ayuda</a>
       </li>
-    </ul>
+
   </div>
 </nav>
          
-        <main class="py-4" style="margin-left:200px; margin-right:100px">
+        <main class="py-4" style="margin-left:200px; margin-right:400px">
             @yield('content')
         </main>
     </div>

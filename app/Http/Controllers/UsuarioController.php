@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\Usuario;
 
 class UsuarioController extends Controller
 {
@@ -167,10 +168,10 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   /* public function destroy($id)
     {
         $usuario = App\Usuario::find($id);
         $usuario -> delete();
         return redirect('/usuarios')->with('success','Registro Exitoso');
-    }
+    }*/
 }
