@@ -67,3 +67,9 @@ Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
 Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
 Route::get('/agregarVenta', 'PagesController@agregarVenta')->name('agregarVenta');
 Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
+
+// Rutas compras
+Route::get('/compras', 'PagesController@listarCompras')->name('compra.listar');
+Route::get('/detalleCompra/{id}', 'PagesController@detalleCompra')->name('compras.detalle');
+Route::get('/agregaCompra', 'PagesController@agregarCompra')->name('agregarCompra');
+Route::post('/agregarCompra', 'CompraController@store')->name('agregarCompra');

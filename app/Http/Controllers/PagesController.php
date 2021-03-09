@@ -38,6 +38,13 @@ class PagesController extends Controller
       
     }
 
+    public function listarCompras(){
+        $compras = App\Compra::all();
+        $usuarios = App\Usuario::all();
+        return view('compras.listar',compact('compras','usuarios'));
+      
+    }
+
     public function detalleUsuario($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
         $rol = App\Rol::find($usuario->idRol);
@@ -65,6 +72,12 @@ class PagesController extends Controller
         $cliente = App\Cliente::find($venta->idCliente);
         $usuario = App\Usuario::find($venta->idUsuario);
         return view('ventas.detalle', compact('venta','cliente','usuario'));
+    }
+
+    public function detalleCompra($idCompra){
+        $compra = App\Compra::findOrFail($idCompra);
+        $usuario = App\Usuario::find($compra->idUsuario);
+        return view('compras.detalle', compact('compra','usuario'));
     }
     
     public function agregarUsuario(){
