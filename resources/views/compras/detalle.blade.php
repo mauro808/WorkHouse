@@ -30,10 +30,7 @@
             <td>{{$compra->valorCompra}}</td>
         </tr>
 
-        <tr>
-            <td><strong>Estado:</strong></td>
-            <td>{{$compra->estadoCompra}}</td>
-        </tr>
+ 
     
       
 </table>
