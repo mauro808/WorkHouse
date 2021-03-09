@@ -50,7 +50,7 @@
         <a class="nav-link font-monospace" href="{{ route('categoria.listar')}}" style="margin-right:100px">Categorías</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-monospace" href="#" style="margin-right:100px" >Ventas</a>
+        <a class="nav-link font-monospace" href="{{ route('venta.listar')}}" style="margin-right:100px" >Ventas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link font-monospace" href="#" style="margin-right:100px">Compras</a>

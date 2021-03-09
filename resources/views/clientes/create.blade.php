@@ -45,11 +45,7 @@
      </div>
     <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-<<<<<<< HEAD
     <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control">
-=======
-    <select name="tipoIdentificacion" class="form-control" required>
->>>>>>> 445ebdebebf1cccaa12d7be21ac7f558d3ad8f32
         <option selected>Seleccione</option>
         <option>Tarjeta Identidad</option>
         <option>Cédula Ciudadanía</option>

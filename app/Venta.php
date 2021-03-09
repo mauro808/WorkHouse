@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
-<<<<<<< HEAD
     protected $table = 'ventas';
 
     protected $fillable = [
@@ -24,8 +23,4 @@ class Venta extends Model
     public function cliente(){
         return $this -> belongsTo('App/Cliente');
     }
-=======
-    public $timestamps = true;
-
->>>>>>> 445ebdebebf1cccaa12d7be21ac7f558d3ad8f32
 }

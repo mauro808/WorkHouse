@@ -71,7 +71,7 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         $categoria = App\Categoria::findOrFail($id);
-        return view('categoria.editar', compact('categoria'));
+        return view('categorias.editar', compact('categoria'));
     }
 
     /**
