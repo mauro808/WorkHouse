@@ -34,7 +34,7 @@ class PagesController extends Controller
         $ventas = App\Venta::all();
         $clientes = App\Cliente::all();
         $usuarios = App\Usuario::all();
-        return view('ventas/listar',compact('ventas','clientes','usuarios'));
+        return view('ventas.listar',compact('ventas','clientes','usuarios'));
       
     }
 

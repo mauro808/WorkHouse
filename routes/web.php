@@ -14,6 +14,7 @@
 Route::get('/', function(){
     return view('auth.login');
 });
+Route::post('/iniciar.sesion', 'AutenticacionController@iniciarSesion');
 
 Route::auth();
 
