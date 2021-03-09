@@ -15,7 +15,8 @@ class PagesController extends Controller
     }
     public function listarClientes(){
         $clientes = App\Cliente::all();
-        return view('clientes/listar',compact('clientes'));
+        $usuarios = App\Usuario::all();
+        return view('clientes/listar',compact('clientes','usuarios'));
     }
 
     public function listarCategorias(){
@@ -43,7 +44,11 @@ class PagesController extends Controller
         return view('usuarios.detalle', compact('usuario','rol'));
     }
 
-
+    public function detalleCliente($idCliente){
+        $cliente = App\Cliente::findOrFail($idCliente);
+        $usuario = App\Usuario::find($cliente->idUsuario);
+        return view('clientes.detalle', compact('cliente','usuario'));
+    }
     public function detalleCategoria($idCategoria){
         $categoria = App\Categoria::findOrFail($idCategoria);
         return view('categorias.detalle', compact('categoria'));
@@ -68,7 +73,8 @@ class PagesController extends Controller
     }
 
     public function agregarCliente(){
-        return view('clientes.create');
+        $usuarios = App\Usuario::all();
+        return view('clientes.create',compact('usuarios'));
     }
 
     public function agregarCategoria(){

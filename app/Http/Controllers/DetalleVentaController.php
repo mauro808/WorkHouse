@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App;
+use App\DetalleVenta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
-class VentaController extends Controller
+class DetalleVentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $venta = Venta::all(); 
-        return view('venta.listar',compact('ventas'));
-        
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class VentaController extends Controller
      */
     public function create()
     {
-        return view('venta.create');
+        //
     }
 
     /**
@@ -39,27 +35,16 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-        
-            'fechaVenta'=>'required'
-        ]);
-
-        $VentaNueva = new App\Venta;
-        $VentaNueva->idCliente = $request->idCliente;
-        $VentaNueva->fechaVenta = $request->fechaVenta;
-        $VentaNueva->idUsuario = $request->idUsuario;
-    
-        $VentaNueva->save();
-        return redirect('/ventas')->with('success','Registro Exitoso');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Venta  $venta
+     * @param  \App\DetalleVenta  $detalleVenta
      * @return \Illuminate\Http\Response
      */
-    public function show(Venta $venta)
+    public function show(DetalleVenta $detalleVenta)
     {
         //
     }
@@ -67,10 +52,10 @@ class VentaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Venta  $venta
+     * @param  \App\DetalleVenta  $detalleVenta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Venta $venta)
+    public function edit(DetalleVenta $detalleVenta)
     {
         //
     }
@@ -79,10 +64,10 @@ class VentaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Venta  $venta
+     * @param  \App\DetalleVenta  $detalleVenta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Venta $venta)
+    public function update(Request $request, DetalleVenta $detalleVenta)
     {
         //
     }
@@ -90,10 +75,10 @@ class VentaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Venta  $venta
+     * @param  \App\DetalleVenta  $detalleVenta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Venta $venta)
+    public function destroy(DetalleVenta $detalleVenta)
     {
         //
     }

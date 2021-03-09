@@ -13,9 +13,9 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idProducto)
     {
-        $producto = Producto::all(); 
+        $producto = App\Producto::all(); 
         return view('producto.listar',compact('productos'));
     }
 
@@ -38,7 +38,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
+            'idCategoria'=>'required',
             'nombreProducto'=>'required',
             'existencias'=>'required',
             'medida'=>'required',
@@ -129,6 +129,16 @@ class ProductoController extends Controller
            
            return redirect('/productos')->with('Mensaje', 'Producto actualizado');
     }
+
+    public function listarPdf(){
+        $producto = Producto::join('categorias', 'productos.idCategoria','=','categorias.id')
+        ->select('productos.id','productos.idCategoria','categorias.nombre as nombre_categoria', 'productos.nombreProducto','productos.existencias','productos.precio','productos.estado')
+        ->orderBy('productos.nombreProducto','desc')->get();
+
+        $cont=Producto::count();
+        $pdf= \PDF::loadView('pdf.productospdf',['productos'=>$producto,'cont'=>$cont]);
+        return $pdf->download('productos.pdf');
+    }
    
    /* public function destroy( $id)
     {
@@ -137,10 +147,5 @@ class ProductoController extends Controller
         return redirect('/productos')->with('success','Registro Exitoso');
     }*/
 
-    public function destroy($id)
-    {
-        $producto = App\Producto::find($id);
-        $producto -> delete();
-        return redirect('/productos')->with('success','Registro Exitoso');
-    }
+ 
 }

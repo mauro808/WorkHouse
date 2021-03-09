@@ -15,12 +15,13 @@ class CreateDetalleVentasTable extends Migration
     {
         Schema::create('detalle__ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('idVenta');
-            $table->foreign('idVenta')->references('id')->on('ventas');
-            $table->unsignedBigInteger('idProducto');
+            $table->integer('idVenta')->unsigned();
+            $table->foreign('idVenta')->references('id')->on('ventas')->onDelete('cascade');
+            $table->integer('idProducto')->unsigned();
             $table->foreign('idProducto')->references('id')->on('productos');
             $table->integer('cantidad');
-            $table->integer('porcentajeIva');
+            $table->integer('Precio',11,2);
+            
         });
     }
 

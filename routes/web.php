@@ -27,6 +27,9 @@ Route::get('/editarCliente/{id}', 'ClienteController@edit')->name('cliente.edita
 Route::put('/editarCliente/{id}', 'ClienteController@update')->name('cliente.update');
 Route::delete('/eliminarCliente/{id}', 'ClienteController@destroy')->name('cliente.destroy');
 
+//Route::resource('/clientes', 'ClienteController');
+
+
 // Rutas del Usuario
 Route::get('usuarios', 'PagesController@listarUsuario')->name('usuario.listar');
 Route::get('/detalleUser/{id}', 'PagesController@detalleUsuario')->name('usuario.detalle');
@@ -44,6 +47,8 @@ Route::get('/editarCategoria/{id}', 'CategoriaController@edit')->name('categoria
 Route::put('/editarCategoria/{id}', 'CategoriaController@update')->name('categoria.update');
 Route::get('/agregarCategoria', 'PagesController@agregarCategoria')->name('agregarCategoria');
 Route::post('/agregarCategoria', 'CategoriaController@store')->name('agregarCategoria');
+Route::get('/habilitarCategoria/{id}', 'CategoriaController@habilitar')->name('categoria.habilitacion');
+Route::get('/inhabilitarCategria/{id}', 'CategoriaController@inhabilitar')->name('categoria.inhabilitacion');
 
 // Rutas del Producto
 Route::get('productos', 'PagesController@listarProductos')->name('producto.listar');
@@ -54,6 +59,7 @@ Route::get('/agregarProducto', 'PagesController@agregarProducto')->name('agregar
 Route::post('/agregarProducto', 'ProductoController@store')->name('agregarProducto');
 Route::get('/habilitarProducto/{id}', 'ProductoController@habilitar')->name('producto.habilitacion');
 Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name('producto.inhabilitacion');
+Route::get('/listarProductoPdf','ProductoController@listarPdf');
 
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
