@@ -90,9 +90,8 @@
                 <tr> 
                     <th>Categoría</th>
                     <th>Producto</th>
-                    <th>Existencias</th>
                     <th>Precio</th>
-                    <th>Estado</th>
+                    <th>Existencias</th>
                     
                 </tr>
             </thead>
@@ -101,9 +100,8 @@
                 <tr>
                     <td>{{$p->nombre_categoria}}</td>
                     <td>{{$p->nombreProducto}}</td>
-                    <td>{{$p->existencias}}</td>
                     <td>{{$p->precio}}</td>
-                     <td>{{$p->estado}}</td>
+                    <td>{{$p->existencias}}</td>
                    
                 </tr>
                 @endforeach                               

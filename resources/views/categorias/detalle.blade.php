@@ -17,7 +17,7 @@
     
       <tr>
         <td><strong>Estado:</strong></td>
-        <td>{{$categoria->Estado}}</td>
+        <td>{{$categoria->estado}}</td>
     </tr>
         <tr>
             <td><strong>Descripción:</strong></td>

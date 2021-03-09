@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
-//use App\Producto;
+use App\Producto;
 
 
 class ProductoController extends Controller
@@ -130,22 +130,21 @@ class ProductoController extends Controller
            return redirect('/productos')->with('Mensaje', 'Producto actualizado');
     }
 
-    public function listarPdf(){
-        $producto = Producto::join('categorias', 'productos.idCategoria','=','categorias.id')
-        ->select('productos.id','productos.idCategoria','categorias.nombre as nombre_categoria', 'productos.nombreProducto','productos.existencias','productos.precio','productos.estado')
-        ->orderBy('productos.nombreProducto','desc')->get();
+   /* public function listarPdf(){
+
+
+        $productos = Producto::join('categorias','productos.idCategoria','=','categorias.id')
+        ->select('productos.id','productos.idCategoria','productos.precio','productos.nombreProducto','categorias.nombreCategoria as nombre_categoria','productos.existencias','productos.estado')
+        ->orderBy('productos.nombreProducto', 'desc')->get(); 
 
         $cont=Producto::count();
-        $pdf= \PDF::loadView('pdf.productospdf',['productos'=>$producto,'cont'=>$cont]);
-        return $pdf->download('productos.pdf');
-    }
-   
-   /* public function destroy( $id)
-    {
-        $producto = App\Producto::find($id);
-        $producto -> delete();
-        return redirect('/productos')->with('success','Registro Exitoso');
-    }*/
 
- 
+        $pdf= \PDF::loadView('pdf.productospdf',['productos'=>$productos,'cont'=>$cont]);
+        return $pdf->download('productos.pdf');
+      
+}
+
+ public function exportPdf(){
+    return 'exportar'; 
+ } */
 }

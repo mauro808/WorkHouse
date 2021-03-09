@@ -58,7 +58,8 @@ Route::get('/agregarProducto', 'PagesController@agregarProducto')->name('agregar
 Route::post('/agregarProducto', 'ProductoController@store')->name('agregarProducto');
 Route::get('/habilitarProducto/{id}', 'ProductoController@habilitar')->name('producto.habilitacion');
 Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name('producto.inhabilitacion');
-Route::get('/listarProductoPdf','ProductoController@listarPdf');
+//Route::get('/listarProductosPdf','ProductoController@listarPdf')->name('productos_pdf');
+//Route::get('productos-list-pdf','ProductoController@exportPdf')->name('productos.pdf');
 
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
