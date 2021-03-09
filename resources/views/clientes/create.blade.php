@@ -36,7 +36,7 @@
      </div>
     <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-    <select name="tipoIdentificacion" class="form-control">
+    <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control">
         <option selected>Seleccione</option>
         <option>TI</option>
         <option>CC</option>
