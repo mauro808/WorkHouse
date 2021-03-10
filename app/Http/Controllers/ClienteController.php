@@ -44,6 +44,7 @@ class ClienteController extends Controller
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
+            'correo'=>'required',
         ]);
 
         $clienteNuevo = new App\Cliente;
@@ -55,6 +56,7 @@ class ClienteController extends Controller
         $clienteNuevo->telefonoFijo = $request->telefonoFijo;
         $clienteNuevo->celular = $request->celular;
         $clienteNuevo->direccion = $request->direccion;
+        $clienteNuevo->correo = $request->correo;
 
         $clienteNuevo->save();
         return redirect('/clientes')->with('success','Registro Exitoso');
@@ -101,6 +103,7 @@ class ClienteController extends Controller
         $cliente->telefonoFijo = $request->telefonoFijo;
         $cliente->celular = $request->celular;
         $cliente->direccion = $request->direccion;
+        $cliente->correo = $request->correo;
         $cliente->save();
            
            return redirect('/clientes')->with('Mensaje', 'Cliente actualizado');

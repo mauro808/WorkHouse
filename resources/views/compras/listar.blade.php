@@ -20,8 +20,9 @@
             <th>Id</th>
             <th>Fecha Compra</th>
             <th>Usuario</th>
-             <th>Valor</th>
-            <th>Acciones</th>
+            <th>Número Factura</th>
+             <th>Valor Total</th>
+            <th><mark>Acciones</mark></th>
             
         </tr>
     </thead>
@@ -35,7 +36,7 @@
                     <td>{{$usuario->nombreUsuario}}</td>
                         @endif 
                         @endforeach 
-                     
+                    <td>{{$compra->facturaCompra}}</td>  
                     <td>{{$compra->valorCompra}}</td>  
                      <td>
                         <form action="" method="POST">

@@ -22,7 +22,7 @@
             <th>Fecha Venta</th>
             <th>Valor venta</th>
             <th>Vendedor</th>
-            <th>Acciones</th>
+            <th><mark>Acciones</mark></th>
             
         </tr>
     </thead>

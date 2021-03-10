@@ -6,5 +6,8 @@
 
 require('./bootstrap');
 
+require('./funciones');
+
 window.Vue = require('vue');
 
+window.Swal = require('sweetalert2');
