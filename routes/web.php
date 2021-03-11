@@ -26,6 +26,8 @@ Route::post('/agregarCliente', 'ClienteController@store')->name('agregarCliente'
 Route::get('/editarCliente/{id}', 'ClienteController@edit')->name('cliente.editar');
 Route::put('/editarCliente/{id}', 'ClienteController@update')->name('cliente.update');
 Route::delete('/eliminarCliente/{id}', 'ClienteController@destroy')->name('cliente.destroy');
+Route::get('/pdfClientes', 'ClienteController@pdfClientes')->name('PdfClientes');
+
 
 //Route::resource('/clientes', 'ClienteController');
 
@@ -39,6 +41,7 @@ Route::get('/agregarUsuario', 'PagesController@agregarUsuario')->name('agregarUs
 Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario');
 Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
 Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
+Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
 
 // Rutas categorias
 Route::get('/categorias', 'PagesController@listarCategorias')->name('categoria.listar');
@@ -49,6 +52,7 @@ Route::get('/agregarCategoria', 'PagesController@agregarCategoria')->name('agreg
 Route::post('/agregarCategoria', 'CategoriaController@store')->name('agregarCategoria');
 Route::get('/habilitarCategoria/{id}', 'CategoriaController@habilitar')->name('categoria.habilitacion');
 Route::get('/inhabilitarCategria/{id}', 'CategoriaController@inhabilitar')->name('categoria.inhabilitacion');
+Route::get('/pdfCategorias', 'CategoriaController@pdfCategorias')->name('PdfCategorias');
 
 // Rutas del Producto
 Route::get('productos', 'PagesController@listarProductos')->name('producto.listar');
@@ -59,8 +63,7 @@ Route::get('/agregarProducto', 'PagesController@agregarProducto')->name('agregar
 Route::post('/agregarProducto', 'ProductoController@store')->name('agregarProducto');
 Route::get('/habilitarProducto/{id}', 'ProductoController@habilitar')->name('producto.habilitacion');
 Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name('producto.inhabilitacion');
-//Route::get('/listarProductosPdf','ProductoController@listarPdf')->name('productos_pdf');
-//Route::get('productos-list-pdf','ProductoController@exportPdf')->name('productos.pdf');
+Route::get('/pdfProductos', 'ProductoController@pdfProductos')->name('PdfProductos');
 
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');

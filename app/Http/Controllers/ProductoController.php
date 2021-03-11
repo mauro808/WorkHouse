@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Producto;
+use App\Categoria;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class ProductoController extends Controller
@@ -129,22 +131,12 @@ class ProductoController extends Controller
            
            return redirect('/productos')->with('Mensaje', 'Producto actualizado');
     }
-
-   /* public function listarPdf(){
-
-
-        $productos = Producto::join('categorias','productos.idCategoria','=','categorias.id')
-        ->select('productos.id','productos.idCategoria','productos.precio','productos.nombreProducto','categorias.nombreCategoria as nombre_categoria','productos.existencias','productos.estado')
-        ->orderBy('productos.nombreProducto', 'desc')->get(); 
-
-        $cont=Producto::count();
-
-        $pdf= \PDF::loadView('pdf.productospdf',['productos'=>$productos,'cont'=>$cont]);
-        return $pdf->download('productos.pdf');
-      
-}
-
- public function exportPdf(){
-    return 'exportar'; 
- } */
+    public function pdfProductos()
+    {
+       $productos = Producto::all();
+       $categorias = Categoria::all();
+        $pdf = PDF::loadView('productos.pdf',compact('productos','categorias'));
+        return $pdf->stream('productos.pdf');
+    }
+   
 }

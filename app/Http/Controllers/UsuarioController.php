@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Usuario;
+use App\Rol;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class UsuarioController extends Controller
 {
@@ -134,5 +136,11 @@ class UsuarioController extends Controller
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
 
-    
+    public function pdfUsuarios()
+    {
+       $usuarios = Usuario::all();
+       $rols = Rol::all();
+        $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'));
+        return $pdf->setPaper('a4','landscape')->stream('usuarios.pdf');
+    }
 }

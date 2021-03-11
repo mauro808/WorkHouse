@@ -10,36 +10,39 @@
 </div>
 <table class="table table-striped table-hover w-50 mx-auto" style="margin-top:50px">
     
-        <tr>
-            <td><strong>Id:</strong></td>
+  
+
+ <tr class="">
+           <td><strong>Id:</strong></td>
             <td>{{$cliente->id}}</td>
-        </tr>
-        <tr>
-            <td><strong>Creado por:</strong></td>
+             <td><strong>Creado por:</strong></td>
             <td>{{$cliente->idUsuario}}</td>
         </tr>
-      
+       
+       
         <tr>
             <td><strong>Tipo Documento:</strong></td>
             <td>{{$cliente->tipoIdentificacion}}</td>
-        </tr>
-        <tr>
-            <td><strong>Identificacion:</strong></td>
+             <td><strong>Identificación:</strong></td>
             <td>{{$cliente->numeroIdentificacion}}</td>
         </tr>
+       
         <tr>
             <td><strong>Dirección:</strong></td>
             <td>{{$cliente->direccion}}</td>
-        </tr>
-        <tr>
-            <td><strong>Teléfono Fijo:</strong></td>
+             <td><strong>Teléfono Fijo:</strong></td>
             <td>{{$cliente->telefonoFijo}}</td>
         </tr>
+        
         <tr>
+            
             <td><strong>Celular:</strong></td>
             <td>{{$cliente->celular}}</td>
+             <td><strong>Correo Electrónico:</strong></td>
+            <td>{{$cliente->correo}}</td>
         </tr>
-        <tr>
+       
+
 </table>
 </br>
     <div class="col-lg-11" align="center">

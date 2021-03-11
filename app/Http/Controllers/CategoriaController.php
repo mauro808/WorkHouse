@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Categoria;
 
 use Illuminate\Http\Request;
 
@@ -110,6 +112,13 @@ class CategoriaController extends Controller
            return redirect('/categorias')->with('Mensaje', 'categoria actualizadao');
     }
 
+    public function pdfCategorias()
+    {
+       $categorias = Categoria::all();
+        $pdf = PDF::loadView('categorias.pdf',compact('categorias'));
+        return $pdf->stream('categorias.pdf');
+    }
+   
 
     /**
      * Remove the specified resource from storage.

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App;
-
+use App\Cliente;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class ClienteController extends Controller
 {
@@ -14,6 +16,7 @@ class ClienteController extends Controller
      */
     public function index($idCliente)
     {
+
         $cliente = App\Cliente::findOrFail($idCliente);
         return view('clientes.detalle', compact('cliente'));
     }
@@ -109,16 +112,12 @@ class ClienteController extends Controller
            return redirect('/clientes')->with('Mensaje', 'Cliente actualizado');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*public function destroy($id)
+    public function pdfClientes()
     {
-        $cliente = App\Cliente::find($id);
-        $cliente -> delete();
-        return redirect('/clientes')->with('success','Registro Exitoso');
-    }*/
+       $clientes = Cliente::all();
+        $pdf = PDF::loadView('clientes.pdf',compact('clientes'));
+        return $pdf->setPaper('a4','landscape')->stream('clientes.pdf');
+    }
+   
+ 
 }
