@@ -38,7 +38,6 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        try{
             DB::beginTransaction();
 
             $mytime = Carbon::now("America/Bogota");
@@ -64,7 +63,6 @@ class VentaController extends Controller
                 $detalle->save();
                 $cont=$contr+1;
             }
-        };
     }
 
     /**
