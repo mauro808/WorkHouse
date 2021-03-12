@@ -9,82 +9,20 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class CompraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+  
+    public function listarCompras(){
+        $compras = Compra::all();
+        $usuarios = Usuario::all();
+        return view('compras.listar',compact('compras','usuarios'));
+      
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function detalleCompra($idCompra)
     {
-        //
+        $compra = Compra::findOrFail($idCompra);
+        $usuario = Usuario::find($compra->idUsuario);
+        return view('compras.detalle', compact('compra','usuario'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Compra $compra)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Compra  $compra
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Compra $compra)
-    {
-        //
-    }
-
     
     public function pdfCompras()
     {

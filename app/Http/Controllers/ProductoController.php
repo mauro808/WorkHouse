@@ -10,33 +10,20 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idProducto)
-    {
-        $producto = App\Producto::all(); 
-        return view('producto.listar',compact('productos'));
+
+    public function listarProductos(){
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+        return view('productos/listar',compact('productos','categorias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function agregarProducto()
     {
-        return view('producto.create');
+        $categorias = Categoria::all();
+        return view('productos.create', compact('categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -61,23 +48,14 @@ class ProductoController extends Controller
         return redirect('/productos')->with('success','Registro Exitoso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function detalleProducto($idProducto)
     {
-        
+        $producto = App\Producto::findOrFail($idProducto);
+        $categoria = App\Categoria::find($producto->idCategoria);
+        return view('productos.detalle', compact('producto','categoria'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($idProducto)
     {
         $producto = App\Producto::findOrFail($idProducto);
@@ -85,13 +63,6 @@ class ProductoController extends Controller
         return view('productos.editar', compact('producto','categorias'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,  $id)
     {
         $producto= App\Producto::findOrFail($id); //buscar producto por id
@@ -105,14 +76,6 @@ class ProductoController extends Controller
            
            return redirect('/productos')->with('Mensaje', 'Producto actualizado');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Producto  $producto
-     * @return \Illuminate\Http\Response
-     */
-
 
     public function habilitar(Request $request, $id)
     {

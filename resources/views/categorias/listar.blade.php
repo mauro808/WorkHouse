@@ -3,7 +3,7 @@
 
 <div class="row w-30" style="padding-left:60px; "> 
     <div class="col-lg-10 p-5 m-2" align="left" >
-        <h2 class="text-monospace">Categorías</h2>
+       <h2 class="text-lucida"><strong>Categorías</strong></h2>
     </div>
 </div class="">
  <div align="right">
