@@ -19,7 +19,33 @@ class VentaController extends Controller
    
     public function store(Request $request)
     {
-        //
+        try{
+            DB::beginTransaction();
+
+            $mytime = Carbon::now("America/Bogota");
+            $venta = new Venta();
+            $venta->idCliente = $request->idCliente;
+            $venta->idUsuario = \Auth::user()->id;
+            $venta->fechaVenta = $mytime->toDateString();
+            $venta->precioTotal = $request->precioTotal;
+            $venta->Estado = 'Registrada';
+            $venta->save();
+
+            $idProducto=$request->idProducto;
+            $cantidad=$request->cantidad;
+            $valorProducto=$request->valorProducto;
+
+            $cont=0;
+            while($cont < count($idProducto)){
+                $detalle = new DetalleVenta();
+                $detalle->idVenta = $venta->id;
+                $detalle->idProducto = $idProducto[$cont];
+                $detalle->cantidad = $cantidad[$cont];
+                $detalle->valorProducto= $valorProducto[$cont];
+                $detalle->save();
+                $cont=$contr+1;
+            }
+        };
     }
 
    

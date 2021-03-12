@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     public $timestamps = false;
+<<<<<<< HEAD
 
     protected $table = 'usuarios';
 
@@ -24,4 +25,6 @@ class Usuario extends Model
     'contrasenac',
     'Estado',
     ];
+=======
+>>>>>>> 60e845988dfea17ff9c3adfef7e102770ba01097
 }
