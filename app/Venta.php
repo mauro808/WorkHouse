@@ -13,7 +13,6 @@ class Venta extends Model
         'fechaVenta',
         'idUsuario',
         'precioTotal',
-        'Estado'
     ];
 
     public function usuario(){
