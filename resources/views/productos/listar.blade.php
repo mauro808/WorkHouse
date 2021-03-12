@@ -40,10 +40,7 @@
                       <td>{{$producto->precio}}</td>
                     <td>{{$producto->estado}}</td>
                     <td>
-<<<<<<< HEAD
               
-=======
->>>>>>> 60e845988dfea17ff9c3adfef7e102770ba01097
                         <form action="" method="POST"> 
                             <a class="btn btn-dark" href="{{ route('producto.detalle', $producto) }}"style="margin-left: 10px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">

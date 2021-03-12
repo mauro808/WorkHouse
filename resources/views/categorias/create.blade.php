@@ -17,6 +17,7 @@
 <div class="row">
 <div class="col-lg-3"></div>
 <div class="col-lg-5">
+{{ $errors }}
 <form action="{{ route('agregarCategoria') }}" method="POST" class="w-45 p-3 mr-3 text-center">
 @csrf 
 <div class="form-group">
