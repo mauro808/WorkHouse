@@ -35,8 +35,8 @@
     
      
 </head>
-<body style=" background-image: url('https://image.freepik.com/foto-gratis/disposicion-herramientas-fondo-espacio-copia-amarilla_23-2148393104.jpg');width: 100%; ; background-repeat: no-repeat; background-size: cover;">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#D6AA06 ;">
+<body style="background-color: #FFD54F  ">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#000000  ;">
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

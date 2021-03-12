@@ -100,7 +100,6 @@ th {
                 @endforeach
                 </tbody>
             </table>
-            
         </div>
     </main>
     <footer>

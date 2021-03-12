@@ -94,4 +94,3 @@ class CompraController extends Controller
         return $pdf->stream('compras.pdf');
     }
 }
-
