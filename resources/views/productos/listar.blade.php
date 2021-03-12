@@ -39,7 +39,7 @@
                       <td>{{$producto->precio}}</td>
                     <td>{{$producto->estado}}</td>
                     <td>
-                @endforeach
+              
                         <form action="" method="POST"> 
                             <a class="btn btn-dark" href="{{ route('producto.detalle', $producto) }}"style="margin-left: 10px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -67,9 +67,11 @@
                         
                         </form>
                     </td>
+                      
                 </tr>
-            @endforeach
+            
         </tbody>
+      @endforeach
     </table>
   <div align="right">
          <a href="{{ route('PdfProductos') }}" target="_blank" class="btn btn-lg active btn-dark">

@@ -35,9 +35,9 @@ Route::get('/editarUser/{id}', 'UsuarioController@edit')->name('usuario.editar')
 Route::put('/editarUser/{id}', 'UsuarioController@update')->name('usuario.update');
 Route::get('/agregarUsuario', 'UsuarioController@agregarUsuario')->name('agregarUsuario');
 Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario');
+Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
 Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
 Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
-Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
 
 // Rutas categorias
 Route::get('/categorias', 'CategoriaController@listarCategorias')->name('categoria.listar');
