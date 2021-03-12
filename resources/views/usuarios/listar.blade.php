@@ -49,19 +49,23 @@
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg> Editar</a>
+
+                        
+                          
                             @csrf 
                         @if ($usuario->Estado=="Activo")
-                            <a class="btn btn-danger" href="{{ route('usuario.inhabilitacion', $usuario->id) }}"style="margin-left: 10px">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+                            <a class="btn btn-success" href="{{ route('usuario.inhabilitacion', $usuario->id) }}" style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
   <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
 </svg> 
-Inhabilitar</a>
+Activo</a>
                         @endif
                         @if ($usuario->Estado=="Inactivo")
-                            <a type="submit" class="btn btn-success" href="{{ route('usuario.habilitacion', $usuario->id) }}"style="margin-left: 10px">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                            <a type="submit" class="btn btn-danger" href="{{ route('usuario.habilitacion', $usuario->id) }}"  style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
   <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-</svg> Habilitar</a>
+</svg>
+Inactivo</a>
                         @endif
                         @csrf
                             

@@ -25,15 +25,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
      
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script src = "https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer ></script>
     <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script> 
-  
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 
-    
-     
 </head>
 <body style="background-color: #FFD54F  ">
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#1D1B1B  ;">
@@ -119,9 +118,8 @@ $(document).ready(function() {
         }
     } );
 } );
-    </script>
-
-    <script src="{{ asset('js/app.js') }}"> </script>>
+  </script>
+  
 @yield('js')
 </body>
 </html>

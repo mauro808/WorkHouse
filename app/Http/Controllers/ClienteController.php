@@ -18,10 +18,6 @@ class ClienteController extends Controller
         return view('clientes/listar',compact('clientes','usuarios'));
     }
 
-    public function create()
-    {
-        return view('cliente.create');
-    }
 
     public function agregarCliente(){
         $usuarios = Usuario::all();

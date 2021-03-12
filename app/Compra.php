@@ -8,6 +8,8 @@ class Compra extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'compras';
+
     protected $fillable = [
         'id',
         'fechaCompra',
