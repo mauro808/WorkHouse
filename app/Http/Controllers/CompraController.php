@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Compra;
+use App\Usuario;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CompraController extends Controller
 {
@@ -82,4 +84,14 @@ class CompraController extends Controller
     {
         //
     }
+
+    
+    public function pdfCompras()
+    {
+       $compras = Compra::all();
+       $usuarios = Usuario::all();
+        $pdf = PDF::loadView('compras.pdf',compact('compras','usuarios'));
+        return $pdf->stream('compras.pdf');
+    }
 }
+

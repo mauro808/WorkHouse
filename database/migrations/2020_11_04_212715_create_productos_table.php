@@ -26,7 +26,7 @@ class CreateProductosTable extends Migration
             $table->integer('existencias');
             $table->string('medida',20);
             $table->integer('porcentajeIva');
-            $table->integer('precio');
+            $table->decimal('precio',11,2);
             $table->string('estado',15);
         });
     }

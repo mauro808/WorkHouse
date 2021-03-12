@@ -18,10 +18,10 @@ class CreateDetalleComprasTable extends Migration
             $table->unsignedBigInteger('idProducto');
             $table->foreign('idProducto')->references('id')->on('productos');
             $table->integer('cantidadProducto');
-            $table->integer('costoProducto');
+            $table->decimal('costoProducto',11,2);
             $table->unsignedBigInteger('idCompra');
             $table->foreign('idCompra')->references('id')->on('compras');
-            $table->integer('porcentajeIva');
+        
         });
     }
 

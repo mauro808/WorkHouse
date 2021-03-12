@@ -20,6 +20,7 @@ class CreateComprasTable extends Migration
             $table->foreign('idUsuario')->references('id')->on('usuarios');
             $table->integer('estadoCompra');
             $table->integer('facturaCompra');
+            $table->decimal('valorCompra',11,2);
         });
     }
 

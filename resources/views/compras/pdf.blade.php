@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Productos</title>
+    <title>Reporte de Compras</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="../resources/views/layouts/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@ th {
 </head>
 <body>
     <header style="font-size: 3em";>
-        <p><strong>Reporte de Productos</strong></p>
+        <p><strong>Reporte de Compras</strong></p>
     </header>
     <main>
         <div class="container">
@@ -74,33 +74,29 @@ th {
                 <thead >
                     <tr >
                         <th scope="col" >Id</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Existencias</th>
-                        <th scope="col">Und. Medida</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Estado</th>
+                        <th scope="col">Usuario</th>
+                         <th scope="col">Fecha</th>
+                         <th scope="col">N. Factura</th>
+                        <th scope="col">Valor Total</th>
                     </tr>
                 </thead>
                <tbody >
-                @foreach($productos as $producto)
+                @foreach($compras as $compra)
                     <tr >
-                        <th scope="row">{{ $producto->id }}</th>
-                        @foreach($categorias as $categoria)
-                    @if($producto->idCategoria == $categoria->id)
-                    <td>{{$categoria->nombreCategoria}}</td>
+                        <th scope="row">{{ $compra->id }}</th>
+                         @foreach($usuarios as $usuario)
+                    @if($compra->idUsuario == $usuario->id)
+                    <td>{{$usuario->nombre}}</td>
                         @endif 
                         @endforeach 
-                        <td>{{$producto->nombreProducto}}</td>
-                         <td>{{$producto->existencias}}</td>
-                         <td>{{$producto->medida}}</td>
-                      <td>{{$producto->precio}}</td>
-                    <td>{{$producto->estado}}</td>
+                        <td>{{ $compra->fechaCompra }}</td>
+                        <td>{{ $compra->facturaCompra}}</td>
+                        <td>{{ $compra->valorCompra }}</td>
+                  
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            
         </div>
     </main>
     <footer>

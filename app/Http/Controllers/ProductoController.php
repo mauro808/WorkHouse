@@ -139,4 +139,5 @@ class ProductoController extends Controller
         return $pdf->stream('productos.pdf');
     }
    
+
 }
