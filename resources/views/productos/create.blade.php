@@ -8,7 +8,7 @@
 @endif
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">Registrar Nuevo Producto</h2>
+        <h2 class="text-lucida"><strong>Registrar Producto</strong></h2>
     </div>
     <div class="col-lg-11">
        
@@ -20,11 +20,6 @@
 <form action="{{ route('agregarProducto') }}" method="POST" class="w-50 p-3 mr-3 text-center">
 @csrf 
 
-@error('nombreProducto')
-    <div class="alert alert-danger">
-        El nombre es obligatorio
-    </div>
-@enderror
 <div class="form-group">
     <div class="row">
     <div class="col-6">
@@ -41,14 +36,16 @@
       </div>
       <div class="col-6">
     <label for="nombreProducto">Nombre:</label>
-    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" required/>
+    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" value="{{old('nombreProducto')}}"/>
+    {!! $errors->first('nombreProducto','<small><strong> :message</strong></small></br>') !!}
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="existencias">Existencias:</label>
-    <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Digite las existencias" required/>
-      </div>
+    <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Digite las existencias" value="{{old('existencias')}}"/>
+    {!! $errors->first('existencias','<small><strong> :message</strong></small></br>') !!}
+    </div>
     <div class="col-6">
     <label for="medida">Medida:</label>
     <select name="medida" class="form-control" required>
@@ -73,12 +70,14 @@
     <div class="row">
     <div class="col-6">
     <label for="porcentajeIva">Iva:</label>
-    <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA" required/>
-     </div>
-      <div class="col-6">
+    <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA" value="{{old('porcentajeIva')}}"/>
+     {!! $errors->first('porcentajeIva','<small><strong> :message</strong></small></br>') !!}
+    </div>
+    <div class="col-6">
     <label for="precio">Precio:</label>
-    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" required/>
-     </div>
+    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
+    {!! $errors->first('precio','<small><strong> :message</strong></small></br>') !!}
+    </div>
     </div>
 </div>
 <button type="submit" class="btn btn-dark" style="margin: 10px">

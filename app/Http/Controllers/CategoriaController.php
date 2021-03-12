@@ -24,9 +24,15 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombreCategoria'=>'required',
+            'nombreCategoria'=>'required|string',
             'Descripcion'=>'required',
-        ]);
+        ],
+            [
+                'nombreCategoria.required' => 'Por Favor Ingresa el Nombre de la Categoría',
+                'Descripcion.required' => 'Por Favor Ingresa una Descripción',
+            ]
+    
+    );
 
         $categoriaNueva = new App\Categoria;
         $categoriaNueva->id = $request->id;

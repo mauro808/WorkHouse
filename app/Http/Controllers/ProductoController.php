@@ -29,11 +29,26 @@ class ProductoController extends Controller
         $request->validate([
             'idCategoria'=>'required',
             'nombreProducto'=>'required',
-            'existencias'=>'required',
+            'existencias'=>'required|integer',
             'medida'=>'required',
             'porcentajeIva'=>'required',
             'precio'=>'required',
-        ]);
+        ],
+
+    [
+            'idCategoria.required' => 'Por Favor Selecciona La Categoría',
+            'nombreProducto.required' => 'Ingresa Nombre',
+            'existencias.required' => 'Ingresa Existencias',
+            'existencias.integer' => 'Ingresa sólo números',
+            'medida.required' => 'Selecciona Medida',
+            'porcentajeIva.required' => 'Ingresa Iva',
+            //'porcentajeIva.integer' => 'Ingresa sólo números',
+            'precio.required' => 'Ingresa Precio',
+            //'precio.integer' => 'Ingresa sólo números',
+         
+          
+        ]
+    );
 
         $productoNuevo = new App\Producto;
         $productoNuevo->idCategoria = $request->idCategoria;

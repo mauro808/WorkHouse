@@ -7,7 +7,7 @@
     </div>
 @endif
     <div class="col-lg-11" align="center">
-        <h2>Registrar Nueva Venta</h2>
+        <h2 class="text-lucida"><strong>Registrar Venta</strong></h2>
     </div>
     <div class="col-lg-11">
         <a class="btn btn-success" href="{{ url ('ventas') }}">Atrás</a>

@@ -30,12 +30,28 @@ class ClienteController extends Controller
             'idUsuario'=>'required',
             'nombreCliente'=>'required',
             'tipoIdentificacion'=>'required',
-            'numeroIdentificacion'=>'required',
-            'telefonoFijo'=>'required',
-            'celular'=>'required',
+            'numeroIdentificacion'=>'required|integer',
+            'telefonoFijo'=>'required|integer',
+            'celular'=>'required|integer',
             'direccion'=>'required',
-            'correo'=>'required',
-        ]);
+            'correo'=>'required|email',
+        ],
+
+        [
+            'idUsuario.required' => 'Por Favor Selecciona Tu Usuario',
+            'nombreCliente.required' => 'Ingresa Nombres',
+            'tipoIdentificacion.required' => 'Selecciona Tipo Identificación',
+            'numeroIdentificacion.required' => 'Ingresa Documento',
+            'numeroIdentificacion.integer' => 'Ingresa sólo números',
+            'telefonoFijo.required' => 'Ingresa Teléfono Fijo',
+            'telefonoFijo.integer' => 'Ingresa sólo números',
+            'celular.required' => 'Ingresa Celular',
+            'celular.integer' => 'Ingresa sólo números',
+            'direccion.required' => 'Ingresa Dirección',
+            'correo.required' => 'Ingresa E-Mail',
+            'correo.email' => 'Ingresa un correo válido',
+        ]
+    );
 
         $clienteNuevo = new App\Cliente;
         $clienteNuevo->id = $request->id;

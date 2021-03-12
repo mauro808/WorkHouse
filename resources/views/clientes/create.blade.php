@@ -8,7 +8,7 @@
 @endif
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">Registrar Nuevo Cliente</h2>
+       <h2 class="text-lucida"><strong>Registrar Cliente</strong></h2>
     </div>
     <div class="col-lg-11">
        
@@ -17,35 +17,41 @@
 <div class="row">
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
+
+@if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
+
 <form action="{{ route('agregarCliente') }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @csrf 
 
-@error('nombreUsuario')
-    <div class="alert alert-danger">
-        El nombre es obligatorio
-    </div>
-@enderror
+
 <div class="form-group" >
   <div class="col-12">
       <label for="txtidUsuario">Usuario Creador:</label>
-       <select name="idUsuario" class="form-control" required>
-        <option selected>Seleccione</option>
+       <select name="idUsuario" class="form-control"  value="{{ old('idUsuario')}}" />
+        <option selected >Seleccione</option>
          @foreach($usuarios as $usuario)
          @if($usuario->Estado == "Activo")
         <option value="{{$usuario->id}}">{{$usuario->nombreUsuario}}</option>
         @endif
         @endforeach
       </select>
+      {!! $errors->first('idUsuario','<small><strong>:message</strong></small></br>') !!}
       </div>
     </div>
    <div class="row">
      <div class="col-6">
     <label for="nombreCliente">Nombre:</label>
-    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre" required/>
+    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre" value="{{ old('nombreCliente')}}"/>
+      {!! $errors->first('nombreCliente','<small><strong>:message</strong></small></br>') !!}
      </div>
     <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-    <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control">
+    <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control" value="{{ old('tipoIdentificacion')}}">
         <option selected>Seleccione</option>
         <option>Tarjeta Identidad</option>
         <option>Cédula Ciudadanía</option>
@@ -54,31 +60,37 @@
         <option>Pasaporte</option>
         <option>Otro</option>
       </select>
+       {!! $errors->first('tipoIdentificacion','<small><strong>:message</strong></small></br>') !!}
      </div>
        </div>
        <div class="row">
      <div class="col-6">
     <label for="numeroIdentificacion">Identificacion:</label>
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" required/>
+    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" value="{{ old('numeroIdentificacion')}}" />
+    {!! $errors->first('numeroIdentificacion','<small><strong>:message</strong></small>') !!}
     </div>
     <div class="col-6">
     <label for="telefonoFijo">Telefono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" required/>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
+     {!! $errors->first('telefonoFijo','<small><strong>:message</strong></small>') !!}
      </div>
        </div>
         <div class="row">
      <div class="col-6">
     <label for="celular">Celular:</label>
-    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" required/>
+    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
+      {!! $errors->first('celular','<small><strong>:message</strong></small>') !!} 
        </div>
     <div class="col-6">
     <label for="direccion">Direccion:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion" required/>
+    <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"  value="{{ old('direccion')}}" />
+   {!! $errors->first('direccion','<small><strong>:message</strong></small>') !!} 
 </div>
 </div>
 <div class="col-12">
     <label for="correo">Correo Electrónico:</label>
-    <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" required/>
+    <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{ old('correo')}}" />
+    {!! $errors->first('correo','<small><strong>:message</strong></small>') !!} 
 </div>
 </br>
 <button type="submit" class="btn btn-dark" style="margin: 20px" onclick="validarDatosCliente()">

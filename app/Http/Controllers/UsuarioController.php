@@ -27,17 +27,38 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+           
             'nombre'=>'required',
             'tipoDocumento'=>'required',
-            'identificacion'=>'required',
-            'correo'=>'required',
-            'telefonoFijo'=>'required',
-            'celular'=>'required',
+            'identificacion'=>'required|integer',
+            'correo'=>'required|email',
+            'telefonoFijo'=>'required|integer',
+            'celular'=>'required|integer',
             'direccion'=>'required',
             'nombreUsuario'=>'required',
             'contrasena'=>'required',
             'contrasenac'=>'required',
-        ]);
+        ],
+
+        [
+            
+            'nombre.required' => 'Ingresa Nombres',
+            'tipoDocumento.required' => 'Selecciona Tipo Documento',
+            'identificacion.required' => 'Ingresa Documento',
+            'identificacion.integer' => 'Ingresa sólo números',
+            'correo.required' => 'Ingresa Correo',
+            'correo.email' => 'Ingresa un Correo Válido',
+            'telefonoFijo.required' => 'Ingresa Teléfono Fijo',
+            'telefonoFijo.integer' => 'Ingresa sólo números',
+            'celular.required' => 'Ingresa Celular',
+            'celular.integer' => 'Ingresa sólo números',
+            'direccion.required' => 'Ingresa Dirección',
+            'nombreUsuario.required' => 'Ingresa un Alias',
+            'contrasena.required' => 'Ingresa La contraseña',
+            'contrasenac.required' => 'Confirma La contraseña',
+        ]
+
+        );
 
         $usuarioNuevo = new App\Usuario;
         $usuarioNuevo->idRol = $request->idRol;

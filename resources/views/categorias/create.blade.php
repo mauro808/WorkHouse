@@ -8,7 +8,7 @@
 @endif
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">Registrar Nueva Categoría</h2>
+        <h2 class="text-lucida"><strong>Registrar Categoría</strong></h2>
     </div>
     <div class="col-lg-11">
         
@@ -17,21 +17,20 @@
 <div class="row">
 <div class="col-lg-3"></div>
 <div class="col-lg-5">
-{{ $errors }}
+
+
 <form action="{{ route('agregarCategoria') }}" method="POST" class="w-45 p-3 mr-3 text-center">
 @csrf 
 <div class="form-group">
 </br>
   <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="nombreCategoria">Nombre Categoría:</label>
-    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre" value=" {{ old('nombreCategoria')}} " required />
-   </br>
-    {!! $errors->first('nombreCategoria','<small>:message</small>') !!}
-    </br>
+    <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre" value="{{old('nombreCategoria')}}"  />
+    {!! $errors->first('nombreCategoria','<small><strong> :message</strong></small></br>') !!}
+     </br>
     <label for="Descripcion">Descripción Categoría:</label>
-    <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría" value=" {{ old('Descripcion')}} " required /></textarea>
-    </br>
-      {!! $errors->first('Descripcion','<small>:message</small>') !!}
+    <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría" value=" {{old('Descripcion')}}" required /></textarea>
+    {!! $errors->first('Descripcion','<small>:message</small></br>') !!}
 </div>
 <button type="submit" class="btn btn-dark" style="margin: 10px">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
