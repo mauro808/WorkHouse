@@ -2,38 +2,25 @@
 
 namespace App\Http\Controllers;
 use App;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Categoria;
 
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idCategoria)
+
+    public function listarCategorias()
     {
-        $categoria = App\Categoria::findOrFail($idCategoria);
-        return view('categoria.listar', compact('categorias'));
+        $categorias = Categoria::all();
+        return view('categorias/listar',compact('categorias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function agregarCategoria()
     {
-        return view('categoria.create');
+        return view('categorias.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -51,36 +38,18 @@ class CategoriaController extends Controller
         return redirect('/categorias')->with('success','Registro Exitoso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function detalleCategoria($idCategoria)
     {
-        //
+        $categoria = App\Categoria::findOrFail($idCategoria);
+        return view('categorias.detalle', compact('categoria'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $categoria = App\Categoria::findOrFail($id);
         return view('categorias.editar', compact('categoria'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $categoria= App\Categoria::findOrFail($id); //buscar producto por id
@@ -110,17 +79,11 @@ class CategoriaController extends Controller
            return redirect('/categorias')->with('Mensaje', 'categoria actualizadao');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*public function destroy($id)
+    public function pdfCategorias()
     {
-        $categoria = App\Categoria::find($id);
-        $categoria -> delete();
-        return redirect('/categorias')->with('success','Registro Exitoso');
-    }*/
+       $categorias = Categoria::all();
+        $pdf = PDF::loadView('categorias.pdf',compact('categorias'));
+        return $pdf->stream('categorias.pdf');
+    }
+   
 }

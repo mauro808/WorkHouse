@@ -8,7 +8,7 @@
 @endif
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">Editar Categoría</h2>
+        <h2 class="text-lucida"><strong>Editar Categoría</strong></h2>
     </div>
     <div class="col-lg-11">
        

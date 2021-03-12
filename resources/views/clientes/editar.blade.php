@@ -9,7 +9,7 @@
 <div class="row"> 
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">Editar Cliente</h2>
+        <h2 class="text-lucida"><strong>Editar Cliente</strong></h2>
     </div>
       
     </div>
@@ -84,6 +84,10 @@
     <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" required/>
 </div>
   </div>
+   <div class="col-12">
+    <label for="correo">Coreo Electrónico:</label>
+    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" required/>
+</div>
 </br>
 <button type="submit" class="btn btn-dark" style="margin: 20px">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">

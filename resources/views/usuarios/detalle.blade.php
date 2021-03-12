@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-11" align="center">
     </br>
-        <h2 class="text-monospace">{{$usuario->nombre}}</h2>
+        <h2 class="text-lucida"><strong>{{$usuario->nombre}}</strong></h2>
     </div>
         
 </div>

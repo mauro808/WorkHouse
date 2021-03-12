@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
-<<div class="row">
+<div class="row">
     <div class="col-lg-11" align="center">
     </br>
-          <h2 class="text-monospace">{{$categoria->nombreCategoria}}</h2>
+        <h2 class="text-lucida"><strong>{{$categoria->nombreCategoria}}</strong></h2>
     </div>
         
 </div>

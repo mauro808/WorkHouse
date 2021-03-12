@@ -5,36 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\Usuario;
+use App\Rol;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class UsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+ 
+    public function listarUsuario()
     {
-        $usuario = Usuario::all(); 
-        return view('usuario.listar',compact('usuarios'));
+        $usuarios = Usuario::all();
+        $rols = Rol::all();
+        return view('usuarios/listar',compact('usuarios','rols'));
+      
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function agregarUsuario()
     {
-        return view('usuario.create');
+        $rols = App\Rol::all();
+        return view('usuarios.create', compact('rols'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -69,36 +58,20 @@ class UsuarioController extends Controller
         return redirect('/usuarios')->with('success','Registro Exitoso');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+    public function detalleUsuario($idUsuario)
     {
-        
+        $usuario = App\Usuario::findOrFail($idUsuario);
+        $rol = App\Rol::find($usuario->idRol);
+        return view('usuarios.detalle', compact('usuario','rol'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($idUsuario){
         $usuario = App\Usuario::findOrFail($idUsuario);
         $rols = App\Rol::all();
         return view('usuarios.editar', compact('usuario', 'rols'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
            $usuario= App\Usuario::findOrFail($id); //buscar producto por id
@@ -134,5 +107,11 @@ class UsuarioController extends Controller
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
 
-    
+    public function pdfUsuarios()
+    {
+       $usuarios = Usuario::all();
+       $rols = Rol::all();
+        $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'));
+        return $pdf->setPaper('a4','landscape')->stream('usuarios.pdf');
+    }
 }

@@ -29,11 +29,11 @@
     <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script>
      <script src="js/librerias/sweetalert2.js"></script>
 </head>
-<body style="background-image: url('https://fondos.io/wp-content/uploads/2019/01/fondos-de-pantalla-claros-hd-1773.jpg');width: 100%; background-repeat: no-repeat; background-size: cover;">
+<body style="background-color:#E5E8E8  ; background-repeat: no-repeat; background-size: cover;">
 <div class="container" id="app_login">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card" style="margin-top:100px">
+            <div class="card" style="margin-top:200px">
                 <div class="card-header" align="center">{{ __('ACCEDER A PERFIL') }}</div>
 
                 <div class="card-body">
@@ -64,8 +64,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-success" @click="iniciarSesion()"> Acceder al sistema</button>
-                                    <a class="btn btn-primary" href="{{ route('password.request') }}">
+                                <button type="submit" class="btn btn-primary" @click="iniciarSesion()"> <strong> Entrar </strong> </button>
+                                    <a class="btn btn-dark" href="{{ route('password.request') }}">
                                         Recuperar Contraseña
                                     </a>
                             </div>
