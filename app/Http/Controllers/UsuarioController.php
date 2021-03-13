@@ -75,6 +75,9 @@ class UsuarioController extends Controller
         $usuarioNuevo->contrasena = $request->contrasena;
         $usuarioNuevo->contrasenac = $request->contrasenac;
         $usuarioNuevo->estado = $request->estado;
+
+        $usuarioNuevo->save();
+        return redirect('/usuarios')->with('success','Registro Exitoso');
     
     }
 
