@@ -26,11 +26,11 @@
   <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="nombreCategoria">Nombre Categoría:</label>
     <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre" value="{{old('nombreCategoria')}}"  />
-    {!! $errors->first('nombreCategoria','<small><strong> :message</strong></small></br>') !!}
+    {!! $errors->first('nombreCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
      </br>
     <label for="Descripcion">Descripción Categoría:</label>
     <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría" value=" {{old('Descripcion')}}" required /></textarea>
-    {!! $errors->first('Descripcion','<small>:message</small></br>') !!}
+    {!! $errors->first('Descripcion','<small style="color:red;">:message</small></br>') !!}
 </div>
 <button type="submit" class="btn btn-dark" style="margin: 10px">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">

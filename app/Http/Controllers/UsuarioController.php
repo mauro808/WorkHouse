@@ -24,6 +24,7 @@ class UsuarioController extends Controller
         $rols = App\Rol::all();
         return view('usuarios.create', compact('rols'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -36,8 +37,8 @@ class UsuarioController extends Controller
             'celular'=>'required|integer',
             'direccion'=>'required',
             'nombreUsuario'=>'required',
-            'contrasena'=>'required',
-            'contrasenac'=>'required',
+            'contrasena'=>'required|min:8|',
+            'contrasenac'=>'required|min:8|same:contrasena',
         ],
 
         [
@@ -56,6 +57,7 @@ class UsuarioController extends Controller
             'nombreUsuario.required' => 'Ingresa un Alias',
             'contrasena.required' => 'Ingresa La contraseña',
             'contrasenac.required' => 'Confirma La contraseña',
+            'contrasenac.same' => 'Las contraseñas no coinciden',
         ]
 
         );
@@ -74,9 +76,6 @@ class UsuarioController extends Controller
         $usuarioNuevo->contrasenac = $request->contrasenac;
         $usuarioNuevo->estado = $request->estado;
     
-    
-        $usuarioNuevo->save();
-        return redirect('/usuarios')->with('success','Registro Exitoso');
     }
 
     

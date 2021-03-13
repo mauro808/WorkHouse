@@ -47,7 +47,7 @@
      <div class="col-6">
     <label for="nombreCliente">Nombre:</label>
     <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre" value="{{ old('nombreCliente')}}"/>
-      {!! $errors->first('nombreCliente','<small><strong>:message</strong></small></br>') !!}
+      {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
      </div>
     <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
@@ -60,37 +60,37 @@
         <option>Pasaporte</option>
         <option>Otro</option>
       </select>
-       {!! $errors->first('tipoIdentificacion','<small><strong>:message</strong></small></br>') !!}
+       {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
      </div>
        </div>
        <div class="row">
      <div class="col-6">
     <label for="numeroIdentificacion">Identificacion:</label>
     <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" value="{{ old('numeroIdentificacion')}}" />
-    {!! $errors->first('numeroIdentificacion','<small><strong>:message</strong></small>') !!}
+    {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
     </div>
     <div class="col-6">
     <label for="telefonoFijo">Telefono fijo:</label>
     <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
-     {!! $errors->first('telefonoFijo','<small><strong>:message</strong></small>') !!}
+     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
      </div>
        </div>
         <div class="row">
      <div class="col-6">
     <label for="celular">Celular:</label>
     <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
-      {!! $errors->first('celular','<small><strong>:message</strong></small>') !!} 
+      {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
        </div>
     <div class="col-6">
     <label for="direccion">Direccion:</label>
     <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"  value="{{ old('direccion')}}" />
-   {!! $errors->first('direccion','<small><strong>:message</strong></small>') !!} 
+   {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
 </div>
 </div>
 <div class="col-12">
     <label for="correo">Correo Electrónico:</label>
     <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{ old('correo')}}" />
-    {!! $errors->first('correo','<small><strong>:message</strong></small>') !!} 
+    {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
 </div>
 </br>
 <button type="submit" class="btn btn-dark" style="margin: 20px" onclick="validarDatosCliente()">

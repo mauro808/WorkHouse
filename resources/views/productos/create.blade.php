@@ -37,14 +37,14 @@
       <div class="col-6">
     <label for="nombreProducto">Nombre:</label>
     <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" value="{{old('nombreProducto')}}"/>
-    {!! $errors->first('nombreProducto','<small><strong> :message</strong></small></br>') !!}
+    {!! $errors->first('nombreProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     </div>
     </div>
     <div class="row">
     <div class="col-6">
     <label for="existencias">Existencias:</label>
     <input type="text" class="form-control" id="existencias" name="existencias" placeholder="Digite las existencias" value="{{old('existencias')}}"/>
-    {!! $errors->first('existencias','<small><strong> :message</strong></small></br>') !!}
+    {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     </div>
     <div class="col-6">
     <label for="medida">Medida:</label>
@@ -71,12 +71,12 @@
     <div class="col-6">
     <label for="porcentajeIva">Iva:</label>
     <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA" value="{{old('porcentajeIva')}}"/>
-     {!! $errors->first('porcentajeIva','<small><strong> :message</strong></small></br>') !!}
+     {!! $errors->first('porcentajeIva','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     </div>
     <div class="col-6">
     <label for="precio">Precio:</label>
     <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
-    {!! $errors->first('precio','<small><strong> :message</strong></small></br>') !!}
+    {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     </div>
     </div>
 </div>
