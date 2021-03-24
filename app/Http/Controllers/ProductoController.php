@@ -31,7 +31,6 @@ class ProductoController extends Controller
             'nombreProducto'=>'required',
             'existencias'=>'required|integer',
             'medida'=>'required',
-            'porcentajeIva'=>'required',
             'precio'=>'required',
         ],
 
@@ -41,7 +40,6 @@ class ProductoController extends Controller
             'existencias.required' => 'Ingresa Existencias',
             'existencias.integer' => 'Ingresa sólo números',
             'medida.required' => 'Selecciona Medida',
-            'porcentajeIva.required' => 'Ingresa Iva',
             //'porcentajeIva.integer' => 'Ingresa sólo números',
             'precio.required' => 'Ingresa Precio',
             //'precio.integer' => 'Ingresa sólo números',
@@ -55,7 +53,6 @@ class ProductoController extends Controller
         $productoNuevo->nombreProducto = $request->nombreProducto;
         $productoNuevo->existencias = $request->existencias;
         $productoNuevo->medida = $request->medida;
-        $productoNuevo->porcentajeIva = $request->porcentajeIva;
         $productoNuevo->precio = $request->precio;
         $productoNuevo->Estado = $request->estado;
 

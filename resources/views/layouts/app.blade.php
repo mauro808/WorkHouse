@@ -98,6 +98,7 @@
          
         <main class="py-4" style="margin-left:200px; margin-right:300px">
             @yield('content')
+            @yield('scripts')
         </main>
     </div>
 

@@ -28,5 +28,5 @@
             <td>Usuario:</td>
             <td>{{$usuario->nombreUsuario}}</td>
         </tr>
-</table>
+</table> 
 @endsection

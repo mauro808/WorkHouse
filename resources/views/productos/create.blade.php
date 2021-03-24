@@ -68,12 +68,7 @@
     </div>
     </div>
     <div class="row">
-    <div class="col-6">
-    <label for="porcentajeIva">Iva:</label>
-    <input type="text" class="form-control" id="porcentajeIva'" name="porcentajeIva" placeholder="Digite el IVA" value="{{old('porcentajeIva')}}"/>
-     {!! $errors->first('porcentajeIva','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    </div>
-    <div class="col-6">
+    <div class="col-8">
     <label for="precio">Precio:</label>
     <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
     {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}

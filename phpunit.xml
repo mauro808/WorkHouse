@@ -22,6 +22,7 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    < http://127.0.0.1:8000  = " TELESCOPE_ENABLED " value = " false " />
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
