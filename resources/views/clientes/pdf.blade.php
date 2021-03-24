@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte de Clientes</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
-    <link href="../resources/views/layouts/dataTables.bootstrap4.min.css" rel="stylesheet">
-     <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script> 
+   
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
   
     <style>
         @page {

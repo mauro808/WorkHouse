@@ -1,21 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+Auth::routes();
+Route::auth();
 Route::get('/', function(){
     return view('auth.login');
 });
-Route::post('/iniciar.sesion', 'AutenticacionController@iniciarSesion');
-Route::auth();
+
 
 // Rutas Clientes
 Route::get('/clientes', 'ClienteController@listarClientes')->name('cliente.listar');
@@ -62,14 +52,15 @@ Route::get('/inhabilitarProducto/{id}', 'ProductoController@inhabilitar')->name(
 Route::get('/pdfProductos', 'ProductoController@pdfProductos')->name('PdfProductos');
 
 // Rutas compras
-Route::get('/compras', 'CompraController@listarCompras')->name('compra.listar');
-Route::get('/detalleCompra/{id}', 'CompraController@detalleCompra')->name('compras.detalle');
-Route::get('/agregaCompra', 'PagesController@agregarCompra')->name('agregarCompra');
-Route::post('/agregarCompra', 'CompraController@store')->name('agregarCompra');
+Route::resource('compras', 'CompraController')->names('compras');
+Route::get('change_status/compras/{compra}', 'CompraController@change_status')->name('change.status.compras');
 Route::get('/pdfCompras', 'CompraController@pdfCompras')->name('PdfCompras');
+Route::get('compras/pdf/{compra}', 'CompraController@pdfDetalle')->name('compras.pdf');
 
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
 Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
 Route::get('/agregarVenta', 'PagesController@agregarVenta')->name('agregarVenta');
 Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
+
+

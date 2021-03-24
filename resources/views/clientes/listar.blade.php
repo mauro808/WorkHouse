@@ -17,10 +17,10 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nombres</th>
-            <th>Identificación:</th>
+            <th>Nombres y Apellidos</th>
+            <th>Documento</th>
             <th>Celular</th>
-            <th>Tel. Fijo</th>
+            <th>Fijo</th>
             <th>Acciones</th>
             
         </tr>
@@ -33,6 +33,7 @@
                     <td>{{$cliente->numeroIdentificacion}}</td>
                     <td>{{$cliente->celular}}</td>
                     <td>{{$cliente->telefonoFijo}}</td>
+                   
                     <td>
                         <form action="{{ route('cliente.destroy', $cliente->id) }}" method="POST"> 
                             <a class="btn btn-dark" href="{{ route('cliente.detalle', $cliente) }}"style="margin-left: 10px">

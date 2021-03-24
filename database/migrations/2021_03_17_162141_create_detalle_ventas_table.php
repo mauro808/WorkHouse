@@ -6,32 +6,24 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDetalleVentasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+ 
     public function up()
     {
-        Schema::create('detalle__ventas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('idVenta')->unsigned();
+        Schema::create('detalle_ventas', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('idVenta');
             $table->foreign('idVenta')->references('id')->on('ventas')->onDelete('cascade');
-            $table->integer('idProducto')->unsigned();
+            $table->unsignedBigInteger('idProducto');
             $table->foreign('idProducto')->references('id')->on('productos');
             $table->integer('cantidad');
-            $table->integer('Precio',11,2);
+            $table->decimal('Precio',11,2);
             
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+ 
     public function down()
     {
-        Schema::dropIfExists('detalle__ventas');
+        Schema::dropIfExists('detalle_ventas');
     }
 }

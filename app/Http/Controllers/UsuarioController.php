@@ -28,36 +28,45 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           
-            'nombre'=>'required',
+            'idRol'=>'required',
+            'nombre'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'tipoDocumento'=>'required',
-            'identificacion'=>'required|integer',
-            'correo'=>'required|email',
-            'telefonoFijo'=>'required|integer',
-            'celular'=>'required|integer',
+            'identificacion'=>'required|integer|unique:usuarios',
+            'correo'=>'required|email|unique:usuarios',
+            'telefonoFijo'=>'required|integer|min:8',
+            'celular'=>'required|integer|min:10',
             'direccion'=>'required',
-            'nombreUsuario'=>'required',
+            'nombreUsuario'=>'required|unique:usuarios|max:8|alpha',
             'contrasena'=>'required|min:8|',
             'contrasenac'=>'required|min:8|same:contrasena',
         ],
 
         [
-            
-            'nombre.required' => 'Ingresa Nombres',
-            'tipoDocumento.required' => 'Selecciona Tipo Documento',
-            'identificacion.required' => 'Ingresa Documento',
-            'identificacion.integer' => 'Ingresa sólo números',
-            'correo.required' => 'Ingresa Correo',
-            'correo.email' => 'Ingresa un Correo Válido',
-            'telefonoFijo.required' => 'Ingresa Teléfono Fijo',
-            'telefonoFijo.integer' => 'Ingresa sólo números',
-            'celular.required' => 'Ingresa Celular',
-            'celular.integer' => 'Ingresa sólo números',
-            'direccion.required' => 'Ingresa Dirección',
-            'nombreUsuario.required' => 'Ingresa un Alias',
-            'contrasena.required' => 'Ingresa La contraseña',
-            'contrasenac.required' => 'Confirma La contraseña',
-            'contrasenac.same' => 'Las contraseñas no coinciden',
+            'idRol.required'=>'*Rellena este campo',
+            'nombre.required' => '*Rellena este campo',
+            'nombre.max' => '*Máximo 50 caracteres',
+            'nombre.regex' => '*Ingresa sólo letras',
+            'tipoDocumento.required' => '*Rellena este campo',
+            'identificacion.required' => '*Rellena este campo',
+            'identificacion.integer' => '*Ingresa sólo números',
+            'identificacion.unique' => '*Documento ya registrado',
+            'correo.required' => '*Rellena este campo',
+            'correo.email' => '*Ingresa un correo válido',
+            'correo.unique' => '*Correo ya registrado',
+            'telefonoFijo.required' => '*Rellena este campo',
+            'telefonoFijo.integer' => '*Ingresa sólo números',
+            'telefonoFijo.min' => '*El fijo contiene 7 dígitos',
+            'celular.required' => '*Rellena este campor',
+            'celular.integer' => '*Ingresa sólo números',
+            'celular.min' => '*El celular contiene 10 dígitos',
+            'direccion.required' => '*Rellena este campo',
+            'nombreUsuario.required' => '*Rellena este campo',
+            'nombreUsuario.unique' => '*Alias ya Existe',
+            'nombreUsuario.max' => '*Ingresa máximo 8 caracteres',
+            'nombreUsuario.alpha' => '*Ingresa sólo letras',
+            'contrasena.required' => '*Rellena este campo',
+            'contrasenac.required' => '*Rellena este campo',
+            'contrasenac.same' => '*Las contraseñas no coinciden',
         ]
 
         );
@@ -97,6 +106,50 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'idRol'=>'required',
+            'nombre'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
+            'tipoDocumento'=>'required',
+            'identificacion'=>'required|integer|unique:usuarios',
+            'correo'=>'required|email|unique:usuarios',
+            'telefonoFijo'=>'required|integer|min:8',
+            'celular'=>'required|integer|min:10',
+            'direccion'=>'required',
+            'nombreUsuario'=>'required|unique:usuarios|max:8|alpha',
+            'contrasena'=>'required|min:8|',
+            'contrasenac'=>'required|min:8|same:contrasena',
+        ],
+
+        [
+            'idRol.required'=>'*Rellena este campo',
+            'nombre.required' => '*Rellena este campo',
+            'nombre.max' => '*Máximo 50 caracteres',
+            'nombre.regex' => '*Ingresa sólo letras',
+            'tipoDocumento.required' => '*Rellena este campo',
+            'identificacion.required' => '*Rellena este campo',
+            'identificacion.integer' => '*Ingresa sólo números',
+            'identificacion.unique' => '*Documento ya registrado',
+            'correo.required' => '*Rellena este campo',
+            'correo.email' => '*Ingresa un correo válido',
+            'correo.unique' => '*Correo ya registrado',
+            'telefonoFijo.required' => '*Rellena este campo',
+            'telefonoFijo.integer' => '*Ingresa sólo números',
+            'telefonoFijo.min' => '*El fijo contiene 7 dígitos',
+            'celular.required' => '*Rellena este campor',
+            'celular.integer' => '*Ingresa sólo números',
+            'celular.min' => '*El celular contiene 10 dígitos',
+            'direccion.required' => '*Rellena este campo',
+            'nombreUsuario.required' => '*Rellena este campo',
+            'nombreUsuario.unique' => '*Alias ya Existe',
+            'nombreUsuario.max' => '*Ingresa máximo 8 caracteres',
+            'nombreUsuario.alpha' => '*Ingresa sólo letras',
+            'contrasena.required' => '*Rellena este campo',
+            'contrasenac.required' => '*Rellena este campo',
+            'contrasenac.same' => '*Las contraseñas no coinciden',
+        ]
+
+        );
+       
            $usuario= App\Usuario::findOrFail($id); //buscar producto por id
            $usuario->idRol=$request->idRol;
            $usuario->nombre=$request->nombre;
@@ -134,7 +187,7 @@ class UsuarioController extends Controller
     {
        $usuarios = Usuario::all();
        $rols = Rol::all();
-        $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'));
+        $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'))->setOptions(['defaultFont' => 'sans-serif']); 
         return $pdf->setPaper('a4','landscape')->stream('usuarios.pdf');
     }
 }

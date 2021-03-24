@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="../resources/views/layouts/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -73,7 +74,7 @@
       </li>
     
          <li class="nav-item">
-        <a class="nav-link font-monospace" href="{{ route('compra.listar')}}" style="margin-right:100px"><strong>
+        <a class="nav-link font-monospace" href="{{ route('compras.index')}}" style="margin-right:100px"><strong>
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
   <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z"/>
 </svg>Compras</strong></a>
@@ -96,7 +97,7 @@
   </div>
 </nav>
          
-        <main class="py-4" style="margin-left:200px; margin-right:300px">
+        <main class="py-4" style="margin-left:200px; margin-right:200px">
             @yield('content')
         </main>
     </div>
@@ -118,8 +119,13 @@ $(document).ready(function() {
         }
     } );
 } );
+
+
+
   </script>
   
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 @yield('js')
 </body>
 </html>

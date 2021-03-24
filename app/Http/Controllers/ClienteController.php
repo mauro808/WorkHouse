@@ -20,7 +20,7 @@ class ClienteController extends Controller
 
 
     public function agregarCliente(){
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::where('estado', 'Activo')->get();
         return view('clientes.create',compact('usuarios'));
     }
 
@@ -28,28 +28,31 @@ class ClienteController extends Controller
     {
         $request->validate([
             'idUsuario'=>'required',
-            'nombreCliente'=>'required',
+            'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
-            'numeroIdentificacion'=>'required|integer',
+            'numeroIdentificacion'=>'required|integer|unique:clientes',
             'telefonoFijo'=>'required|integer',
             'celular'=>'required|integer',
             'direccion'=>'required',
-            'correo'=>'required|email',
+            'correo'=>'required|email|unique:clientes',
         ],
 
         [
-            'idUsuario.required' => 'Por Favor Selecciona Tu Usuario',
-            'nombreCliente.required' => 'Ingresa Nombres',
-            'tipoIdentificacion.required' => 'Selecciona Tipo Identificación',
-            'numeroIdentificacion.required' => 'Ingresa Documento',
-            'numeroIdentificacion.integer' => 'Ingresa sólo números',
-            'telefonoFijo.required' => 'Ingresa Teléfono Fijo',
-            'telefonoFijo.integer' => 'Ingresa sólo números',
-            'celular.required' => 'Ingresa Celular',
-            'celular.integer' => 'Ingresa sólo números',
-            'direccion.required' => 'Ingresa Dirección',
-            'correo.required' => 'Ingresa E-Mail',
-            'correo.email' => 'Ingresa un correo válido',
+            'idUsuario.required' => '*Rellena este campo',
+            'nombreCliente.required' => '*Rellena este campo',
+            'nombreCliente.regex' => '*Ingresa sólo letras',
+            'tipoIdentificacion.required' => '*Rellena este campo',
+            'numeroIdentificacion.required' => '*Rellena este campo',
+            'numeroIdentificacion.integer' => '*Ingresa sólo números',
+            'numeroIdentificacion.unique' => '*Documento ya registrado',
+            'telefonoFijo.required' => '*Rellena este campo',
+            'telefonoFijo.integer' => '*Ingresa sólo números',
+            'celular.required' => '*Rellena este campo',
+            'celular.integer' => '*Ingresa sólo números',
+            'direccion.required' => '*Rellena este campo',
+            'correo.required' => '*Rellena este campo',
+            'correo.email' => '*Correo inválido',
+            'correo.unique' => '*Correo ya existe',
         ]
     );
 
@@ -87,6 +90,37 @@ class ClienteController extends Controller
    
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'idUsuario'=>'required',
+            'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
+            'tipoIdentificacion'=>'required',
+            'numeroIdentificacion'=>'required|integer|unique:clientes',
+            'telefonoFijo'=>'required|integer',
+            'celular'=>'required|integer',
+            'direccion'=>'required',
+            'correo'=>'required|email|unique:clientes',
+        ],
+
+        [
+            'idUsuario.required' => '*Rellena este campo',
+            'nombreCliente.required' => '*Rellena este campo',
+            'nombreCliente.regex' => '*Ingresa sólo letras',
+            'tipoIdentificacion.required' => '*Rellena este campo',
+            'numeroIdentificacion.required' => '*Rellena este campo',
+            'numeroIdentificacion.integer' => '*Ingresa sólo números',
+            'numeroIdentificacion.unique' => '*Documento ya registrado',
+            'telefonoFijo.required' => '*Rellena este campo',
+            'telefonoFijo.integer' => '*Ingresa sólo números',
+            'celular.required' => '*Rellena este campo',
+            'celular.integer' => '*Ingresa sólo números',
+            'direccion.required' => '*Rellena este campo',
+            'correo.required' => '*Rellena este campo',
+            'correo.email' => '*Correo inválido',
+            'correo.unique' => '*Correo ya existe',
+        ]
+    );
+
+
         $cliente= App\Cliente::findOrFail($id); //buscar producto por id
         $cliente->idUsuario = $request->idUsuario;
         $cliente->nombreCliente = $request->nombreCliente;
@@ -104,7 +138,7 @@ class ClienteController extends Controller
     public function pdfClientes()
     {
        $clientes = Cliente::all();
-        $pdf = PDF::loadView('clientes.pdf',compact('clientes'));
+        $pdf = PDF::loadView('clientes.pdf',compact('clientes'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->setPaper('a4','landscape')->stream('clientes.pdf');
     }
    

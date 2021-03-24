@@ -18,7 +18,7 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Categoría</th>
-            <th>Existencias</th>
+            <th>Stock</th>
             <th>Precio</th>
             <th>Estado</th>
             <th>Acciones</th>
@@ -82,5 +82,6 @@
 </svg> Descargar PDF</a>
         </div>
     </div>
+</div>
 </div>
 @endsection

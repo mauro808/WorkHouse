@@ -13,43 +13,44 @@ class ProductoController extends Controller
 
     public function listarProductos(){
         $productos = Producto::all();
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('estado', 'Activo')->get();
         return view('productos/listar',compact('productos','categorias'));
     }
 
     public function agregarProducto()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('estado', 'Activo')->get();
         return view('productos.create', compact('categorias'));
     }
 
     
     public function store(Request $request)
     {
+       
         $request->validate([
             'idCategoria'=>'required',
-            'nombreProducto'=>'required',
+            'nombreProducto'=>'required|unique:productos|regex:/^[\pL\s\-]+$/u',
             'existencias'=>'required|integer',
-            'medida'=>'required',
-            'porcentajeIva'=>'required',
-            'precio'=>'required',
+            'medida'=>'required|integer',
+            'precio'=>'required|integer',
         ],
 
     [
-            'idCategoria.required' => 'Por Favor Selecciona La Categoría',
-            'nombreProducto.required' => 'Ingresa Nombre',
-            'existencias.required' => 'Ingresa Existencias',
-            'existencias.integer' => 'Ingresa sólo números',
-            'medida.required' => 'Selecciona Medida',
-            'porcentajeIva.required' => 'Ingresa Iva',
-            //'porcentajeIva.integer' => 'Ingresa sólo números',
-            'precio.required' => 'Ingresa Precio',
-            //'precio.integer' => 'Ingresa sólo números',
+            'idCategoria.required' => '*Rellena este campo',
+            'nombreProducto.required' => '*Rellena este campo',
+            'nombreProducto.unique' => '*Producto ya existe',
+            'nombreProducto.regex' => '*Ingresa sólo letras',
+            'existencias.required' => '*Rellena este campo',
+            'existencias.integer' => '*Ingresa sólo números',
+            'medida.required' => '*Rellena este campo',
+            'medida.integer' => '*Ingresa sólo números',
+            'medida.integer' => '*Ingresa sólo números',
+            'precio.required' => '*Rellena este campo',
+          
          
           
         ]
     );
-
         $productoNuevo = new App\Producto;
         $productoNuevo->idCategoria = $request->idCategoria;
         $productoNuevo->nombreProducto = $request->nombreProducto;
@@ -80,6 +81,32 @@ class ProductoController extends Controller
 
     public function update(Request $request,  $id)
     {
+
+        $request->validate([
+            'idCategoria'=>'required',
+            'nombreProducto'=>'required|unique:productos|regex:/^[\pL\s\-]+$/u',
+            'existencias'=>'required|integer',
+            'medida'=>'required|integer',
+            'precio'=>'required|integer',
+        ],
+
+    [
+            'idCategoria.required' => '*Rellena este campo',
+            'nombreProducto.required' => '*Rellena este campo',
+            'nombreProducto.unique' => '*Producto ya existe',
+            'nombreProducto.regex' => '*Ingresa sólo letras',
+            'existencias.required' => '*Rellena este campo',
+            'existencias.integer' => '*Ingresa sólo números',
+            'medida.required' => '*Rellena este campo',
+            'medida.integer' => '*Ingresa sólo números',
+            'medida.integer' => '*Ingresa sólo números',
+            'precio.required' => '*Rellena este campo',
+          
+         
+          
+        ]
+    );
+
         $producto= App\Producto::findOrFail($id); //buscar producto por id
         $producto->idCategoria = $request->idCategoria;
         $producto->nombreProducto = $request->nombreProducto;
@@ -113,7 +140,7 @@ class ProductoController extends Controller
     {
        $productos = Producto::all();
        $categorias = Categoria::all();
-        $pdf = PDF::loadView('productos.pdf',compact('productos','categorias'));
+        $pdf = PDF::loadView('productos.pdf',compact('productos','categorias'))->setOptions(['defaultFont' => 'sans-serif']); 
         return $pdf->stream('productos.pdf');
     }
    

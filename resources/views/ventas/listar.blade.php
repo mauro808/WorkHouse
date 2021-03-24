@@ -35,7 +35,7 @@
                     @endif 
                     @endforeach 
                     <td>{{$venta->fechaVenta}}</td>
-                    <td>{{$venta->precioTotal}}</td>
+                    <td>{{$venta->total}}</td>
                      @foreach($usuarios as $usuario)
                     @if($venta->idUsuario == $usuario->id)
                     <td>{{$usuario->nombre}}</td>

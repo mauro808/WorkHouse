@@ -16,7 +16,7 @@
            <td><strong>Id:</strong></td>
             <td>{{$cliente->id}}</td>
              <td><strong>Creado por:</strong></td>
-            <td>{{$cliente->idUsuario}}</td>
+            <td>{{$usuario->nombreUsuario}}</td>
         </tr>
        
        
