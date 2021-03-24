@@ -60,7 +60,5 @@ Route::get('compras/pdf/{compra}', 'CompraController@pdfDetalle')->name('compras
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
 Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
-Route::get('/agregarVenta', 'PagesController@agregarVenta')->name('agregarVenta');
+Route::get('/agregarVenta', 'VentaController@create')->name('agregarVenta');
 Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
-
-

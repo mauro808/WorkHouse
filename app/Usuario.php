@@ -8,8 +8,6 @@ class Usuario extends Model
 {
     public $timestamps = false;
 
-    protected $table = 'usuarios';
-
     protected $fillable = [
     'idRol',
     'nombre',

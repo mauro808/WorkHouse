@@ -31,22 +31,19 @@ class ProductoController extends Controller
             'idCategoria'=>'required',
             'nombreProducto'=>'required|unique:productos|regex:/^[\pL\s\-]+$/u',
             'existencias'=>'required|integer',
-            'medida'=>'required|integer',
-            'precio'=>'required|integer',
+            'medida'=>'required',
+            'precio'=>'required',
         ],
 
     [
-            'idCategoria.required' => '*Rellena este campo',
-            'nombreProducto.required' => '*Rellena este campo',
-            'nombreProducto.unique' => '*Producto ya existe',
-            'nombreProducto.regex' => '*Ingresa sólo letras',
-            'existencias.required' => '*Rellena este campo',
-            'existencias.integer' => '*Ingresa sólo números',
-            'medida.required' => '*Rellena este campo',
-            'medida.integer' => '*Ingresa sólo números',
-            'medida.integer' => '*Ingresa sólo números',
-            'precio.required' => '*Rellena este campo',
-          
+            'idCategoria.required' => 'Por Favor Selecciona La Categoría',
+            'nombreProducto.required' => 'Ingresa Nombre',
+            'existencias.required' => 'Ingresa Existencias',
+            'existencias.integer' => 'Ingresa sólo números',
+            'medida.required' => 'Selecciona Medida',
+            //'porcentajeIva.integer' => 'Ingresa sólo números',
+            'precio.required' => 'Ingresa Precio',
+            //'precio.integer' => 'Ingresa sólo números',
          
           
         ]
@@ -56,7 +53,6 @@ class ProductoController extends Controller
         $productoNuevo->nombreProducto = $request->nombreProducto;
         $productoNuevo->existencias = $request->existencias;
         $productoNuevo->medida = $request->medida;
-        $productoNuevo->porcentajeIva = $request->porcentajeIva;
         $productoNuevo->precio = $request->precio;
         $productoNuevo->Estado = $request->estado;
 

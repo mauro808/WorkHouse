@@ -70,7 +70,7 @@
     </div>
   </br>
     <div class="row">
-    <div class="col-12">
+    <div class="col-8">
     <label for="precio">Precio:</label>
     {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>

@@ -11,10 +11,18 @@ class DetalleVenta extends Model
         'idVenta',
         'idProducto',
         'cantidad',
-        'valorProducto',
+        'precio',
         'Estado'
     ];
 
     public $timestamps = false;
+
+    public function venta(){
+        return $this -> belongsTo(Venta::class);
+    }
+
+    public function productos(){
+        return $this -> belongsTo(Producto::class);
+    }
 
 }

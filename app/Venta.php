@@ -6,21 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
-    protected $table = 'ventas';
+    const UPDATED_AT = null;
 
     protected $fillable = [
         'idCliente',
-        'fechaVenta',
+        'created_at',
         'idUsuario',
         'precioTotal',
         'Estado'
     ];
 
     public function usuario(){
-        return $this -> belongsTo('App/Usuario');
+        return $this -> belongsTo(Usuario::class);
     }
 
     public function cliente(){
-        return $this -> belongsTo('App/Cliente');
+        return $this -> belongsTo(Cliente::class);
+    }
+
+    public function detalleVenta(){
+        return $this -> hasMany(DetalleVenta::class);
     }
 }

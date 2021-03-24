@@ -2,59 +2,46 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
+use App\Usuario;
+use App\Cliente;
+use App\Venta;
+use App\Producto;
+use App\Http\Requests\venta\StoreRequest;
 
 class VentaController extends Controller
 {
    
   public function create()
     {
-        $clientes=DB::table('clientes')->get();
-        $productos=DB::table('productos')
-        ->select(DB::raw('CONCAT(productos.id," ",productos.nombreProducto) AS producto'), 'productos.id')
-        ->where('productos.estado', '=', 'Activo')->get();
-        return view('ventas.create',['clientes'=>$clientes,'productos'=>$productos]);
+        $productos = Producto::get();
+        $clientes = Cliente::get();
+        $usuarios = Usuario::get();
+        return view('ventas.create', compact('productos','clientes','usuarios'));
     }
 
    
     public function store(Request $request)
     {
-            DB::beginTransaction();
-
-            $mytime = Carbon::now("America/Bogota");
-            $venta = new Venta();
-            $venta->idCliente = $request->idCliente;
-            $venta->idUsuario = \Auth::user()->id;
-            $venta->fechaVenta = $mytime->toDateString();
-            $venta->precioTotal = $request->precioTotal;
-            $venta->Estado = 'Registrada';
-            $venta->save();
-
-            $idProducto=$request->idProducto;
-            $cantidad=$request->cantidad;
-            $valorProducto=$request->valorProducto;
-
-            $cont=0;
-            while($cont < count($idProducto)){
-                $detalle = new DetalleVenta();
-                $detalle->idVenta = $venta->id;
-                $detalle->idProducto = $idProducto[$cont];
-                $detalle->cantidad = $cantidad[$cont];
-                $detalle->valorProducto= $valorProducto[$cont];
-                $detalle->save();
-                $cont=$contr+1;
-            }
+        $venta = Venta::create($request->all());
+        
+        foreach ($request->idProducto as $key => $idProducto) {
+            var_dump($request->idProducto, $request->precio);
+            $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
+        }
+        $venta->detalleVenta()->createMany($results);
+        return redirect('/ventas')->with('success','Registro Exitoso');
     }
 
    
-    public function show($id)
+    public function show(Venta $venta)
     {
-
+        return view('ventas.detalle', compact('venta'));
     }
 
-    public function edit($id)
+    public function edit(Venta $venta)
     {
-        //
+        $clientes = Cliente::get();
+        return view('ventas.editar', compact('venta'));
     }
 
     public function update(Request $request, $id)
