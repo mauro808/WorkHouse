@@ -38,8 +38,7 @@
     <label for="txtidCategoria">Categoría:</label>
     {!! $errors->first('idCategoria','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="idCategoria" class="form-control" >
-     
-       <option>Seleccione Categoría</option>
+       <option value="">Seleccione Categoría</option>
          @foreach($categorias as $categoria)
         <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
         @endforeach
@@ -64,7 +63,7 @@
     <label for="medida">Medida:</label> 
     {!! $errors->first('medida','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="medida" class="form-control" >
-      <option>Seleccione Medida</option>
+      <option value="">Seleccione Medida</option>
         <option>Metro</option>
         <option>Unidad</option>
         <option>Galón</option>

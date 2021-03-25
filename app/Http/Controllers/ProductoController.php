@@ -79,7 +79,7 @@ class ProductoController extends Controller
 
         $request->validate([
             'idCategoria'=>'required',
-            'nombreProducto'=>'required|unique:productos|regex:/^[\pL\s\-]+$/u',
+            'nombreProducto'=>'required|regex:/^[\pL\s\-]+$/u',
             'existencias'=>'required|integer',
             'medida'=>'required',
             'precio'=>'required|integer',
