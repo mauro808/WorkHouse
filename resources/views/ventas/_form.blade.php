@@ -10,7 +10,7 @@
 <div class="col-12 mt-5">
 <label for="idUsuario">Usuario:</label>
 <select name="idUsuario" class="form-control" required >
-        <option selected>Seleccione</option>
+        <option value="0" selected>Seleccione</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
         @endforeach
