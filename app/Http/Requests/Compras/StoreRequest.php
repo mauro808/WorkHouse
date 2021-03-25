@@ -15,7 +15,7 @@ class StoreRequest extends FormRequest
    
     public function rules()
     {
-        return [              
+        /* return [              
             
             'created_at'=>'required',
             'idUsuario'=>'required',
@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
         ]; 
     }
                 
-    /*public function messages(){
+   public function messages(){
 
         return [
                 'created_at.required' => '*Rellena este campo',
@@ -42,4 +42,5 @@ class StoreRequest extends FormRequest
                 'idCompra.required' => '*Rellena este campo',
                 ];
     }      */      
+    }
 }

@@ -56,7 +56,7 @@ Route::resource('compras', 'CompraController')->names('compras');
 Route::get('change_status/compras/{compra}', 'CompraController@change_status')->name('change.status.compras');
 Route::get('/pdfCompras', 'CompraController@pdfCompras')->name('PdfCompras');
 Route::get('compras/pdf/{compra}', 'CompraController@pdfDetalle')->name('compras.pdf');
-Route::post('/agregarCompra', 'CompraController@store')->name('agregarCompra');
+
 
 // Rutas ventas
 Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
