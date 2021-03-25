@@ -31,8 +31,9 @@
 <div class="form-group" >
   <div class="col-12">
       <label for="txtidUsuario">Usuario Creador:</label>
-      {!! $errors->first('idUsuario','<small><strong>:message</strong></small></br>') !!}
+      {!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
        <select name="idUsuario" id="idUsuario" class="form-control"  value="{{ old('idUsuario')}}" />
+       <option value="">Seleccione el Usuario Creador</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombreUsuario}}</option>
         @endforeach
@@ -52,7 +53,7 @@
     <label for="tipoIdentificacion">Tipo Documento:</label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control" value="{{ old('tipoIdentificacion')}}">
-        
+      <option value="">Seleccione el Tipo de Documento</option>
         <option>Tarjeta Identidad</option>
         <option>Cédula Ciudadanía</option>
         <option>Cedula Extranjería</option>
@@ -136,7 +137,7 @@
     correo  = $("#correo").val();
 
     if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
-    direccion != "" & celular != "" &&& telefonoFijo != "" &&& correo != "" &&& ) {
+    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
       
       Swal.fire({
         position: 'top-center',

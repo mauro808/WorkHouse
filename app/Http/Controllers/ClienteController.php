@@ -94,11 +94,11 @@ class ClienteController extends Controller
             'idUsuario'=>'required',
             'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
-            'numeroIdentificacion'=>'required|integer|unique:clientes',
+            'numeroIdentificacion'=>'required|integer|',
             'telefonoFijo'=>'required|integer',
             'celular'=>'required|integer',
             'direccion'=>'required',
-            'correo'=>'required|email|unique:clientes',
+            'correo'=>'required|email|',
         ],
 
         [
@@ -108,7 +108,6 @@ class ClienteController extends Controller
             'tipoIdentificacion.required' => '*Rellena este campo',
             'numeroIdentificacion.required' => '*Rellena este campo',
             'numeroIdentificacion.integer' => '*Ingresa sólo números',
-            'numeroIdentificacion.unique' => '*Documento ya registrado',
             'telefonoFijo.required' => '*Rellena este campo',
             'telefonoFijo.integer' => '*Ingresa sólo números',
             'celular.required' => '*Rellena este campo',
@@ -116,7 +115,6 @@ class ClienteController extends Controller
             'direccion.required' => '*Rellena este campo',
             'correo.required' => '*Rellena este campo',
             'correo.email' => '*Correo inválido',
-            'correo.unique' => '*Correo ya existe',
         ]
     );
 

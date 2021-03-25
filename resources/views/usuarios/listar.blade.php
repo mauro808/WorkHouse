@@ -22,6 +22,7 @@
             <th>Nombres y Apellidos</th>
             <th>Rol</th>
             <th>Alias</th>
+            <th>Celular</th>
             <th>Estado</th>
             <th>Acciones</th>
             
@@ -38,6 +39,7 @@
                     <td>{{$usuario->nombreUsuario}}</td>
                         @endif 
                         @endforeach 
+                    <td>{{$usuario->celular}}</td>
                     <td>{{$usuario->Estado}}</td>
                     <td>
                         <form action="" method="POST">

@@ -6,7 +6,7 @@
         {{ session('success') }}
     </div>
 @endif
-    <div class="col-lg-11" align="center">
+    <div class="col-lg-12" align="center">
     </br>
         <h2 class="text-lucida"><strong>Registrar Categoría</strong></h2>
     </div>
@@ -15,8 +15,8 @@
     </div>
 </div>  
 <div class="row">
-<div class="col-lg-3"></div>
-<div class="col-lg-5">
+<div class="col-lg-4"></div>
+<div class="col-lg-12">
 
 
 <form action="{{ route('agregarCategoria') }}" method="POST" class="w-45 p-3 mr-3 text-center">

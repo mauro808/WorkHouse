@@ -63,13 +63,12 @@ class CategoriaController extends Controller
     {
 
         $request->validate([
-            'nombreCategoria'=>'required|regex:/^[\pL\s\-]+$/u|unique:categorias',
+            'nombreCategoria'=>'required|regex:/^[\pL\s\-]+$/u',
             'Descripcion'=>'required|max:250',
         ],
             [
                 'nombreCategoria.required' => '*Rellena este campo',
                 'nombreCategoria.regex' => '*Ingresa sólo letras',
-                'nombreCategoria.unique' => '*Categoría ya registrada',
                 'Descripcion.required' => '*Rellena este campo',
                 'Descripcion.max' => '*Máximo 250 caracteres',
             ]

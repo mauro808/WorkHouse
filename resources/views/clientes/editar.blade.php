@@ -6,6 +6,7 @@
         {{ session('success') }}
     </div>
 @endif
+
 <div class="row"> 
     <div class="col-lg-12" align="center">
     </br>
@@ -17,6 +18,14 @@
 <div class="row">
 <div class="col-lg-4"></div>
 <div class="col-lg-12">
+
+  @if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
+
 <form action="{{ route('cliente.update', $cliente->id) }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @method('PUT')
 @csrf 
@@ -25,8 +34,8 @@
 <div class="form-group">
     <div class="col-12">
 <label for="txtidUsuario">Usuario que actualiza:</label>
-{!! $errors->first('idUsuario','<small><strong>:message</strong></small></br>') !!}
-   <select name="idUsuario" class="form-control" required>
+{!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+   <select name="idUsuario" class="form-control" >
         @foreach($usuarios as $usuario)
              @if($cliente->idUsuario == $usuario->id)
              <option value="{{$usuario->id}}" selected>{{$usuario->nombreUsuario}}</td>
@@ -42,12 +51,12 @@
 <div class="col-6">
     <label for="nombreCliente">Nombres y Apellidos:</label>
     {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" required/>
+    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" />
     </div>
       <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-    <select name="tipoIdentificacion" class="form-control" required>
+    <select name="tipoIdentificacion" class="form-control" >
     <option @if ($cliente->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
         <option @if ($cliente->tipoDocumento=="Cédula Ciudadanía") selected @endif>Cédula Ciudadanía</option>
         <option @if ($cliente->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjera</option>
@@ -62,14 +71,14 @@
  <div class="col-6">
     <label for="numeroIdentificacion">Identificación:</label>
     {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" required/>
+    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" />
         </div>
     
         
 <div class="col-6">
     <label for="telefonoFijo">Teléfono fijo:</label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" required/>
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
     </div>
     </div>
   </br>
@@ -77,7 +86,7 @@
  <div class="col-6">
     <label for="celular">Celular:</label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" required/>
+    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
     
          </div>
   
@@ -85,14 +94,14 @@
  <div class="col-6">
     <label for="direccion">Dirección:</label>
     {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" required/>
+    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" />
 </div>
   </div>
 </br>
    <div class="col-12">
     <label for="correo">Coreo Electrónico:</label>
     {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" required/>
+    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" />
 </div>
 </br>
 <button type="submit" class="btn btn-dark btn-lg " style="margin: 20px">
@@ -130,7 +139,7 @@
     correo  = $("#correo").val();
 
     if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
-    direccion != "" & celular != "" &&& telefonoFijo != "" &&& correo != "" &&& ) {
+    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
       
       Swal.fire({
         position: 'top-center',

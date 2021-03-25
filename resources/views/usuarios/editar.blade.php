@@ -23,6 +23,7 @@
 <div class="row">
 <div class="col-6">
 <label for="txtidRol">Rol:</label>
+{!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="idRol" class="form-control" required>
         @foreach($rols as $rol)
              @if($usuario->idRol == $rol->id)
@@ -45,7 +46,8 @@
     <div class="row">
     <div class="col-6">
     <label for="txtTipoDocumento">Tipo Documento:</label>
-    <select name="tipoDocumento" class="form-control" required>
+    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <select name="tipoDocumento" class="form-control" >
         <option @if ($usuario->tipoDocumento=="Cedula Ciudadania") selected @endif>Cédula Ciudadanía</option>
         <option @if ($usuario->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjería</option>
         <option @if ($usuario->tipoDocumento=="Permiso Permanencia") selected @endif>Permiso Permanencia</option>

@@ -6,6 +6,8 @@
         {{ session('success') }}
     </div>
 @endif
+
+
     <div class="col-lg-12" align="center">
     </br>
         <h2 class="text-lucida"><strong>Registrar Producto</strong></h2>
@@ -16,6 +18,15 @@
 <div class="row">
 <div class="col-lg-4"></div>
 <div class="col-lg-12">
+
+
+  @if ($errors->any())
+  @foreach ($errors->all as $error) 
+  <p>{{ $error }}</p>
+  @endforeach
+  @endif
+  
+  
 <form action="{{ route('agregarProducto') }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @csrf 
 
@@ -25,8 +36,10 @@
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidCategoria">Categoría:</label>
-    <select name="idCategoria" class="form-control" required>
-      {!! $errors->first('idCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    {!! $errors->first('idCategoria','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <select name="idCategoria" class="form-control" >
+     
+       <option>Seleccione Categoría</option>
          @foreach($categorias as $categoria)
         <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
         @endforeach
@@ -48,9 +61,10 @@
   
     </div>
     <div class="col-6">
-    <label for="medida">Medida:</label>
-    {!! $errors->first('medida','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="medida" class="form-control" required>
+    <label for="medida">Medida:</label> 
+    {!! $errors->first('medida','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <select name="medida" class="form-control" >
+      <option>Seleccione Medida</option>
         <option>Metro</option>
         <option>Unidad</option>
         <option>Galón</option>
