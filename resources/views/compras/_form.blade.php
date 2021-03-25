@@ -26,11 +26,11 @@
     <div class="col-6">
     <label for="cantidad">Cantidad:</label>
     
-    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Digite la cantidad"/>
+    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Digite la cantidad" min="1" pattern="^[0-9]+"/>
 </div>
 <div class="col-6" >
     <label for="valorProducto">Precio:</label>
-    <input type="number" class="form-control" id="valorProducto" name="valorProducto"/>
+    <input type="number" class="form-control" id="valorProducto" name="valorProducto" min="1" pattern="^[0-9]+"/>
     <input type="hidden" class="form-control" id="estado" name="estado" value="Activo"/>
 </div>
 </div>
@@ -71,7 +71,7 @@
             </th>
             <th colspan="4">
                 <p align="right"><span id="total_pagar_html" name="total_pagar_html">$/ </span>
-                <input type="number" name="precioTotal" id="precioTotal" name="precioTotal"></p>
+                <input readonly name="precioTotal" id="precioTotal" name="precioTotal"></p>
             </th>
         </tr>
     </tfoot>
