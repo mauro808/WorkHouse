@@ -25,6 +25,7 @@
 <div class="form-group">
     <div class="col-12">
 <label for="txtidUsuario">Usuario que actualiza:</label>
+{!! $errors->first('idUsuario','<small><strong>:message</strong></small></br>') !!}
    <select name="idUsuario" class="form-control" required>
         @foreach($usuarios as $usuario)
              @if($cliente->idUsuario == $usuario->id)
@@ -40,10 +41,12 @@
     <div class="row">
 <div class="col-6">
     <label for="nombreCliente">Nombres y Apellidos:</label>
+    {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" required/>
     </div>
       <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
+    {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoIdentificacion" class="form-control" required>
     <option @if ($cliente->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
         <option @if ($cliente->tipoDocumento=="Cédula Ciudadanía") selected @endif>Cédula Ciudadanía</option>
@@ -58,12 +61,14 @@
     <div class="row">
  <div class="col-6">
     <label for="numeroIdentificacion">Identificación:</label>
+    {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" required/>
         </div>
     
         
 <div class="col-6">
     <label for="telefonoFijo">Teléfono fijo:</label>
+    {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" required/>
     </div>
     </div>
@@ -71,6 +76,7 @@
      <div class="row">
  <div class="col-6">
     <label for="celular">Celular:</label>
+    {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" required/>
     
          </div>
@@ -78,12 +84,14 @@
    
  <div class="col-6">
     <label for="direccion">Dirección:</label>
+    {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" required/>
 </div>
   </div>
 </br>
    <div class="col-12">
     <label for="correo">Coreo Electrónico:</label>
+    {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" required/>
 </div>
 </br>
@@ -102,4 +110,47 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+
+<script>
+  $(document).ready(function() {
+      $("#registrar").click(function() {
+        registrar();
+      });
+  });
+
+  function registrar() {
+
+    idUsuario  = $("#idUsuario option:selected").text();
+    nombreCliente  = $("#nombreCliente").val();
+    tipoIdentificacion  = $("#tipoIdentificacion option:selected").text();
+    numeroIdentificacion  = $("#numeroIdentificacion").val();
+    direccion  = $("#direccion").val();
+    celular  = $("#celular").val();
+    telefonoFijo  = $("#telefonoFijo").val();
+    correo  = $("#correo").val();
+
+    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
+    direccion != "" & celular != "" &&& telefonoFijo != "" &&& correo != "" &&& ) {
+      
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Registro exitoso',
+        showConfirmButton: false, 
+        confirmButtonColor: '#1C2833',
+       
+      })
+
+    }else {
+    Swal.fire({
+      type: 'error',
+      icon: 'error',
+      text: 'Rellene todos los campos',
+      showConfirmButton: false, 
+      confirmButtonColor: '#1C2833',
+    })
+  }
+}
+
+</script>
 @endsection

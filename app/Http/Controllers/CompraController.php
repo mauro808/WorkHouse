@@ -41,14 +41,15 @@ class CompraController extends Controller
       
     }
 
-     public function store(StoreRequest $request)
+     public function store(Request $request)
     {
         /* +[ //'idUsuario'=>Auth::usuario()->id,   
        'fechaCompra'=>Carbon::now('America/Bogota'),] */
      
        $compra = Compra::create($request->all());
        
-        foreach ($request->idProducto as $key=> $producto){
+        foreach ($request->idProducto as $key=> $idProducto){
+       dd($request);
         $results[] = array(
         "idProducto"=>$request->idProducto[$key],
         "cantidad"=>$request->cantidad[$key], 

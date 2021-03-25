@@ -24,12 +24,15 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombreCategoria'=>'required|string',
-            'Descripcion'=>'required',
+            'nombreCategoria'=>'required|regex:/^[\pL\s\-]+$/u|unique:categorias',
+            'Descripcion'=>'required|max:250',
         ],
             [
-                'nombreCategoria.required' => 'Por Favor Ingresa el Nombre de la Categoría',
-                'Descripcion.required' => 'Por Favor Ingresa una Descripción',
+                'nombreCategoria.required' => '*Rellena este campo',
+                'nombreCategoria.regex' => '*Ingresa sólo letras',
+                'nombreCategoria.unique' => '*Categoría ya registrada',
+                'Descripcion.required' => '*Rellena este campo',
+                'Descripcion.max' => '*Máximo 250 caracteres',
             ]
     
     );
@@ -58,6 +61,21 @@ class CategoriaController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'nombreCategoria'=>'required|regex:/^[\pL\s\-]+$/u|unique:categorias',
+            'Descripcion'=>'required|max:250',
+        ],
+            [
+                'nombreCategoria.required' => '*Rellena este campo',
+                'nombreCategoria.regex' => '*Ingresa sólo letras',
+                'nombreCategoria.unique' => '*Categoría ya registrada',
+                'Descripcion.required' => '*Rellena este campo',
+                'Descripcion.max' => '*Máximo 250 caracteres',
+            ]
+    
+    );
+
         $categoria= App\Categoria::findOrFail($id); //buscar producto por id
         $categoria->id = $request->id;
         $categoria->nombreCategoria = $request->nombreCategoria;
@@ -88,7 +106,7 @@ class CategoriaController extends Controller
     public function pdfCategorias()
     {
        $categorias = Categoria::all();
-        $pdf = PDF::loadView('categorias.pdf',compact('categorias'));
+        $pdf = PDF::loadView('categorias.pdf',compact('categorias'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->stream('categorias.pdf');
     }
    
