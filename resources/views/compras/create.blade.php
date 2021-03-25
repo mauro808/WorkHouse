@@ -136,29 +136,23 @@
                         agregar();
                     });
                 });
-
                 var cont = 0;
                 total = 0;
                 subtotal = [];
-
-
                 $("#guardar").hide();
 
+                
                 function agregar() {
-
                     idProducto = $("#idProducto").val();
                     nombreProducto  = $("#idProducto option:selected").text();
                     cantidad = $("#cantidad").val();
                     precio = $("#precio").val();
                    
                     
-
                     if (idProducto != "" && cantidad != "" && cantidad > 0 && precio != "") {
                         subtotal[cont] = cantidad * precio;
                         total = total + subtotal[cont];
-
                         
-
                         var fila = '<tr class="selected" id="fila' + cont +
                             '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont +
                             ');"><i class="bi bi-trash"><strong> Eliminar</strong></i></button></td><td><input type="hidden" name="idProducto[]" value="' +
@@ -168,8 +162,6 @@
                                 precio + '" disabled></td><td><input type="hidden" name="cantidad[]" id="cantidad[]" value="' +
                                 cantidad + '"><input class="form-control" type="number" value="' + cantidad +
                             '" disabled></td><td align="right">$/' + subtotal[cont] + '</td></tr>';
-
-
                         cont++;
                      
                         limpiar();
@@ -185,12 +177,10 @@
                         })
                     }
                 }
-
                 function limpiar() {
                     $("#cantidad").val("");
                     $("#precio").val("");
                 }
-
                 function totales() {
                     $("#total").html("$ " + total.toFixed(2));
                     total_pagar = total;
@@ -198,7 +188,6 @@
                     $("#total_pagar").val(total_pagar.toFixed(2));
                    
                 }
-
                 function evaluar() {
                     if (total > 0) {
                         $("#guardar").show();
@@ -206,7 +195,6 @@
                         $("#guardar").hide();
                     }
                 }
-
                 function eliminar(index) {
                     total = total - subtotal[index];
                     total_pagar_html = total;
@@ -216,7 +204,6 @@
                     $("#fila" + index).remove();
                     evaluar();
                 }
-
             </script>
       
             @endsection

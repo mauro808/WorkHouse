@@ -31,9 +31,9 @@
 <div class="form-group" >
   <div class="col-12">
       <label for="txtidUsuario">Usuario Creador:</label>
-      {!! $errors->first('idUsuario','<small><strong>:message</strong></small></br>') !!}
+      {!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
        <select name="idUsuario" id="idUsuario" class="form-control"  value="{{ old('idUsuario')}}" />
-        <option selected >Seleccione Usuario</option>
+       <option value="">Seleccione el Usuario Creador</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombreUsuario}}</option>
         @endforeach
@@ -53,7 +53,7 @@
     <label for="tipoIdentificacion">Tipo Documento:</label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control" value="{{ old('tipoIdentificacion')}}">
-        <option selected>Seleccione Tipo Documento</option>
+      <option value="">Seleccione el Tipo de Documento</option>
         <option>Tarjeta Identidad</option>
         <option>Cédula Ciudadanía</option>
         <option>Cedula Extranjería</option>
@@ -102,7 +102,7 @@
    
 </div>
 </br>
-<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px"  id="agregarCliente">
+<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px"  id="registrar">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -120,12 +120,12 @@
 
 <script>
   $(document).ready(function() {
-      $("#agregarcliente").click(function() {
-          agregarCliente();
+      $("#registrar").click(function() {
+        registrar();
       });
   });
 
-  function agregar() {
+  function registrar() {
 
     idUsuario  = $("#idUsuario option:selected").text();
     nombreCliente  = $("#nombreCliente").val();
@@ -137,16 +137,27 @@
     correo  = $("#correo").val();
 
     if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
-    direccion != "" & celular != "" &&& telefonoFijo != "" &&& correo != "" &&& ) {
+    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
       
-    } else {
       Swal.fire({
-          type: 'error',
-          icon: 'error',
-          text: 'Diligencie todos los campos',
-          confirmButtonColor: '#1C2833',
+        position: 'top-center',
+        icon: 'success',
+        title: 'Registro exitoso',
+        showConfirmButton: false, 
+        confirmButtonColor: '#1C2833',
+       
       })
+
+    }else {
+    Swal.fire({
+      type: 'error',
+      icon: 'error',
+      text: 'Rellene todos los campos',
+      showConfirmButton: false, 
+      confirmButtonColor: '#1C2833',
+    })
   }
+}
 
 </script>
 @endsection

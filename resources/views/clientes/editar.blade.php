@@ -6,6 +6,7 @@
         {{ session('success') }}
     </div>
 @endif
+
 <div class="row"> 
     <div class="col-lg-12" align="center">
     </br>
@@ -17,6 +18,14 @@
 <div class="row">
 <div class="col-lg-4"></div>
 <div class="col-lg-12">
+
+  @if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
+
 <form action="{{ route('cliente.update', $cliente->id) }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @method('PUT')
 @csrf 
@@ -25,7 +34,8 @@
 <div class="form-group">
     <div class="col-12">
 <label for="txtidUsuario">Usuario que actualiza:</label>
-   <select name="idUsuario" class="form-control" required>
+{!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+   <select name="idUsuario" class="form-control" >
         @foreach($usuarios as $usuario)
              @if($cliente->idUsuario == $usuario->id)
              <option value="{{$usuario->id}}" selected>{{$usuario->nombreUsuario}}</td>
@@ -40,11 +50,13 @@
     <div class="row">
 <div class="col-6">
     <label for="nombreCliente">Nombres y Apellidos:</label>
-    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" required/>
+    {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" />
     </div>
       <div class="col-6">
     <label for="tipoIdentificacion">Tipo Documento:</label>
-    <select name="tipoIdentificacion" class="form-control" required>
+    {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <select name="tipoIdentificacion" class="form-control" >
     <option @if ($cliente->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
         <option @if ($cliente->tipoDocumento=="Cédula Ciudadanía") selected @endif>Cédula Ciudadanía</option>
         <option @if ($cliente->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjera</option>
@@ -58,33 +70,38 @@
     <div class="row">
  <div class="col-6">
     <label for="numeroIdentificacion">Identificación:</label>
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" required/>
+    {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
+    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" />
         </div>
     
         
 <div class="col-6">
     <label for="telefonoFijo">Teléfono fijo:</label>
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" required/>
+    {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
+    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
     </div>
     </div>
   </br>
      <div class="row">
  <div class="col-6">
     <label for="celular">Celular:</label>
-    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" required/>
+    {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
+    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
     
          </div>
   
    
  <div class="col-6">
     <label for="direccion">Dirección:</label>
-    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" required/>
+    {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
+    <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" />
 </div>
   </div>
 </br>
    <div class="col-12">
     <label for="correo">Coreo Electrónico:</label>
-    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" required/>
+    {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
+    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" />
 </div>
 </br>
 <button type="submit" class="btn btn-dark btn-lg " style="margin: 20px">
@@ -102,4 +119,47 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+
+<script>
+  $(document).ready(function() {
+      $("#registrar").click(function() {
+        registrar();
+      });
+  });
+
+  function registrar() {
+
+    idUsuario  = $("#idUsuario option:selected").text();
+    nombreCliente  = $("#nombreCliente").val();
+    tipoIdentificacion  = $("#tipoIdentificacion option:selected").text();
+    numeroIdentificacion  = $("#numeroIdentificacion").val();
+    direccion  = $("#direccion").val();
+    celular  = $("#celular").val();
+    telefonoFijo  = $("#telefonoFijo").val();
+    correo  = $("#correo").val();
+
+    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
+    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
+      
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Registro exitoso',
+        showConfirmButton: false, 
+        confirmButtonColor: '#1C2833',
+       
+      })
+
+    }else {
+    Swal.fire({
+      type: 'error',
+      icon: 'error',
+      text: 'Rellene todos los campos',
+      showConfirmButton: false, 
+      confirmButtonColor: '#1C2833',
+    })
+  }
+}
+
+</script>
 @endsection

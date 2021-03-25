@@ -47,8 +47,8 @@ class CompraController extends Controller
        'fechaCompra'=>Carbon::now('America/Bogota'),] */
      
        $compra = Compra::create($request->all());
-       var_dump($request->all());
-        foreach ($request->idProducto as $key => $idProducto){
+        foreach ($request->idProducto as $key=> $idProducto){
+       dd($request);
         $results[] = array(
         "idProducto"=>$request->idProducto[$key],
         "cantidad"=>$request->cantidad[$key], 

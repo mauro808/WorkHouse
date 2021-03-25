@@ -56,7 +56,7 @@ class UsuarioController extends Controller
             'telefonoFijo.required' => '*Rellena este campo',
             'telefonoFijo.integer' => '*Ingresa sólo números',
             'telefonoFijo.min' => '*El fijo contiene 7 dígitos',
-            'celular.required' => '*Rellena este campor',
+            'celular.required' => '*Rellena este campo',
             'celular.integer' => '*Ingresa sólo números',
             'celular.min' => '*El celular contiene 10 dígitos',
             'direccion.required' => '*Rellena este campo',
@@ -67,6 +67,8 @@ class UsuarioController extends Controller
             'contrasena.required' => '*Rellena este campo',
             'contrasenac.required' => '*Rellena este campo',
             'contrasenac.same' => '*Las contraseñas no coinciden',
+            'contrasena.min' => '*Mínimo 8 caracteres',
+            'contrasenac.min' => '*Mínimo 8 caracteres',
         ]
 
         );
@@ -110,14 +112,13 @@ class UsuarioController extends Controller
             'idRol'=>'required',
             'nombre'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'tipoDocumento'=>'required',
-            'identificacion'=>'required|integer|unique:usuarios',
-            'correo'=>'required|email|unique:usuarios',
+            'identificacion'=>'required|integer',
+            'correo'=>'required|email',
             'telefonoFijo'=>'required|integer|min:8',
             'celular'=>'required|integer|min:10',
             'direccion'=>'required',
-            'nombreUsuario'=>'required|unique:usuarios|max:8|alpha',
-            'contrasena'=>'required|min:8|',
-            'contrasenac'=>'required|min:8|same:contrasena',
+            'nombreUsuario'=>'required|max:8|alpha',
+           
         ],
 
         [
@@ -128,24 +129,19 @@ class UsuarioController extends Controller
             'tipoDocumento.required' => '*Rellena este campo',
             'identificacion.required' => '*Rellena este campo',
             'identificacion.integer' => '*Ingresa sólo números',
-            'identificacion.unique' => '*Documento ya registrado',
             'correo.required' => '*Rellena este campo',
             'correo.email' => '*Ingresa un correo válido',
-            'correo.unique' => '*Correo ya registrado',
             'telefonoFijo.required' => '*Rellena este campo',
             'telefonoFijo.integer' => '*Ingresa sólo números',
             'telefonoFijo.min' => '*El fijo contiene 7 dígitos',
-            'celular.required' => '*Rellena este campor',
+            'celular.required' => '*Rellena este campo',
             'celular.integer' => '*Ingresa sólo números',
             'celular.min' => '*El celular contiene 10 dígitos',
             'direccion.required' => '*Rellena este campo',
             'nombreUsuario.required' => '*Rellena este campo',
-            'nombreUsuario.unique' => '*Alias ya Existe',
             'nombreUsuario.max' => '*Ingresa máximo 8 caracteres',
             'nombreUsuario.alpha' => '*Ingresa sólo letras',
-            'contrasena.required' => '*Rellena este campo',
-            'contrasenac.required' => '*Rellena este campo',
-            'contrasenac.same' => '*Las contraseñas no coinciden',
+           
         ]
 
         );

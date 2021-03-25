@@ -16,6 +16,13 @@
 <div class="row">
 <div class="col-lg-4"></div>
 <div class="col-lg-12">
+
+  @if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
 <form action="{{ route('agregarUsuario') }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @csrf 
 
@@ -24,8 +31,9 @@
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidRol">Rol:</label>
-    <select name="idRol" class="form-control" required>
-        <option selected>Seleccione Rol</option>
+    {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <select name="idRol" id="idRol" class="form-control" >
+      <option value="">Seleccione Un Rol</option>
         @foreach($rols as $rol)
         <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
         @endforeach
@@ -42,9 +50,9 @@
     <div class="row">
     <div class="col-6">
     <label for="txtTipoDocumento">Tipo Documento:</label>
-    <select name="tipoDocumento" class="form-control" required>
-        <option selected>Seleccione Tipo Documento</option>
-        <option>Tarjeta Identidad</option>
+    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <select name="tipoDocumento" id="tipoDocumento" class="form-control" >
+      <option>Seleccione Tipo Documento</option>
         <option>Cédula Ciudadanía</option>
         <option>Cédula Extranjería</option>
         <option>Permiso Permanencia</option>
@@ -140,10 +148,9 @@
 
  // $("#registrar").hide();
 
-  function registrar()  
-      {
+  function registrar() {
 
-      idRol  = $("#idRol").val();
+      idRol  = $("#idRol option:selected").text();
       nombre  = $("#nombre").val();
       tipoDocumento  = $("#tipoDocumento option:selected").text();
       identificacion  = $("#identificacion").val();
@@ -163,17 +170,18 @@
           icon: 'success',
           title: 'Registro exitoso',
           showConfirmButton: false, 
-          timer: 1500
-        });
+          confirmButtonColor: '#1C2833',
+         
+        })
 
       }else {
       Swal.fire({
-         position: 'top-center',
-          icon: 'error',
-          text: 'Diligencia todos los campos',
-          showConfirmButton: false,
-          timer: 1500
-      });
+        type: 'error',
+        icon: 'error',
+        text: 'Rellene todos los campos',
+        showConfirmButton: false, 
+        confirmButtonColor: '#1C2833',
+      })
   }
 }
 

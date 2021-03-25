@@ -7,6 +7,7 @@ use App\Cliente;
 use App\Venta;
 use App\Producto;
 use App\Http\Requests\venta\StoreRequest;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class VentaController extends Controller
 {
@@ -38,20 +39,12 @@ class VentaController extends Controller
         return view('ventas.detalle', compact('venta'));
     }
 
-    public function edit(Venta $venta)
+    public function pdfVentas()
     {
-        $clientes = Cliente::get();
-        return view('ventas.editar', compact('venta'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-   
-    public function destroy($id)
-    {
-        //
+        $ventas = Venta::all();
+        $usuarios = Usuario::all();
+        $clientes = Cliente::all();
+        $pdf = PDF::loadView('ventas.pdf',compact('ventas','usuarios','clientes'))->setOptions(['defaultFont' => 'sans-serif']);;
+        return $pdf->stream('ventas.pdf');
     }
 }

@@ -24,5 +24,4 @@ class PagesController extends Controller
         return view('ventas.detalle', compact('venta','cliente','usuario'));
     }
 
-
 }

@@ -22,6 +22,7 @@
 <div class="row">
 <div class="col-6">
 <label for="txtidCategoria">Categoría:</label>
+{!! $errors->first('idCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
    <select name="idCategoria" class="form-control" required>
    
         @foreach($categorias as $categoria)
@@ -36,7 +37,8 @@
       </div>
       
    <div class="col-6">
-    <label for="nombre">Nombre:</label>
+    <label for="nombreProducto">Nombre:</label>
+    {!! $errors->first('nombreProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $producto->nombreProducto }}" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" required/>
     </div>
    </div>
@@ -44,10 +46,12 @@
     <div class="row">
     <div class="col-6">
     <label for="existencias">Existencias:</label>
+    {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $producto->existencias }}" id="existencias" name="existencias" placeholder="Digite existencias"/>
       </div>
     <div class="col-6">
      <label for="medida">Und. Medida:</label>
+     {!! $errors->first('medida','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="medida" class="form-control" required>
         <option @if ($producto->medida=="Metro") selected @endif>Metro</option>
         <option @if ($producto->medida=="Unidad") selected @endif>Unidad</option>
@@ -70,12 +74,13 @@
    
    <div class="col-12">
     <label for="precio">Precio:</label>
+    {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
       </div>
       </div> 
 </br>
 </br>
-<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px">
+<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px" id="registrar">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -89,4 +94,46 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+
+
+<script>
+  $(document).ready(function() {
+      $("#registrar").click(function() {
+        registrar();
+      });
+  });
+
+ // $("#registrar").hide();
+
+  function registrar() {
+
+      idCategoria = $("#idCategoria  option:selected").text();
+      nombreProducto  = $("#nombreProducto").val();
+      existencias  = $("#existencias").val();
+      medida = $("#medida  option:selected").text();
+      precio  = $("#precio").val();
+
+      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && precio != "" ){
+
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Registro exitoso',
+          showConfirmButton: false, 
+          confirmButtonColor: '#1C2833',
+         
+        })
+
+      }else {
+      Swal.fire({
+        type: 'error',
+        icon: 'error',
+        text: 'Rellene todos los campos',
+        showConfirmButton: false, 
+        confirmButtonColor: '#1C2833',
+      })
+  }
+}
+
+</script>
 @endsection

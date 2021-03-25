@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Compras</title>
+    <title>Reporte de Ventas</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="../resources/views/layouts/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@ th {
 </head>
 <body>
     <header style="font-size: 3em";>
-        <p><strong>Reporte de Compras</strong></p>
+        <p><strong>Reporte de Ventas</strong></p>
     </header>
     <main>
         <div class="container">
@@ -75,23 +75,29 @@ th {
                     <tr >
                         <th scope="col" >Id</th>
                         <th scope="col">Usuario Creador</th>
-                         <th scope="col">Fecha de Compra</th>
+                        <th scope="col">Cliente </th>
+                         <th scope="col">Fecha de Venta</th>
                         <th scope="col">Valor Total</th>
-                        <th scope="col">Estado de Compra</th>
+                        <th scope="col">Estado de Venta</th>
                     </tr>
                 </thead>
                <tbody >
-                @foreach($compras as $compra)
+                @foreach($ventas as $venta)
                     <tr >
-                        <th scope="row">{{ $compra->id }}</th>
+                        <th scope="row">{{ $venta->id }}</th>
                          @foreach($usuarios as $usuario)
-                    @if($compra->idUsuario == $usuario->id)
+                    @if($venta->idUsuario == $usuario->id)
                     <td>{{$usuario->nombre}}</td>
                         @endif 
                         @endforeach 
-                        <td>{{ $compra->created_at }}</td>
-                        <td>{{ $compra->total }}</td>
-                        <td>{{ $compra->estado }}</td>
+                        @foreach($clientes as $cliente)
+                        @if($venta->idCliente == $cliente->id)
+                        <td>{{$cliente->nombreCliente}}</td>
+                            @endif 
+                            @endforeach 
+                        <td>{{ $venta->created_at }}</td>
+                        <td>{{ $venta->precioTotal }}</td>
+                        <td>{{ $venta->Estado }}</td>
                   
                     </tr>
                 @endforeach
