@@ -15,8 +15,7 @@
 <div class="w-75 mx-auto">
 {!! Form::open(['route'=>'agregarVenta', 'method'=>'POST']) !!}
     @include('ventas._form')
-    
-    
+
 </div>
 <div class="card-footer text-muted col-12" align="center">
 <button type="submit" class="btn btn-dark" style="margin: 10px">
@@ -95,10 +94,10 @@ function evaluar(){
 function eliminar(index){
     total = total - subtotal[index];
     total_pagar_html = total;
-    $("#total").html("COL "+total);
-    $("#total_pagar_html").html("COL "+ total_pagar_html);
+    $("#total").html("$" + total);
+    $("#total_pagar_html").html("$" + total_pagar_html);
     $("#total_pagar").val(total_pagar_html.toFixed(2));
-    $("#totalPagar").val(total_pagar.toFixed(2));
+    $("#precioTotal").val(total_pagar_html.toFixed(2));
     $("#fila" + index).remove();
     evaluar();
 }
