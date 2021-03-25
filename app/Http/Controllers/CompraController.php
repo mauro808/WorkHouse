@@ -22,7 +22,6 @@ class CompraController extends Controller
         $this->middleware('can:compras.show')->only(['show']);
         $this->middleware('can:change.status.compras')->only(['change_status']);
         $this->middleware('can:compras.pdf')->only(['pdf']);
-
     } */
   
     /* public function index()
@@ -32,7 +31,6 @@ class CompraController extends Controller
         return view('compras.index',compact('compras','usuarios'));
       
     }
-
     public function create()
     {
         $usuarios = Usuario::get();
@@ -40,7 +38,6 @@ class CompraController extends Controller
         return view('compras.create',compact('usuarios','productos'));
       
     }
-
      public function store(Request $request)
     {
         // +[ //'idUsuario'=>Auth::usuario()->id,   
@@ -59,7 +56,6 @@ class CompraController extends Controller
        return redirect()->route('compras.index');
        
     } 
-
     
     public function show(Compra $compra)
     {   
@@ -71,7 +67,6 @@ class CompraController extends Controller
         return view('compras.show', compact('compra', 'detalleCompras', 'subtotal'));
     }
     
-
     public function show(Compra $compra)
     {
         return view('compras.show', compact('compra'));
@@ -85,10 +80,21 @@ class CompraController extends Controller
       
     }
 
-    public function show($idCompra){
+   /* public function show($idCompra){
         $compra = Compra::findOrFail($idCompra);
         $usuario = Usuario::find($compra->idUsuario);
-        return view('ventas.show', compact('venta','usuario'));
+        $producto = Producto::find($compra->idProducto);
+        return view('compras.show', compact('compra','usuario','producto'));
+    } */
+
+    public function show(Compra $compra)
+    {   
+         $subtotal = 0;
+         $detalleCompras = $compra->detalleCompras;
+         foreach ($detalleCompras as $detalleCompra){
+            $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
+         }
+        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal'));
     }
 
     public function create()
