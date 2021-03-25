@@ -25,7 +25,7 @@ class CompraController extends Controller
 
     } */
   
-    public function index()
+    /* public function index()
     {
         $compras = Compra::get();
         $usuarios = Usuario::get();
@@ -43,8 +43,8 @@ class CompraController extends Controller
 
      public function store(Request $request)
     {
-        /* +[ //'idUsuario'=>Auth::usuario()->id,   
-       'fechaCompra'=>Carbon::now('America/Bogota'),] */
+        // +[ //'idUsuario'=>Auth::usuario()->id,   
+      // 'fechaCompra'=>Carbon::now('America/Bogota'),] 
      
        $compra = Compra::create($request->all());
         foreach ($request->idProducto as $key=> $idProducto){
@@ -71,11 +71,47 @@ class CompraController extends Controller
         return view('compras.show', compact('compra', 'detalleCompras', 'subtotal'));
     }
     
-    /*   
+
     public function show(Compra $compra)
     {
         return view('compras.show', compact('compra'));
     } */ 
+
+    public function index()
+    {
+        $compras = Compra::all();
+        $usuarios = Usuario::all();
+        return view('compras.index',compact('compras','usuarios'));
+      
+    }
+
+    public function show($idCompra){
+        $compra = Compra::findOrFail($idCompra);
+        $usuario = Usuario::find($compra->idUsuario);
+        return view('ventas.show', compact('venta','usuario'));
+    }
+
+    public function create()
+    {
+        $compras = Compra::where('estado', 'Activo')->get();
+        $usuarios = Usuario::get();
+        $productos = Producto::get();
+        return view('compras.create', compact('productos','usuarios'));
+    }
+
+   
+    public function store(Request $request)
+    {
+        $compra = Compra::create($request->all());
+        
+        foreach ($request->idProducto as $key => $idProducto) {
+           // var_dump($request->idProducto, $request->precio);
+            $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
+        }
+        $compra->detalleCompra()->createMany($results);
+        return redirect()->route('compras.index');
+    }
+
 
     public function pdfCompras()
     {

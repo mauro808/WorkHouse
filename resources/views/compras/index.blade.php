@@ -36,7 +36,7 @@
                     @endif 
                     @endforeach 
                     <td>{{$compra->created_at}}</td>
-                    <td>{{$compra->total}}</td>  
+                    <td>{{$compra->precioTotal}}</td>  
                     <td>{{$compra->estado}}</td>  
                      <td>
                         <form action="" method="POST">
