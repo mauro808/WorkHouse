@@ -14,12 +14,19 @@
         <h2 class="text-lucida"><strong>Registrar Compra</strong></h2>
 </div>
 <div class="w-75 mx-auto">
+
+    @if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
+
 {!! Form::open(['route'=>'compras.store', 'method'=>'POST']) !!}
     @include('compras._form')
 
 </div> <div class="col-lg-12" align="center">
-    <button type="submit" class="btn btn-dark btn-lg" 
-        style="margin: 20px">
+    <button type="submit" class="btn btn-dark btn-lg" id="compraRegistrada" style="margin: 20px">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
             class="bi bi-check-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -45,6 +52,7 @@ $(document).ready(function() {
     });
 });
 
+    
 var cont=0;
 total=0;
 subtotal=[];
@@ -77,6 +85,7 @@ function agregar(){
     }
 }
 
+
 function limpiar(){
     $('#cantidad').val("");
     $('#valorProducto').val('');
@@ -107,7 +116,42 @@ function eliminar(index){
     $("#fila" + index).remove();
     evaluar();
 }
-    
+
 </script>
 
+<script>
+$(document).ready(function() {
+    $("#compraRegistrada").click(function() {
+        compraRegistrada();
+    });
+});
+
+
+function compraRegistrada(){
+    
+    precioTotal = $("#precioTotal").val();
+
+    if(precioTotal != ""  && precioTotal > 0) {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Registro exitoso',
+            showConfirmButton: false, 
+            confirmButtonColor: '#1C2833',
+           
+          })
+    }else {
+        Swal.fire({
+            type: 'error',
+            icon: 'error',
+            text: 'Compra no registrada',
+            confirmButtonColor: '#1C2833',
+          })
+    }
+}
+
+
+</script>
+
+        
 @endsection

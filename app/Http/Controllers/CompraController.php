@@ -108,10 +108,29 @@ class CompraController extends Controller
    
     public function store(Request $request)
     {
+
+       /* $request->validate([
+            'idUsuario'=>'required',
+            'idProducto'=>'required',
+            'cantidad'=>'required|integer',
+            'valorProducto'=>'required|integer',
+          
+        ],
+
+        [
+            'idUsuario.required' => '*Rellena este campo',
+            'idProducto.required' => '*Rellena este campo',
+            'cantidad.required' => '*Rellena este campo',
+            'valorProducto.required' => '*Rellena este campo',
+            'cantidad.integer' => '*Ingresa sólo números',
+            'valorProducto.integer' => '*Ingresa sólo números',
+        ]
+    ); */
+
         $compra = Compra::create($request->all());
         
         foreach ($request->idProducto as $key => $idProducto) {
-           // var_dump($request->idProducto, $request->precio);
+           
             $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
         }
         $compra->detalleCompra()->createMany($results);
