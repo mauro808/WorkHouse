@@ -63,4 +63,6 @@ Route::get('/ventas', 'PagesController@listarVentas')->name('venta.listar');
 Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
 Route::get('/agregarVenta', 'VentaController@create')->name('agregarVenta');
 Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
+Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('venta.habilitacion');
+Route::get('/inhabilitarVenta/{id}', 'VentaController@inhabilitar')->name('venta.inhabilitacion');
 Route::get('/pdfVentas', 'VentaController@pdfVentas')->name('PdfVentas');

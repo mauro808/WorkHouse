@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Compra;
 use App\Usuario;
 use App\Producto;
+use App\DetalleCompra;
 use Illuminate\Http\Request;
 use App\Http\Requests\Compras\StoreRequest;
 use Illuminate\Support\Facades\Auth;
@@ -89,12 +90,10 @@ class CompraController extends Controller
 
     public function show(Compra $compra)
     {   
-         $subtotal = 0;
-         $detalleCompras = $compra->detalleCompras;
-         foreach ($detalleCompras as $detalleCompra){
-            $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
-         }
-        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal'));
+         $detalleCompras = DetalleCompra::where('compra_id' , $compra->id);
+         $productos=Producto::all();
+         var_dump($detalleCompras, $compra->id);
+        return view('compras.show', compact('detalleCompras', 'productos'));
     }
 
     public function create()
@@ -108,10 +107,29 @@ class CompraController extends Controller
    
     public function store(Request $request)
     {
+
+       /* $request->validate([
+            'idUsuario'=>'required',
+            'idProducto'=>'required',
+            'cantidad'=>'required|integer',
+            'valorProducto'=>'required|integer',
+          
+        ],
+
+        [
+            'idUsuario.required' => '*Rellena este campo',
+            'idProducto.required' => '*Rellena este campo',
+            'cantidad.required' => '*Rellena este campo',
+            'valorProducto.required' => '*Rellena este campo',
+            'cantidad.integer' => '*Ingresa sólo números',
+            'valorProducto.integer' => '*Ingresa sólo números',
+        ]
+    ); */
+
         $compra = Compra::create($request->all());
         
         foreach ($request->idProducto as $key => $idProducto) {
-           // var_dump($request->idProducto, $request->precio);
+           
             $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
         }
         $compra->detalleCompra()->createMany($results);

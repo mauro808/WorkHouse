@@ -39,6 +39,25 @@ class VentaController extends Controller
         return view('ventas.detalle', compact('venta'));
     }
 
+    public function habilitar(Request $request, $id)
+    {
+           $venta= Venta::findOrFail($id); //buscar producto por id
+           $venta->Estado="Activo";
+           $venta->update();
+           
+           return redirect('/ventas')->with('Mensaje', 'Usuario actualizado');
+    }
+
+    public function inhabilitar(Request $request, $id)
+    {
+           $venta= Venta::findOrFail($id); //buscar producto por id
+           $venta->Estado="Inactivo";
+           $venta->update();
+           
+           return redirect('/ventas')->with('Mensaje', 'Usuario actualizado');
+    }
+
+
     public function pdfVentas()
     {
         $ventas = Venta::all();
@@ -47,4 +66,7 @@ class VentaController extends Controller
         $pdf = PDF::loadView('ventas.pdf',compact('ventas','usuarios','clientes'))->setOptions(['defaultFont' => 'sans-serif']);;
         return $pdf->stream('ventas.pdf');
     }
+
+
+    
 }

@@ -13,11 +13,19 @@
         <h2 class="text-lucida"><strong>Registrar Venta</strong></h2>
 </div>
 <div class="w-75 mx-auto">
+
+    
+    @if ($errors->any())
+    @foreach ($errors->all as $error) 
+    <p>{{ $error }}</p>
+    @endforeach
+@endif
+
 {!! Form::open(['route'=>'agregarVenta', 'method'=>'POST']) !!}
     @include('ventas._form')
 
 </div>
-<div class="card-footer text-muted col-12" align="center">
+<div class="card-footer text-muted col-12" align="center" id="ventaRegistrada">
 <button type="submit" class="btn btn-dark btn-lg" style="margin: 10px">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 1 1 7 0 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -122,4 +130,40 @@ function eliminar(index){
     
 </script>
 
+
+
+<script>
+    $(document).ready(function() {
+        $("#ventaRegistrada").click(function() {
+            ventaRegistrada();
+        });
+    });
+    
+    
+    function ventaRegistrada(){
+        
+        precioTotal = $("#precioTotal").val();
+    
+        if(precioTotal != ""  && precioTotal > 0) {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Registro exitoso',
+                showConfirmButton: false, 
+                confirmButtonColor: '#1C2833',
+               
+              })
+        }else {
+            Swal.fire({
+                type: 'error',
+                icon: 'error',
+                text: 'Compra no registrada',
+                confirmButtonColor: '#1C2833',
+              })
+        }
+    }
+    
+    
+    </script>
+    
 @endsection
