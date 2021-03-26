@@ -28,7 +28,7 @@ Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario'
 Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
 Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
 Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
-Route::post('save/usuario', ['as' => 'save-usuario', 'uses' => 'UsuarioController@saveUsuario']);
+
 // Rutas categorias
 Route::get('/categorias', 'CategoriaController@listarCategorias')->name('categoria.listar');
 Route::get('/detalleCategoria/{id}', 'CategoriaController@detalleCategoria')->name('categorias.detalle');
