@@ -61,7 +61,6 @@ Route::get('/pdfDetalle/{compra}', 'CompraController@pdfDetalle')->name('PdfDeta
 // Rutas ventas
 Route::resource('venta', 'VentaController')->names('venta');
 Route::get('/venta', 'PagesController@index')->name('venta.index');
-Route::get('/detalleVenta/{id}', 'PagesController@detalleVenta')->name('ventas.detalle');
 Route::get('/agregarVenta', 'VentaController@create')->name('agregarVenta');
 Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
 Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('venta.habilitacion');

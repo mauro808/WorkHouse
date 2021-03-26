@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Cliente;
-use App\DetalleVenta;
 use App\Venta;
 use App\Producto;
 use App\Http\Requests\venta\StoreRequest;
@@ -72,6 +71,17 @@ class VentaController extends Controller
         return $pdf->stream('ventas.pdf');
     }
 
+    public function pdfDetalle(Venta $venta)
+    {
+        $subtotal = 0 ;
+        var_dump($venta);
+        $detalleVentas = $venta->detalleVenta;
+        foreach ($detalleVentas as $detalleVenta) {
+            $subtotal += $detalleVenta->cantidad *  $detalleVenta->precio;
+        }
+        $pdf = PDF::loadView('ventas.pdfDetalle', compact('venta', 'subtotal', 'detalleVentas'))->setOptions(['defaultFont' => 'sans-serif']); 
+        return $pdf->stream('Comprobante_Venta'.$venta->id.'.pdf');
+    }
 
     
 }
