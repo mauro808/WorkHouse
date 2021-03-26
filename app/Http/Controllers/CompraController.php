@@ -36,13 +36,6 @@ class CompraController extends Controller
 
 
     public function show(Compra $compra)
-<<<<<<< HEAD
-    {   
-         $detalleCompras = DetalleCompra::where('compra_id' , $compra->id);
-         $productos=Producto::all();
-         var_dump($detalleCompras, $compra->id);
-        return view('compras.show', compact('detalleCompras', 'productos'));
-=======
     {
         
         $subtotal = 0 ;
@@ -51,7 +44,6 @@ class CompraController extends Controller
             $subtotal += $detalleCompra->cantidad * $detalleCompra->precio;
         }
         return view('compras.show', compact('compra', 'detalleCompras', 'subtotal')); 
->>>>>>> ca94032d2d88316786f5f7c1ffed743a0694bb6d
     }
 
     public function create()

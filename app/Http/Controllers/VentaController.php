@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Cliente;
+use App\DetalleVenta;
 use App\Venta;
 use App\Producto;
 use App\Http\Requests\venta\StoreRequest;
@@ -26,7 +27,6 @@ class VentaController extends Controller
         $venta = Venta::create($request->all());
         
         foreach ($request->idProducto as $key => $idProducto) {
-            var_dump($request->idProducto, $request->precio);
             $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
         }
         $venta->detalleVenta()->createMany($results);
@@ -36,7 +36,12 @@ class VentaController extends Controller
    
     public function show(Venta $venta)
     {
-        return view('ventas.detalle', compact('venta'));
+        $subtotal = 0 ;
+        $detalleVentas = $venta->detalleVenta;
+        foreach ($detalleVentas as $detalleVenta) {
+            $subtotal += $detalleVenta->cantidad * $detalleVenta->precio;
+        }
+        return view('ventas.show', compact('venta', 'detalleVentas', 'subtotal')); 
     }
 
     public function habilitar(Request $request, $id)
