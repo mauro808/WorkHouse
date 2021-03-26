@@ -15,7 +15,7 @@ class CreateClientesTable extends Migration
             $table->foreign('idUsuario')->references('id')->on('usuarios');
             $table->string('nombreCliente',50);
             $table->string('tipoIdentificacion',30);
-            $table->integer('numeroIdentificacion');
+            $table->string('numeroIdentificacion',30);
             $table->string('direccion',50);
             $table->biginteger('celular');
             $table->integer('telefonoFijo');

@@ -12,9 +12,8 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('idCliente');
             $table->foreign('idCliente')->references('id')->on('clientes');
-            $table->dateTime('fechaVenta');
-            $table->decimal('porcentajeIva',11,2);
-            $table->decimal('total',11,2);
+            $table->timestamps('created_at');
+            $table->decimal('precioTotal',11,2);
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('usuarios');
             $table->timestamps();
