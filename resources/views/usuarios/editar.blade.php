@@ -114,6 +114,8 @@
 <div class="col-lg-2"></div>
 </div>
 
+@endsection
+@section('scripts')
 <script>
   $(document).ready(function() {
       $("#registrar").click(function() {
@@ -136,8 +138,7 @@
       nombreUsuario  = $("#nombreUsuario").val();
 
    
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" && telefonoFijo != "" 
-      && celular != "" && direccion != "" && nombreUsuario != ""  ){
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != ""  ){
 
         Swal.fire({
           position: 'top-center',
@@ -146,16 +147,16 @@
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
          
-        })
+        });
 
       }else {
       Swal.fire({
         type: 'error',
         icon: 'error',
-        text: 'Rellene todos los campos',
+        text: 'Verifica los campos',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
-      })
+      });
   }
 }
 

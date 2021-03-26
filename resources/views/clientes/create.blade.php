@@ -75,7 +75,7 @@
     <div class="col-6">
     <label for="telefonoFijo">Teléfono Fijo:</label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
+    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
     
      </div>
        </div>
@@ -84,7 +84,7 @@
      <div class="col-6">
     <label for="celular">Celular:</label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
     
        </div>
     <div class="col-6">
@@ -136,8 +136,7 @@
     telefonoFijo  = $("#telefonoFijo").val();
     correo  = $("#correo").val();
 
-    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
-    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
+    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" && direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
       
       Swal.fire({
         position: 'top-center',
@@ -145,6 +144,7 @@
         title: 'Registro exitoso',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
+        timer: 1500
        
       })
 
@@ -152,9 +152,10 @@
     Swal.fire({
       type: 'error',
       icon: 'error',
-      text: 'Rellene todos los campos',
+      text: 'Verifica todos los campos',
       showConfirmButton: false, 
       confirmButtonColor: '#1C2833',
+      timer: 1500
     })
   }
 }
