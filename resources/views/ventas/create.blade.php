@@ -59,17 +59,25 @@ function agregar(){
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
-
-    if(idProducto != "" && cantidad != "" && cantidad > 0) {
-        subtotal[cont] = cantidad * precio;
-        total = total + subtotal[cont];
-        var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" + nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number' id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$/ " + subtotal[cont] + "<td></tr>";
-        cont++;
-        console.log(cantidad, precio, subtotal[cont], total);
-        limpiar();
-        totales();
-        evaluar();
-        $('#detallesVenta').append(fila);
+        if ($("#idProducto[cont]").val()==idProducto){
+            subtotal[cont] = cantidad * precio;
+            total = total + subtotal[cont];
+            $("#cantidad[cont]").val(cantidad+$("#cantidad[cont]".val()));
+            SumarProducto();
+            limpiar();
+            evaluar();
+            console.log("exito");
+        }else{
+            if(idProducto != "" && cantidad != "" && cantidad > 0) {
+                subtotal[cont] = cantidad * precio;
+                total = total + subtotal[cont];
+                var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" +  nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number'     id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input     class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$/ " + subtotal[cont] + "<td></tr>";
+                cont++;
+                console.log(cantidad, precio, subtotal[cont], total);
+                limpiar();
+                totales();
+                evaluar();
+                $('#detallesVenta').append(fila);
     }else {
         Swal.fire({
             type: 'error',
@@ -77,6 +85,7 @@ function agregar(){
             text: 'Rellene todos los campos del detalle de la venta',
             confirmButtonColor: '#1C2833',
           })
+    }
     }
 }
 
@@ -100,6 +109,13 @@ function evaluar(){
     }
 }
 
+function SumarProducto(){
+    $('#total').html("$/ " + total.toFixed(2));
+    precioTotal=total;
+    $("#total_pagar_html").html("$/ " + precioTotal.toFixed(2));
+    $("#precioTotal").val(precioTotal.toFixed(2));
+}
+
 function eliminar(index){
     total = total - subtotal[index];
     total_pagar_html = total;
@@ -108,6 +124,7 @@ function eliminar(index){
     $("#total_pagar").val(total_pagar_html.toFixed(2));
     $("#precioTotal").val(total_pagar_html.toFixed(2));
     $("#fila" + index).remove();
+    cont=cont-1;
     evaluar();
 }
     
