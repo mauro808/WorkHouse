@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
    
-    public function listarVentas()
+    public function index()
     {
         $ventas = App\Venta::all();
         $clientes = App\Cliente::all();
         $usuarios = App\Usuario::all();
-        return view('ventas.listar',compact('ventas','clientes','usuarios'));
+        return view('ventas.index',compact('ventas','clientes','usuarios'));
       
     }
 
