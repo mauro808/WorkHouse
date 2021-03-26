@@ -12,8 +12,19 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class VentaController extends Controller
 {
-   
-  public function create()
+    public function index()
+    {
+        $ventas = Venta::all();
+        $clientes = Cliente::all();
+        $usuarios = Usuario::all();
+        return view('ventas.index',compact('ventas','clientes','usuarios'));
+      
+    }
+
+
+  
+  
+    public function create()
     {
         $productos = Producto::where('estado', 'Activo')->get();
         $clientes = Cliente::get();
