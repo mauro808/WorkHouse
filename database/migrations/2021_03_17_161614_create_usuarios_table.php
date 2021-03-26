@@ -23,8 +23,8 @@ class CreateUsuariosTable extends Migration
             $table->biginteger('celular');
             $table->string('direccion',30);
             $table->string('nombreUsuario',8);
-            $table->string('contrasena',20);
-            $table->string('contrasenac',20);
+            $table->string('contrasena',255);
+            $table->string('contrasenac',255);
             $table->string('Estado',15);
         });
     }

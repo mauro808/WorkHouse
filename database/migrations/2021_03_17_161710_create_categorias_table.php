@@ -12,7 +12,7 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->string('nombreCategoria',30);
-            $table->string('Descripcion',100);
+            $table->string('Descripcion',250);
             $table->string('estado',15);
         });
     }
