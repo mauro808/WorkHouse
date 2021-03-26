@@ -68,7 +68,9 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  {{$venta->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="created_at"><strong>Fecha:  {{$venta->created_at}} </strong></p>
+                    
                     
                     </div>
 

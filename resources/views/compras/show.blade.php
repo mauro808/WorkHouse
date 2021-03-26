@@ -58,7 +58,7 @@
                                     <tr>
                                         
                                         <td>{{$detalleCompra->idProducto}}</td>
-                                        <td>s/{{$detalleCompra->precio}}</td>
+                                        <td>$/{{$detalleCompra->precio}}</td>
                                         <td>{{$detalleCompra->cantidad}}</td>
                                         <td>s/{{number_format($detalleCompra->cantidad*$detalleCompra->precio,2)}}</td>
                                     </tr>
@@ -69,7 +69,8 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  {{$compra->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="created_at"><strong>Fecha:  {{$compra->created_at}} </strong></p>
                     
                     </div>
 
