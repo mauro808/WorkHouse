@@ -147,7 +147,7 @@
         title: 'Registro exitoso',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
-       
+        timer: 1500
       })
 
     }else {
@@ -157,6 +157,7 @@
       text: 'Rellene todos los campos',
       showConfirmButton: false, 
       confirmButtonColor: '#1C2833',
+      timer: 1500
     })
   }
 }

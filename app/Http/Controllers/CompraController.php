@@ -25,53 +25,6 @@ class CompraController extends Controller
         $this->middleware('can:compras.pdf')->only(['pdf']);
     } */
   
-    /* public function index()
-    {
-        $compras = Compra::get();
-        $usuarios = Usuario::get();
-        return view('compras.index',compact('compras','usuarios'));
-      
-    }
-    public function create()
-    {
-        $usuarios = Usuario::get();
-        $productos = Producto::where('estado', 'Activo')->get();
-        return view('compras.create',compact('usuarios','productos'));
-      
-    }
-     public function store(Request $request)
-    {
-        // +[ //'idUsuario'=>Auth::usuario()->id,   
-      // 'fechaCompra'=>Carbon::now('America/Bogota'),] 
-     
-       $compra = Compra::create($request->all());
-        foreach ($request->idProducto as $key=> $idProducto){
-       dd($request);
-        $results[] = array(
-        "idProducto"=>$request->idProducto[$key],
-        "cantidad"=>$request->cantidad[$key], 
-        "precio"=>$request->precio[$key]);
-       }
-      
-       $compra->detalleCompras()->createMany($results);
-       return redirect()->route('compras.index');
-       
-    } 
-    
-    public function show(Compra $compra)
-    {   
-         $subtotal = 0;
-         $detalleCompras = $compra->detalleCompras;
-         foreach ($detalleCompras as $detalleCompra){
-            $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
-         }
-        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal'));
-    }
-    
-    public function show(Compra $compra)
-    {
-        return view('compras.show', compact('compra'));
-    } */ 
 
     public function index()
     {
@@ -81,19 +34,24 @@ class CompraController extends Controller
       
     }
 
-   /* public function show($idCompra){
-        $compra = Compra::findOrFail($idCompra);
-        $usuario = Usuario::find($compra->idUsuario);
-        $producto = Producto::find($compra->idProducto);
-        return view('compras.show', compact('compra','usuario','producto'));
-    } */
 
     public function show(Compra $compra)
+<<<<<<< HEAD
     {   
          $detalleCompras = DetalleCompra::where('compra_id' , $compra->id);
          $productos=Producto::all();
          var_dump($detalleCompras, $compra->id);
         return view('compras.show', compact('detalleCompras', 'productos'));
+=======
+    {
+        
+        $subtotal = 0 ;
+        $detalleCompras = $compra->detalleCompra;
+        foreach ($detalleCompras as $detalleCompra) {
+            $subtotal += $detalleCompra->cantidad * $detalleCompra->precio;
+        }
+        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal')); 
+>>>>>>> ca94032d2d88316786f5f7c1ffed743a0694bb6d
     }
 
     public function create()
@@ -107,25 +65,6 @@ class CompraController extends Controller
    
     public function store(Request $request)
     {
-
-       /* $request->validate([
-            'idUsuario'=>'required',
-            'idProducto'=>'required',
-            'cantidad'=>'required|integer',
-            'valorProducto'=>'required|integer',
-          
-        ],
-
-        [
-            'idUsuario.required' => '*Rellena este campo',
-            'idProducto.required' => '*Rellena este campo',
-            'cantidad.required' => '*Rellena este campo',
-            'valorProducto.required' => '*Rellena este campo',
-            'cantidad.integer' => '*Ingresa sólo números',
-            'valorProducto.integer' => '*Ingresa sólo números',
-        ]
-    ); */
-
         $compra = Compra::create($request->all());
         
         foreach ($request->idProducto as $key => $idProducto) {
@@ -148,12 +87,12 @@ class CompraController extends Controller
     public function pdfDetalle(Compra $compra)
     {
         $subtotal = 0 ;
-        $detalleCompras = $compra->detalleCompras;
+        $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {
             $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
         }
-        $pdf = PDF::loadView('detallecompra.pdf', compact('compra', 'subtotal', 'detalleCompras'))->setOptions(['defaultFont' => 'sans-serif']); 
-        return $pdf->stream('Compronbante_Compra'.$compra->id.'.pdf');
+        $pdf = PDF::loadView('compras.pdfDetalle', compact('compra', 'subtotal', 'detalleCompras'))->setOptions(['defaultFont' => 'sans-serif']); 
+        return $pdf->stream('Comprobante_Compra'.$compra->id.'.pdf');
     }
 
     public function change_status (Compra $compra)

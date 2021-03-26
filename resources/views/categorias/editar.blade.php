@@ -80,7 +80,7 @@
         Swal.fire({
           type: 'error',
           icon: 'error',
-          text: 'Rellene todos los campos',
+          text: 'Verifica todos los campos',
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
         })

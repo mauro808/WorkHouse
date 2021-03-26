@@ -38,6 +38,8 @@ class ProductoController extends Controller
     [
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
+            'nombreProducto.unique' => '*Producto ya existe',
+            'nombreProducto.regex' => '*Ingresa sólo letras',
             'existencias.required' => '*Rellena este campo',
             'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
@@ -88,6 +90,7 @@ class ProductoController extends Controller
     [
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
+            'nombreProducto.regex' => '*Ingresa sólo letras',
             'existencias.required' => '*Rellena este campo',
             'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
