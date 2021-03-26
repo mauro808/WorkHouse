@@ -63,4 +63,4 @@ Route::resource('ventas', 'VentaController')->names('ventas');
 Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('ventas.habilitacion');
 Route::get('/inhabilitarVenta/{id}', 'VentaController@inhabilitar')->name('ventas.inhabilitacion');
 Route::get('/pdfVentas', 'VentaController@pdfVentas')->name('PdfVentas');
-Route::get('/pdfDetalleV/{venta}', 'VentaController@pdfDetalle')->name('PdfDetalleV');
+Route::get('/pdfDetalleV/{venta}', 'VentaController@pdfDetalleV')->name('PdfDetalleV');

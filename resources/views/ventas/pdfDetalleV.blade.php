@@ -117,7 +117,7 @@
                 <thead>
                     <tr id="fv">
                         <th>Usuario</th>
-                        <th>Fecha Compra</th>
+                        <th>Fecha Venta</th>
                     </tr>
                 </thead>
                 <tbody>
