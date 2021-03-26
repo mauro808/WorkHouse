@@ -166,7 +166,7 @@
                 
                     <tr>
                         <th colspan="3">
-                            <p align="right">TOTAL VENTA:</p>
+                            <p align="right">TOTAL Venta:</p>
                         </th>
                         <td>
                             <p align="right">s/ {{number_format($venta->precioTotal,2)}}<p>
