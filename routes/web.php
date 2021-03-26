@@ -55,7 +55,7 @@ Route::get('/pdfProductos', 'ProductoController@pdfProductos')->name('PdfProduct
 Route::resource('compras', 'CompraController')->names('compras');
 Route::get('change_status/compras/{compra}', 'CompraController@change_status')->name('change.status.compras');
 Route::get('/pdfCompras', 'CompraController@pdfCompras')->name('PdfCompras');
-Route::get('compras/pdf/{compra}', 'CompraController@pdfDetalle')->name('compras.pdf');
+Route::get('/pdfDetalle/{compra}', 'CompraController@pdfDetalle')->name('PdfDetalle');
 
 
 // Rutas ventas

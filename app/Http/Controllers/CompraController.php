@@ -37,6 +37,7 @@ class CompraController extends Controller
 
     public function show(Compra $compra)
     {
+        
         $subtotal = 0 ;
         $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {
@@ -78,12 +79,12 @@ class CompraController extends Controller
     public function pdfDetalle(Compra $compra)
     {
         $subtotal = 0 ;
-        $detalleCompras = $compra->detalleCompras;
+        $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {
             $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
         }
-        $pdf = PDF::loadView('detallecompra.pdf', compact('compra', 'subtotal', 'detalleCompras'))->setOptions(['defaultFont' => 'sans-serif']); 
-        return $pdf->stream('Compronbante_Compra'.$compra->id.'.pdf');
+        $pdf = PDF::loadView('compras.pdfDetalle', compact('compra', 'subtotal', 'detalleCompras'))->setOptions(['defaultFont' => 'sans-serif']); 
+        return $pdf->stream('Comprobante_Compra'.$compra->id.'.pdf');
     }
 
     public function change_status (Compra $compra)

@@ -14,9 +14,12 @@
                        
                         <div class="col-md-4 text-center">
                             <h4 class="form-control-label" for="num_compra"><strong>Compra N° {{$compra->id}}</strong></h4>
-                        
+                       
                         </div>
-                  
+                        <div align="right">
+                        <a href="{{route('PdfDetalle', $compra) }}" target="_blank" class="btn btn-sm active btn-dark" >
+                            <i class="bi bi-printer"></i> PDF</a>     
+                        </div>
                     </div>
                     <br /><br />
                     <div class="form-group row ">
@@ -53,6 +56,7 @@
                                 <tbody>
                                     @foreach($detalleCompras as $detalleCompra)
                                     <tr>
+                                        
                                         <td>{{$detalleCompra->idProducto}}</td>
                                         <td>s/{{$detalleCompra->precio}}</td>
                                         <td>{{$detalleCompra->cantidad}}</td>
@@ -64,7 +68,10 @@
                         </div>
                     </div>
                     
-
+                    <div class="col-md-4 text-center">
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: </strong></p>
+                    
+                    </div>
 
                 </div>
                 <div class="card-footer text-muted">
