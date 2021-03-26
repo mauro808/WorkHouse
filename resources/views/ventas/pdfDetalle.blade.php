@@ -1,3 +1,4 @@
+
 <!DOCTYPE>
 <html>
 <meta charset="UTF-8">
@@ -116,14 +117,12 @@
                 <thead>
                     <tr id="fv">
                         <th>Usuario</th>
-                        <th>Cliente</th>
                         <th>Fecha Compra</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{$venta->idUsuario}}</td>
-                        <td>{{$venta->idCliente}}</td>
                         <td>{{$venta->created_at}}</td>
                     </tr>
                 </tbody>
@@ -138,7 +137,7 @@
                     <tr id="fa">
                         <th>Producto</th>
                         <th>Cantidad</th>
-                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
                         <th>Subtotal</th>
                     </tr>
                 </thead>
@@ -167,7 +166,7 @@
                 
                     <tr>
                         <th colspan="3">
-                            <p align="right">TOTAL COMPRA:</p>
+                            <p align="right">TOTAL VENTA:</p>
                         </th>
                         <td>
                             <p align="right">s/ {{number_format($venta->precioTotal,2)}}<p>

@@ -28,7 +28,7 @@ Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario'
 Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
 Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
 Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
-Route::post('save/usuario', ['as' => 'save-usuario', 'uses' => 'UsuarioController@saveUsuario']);
+
 // Rutas categorias
 Route::get('/categorias', 'CategoriaController@listarCategorias')->name('categoria.listar');
 Route::get('/detalleCategoria/{id}', 'CategoriaController@detalleCategoria')->name('categorias.detalle');
@@ -59,10 +59,8 @@ Route::get('/pdfDetalle/{compra}', 'CompraController@pdfDetalle')->name('PdfDeta
 
 
 // Rutas ventas
-Route::resource('venta', 'VentaController')->names('venta');
-Route::get('/venta', 'PagesController@index')->name('venta.index');
-Route::get('/agregarVenta', 'VentaController@create')->name('agregarVenta');
-Route::post('/agregarVenta', 'VentaController@store')->name('agregarVenta');
-Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('venta.habilitacion');
-Route::get('/inhabilitarVenta/{id}', 'VentaController@inhabilitar')->name('venta.inhabilitacion');
+Route::resource('ventas', 'VentaController')->names('ventas');
+Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('ventas.habilitacion');
+Route::get('/inhabilitarVenta/{id}', 'VentaController@inhabilitar')->name('ventas.inhabilitacion');
 Route::get('/pdfVentas', 'VentaController@pdfVentas')->name('PdfVentas');
+Route::get('/pdfDetalleV/{venta}', 'VentaController@pdfDetalle')->name('PdfDetalleV');

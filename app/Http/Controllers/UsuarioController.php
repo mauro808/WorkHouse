@@ -21,10 +21,8 @@ class UsuarioController extends Controller
       
     }
 
-    public function agregarUsuario(Request $request)
+    public function agregarUsuario()
     {
-       
-
         $rols = App\Rol::all();
         return view('usuarios.create', compact('rols'));
     }

@@ -21,7 +21,7 @@
     @endforeach
 @endif
 
-{!! Form::open(['route'=>'agregarVenta', 'method'=>'POST']) !!}
+{!! Form::open(['route'=>'ventas.store', 'method'=>'POST']) !!}
     @include('ventas._form')
 
 </div>
