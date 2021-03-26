@@ -7,10 +7,12 @@ use App;
 use App\Usuario;
 use App\Rol;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
  
+   
     public function listarUsuario()
     {
         $usuarios = Usuario::all();
@@ -19,14 +21,18 @@ class UsuarioController extends Controller
       
     }
 
-    public function agregarUsuario()
+    public function agregarUsuario(Request $request)
     {
+       
+
         $rols = App\Rol::all();
         return view('usuarios.create', compact('rols'));
     }
 
     public function store(Request $request)
     {
+
+    
         $request->validate([
             'idRol'=>'required',
             'nombre'=>'required|regex:/^[\pL\s\-]+$/u|max:50',
@@ -65,6 +71,8 @@ class UsuarioController extends Controller
 
         );
 
+    
+
         $usuarioNuevo = new App\Usuario;
         $usuarioNuevo->idRol = $request->idRol;
         $usuarioNuevo->nombre = $request->nombre;
@@ -75,8 +83,8 @@ class UsuarioController extends Controller
         $usuarioNuevo->celular = $request->celular;
         $usuarioNuevo->direccion = $request->direccion;
         $usuarioNuevo->nombreUsuario = $request->nombreUsuario;
-        $usuarioNuevo->contrasena = $request->contrasena;
-        $usuarioNuevo->contrasenac = $request->contrasenac;
+        $usuarioNuevo->contrasena = Hash::make($request->contrasena);
+        $usuarioNuevo->contrasenac = Hash::make($request->contrasenac);
         $usuarioNuevo->estado = $request->estado;
 
         $usuarioNuevo->save();
