@@ -45,11 +45,6 @@
   </br>
     <div class="row">
     <div class="col-6">
-    <label for="existencias">Existencias:</label>
-    {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $producto->existencias }}" id="existencias" name="existencias" placeholder="Digite existencias"/>
-      </div>
-    <div class="col-6">
      <label for="medida">Und. Medida:</label>
      {!! $errors->first('medida','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="medida" class="form-control" required>
@@ -68,14 +63,21 @@
         <option @if ($producto->medida=="Sobre") selected @endif>Sobre</option>
       </select>
     </div>
+    <div class="col-6">
+
+      <label for="precio">Precio:</label>
+      {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+      <input type="number"  min="1" pattern="^[0-9]+" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
+
+        </div>
 </div>
-</br>
-        <div class="row">
-   
+
+
+         
    <div class="col-12">
-    <label for="precio">Precio:</label>
-    {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
+    <label for="existencias"></label>
+    {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <input type="hidden" class="form-control" value="{{ $producto->existencias }}" id="existencias" name="existencias" placeholder="Digite existencias"/>
       </div>
       </div> 
 </br>
@@ -95,8 +97,7 @@
 <div class="col-lg-2"></div>
 </div>
 
-@endsection
-section('scripts')
+
 <script>
   $(document).ready(function() {
       $("#registrar").click(function() {

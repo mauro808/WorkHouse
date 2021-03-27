@@ -86,7 +86,7 @@
     <div class="col-12">
     <label for="precio">Precio:</label>
     {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
+    <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
     
     </div>
     </div>

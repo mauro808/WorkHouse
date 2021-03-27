@@ -163,7 +163,7 @@ function eliminar(index){
         }
     }
     
-    
+   
     </script>
     
 @endsection

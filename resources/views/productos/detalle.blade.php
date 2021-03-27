@@ -28,10 +28,7 @@
             <td><strong>Unidad de Medida:</strong></td>
             <td>{{$producto->medida}}</td>
         </tr>
-        <tr>
-            <td><strong>Iva:</strong></td>
-            <td>{{$producto->porcentajeIva}}</td>
-        </tr>
+    
         <tr>
             <td><strong>Precio Unitario:</strong></td>
             <td>{{$producto->precio	}}</td>

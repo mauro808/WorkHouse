@@ -32,10 +32,11 @@
     <script src = "https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer ></script>
     <script src = "https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js" defer ></script> 
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
 </head>
-<body style="background-color: #FFD54F  ">
+<body style="background-image: url('https://www.procordoba.org/images_db/imgsNews/6137_.jpg');width: 100%; Background-color: transparent; background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#1D1B1B  ;">
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">

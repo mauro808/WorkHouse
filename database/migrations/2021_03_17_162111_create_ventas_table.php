@@ -12,11 +12,11 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('idCliente');
             $table->foreign('idCliente')->references('id')->on('clientes');
-            $table->timestamps('created_at');
+            $table->timestamps();
             $table->decimal('precioTotal',11,2);
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('usuarios');
-            $table->timestamps();
+            $table->enum('Estado',['Activo','Inactivo'])->default('Activo');
         });
     }
 

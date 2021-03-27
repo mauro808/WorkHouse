@@ -11,7 +11,7 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->timestamps('created_at');
+            $table->timestamps();
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('usuarios');
             $table->decimal('precioTotal',11,2);

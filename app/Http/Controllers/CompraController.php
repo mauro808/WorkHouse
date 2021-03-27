@@ -93,7 +93,7 @@ class CompraController extends Controller
             $compra->update(['estado'=>'Inactivo']);
             return redirect()->back();
         } else {
-            $compra->update(['estado'=>'Activo']);
+            $compra->update(['estado'=>'Inactivo']);
             return redirect()->back();
         } 
     }

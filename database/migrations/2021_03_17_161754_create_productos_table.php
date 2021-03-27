@@ -14,7 +14,7 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('idCategoria'); 
             $table->foreign('idCategoria')->references('id')->on('categorias');
-            $table->string('nombreProducto',30);
+            $table->string('nombreProducto',50);
             $table->integer('existencias');
             $table->string('medida',20);
             $table->decimal('precio',11,2);

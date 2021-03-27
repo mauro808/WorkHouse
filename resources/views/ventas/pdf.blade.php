@@ -95,7 +95,7 @@ th {
                         <td>{{$cliente->nombreCliente}}</td>
                             @endif 
                             @endforeach 
-                        <td>{{ $venta->created_at }}</td>
+                        <td>{{ $venta->created_at}}</td>
                         <td>{{ $venta->precioTotal }}</td>
                         <td>{{ $venta->Estado }}</td>
                   

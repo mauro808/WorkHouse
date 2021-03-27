@@ -1,11 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="card">
+    <div class="card-body" style="background-color:#E5E8E8;">
 <div class="row w-30" style="padding-left:60px; "> 
-    <div class="col-lg-10 p-5 m-2" align="left" >
-       <h2 class="text-lucida"><strong>Compras</strong></h2>
+
+    <div class="col-lg-10 p-2 m-2" align="left" >
+    
+   
+       <h1 class="text-lucida"><strong>Compras</strong></h1>
+  
     </div>
 </div class="">
+
    <div align="right">
         <a class="btn btn-dark btn-lg active"   href="{{ route('compras.create') }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
@@ -14,6 +21,7 @@
 
 
     </div>
+  
     <table class="table table-striped table-bordered w-80" id="example" align="center">
     <thead>
         <tr>
@@ -48,17 +56,17 @@
 
 @csrf 
 @if ($compra->estado=="Activo")
-<a class="btn btn-danger" href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+<a class="btn btn-danger" id="anular" onclick="anular()"href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
 <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
 </svg> 
-Inhabilitar</a>
+Anular</a>
 @endif
 @if ($compra->estado=="Inactivo")
-<a type="submit" class="btn btn-success" href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+<a type="submit" id="anulada" onclick="anulada()" class="btn btn-warning" href="{{route('change.status.compras', $compra)}}" style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
 <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-</svg> Habilitar</a>
+</svg> Anulada </a>
 @endif
                         @csrf
                             
@@ -69,6 +77,7 @@ Inhabilitar</a>
             @endforeach
         </tbody>
     </table>
+
  
 
    <div align="right">
@@ -77,6 +86,9 @@ Inhabilitar</a>
   <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
   <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
 </svg> Descargar PDF</a>
+
+</div>
+</div>  
     </div>
 
     </div>
@@ -84,5 +96,65 @@ Inhabilitar</a>
     </div>
 
 </div>
+</div>
+
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        $("#anular").click(function() {
+            anular();
+        });
+    });
+
+    function anular() {
+
+        estado = $("#estado").val();
+
+        if(estado == Activo) {
+       
+            Swal.fire({
+                title: 'Anular Compra',
+                text: "Esta acción es irreversible",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Anular'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Compra Anulada',
+                    '',
+                    'success'
+                  )
+                }
+              })
+    }
+}
+
+
+$(document).ready(function() {
+    $("#anulada").click(function() {
+        anulada();
+    });
+});
+
+function anulada(){
+    
+    estado = $("#estado").val();
+
+    if(estado == Inactivo) {
+   
+        Swal.fire({
+            icon: 'error',
+            title: 'Compra Anulada',
+            text: 'No es posible reactivar una compra anulada',
+           
+          })
+}
+
+</script>
 
 @endsection

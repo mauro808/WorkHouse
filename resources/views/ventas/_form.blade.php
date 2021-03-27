@@ -41,6 +41,7 @@
 <div class="row">
 <div class="col-12">
     <label for="valorProducto">Precio:</label>
+    
     <input type="number" class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
     <input type="hidden" class="form-control" id="Estado" name="Estado" value="Activo"/>
 </div>

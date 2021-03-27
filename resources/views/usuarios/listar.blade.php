@@ -1,9 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+
+<div class="card">
+    <div class="card-body" style="background-color:#E5E8E8;">
 <div class="row w-30" style="padding-left:60px; "> 
-    <div class="col-lg-10 p-5 m-2" align="left" >
-        <h2 class="text-lucida"><strong>Usuarios</strong></h2>
+    <div class="col-lg-10 p-2 m-2" align="left" >
+        <h1 class="text-lucida"><strong>Usuarios</strong></h1>
     </div>
 
 </div class="">
@@ -95,7 +98,9 @@ Activar</a>
     </div>
 
     </div>
+</div>
 
+</div>
 
 
 @endsection
