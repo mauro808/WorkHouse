@@ -36,6 +36,7 @@
         font-size: 20px;
       
     }
+      
     section {
         clear: left;
     }
@@ -97,8 +98,11 @@
         </div>
         <div id="fact">
           
-                <p><strong>Id Venta N° {{$venta->id}}</strong></p>
+                <p><strong>Id Venta N° {{$venta->id}} </strong></p>
+                <p style="font-size: 10px;"><strong>Estado:  {{$venta->Estado}} </strong></p>
+               
         </div>
+    
     </header>
     <br>
 

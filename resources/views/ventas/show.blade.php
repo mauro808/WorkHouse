@@ -70,7 +70,7 @@
                     <div class="col-md-4 text-center">
                         <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  {{$venta->idUsuario}} </strong></p>
                         <p class="form-control-label" for="created_at"><strong>Fecha:  {{$venta->created_at}} </strong></p>
-                    
+                        <p class="form-control-label" for="Estado"><strong>Estado:  {{$venta->Estado}} </strong></p>
                     
                     </div>
 

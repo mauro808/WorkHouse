@@ -145,7 +145,7 @@ function anulada(){
     
     estado = $("#estado").val();
 
-    if(estado == Inactivo) {
+    if(estado == Anulada) {
    
         Swal.fire({
             icon: 'error',
