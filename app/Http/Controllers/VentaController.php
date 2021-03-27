@@ -57,7 +57,7 @@ class VentaController extends Controller
     public function habilitar(Request $request, $id)
     {
            $venta= Venta::findOrFail($id); //buscar producto por id
-           $venta->Estado="Activo";
+           $venta->Estado="Inactivo";
            $venta->update();
            
            return redirect('/ventas')->with('Mensaje', 'Usuario actualizado');
