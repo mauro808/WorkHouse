@@ -6,9 +6,11 @@
         {{ session('success') }}
     </div>
 @endif
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-        <h2 class="text-lucida"><strong>Editar Categoría</strong></h2>
+        <h1 class="text-lucida"><strong>Editar Categoría</strong></h1>
     </div>
     <div class="col-lg-12">
        
@@ -24,11 +26,11 @@
 
 <div class="form-group">
     
-    <label for="nombreCategoria">Nombre:</label>
+    <label for="nombreCategoria"><strong>Nombre:</strong></label>
     {!! $errors->first('nombreCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" value="{{ $categoria->nombreCategoria }}" />
     </br>
-    <label for="Descripcion">Descripcion:</label>
+    <label for="Descripcion"><strong>Descripción:</strong></label>
     {!! $errors->first('Descripcion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="{{ $categoria->Descripcion }}" />
    
@@ -46,7 +48,8 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
-
+</div>
+</div>
 
 
 <script>

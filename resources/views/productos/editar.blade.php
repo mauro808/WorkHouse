@@ -4,10 +4,11 @@
 @if (session('mensaje'))
 <div class="alert alert-success">{{ session('mensaje') }} </div>
 @endif
-<div class="row"> 
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-         <h2 class="text-lucida"><strong>Editar Producto</strong></h2>
+         <h1 class="text-lucida"><strong>Editar Producto</strong></h1>
     </div>
 </div>
  </br>
@@ -21,7 +22,7 @@
 
 <div class="row">
 <div class="col-6">
-<label for="txtidCategoria">Categoría:</label>
+<label for="txtidCategoria"><strong>Categoría:</strong></label>
 {!! $errors->first('idCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
    <select name="idCategoria" class="form-control" required>
    
@@ -37,7 +38,7 @@
       </div>
       
    <div class="col-6">
-    <label for="nombreProducto">Nombre:</label>
+    <label for="nombreProducto"><strong>Nombre:</strong></label>
     {!! $errors->first('nombreProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $producto->nombreProducto }}" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" required/>
     </div>
@@ -45,7 +46,7 @@
   </br>
     <div class="row">
     <div class="col-6">
-     <label for="medida">Und. Medida:</label>
+     <label for="medida"><strong>Und. Medida:</strong></label>
      {!! $errors->first('medida','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="medida" class="form-control" required>
         <option @if ($producto->medida=="Metro") selected @endif>Metro</option>
@@ -65,7 +66,7 @@
     </div>
     <div class="col-6">
 
-      <label for="precio">Precio:</label>
+      <label for="precio"><strong>Precio:</strong></label>
       {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
       <input type="number"  min="1" pattern="^[0-9]+" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
 
@@ -95,6 +96,8 @@
 </form>
 </div>
 <div class="col-lg-2"></div>
+</div>
+</div>
 </div>
 
 

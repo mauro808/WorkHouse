@@ -7,10 +7,11 @@
     </div>
 @endif
 
-<div class="row"> 
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-        <h2 class="text-lucida"><strong>Editar Cliente</strong></h2>
+        <h1 class="text-lucida"><strong>Editar Cliente</strong></h1>
     </div>
       
     </div>
@@ -33,7 +34,7 @@
 
 <div class="form-group">
     <div class="col-12">
-<label for="txtidUsuario">Usuario que actualiza:</label>
+<label for="txtidUsuario"><strong>Usuario que actualiza:</strong></label>
 {!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
    <select name="idUsuario" class="form-control" >
         @foreach($usuarios as $usuario)
@@ -49,12 +50,12 @@
     </br>
     <div class="row">
 <div class="col-6">
-    <label for="nombreCliente">Nombres y Apellidos:</label>
+    <label for="nombreCliente"><strong>Nombres y Apellidos:</strong></label>
     {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" value="{{ $cliente->nombreCliente }}" />
     </div>
       <div class="col-6">
-    <label for="tipoIdentificacion">Tipo Documento:</label>
+    <label for="tipoIdentificacion"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoIdentificacion" class="form-control" >
     <option @if ($cliente->tipoDocumento=="Tarjeta Identidad") selected @endif>Tarjeta Identidad</option>
@@ -69,14 +70,14 @@
   </br>
     <div class="row">
  <div class="col-6">
-    <label for="numeroIdentificacion">Identificación:</label>
+    <label for="numeroIdentificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" />
         </div>
     
         
 <div class="col-6">
-    <label for="telefonoFijo">Teléfono fijo:</label>
+    <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
     </div>
@@ -84,7 +85,7 @@
   </br>
      <div class="row">
  <div class="col-6">
-    <label for="celular">Celular:</label>
+    <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
     
@@ -92,14 +93,14 @@
   
    
  <div class="col-6">
-    <label for="direccion">Dirección:</label>
+    <label for="direccion"><strong>Dirección:</strong></label>
     {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="direccion'" name="direccion" value="{{ $cliente->direccion }}" />
 </div>
   </div>
 </br>
    <div class="col-12">
-    <label for="correo">Coreo Electrónico:</label>
+    <label for="correo"><strong>Coreo Electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" />
 </div>
@@ -118,6 +119,8 @@
 </form>
 </div>
 <div class="col-lg-2"></div>
+</div>
+</div>
 </div>
 
 <script>

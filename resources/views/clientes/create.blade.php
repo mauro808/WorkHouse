@@ -6,9 +6,11 @@
         {{ session('success') }}
     </div>
 @endif
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-       <h2 class="text-lucida"><strong>Registrar Cliente</strong></h2>
+       <h1 class="text-lucida"><strong>Registrar Cliente</strong></h1>
     </div>
 
 </div>  
@@ -30,10 +32,10 @@
 
 <div class="form-group" >
   <div class="col-12">
-      <label for="txtidUsuario">Usuario Creador:</label>
+      <label for="txtidUsuario"><strong>Usuario Creador:</strong></label>
       {!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
        <select name="idUsuario" id="idUsuario" class="form-control"  value="{{ old('idUsuario')}}" />
-       <option value="">Seleccione el Usuario Creador</option>
+       <option value=""><strong>Seleccione el Usuario Creador</strong></option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombreUsuario}}</option>
         @endforeach
@@ -44,13 +46,13 @@
   </br>
    <div class="row">
      <div class="col-6">
-    <label for="nombreCliente">Nombres y Apellidos:</label>
+    <label for="nombreCliente"><strong>Nombres y Apellidos:</strong></label>
     {!! $errors->first('nombreCliente','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Digite el Nombre" value="{{ old('nombreCliente')}}"/>
       
      </div>
     <div class="col-6">
-    <label for="tipoIdentificacion">Tipo Documento:</label>
+    <label for="tipoIdentificacion"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control" value="{{ old('tipoIdentificacion')}}">
       <option value="">Seleccione el Tipo de Documento</option>
@@ -67,13 +69,13 @@
       </br>
        <div class="row">
      <div class="col-6">
-    <label for="numeroIdentificacion">Identificación:</label>
+    <label for="numeroIdentificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" value="{{ old('numeroIdentificacion')}}" />
     
     </div>
     <div class="col-6">
-    <label for="telefonoFijo">Teléfono Fijo:</label>
+    <label for="telefonoFijo"><strong>Teléfono Fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
     <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
     
@@ -82,13 +84,13 @@
       </br>
         <div class="row">
      <div class="col-6">
-    <label for="celular">Celular:</label>
+    <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
     
        </div>
     <div class="col-6">
-    <label for="direccion">Dirección:</label>
+    <label for="direccion"><strong>Dirección:</strong></label>
     {!! $errors->first('direccion','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Direccion"  value="{{ old('direccion')}}" />
    
@@ -96,7 +98,7 @@
 </div>
 </br>
 <div class="col-12">
-    <label for="correo">Correo Electrónico:</label>
+    <label for="correo"><strong>Correo Electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
     <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{ old('correo')}}" />
    
@@ -115,6 +117,8 @@
 </form>
 </div>
 <div class="col-lg-2"></div>
+</div>
+</div>
 </div>
 
 

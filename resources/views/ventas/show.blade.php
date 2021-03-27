@@ -7,8 +7,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
+            <div class="card" style="background-color:#E5E8E8;">
+                <div class="card-body" >
                    
                     <div class="form-group row">
                        
