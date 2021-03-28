@@ -49,8 +49,8 @@ class CompraController extends Controller
     public function create()
     {
         $compras = Compra::where('estado', 'Activo')->get();
-        $usuarios = Usuario::get();
-        $productos = Producto::get();
+        $usuarios = Usuario::where('estado', 'Activo')->get();
+        $productos = Producto::where('estado', 'Activo')->get();
         return view('compras.create', compact('productos','usuarios'));
     }
 

@@ -157,5 +157,16 @@ function compraRegistrada(){
 
 </script>
 
-        
+<script>
+  
+    $("#idProducto").change(mostrarValores);
+    
+    funtion mostrarValores(){
+        datosProducto = document.getElementById('idProducto').value.split('->');
+          $("#existencias").val(datosProducto[1]);
+       
+           
+    }
+</script>
+
 @endsection

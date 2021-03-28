@@ -66,9 +66,9 @@
     </div>
     <div class="col-6">
 
-      <label for="precio"><strong>Precio:</strong></label>
-      {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-      <input type="number"  min="1" pattern="^[0-9]+" class="form-control" value="{{ $producto->precio }}" id="precio'" name="precio" placeholder="Digite el Precio"/>
+      <label for="valorProducto"><strong>Precio:</strong></label>
+      {!! $errors->first('valorProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+      <input type="number"  min="1" pattern="^[0-9]+" class="form-control" value="{{ $producto->valorProducto }}" id="valorProducto'" name="valorProducto" placeholder="Digite el Precio"/>
 
         </div>
 </div>
@@ -116,9 +116,9 @@
       nombreProducto  = $("#nombreProducto").val();
       existencias  = $("#existencias").val();
       medida = $("#medida  option:selected").text();
-      precio  = $("#precio").val();
+      valorProducto  = $("#valorProducto").val();
 
-      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && precio != "" ){
+      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" ){
 
         Swal.fire({
           position: 'top-center',

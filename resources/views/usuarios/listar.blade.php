@@ -74,6 +74,8 @@ Inactivar</a>
 </svg>
 Activar</a>
                         @endif
+           
+            
                         @csrf
                             
                         </form>

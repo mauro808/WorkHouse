@@ -20,14 +20,12 @@ class VentaController extends Controller
       
     }
 
-
-  
-  
     public function create()
-    {
-        $productos = Producto::where('estado', 'Activo')->get();
+    { 
+        $ventas = Venta::where('Estado', 'Activo')->get();
+        $productos = Producto::where('estado', 'Activo')->where('existencias','>','1')->get();
         $clientes = Cliente::get();
-        $usuarios = Usuario::get();
+        $usuarios = Usuario::where('estado', 'Activo')->get();
         return view('ventas.create', compact('productos','clientes','usuarios'));
     }
 

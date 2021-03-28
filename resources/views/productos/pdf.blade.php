@@ -94,7 +94,7 @@ th {
                         <td>{{$producto->nombreProducto}}</td>
                          <td>{{$producto->existencias}}</td>
                          <td>{{$producto->medida}}</td>
-                      <td>{{$producto->precio}}</td>
+                      <td>{{$producto->valorProducto}}</td>
                     <td>{{$producto->estado}}</td>
                     </tr>
                 @endforeach

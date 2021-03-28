@@ -79,7 +79,7 @@
 <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
+    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
     </div>
     </div>
   </br>
@@ -87,7 +87,7 @@
  <div class="col-6">
     <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
     
          </div>
   

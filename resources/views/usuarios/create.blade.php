@@ -20,9 +20,9 @@
 <div class="col-lg-12">
 
   @if ($errors->any())
-    @foreach ($errors->all as $error) 
-    <p>{{ $error }}</p>
-    @endforeach
+  @foreach ($errors->all as $error) 
+  <p>{{ $error }}</p>
+  @endforeach
 @endif
 
 <form action="{{ route('agregarUsuario') }}" method="POST" class="w-60 p-3 mr-3 text-center">
@@ -51,10 +51,10 @@
   </br>
     <div class="row">
     <div class="col-6">
-    <label for="txtTipoDocumento"><strong>Tipo Documento:</strong></label>
-    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="tipoDocumento" id="tipoDocumento" class="form-control" value="{{old('tipoDocumento')}}" />
-      <option>Seleccione Tipo Documento</option>
+    <label for="tipoDocumento"><strong>Tipo Documento:</strong></label>
+    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <select name="tipoDocumento" id="tipoDocumento" class="form-control" value="{{old('tipoDocumento')}}" >
+      <option value="">Seleccione el Tipo de Documento</option>
         <option>Cédula Ciudadanía</option>
         <option>Cédula Extranjería</option>
         <option>Permiso Permanencia</option>
@@ -110,19 +110,26 @@
     </div>
   </br>
        <div class="row">
-    <div class="col-6">
+    <div  class= "col-6">
     <label for="contrasena"><strong>Contraseña:</strong></label>
     {!! $errors->first('contrasena','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <div class="input-group ">
     <input type="password" class="form-control" id="contrasena'" name="contrasena"  minlength="8" placeholder="Digite Contraseña (Mínimo 8 Caracteres)"  />
-    
+    <div class="input-group-append">
+      <button  class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="show"></i> </button>
     </div>
-    <div class="col-6">
+    </div>
+  </div>
+  <div  class= "col-6">
     <label for="contrasenac"><strong>Confirme Contraseña:</strong></label>
     {!! $errors->first('contrasenac','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <div class="input-group">
     <input type="password" class="form-control" id="contrasenac'" name="contrasenac" minlength="8" placeholder="Confirme Contraseña (Mínimo 8 Caracteres)"  />
-    
-</div>
-</div>
+    <div class="input-group-append">
+      <button class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="showc"></i></button>
+    </div>    
+  </div>
+    </div>
 </div>
 </br>
 <button type="submit" class="btn btn-dark btn-lg " style="margin: 20px" id="registrar" >
@@ -143,7 +150,9 @@
 </div>
 </div>
 @endsection
+
 @section('scripts')
+
 <script>
   $(document).ready(function() {
       $("#registrar").click(function() {
@@ -167,7 +176,9 @@
       contrasena  = $("#contrasena").val();
       contrasenac  = $("#contrasenac").val();
    
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != "" && contrasena != "" && contrasenac != "" )
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" 
+      && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != "" && contrasena != "" 
+      && contrasenac != "" )
       {
         Swal.fire({
           position: 'top-center',
@@ -190,7 +201,31 @@
       });
   }
 }
-
 </script>
-
+<script>
+  $(document).ready(function(){
+    $('#show').mousedown(function(){
+      $('#contrasena').removeAttr('type');
+      $('#show').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
+    });
+    
+    $('#show').mouseup(function(){
+      $('#contrasena').atrr('type','password');
+      $('#show').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#showc').mousedown(function(){
+      $('#contrasenac').removeAttr('type');
+      $('#showc').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
+    });
+    
+    $('#showc').mouseup(function(){
+      $('#contrasenac').atrr('type','password');
+      $('#showc').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
+    });
+  });
+</script>
 @endsection

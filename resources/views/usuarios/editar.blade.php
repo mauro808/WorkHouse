@@ -67,12 +67,12 @@
    <div class="col-6">
     <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular" />
    </div>
      <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" />
+    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" />
     </div>
     </div>
   </br>

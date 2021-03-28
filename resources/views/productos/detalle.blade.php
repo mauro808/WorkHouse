@@ -31,7 +31,7 @@
     
         <tr>
             <td><strong>Precio Unitario:</strong></td>
-            <td>{{$producto->precio	}}</td>
+            <td>{{$producto->valorProducto}}</td>
         </tr>
 </table>
 </br>

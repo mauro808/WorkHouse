@@ -4,7 +4,7 @@
 <div class="col-4">
 <label for="idCliente"><strong>Cliente:</strong></label>
 <select name="idCliente" class="form-control" required >
-        <option selected>Seleccione el Cliente</option>
+        <option selected value="">Seleccione el Cliente</option>
          @foreach($clientes as $cliente)
         <option value="{{$cliente->id}}">{{$cliente->nombreCliente}}</option>
         @endforeach
@@ -13,7 +13,7 @@
 <div class="col-4">
 <label for="idUsuario"><strong>Usuario:</strong></label>
 <select name="idUsuario" class="form-control"  >
-        <option selected>Seleccione</option>
+        <option selected value="">Seleccione</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
         @endforeach
@@ -22,7 +22,7 @@
 <div class="col-4">
 <label for="idProducto"><strong>Producto:</strong></label>
 <select name="idProducto" id="idProducto" class="form-control" required>
-        <option selected>Seleccione</option>
+        <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
         <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>
         @endforeach

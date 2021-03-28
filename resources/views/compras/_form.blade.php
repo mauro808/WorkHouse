@@ -4,7 +4,7 @@
 <div class="col-4">
 <label for="idUsuario"><strong>Usuario:</strong></label>
 <select name="idUsuario" class="form-control" id="idUsuario" required>
-        <option selected>Seleccione</option>
+        <option selected value="">Seleccione</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
         @endforeach
@@ -13,11 +13,12 @@
 <div class="col-4" >
 <label for="idProducto"><strong>Producto:</strong></label>
 <select name="idProducto" id="idProducto" class="form-control" required>
-        <option selected>Seleccione</option>
+        <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
-        <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>
+        <option value="{{$producto->id}}_{{$producto->existencias}}">{{$producto->nombreProducto}}</option>    
         @endforeach
 </select>
+
 </div>
     <div class="col-4">
     <label for="cantidad"><strong>Cantidad:</strong></label>
@@ -28,9 +29,14 @@
     <input type="number" class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
     <input type="hidden" class="form-control" id="estado" name="estado" value="Activo"/>
 </div>
+
+<div class="col-4" >
+    <label for="existencias"><strong>Stock Actual:</strong></label>
+    <input type="number" disabled id="existencias" name="existencias" class="form-control" />
+</div>
 </div>
 
-
+</br>
 <div class="form-group">
     <button type="button" id="agregar" class="btn btn-outline-dark btn-lg float-right">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -78,5 +84,15 @@
 </div>
 </div>
 
-
+<script>
+  
+    $("#idProducto").change(mostrarValores);
+    
+    funtion mostrarValores(){
+        datosProducto = document.getElementById('idProducto').value.split('->');
+          $("#existencias").val(datosProducto[1]);
+       
+           
+    }
+</script>
 

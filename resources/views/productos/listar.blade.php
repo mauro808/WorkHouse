@@ -38,7 +38,7 @@
                     @endif
                     @endforeach 
                     <td>{{$producto->existencias}}</td>
-                      <td>{{$producto->precio}}</td>
+                      <td>{{$producto->valorProducto}}</td>
                     <td>{{$producto->estado}}</td>
                     <td>
                         <form action="" method="POST"> 
