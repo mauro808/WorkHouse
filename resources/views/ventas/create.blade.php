@@ -172,4 +172,16 @@ function eliminar(index){
    
     </script>
     
+<script>
+
+    $("#idProducto").change(mostrarValores);
+    
+    function mostrarValores(){
+        datosProducto = document.getElementById('idProducto').value.split('_');
+          $("#valorProducto").val(datosProducto[2]);
+          $("#existencias").val(datosProducto[1]);
+        
+    }
+    
+    </script>
 @endsection

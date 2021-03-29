@@ -51,13 +51,17 @@ class CompraController extends Controller
         $compras = Compra::where('estado', 'Activo')->get();
         $usuarios = Usuario::where('estado', 'Activo')->get();
         $productos = Producto::where('estado', 'Activo')->get();
-        return view('compras.create', compact('productos','usuarios'));
+         //return view('compras.create', compact('productos','usuarios'));
+      return view('compras.create',["usuarios"=>$usuarios,"productos"=>$productos]);
     }
 
    
     public function store(Request $request)
     {
-        $compra = Compra::create($request->all());
+        $compra = Compra::create($request->all()+[
+            //'user_id'=>Auth::user()->id,
+            'created_at'=>Carbon::now('America/Bogota')->toDateTimeString(),
+        ]);
         
         foreach ($request->idProducto as $key => $idProducto) {
            

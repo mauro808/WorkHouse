@@ -63,6 +63,16 @@ subtotal=[];
 
 $("#guardar").hide();
 
+$("#idProducto").change(mostrarValores);
+
+function mostrarValores(){
+
+    datosProducto = document.getElementById('idProducto').value.split('_');
+    $("#existencias").val(datosProducto[1]);
+
+}
+
+
 function agregar(){
     idProducto = $("#idProducto").val();
     nombreProducto = $("#idProducto option:selected").text();
@@ -168,5 +178,15 @@ function compraRegistrada(){
            
     }
 </script>
+<script>
 
+    $("#idProducto").change(mostrarValores);
+    
+    function mostrarValores(){
+        datosProducto = document.getElementById('idProducto').value.split('_');
+          $("#existencias").val(datosProducto[1]);
+    }
+    
+    
+    </script>
 @endsection

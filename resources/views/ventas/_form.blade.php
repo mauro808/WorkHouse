@@ -24,7 +24,7 @@
 <select name="idProducto" id="idProducto" class="form-control" required>
         <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
-        <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>
+         <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>    
         @endforeach
 </select>
 </div>
@@ -33,13 +33,21 @@
     
     <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Digite la cantidad" min="1" pattern="^[0-9]+" />
 </div>
+
+<div class="col-4" >
+    <label for="existencias"><strong>Stock Actual:</strong></label>
+    <input type="number" disabled id="existencias" name="existencias" class="form-control" />
+   
+</div>
+
 <div class="col-4">
     <label for="valorProducto"><strong>Precio:</strong></label>
     
-    <input type="number" class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
-    <input type="hidden" class="form-control" id="Estado" name="Estado" value="Activo"/>
+    <input type="number"  class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
+    <input type="hidden"  class="form-control" id="Estado" name="Estado" value="Activo"/>
 </div>
 </div>
+</br>
 <div class="form-group">
 <button type="button" id="agregar" class="btn btn-outline-dark btn-lg float-right">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -86,3 +94,4 @@
 </div>
 
 </div>
+

@@ -8,6 +8,7 @@ use App\Venta;
 use App\Producto;
 use App\Http\Requests\venta\StoreRequest;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 
 class VentaController extends Controller
 {
@@ -23,16 +24,20 @@ class VentaController extends Controller
     public function create()
     { 
         $ventas = Venta::where('Estado', 'Activo')->get();
-        $productos = Producto::where('estado', 'Activo')->where('existencias','>','1')->get();
+        $productos = Producto::where('estado', 'Activo')->where('existencias','>=','1')->get();
         $clientes = Cliente::get();
         $usuarios = Usuario::where('estado', 'Activo')->get();
-        return view('ventas.create', compact('productos','clientes','usuarios'));
+        //return view('ventas.create', compact('productos','clientes','usuarios'));
+        return view('ventas.create',["productos"=>$productos,"clientes"=>$clientes,"usuarios"=>$usuarios]);
     }
 
    
     public function store(Request $request)
     {
-        $venta = Venta::create($request->all());
+        $venta = Venta::create($request->all()+[
+            //'user_id'=>Auth::user()->id,
+            'created_at'=>Carbon::now('America/Bogota'),
+        ]);
         
         foreach ($request->idProducto as $key => $idProducto) {
             $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);

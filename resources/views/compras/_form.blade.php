@@ -33,6 +33,7 @@
 <div class="col-4" >
     <label for="existencias"><strong>Stock Actual:</strong></label>
     <input type="number" disabled id="existencias" name="existencias" class="form-control" />
+   
 </div>
 </div>
 
@@ -84,15 +85,4 @@
 </div>
 </div>
 
-<script>
-  
-    $("#idProducto").change(mostrarValores);
-    
-    funtion mostrarValores(){
-        datosProducto = document.getElementById('idProducto').value.split('->');
-          $("#existencias").val(datosProducto[1]);
-       
-           
-    }
-</script>
 
