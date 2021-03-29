@@ -24,7 +24,7 @@
 <select name="idProducto" id="idProducto" class="form-control" required>
         <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
-         <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>    
+         <option value="{{$producto->id}}_{{$producto->existencias}}_{{$producto->valorProducto}}">{{$producto->nombreProducto}}</option>    
         @endforeach
 </select>
 </div>
@@ -36,14 +36,14 @@
 
 <div class="col-4" >
     <label for="existencias"><strong>Stock Actual:</strong></label>
-    <input type="number" disabled id="existencias" name="existencias" class="form-control" />
+    <input type="number" disabled id="existencias" name="existencias" class="form-control" readonly/>
    
 </div>
 
 <div class="col-4">
     <label for="valorProducto"><strong>Precio:</strong></label>
     
-    <input type="number"  class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
+    <input type="number"  class="form-control" id="valorProducto" name="valorProducto" readonly />
     <input type="hidden"  class="form-control" id="Estado" name="Estado" value="Activo"/>
 </div>
 </div>

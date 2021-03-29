@@ -48,11 +48,25 @@
 @endsection
 @section('scripts')
 <script>
-$(document).ready(function() {
-    $("#agregar").click(function() {
-        agregar();
+
+
+    $(document).ready(function() {
+        $("#agregar").click(function() {
+            agregar();
+        })
+        mostrarValores();
     });
-});
+    
+    $("#idProducto").change(mostrarValores);
+    
+    function mostrarValores(){
+    
+        datosProducto = document.getElementById('idProducto').value.split('_');
+        $("#existencias").val(datosProducto[1]);
+        $("#valorProducto").val(datosProducto[2]);
+    }
+    
+
 
 var cont=0;
 total=0;
@@ -60,8 +74,12 @@ subtotal=[];
 
 $("#guardar").hide();
 
+
+
 function agregar(){
-    idProducto = $("#idProducto").val();
+
+    datosProducto = document.getElementById('idProducto').value.split('_');
+    idProducto = datosProducto[0];
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();

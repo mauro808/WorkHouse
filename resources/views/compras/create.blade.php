@@ -50,18 +50,14 @@
 @endsection
 @section('scripts')
 <script>
+
+
 $(document).ready(function() {
     $("#agregar").click(function() {
         agregar();
-    });
+    })
+    mostrarValores();
 });
-
-    
-var cont=0;
-total=0;
-subtotal=[];
-
-$("#guardar").hide();
 
 $("#idProducto").change(mostrarValores);
 
@@ -72,9 +68,17 @@ function mostrarValores(){
 
 }
 
+var cont=0;
+total=0;
+subtotal=[];
+
+$("#guardar").hide();
+
 
 function agregar(){
-    idProducto = $("#idProducto").val();
+
+    datosProducto = document.getElementById('idProducto').value.split('_');
+    idProducto = datosProducto[0];
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
@@ -167,26 +171,4 @@ function compraRegistrada(){
 
 </script>
 
-<script>
-  
-    $("#idProducto").change(mostrarValores);
-    
-    funtion mostrarValores(){
-        datosProducto = document.getElementById('idProducto').value.split('->');
-          $("#existencias").val(datosProducto[1]);
-       
-           
-    }
-</script>
-<script>
-
-    $("#idProducto").change(mostrarValores);
-    
-    function mostrarValores(){
-        datosProducto = document.getElementById('idProducto').value.split('_');
-          $("#existencias").val(datosProducto[1]);
-    }
-    
-    
-    </script>
 @endsection

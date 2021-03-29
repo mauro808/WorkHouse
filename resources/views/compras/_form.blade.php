@@ -32,7 +32,7 @@
 
 <div class="col-4" >
     <label for="existencias"><strong>Stock Actual:</strong></label>
-    <input type="number" disabled id="existencias" name="existencias" class="form-control" />
+    <input type="number" id="existencias" name="existencias" class="form-control" readonly />
    
 </div>
 </div>
