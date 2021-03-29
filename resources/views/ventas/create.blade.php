@@ -89,6 +89,12 @@ function agregar(){
     }
 }
 
+function actualizarPrecio(){
+    console.log(document.getElementById('idProducto').value);
+    precioA = document.getElementById('idProducto').value;
+    $("#valorProducto").val(precioA);
+}
+
 function limpiar(){
     $('#cantidad').val("");
     $('#valorProducto').val('');

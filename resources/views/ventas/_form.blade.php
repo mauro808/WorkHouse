@@ -24,7 +24,7 @@
 <div class="row">
 <div class="col-6">
 <label for="idProducto">Producto:</label>
-<select name="idProducto" id="idProducto" class="form-control" required>
+<select name="idProducto" id="idProducto"  class="form-control" required>
         <option selected>Seleccione</option>
          @foreach($productos as $producto)
         <option value="{{$producto->id}}">{{$producto->nombreProducto}}</option>
@@ -41,7 +41,7 @@
 <div class="row">
 <div class="col-12">
     <label for="valorProducto">Precio:</label>
-    <input type="number" class="form-control" id="valorProducto" name="valorProducto" placeholder="Digite el Precio" min="1" pattern="^[0-9]+" />
+    <input type="number" class="form-control"  id="valorProducto" name="valorProducto"  min="1" pattern="^[0-9]+" />
     <input type="hidden" class="form-control" id="Estado" name="Estado" value="Activo"/>
 </div>
 </div>
