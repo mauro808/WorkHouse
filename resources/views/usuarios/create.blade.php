@@ -32,10 +32,10 @@
     <div class="row">
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
-    <label for="txtidRol"><strong>Rol: </strong></label>
+    <label for="idRol"><strong>Rol: </strong></label>
     {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="idRol" id="idRol" class="form-control" value="{{old('idRol')}}" />
-      <option value="">Seleccione Un Rol</option>
+    <select name="idRol" id="idRol" class="form-control"/>
+      <option selected value="">Seleccione Un Rol</option>
         @foreach($rols as $rol)
         <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
         @endforeach
@@ -54,7 +54,7 @@
     <label for="tipoDocumento"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoDocumento','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="tipoDocumento" id="tipoDocumento" class="form-control" value="{{old('tipoDocumento')}}" >
-      <option value="">Seleccione el Tipo de Documento</option>
+      <option selected value="">Seleccione el Tipo de Documento</option>
         <option>Cédula Ciudadanía</option>
         <option>Cédula Extranjería</option>
         <option>Permiso Permanencia</option>
@@ -206,7 +206,8 @@
         timer: 1500
       });
   }
-}
+  }
+
 </script>
 <script>
   $(document).ready(function(){

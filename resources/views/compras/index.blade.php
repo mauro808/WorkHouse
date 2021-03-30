@@ -56,7 +56,7 @@
 
 @csrf 
 @if ($compra->estado=="Activo")
-<a class="btn btn-danger" id="anular" onclick="anular()" href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+<a class="btn btn-danger" id="anular" href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
 <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
 </svg> 
@@ -105,39 +105,6 @@ Anular</a>
 
 <script>
 
-    $(document).ready(function() {
-        $("#anular").click(function() {
-            anular();
-        });
-    });
-
-    function anular() {
-
-        estado = $("#estado").val();
-
-        if(estado == Activo) {
-       
-            Swal.fire({
-                title: 'Anular Compra',
-                text: "Esta acción es irreversible",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Anular'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Compra Anulada',
-                    '',
-                    'success'
-                  )
-                }
-              })
-    }
-}
-
-
 $(document).ready(function() {
     $("#anulada").click(function() {
         anulada();
@@ -145,18 +112,49 @@ $(document).ready(function() {
 });
 
 function anulada(){
-    
-    estado = $("#estado").val();
 
-    if(estado == Anulada) {
    
         Swal.fire({
             icon: 'error',
             title: 'Compra Anulada',
             text: 'No es posible reactivar una compra anulada',
-           
+            showConfirmButton: false, 
+            confirmButtonColor: '#1C2833',
+            timer: 15000
           })
 }
+
+
+ $(document).ready(function () {
+    $('.btn-danger').on('click',function(e){
+        e.preventDefault(); 
+
+        Swal.fire({
+            title: 'Anular Compra: Esta seguro?',
+            text: "No se podra deshacer el cambio!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#1C2833',
+            confirmButtonText: 'Anular',
+            cancelButtonText: 'Cancelar' 
+        }).then((result) => {
+        if (result.value) {
+            window.location = $(this).attr('href'); 
+           
+           Swal.fire({
+            title:'Compra Anulada!',
+            text:'Acción irreversible',
+            icon:'success',
+            showConfirmButton: false,
+            })
+            
+        }
+        })
+    });
+});
+
+
 
 </script>
 
