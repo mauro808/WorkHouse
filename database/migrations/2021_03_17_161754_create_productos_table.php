@@ -17,7 +17,7 @@ class CreateProductosTable extends Migration
             $table->string('nombreProducto',50);
             $table->integer('existencias');
             $table->string('medida',20);
-            $table->decimal('precio',11,2);
+            $table->decimal('valorProducto',11,2);
             $table->string('estado',15);
         });
     }

@@ -57,7 +57,6 @@
                                     @foreach($detalleCompras as $detalleCompra)
                                     <tr>                                      
                                         <td>{{$detalleCompra->idProducto}}</td>
-            
                                         <td>$/{{$detalleCompra->precio}}</td>
                                         <td>{{$detalleCompra->cantidad}}</td>
                                         <td>s/{{number_format($detalleCompra->cantidad*$detalleCompra->precio,2)}}</td>

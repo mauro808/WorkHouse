@@ -57,7 +57,13 @@
         mostrarValores();
     });
     
-    $("#idProducto").change(mostrarValores);
+    
+var cont=0;
+total=0;
+subtotal=[];
+
+$("#guardar").hide();
+$("#idProducto").change(mostrarValores);
     
     function mostrarValores(){
     
@@ -65,16 +71,6 @@
         $("#existencias").val(datosProducto[1]);
         $("#valorProducto").val(datosProducto[2]);
     }
-    
-
-
-var cont=0;
-total=0;
-subtotal=[];
-
-$("#guardar").hide();
-
-
 
 function agregar(){
 
@@ -83,7 +79,9 @@ function agregar(){
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
-        if ($("#idProducto[cont]").val()==idProducto){
+    existencias = $('#existencias').val();
+
+        if ($("#idProducto[cont]").val()==idProducto){  
             subtotal[cont] = cantidad * precio;
             total = total + subtotal[cont];
             $("#cantidad[cont]").val(cantidad+$("#cantidad[cont]".val()));
@@ -92,17 +90,36 @@ function agregar(){
             evaluar();
             console.log("exito");
         }else{
-            if(idProducto != "" && cantidad != "" && cantidad > 0) {
+
+            if(idProducto != "" && cantidad != "" && cantidad > 0 && precio != "") 
+            {
+                if(existencias >= cantidad)
+                {
+
                 
                 subtotal[cont] = cantidad * precio;
                 total = total + subtotal[cont];
                 var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" +  nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number'     id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input     class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$/ " + subtotal[cont] + "<td></tr>";
                 cont++;
-                console.log(cantidad, precio, subtotal[cont], total);
+                console.log(cantidad, precio, subtotal[cont], total)
                 limpiar();
                 totales();
                 evaluar();
                 $('#detallesVenta').append(fila);
+
+                cantidad=0;
+                existencias=0;
+                precio=0;
+                } 
+                else
+                {
+                    Swal.fire({
+                        type: 'error',
+                        icon: 'error',
+                        text: 'La cantidad supera el stock actual',
+                        confirmButtonColor: '#1C2833',
+                      })
+                }
     }else {
         Swal.fire({
             type: 'error',
@@ -111,12 +128,14 @@ function agregar(){
             confirmButtonColor: '#1C2833',
           })
     }
-    }
+} 
 }
 
 function limpiar(){
+    $('#idProducto').val('');
     $('#cantidad').val("");
     $('#valorProducto').val('');
+    $('#existencias').val('');
 }
 
 function totales(){
@@ -168,7 +187,8 @@ function eliminar(index){
     function ventaRegistrada(){
         
         precioTotal = $("#precioTotal").val();
-    
+      
+
         if(precioTotal != ""  && precioTotal > 0) {
             Swal.fire({
                 position: 'top-center',
@@ -191,16 +211,5 @@ function eliminar(index){
    
     </script>
     
-<script>
 
-    $("#idProducto").change(mostrarValores);
-    
-    function mostrarValores(){
-        datosProducto = document.getElementById('idProducto').value.split('_');
-          $("#valorProducto").val(datosProducto[2]);
-          $("#existencias").val(datosProducto[1]);
-        
-    }
-    
-    </script>
 @endsection

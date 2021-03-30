@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-4">
 <label for="idCliente"><strong>Cliente:</strong></label>
-<select name="idCliente" class="form-control" required >
+<select name="idCliente" class="form-control"  >
         <option selected value="">Seleccione el Cliente</option>
          @foreach($clientes as $cliente)
         <option value="{{$cliente->id}}">{{$cliente->nombreCliente}}</option>
@@ -21,7 +21,7 @@
 </div>
 <div class="col-4">
 <label for="idProducto"><strong>Producto:</strong></label>
-<select name="idProducto" id="idProducto" class="form-control" required>
+<select name="idProducto" id="idProducto" class="form-control" >
         <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
          <option value="{{$producto->id}}_{{$producto->existencias}}_{{$producto->valorProducto}}">{{$producto->nombreProducto}}</option>    

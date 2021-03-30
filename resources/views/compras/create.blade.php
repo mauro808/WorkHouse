@@ -50,8 +50,6 @@
 @endsection
 @section('scripts')
 <script>
-
-
 $(document).ready(function() {
     $("#agregar").click(function() {
         agregar();
@@ -59,31 +57,27 @@ $(document).ready(function() {
     mostrarValores();
 });
 
-$("#idProducto").change(mostrarValores);
-
-function mostrarValores(){
-
-    datosProducto = document.getElementById('idProducto').value.split('_');
-    $("#existencias").val(datosProducto[1]);
-
-}
-
 var cont=0;
 total=0;
 subtotal=[];
 
 $("#guardar").hide();
+$("#idProducto").change(mostrarValores);
 
+function mostrarValores(){
+    datosProducto = document.getElementById('idProducto').value.split('_');
+    $("#existencias").val(datosProducto[1]);
+}
 
 function agregar(){
-
     datosProducto = document.getElementById('idProducto').value.split('_');
     idProducto = datosProducto[0];
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
 
-    if(idProducto != "" && cantidad != "" && cantidad > 0) {
+    if(idProducto != "" && cantidad != "" && cantidad > 0 && precio != "") 
+    {
         subtotal[cont] = cantidad * precio;
         total = total + subtotal[cont];
         var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" + nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number' id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$/ " + subtotal[cont] + "<td></tr>";
@@ -102,20 +96,18 @@ function agregar(){
           })
     }
 }
-
-
 function limpiar(){
+    $('#idProducto').val('');
     $('#cantidad').val("");
     $('#valorProducto').val('');
+    $('#existencias').val('');
 }
-
 function totales(){
     $('#total').html("$/ " + total.toFixed(2));
     precioTotal=total;
     $("#total_pagar_html").html("$/ " + precioTotal.toFixed(2));
     $("#precioTotal").val(precioTotal.toFixed(2));
 }
-
 function evaluar(){
     if(total > 0) {
         $("#guardar").show();
@@ -123,7 +115,6 @@ function evaluar(){
         $("#guardar").hide();
     }
 }
-
 function eliminar(index){
     total = total - subtotal[index];
     total_pagar_html = total;
@@ -134,7 +125,6 @@ function eliminar(index){
     $("#fila" + index).remove();
     evaluar();
 }
-
 </script>
 
 <script>
@@ -143,12 +133,10 @@ $(document).ready(function() {
         compraRegistrada();
     });
 });
-
-
 function compraRegistrada(){
     
     precioTotal = $("#precioTotal").val();
-
+    
     if(precioTotal != ""  && precioTotal > 0) {
         Swal.fire({
             position: 'top-center',
@@ -167,8 +155,6 @@ function compraRegistrada(){
           })
     }
 }
-
-
 </script>
 
 @endsection

@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-4">
 <label for="idUsuario"><strong>Usuario:</strong></label>
-<select name="idUsuario" class="form-control" id="idUsuario" required>
+<select name="idUsuario" class="form-control" id="idUsuario" >
         <option selected value="">Seleccione</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
@@ -12,7 +12,7 @@
 </div>
 <div class="col-4" >
 <label for="idProducto"><strong>Producto:</strong></label>
-<select name="idProducto" id="idProducto" class="form-control" required>
+<select name="idProducto" id="idProducto" class="form-control" >
         <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
         <option value="{{$producto->id}}_{{$producto->existencias}}">{{$producto->nombreProducto}}</option>    
@@ -84,5 +84,3 @@
     </table>
 </div>
 </div>
-
-

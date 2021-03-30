@@ -34,24 +34,12 @@ class CompraController extends Controller
       
     }
 
-
-    public function show(Compra $compra)
-    {
-        
-        $subtotal = 0 ;
-        $detalleCompras = $compra->detalleCompra;
-        foreach ($detalleCompras as $detalleCompra) {
-            $subtotal += $detalleCompra->cantidad * $detalleCompra->precio;
-        }
-        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal')); 
-    }
-
     public function create()
     {
         $compras = Compra::where('estado', 'Activo')->get();
         $usuarios = Usuario::where('estado', 'Activo')->get();
         $productos = Producto::where('estado', 'Activo')->get();
-         //return view('compras.create', compact('productos','usuarios'));
+
       return view('compras.create',["usuarios"=>$usuarios,"productos"=>$productos]);
     }
 
@@ -60,7 +48,7 @@ class CompraController extends Controller
     {
         $compra = Compra::create($request->all()+[
             //'user_id'=>Auth::user()->id,
-            'created_at'=>Carbon::now('America/Bogota')->toDateTimeString(),
+            'created_at'=>Carbon::now('America/Bogota'),
         ]);
         
         foreach ($request->idProducto as $key => $idProducto) {
@@ -71,6 +59,15 @@ class CompraController extends Controller
         return redirect()->route('compras.index');
     }
 
+    public function show(Compra $compra)
+    {
+        $subtotal = 0 ;
+        $detalleCompras = $compra->detalleCompra;
+        foreach ($detalleCompras as $detalleCompra) {
+            $subtotal += $detalleCompra->cantidad * $detalleCompra->valorProducto;
+        }
+        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal')); 
+    }
 
     public function pdfCompras()
     {
