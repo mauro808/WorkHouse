@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" style="background-color:#E5E8E8;">
                 <div class="card-body">
                    
                     <div class="form-group row">
@@ -55,10 +55,10 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach($detalleCompras as $detalleCompra)
-                                    <tr>
-                                        
+                                    <tr>                                      
                                         <td>{{$detalleCompra->idProducto}}</td>
-                                        <td>s/{{$detalleCompra->precio}}</td>
+            
+                                        <td>$/{{$detalleCompra->precio}}</td>
                                         <td>{{$detalleCompra->cantidad}}</td>
                                         <td>s/{{number_format($detalleCompra->cantidad*$detalleCompra->precio,2)}}</td>
                                     </tr>
@@ -69,7 +69,9 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario: {{$compra->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="created_at"><strong>Fecha:  {{$compra->created_at}} </strong></p>
+                        <p class="form-control-label" for="estado"><strong>Estado:  {{$compra->estado}} </strong></p>
                     
                     </div>
 

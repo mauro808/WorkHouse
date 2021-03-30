@@ -6,11 +6,11 @@
         {{ session('success') }}
     </div>
 @endif
-
-
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-        <h2 class="text-lucida"><strong>Registrar Producto</strong></h2>
+        <h1 class="text-lucida"><strong>Registrar Producto</strong></h1>
     </div>
   
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
-    <label for="txtidCategoria">Categoría:</label>
+    <label for="txtidCategoria"><strong>Categoría:</strong></label>
     {!! $errors->first('idCategoria','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="idCategoria" class="form-control" >
        <option value="">Seleccione Categoría</option>
@@ -45,7 +45,7 @@
       </select>
       </div>
       <div class="col-6">
-    <label for="nombreProducto">Nombre:</label>
+    <label for="nombreProducto"><strong>Nombre:</strong></label>
     {!! $errors->first('nombreProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" value="{{old('nombreProducto')}}"/>
     
@@ -54,13 +54,13 @@
   </br>
     <div class="row">
     <div class="col-6">
-    <label for="existencias">Existencias:</label>
+    <label for="existencias"><strong>Existencias:</strong></label>
     {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" class="form-control" id="existencias" name="existencias" placeholder="Ingrese existencias" value="{{old('existencias')}}"/>
+    <input type="number" class="form-control" id="existencias" name="existencias" min="1" pattern="^[0-9]+" placeholder="Ingrese existencias" value="{{old('existencias')}}"/>
   
     </div>
     <div class="col-6">
-    <label for="medida">Medida:</label> 
+    <label for="medida"><strong>Medida:</strong></label> 
     {!! $errors->first('medida','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <select name="medida" class="form-control" >
       <option value="">Seleccione Medida</option>
@@ -84,9 +84,9 @@
   </br>
     <div class="row">
     <div class="col-12">
-    <label for="precio">Precio:</label>
-    {!! $errors->first('precio','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" id="precio'" name="precio" placeholder="Digite el Precio" value="{{old('precio')}}"/>
+    <label for="valorProducto"><strong>Precio:</strong></label>
+    {!! $errors->first('valorProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="valorProducto'" name="valorProducto" placeholder="Digite el Precio" value="{{old('precio')}}"/>
     
     </div>
     </div>
@@ -107,6 +107,8 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+</div>
+</div>
 
 
 <script>
@@ -118,15 +120,22 @@
 
  // $("#registrar").hide();
 
+ $(document).ready(function(){
+  $(".form-control").change(function(){
+    $(this).css("background-color", "#D6D6FF");
+  });
+});
+
+
   function registrar() {
 
       idCategoria = $("#idCategoria  option:selected").text();
       nombreProducto  = $("#nombreProducto").val();
       existencias  = $("#existencias").val();
       medida = $("#medida  option:selected").text();
-      precio  = $("#precio").val();
+      valorProducto  = $("#valorProducto").val();
 
-      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && precio != "" ){
+      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" ){
 
         Swal.fire({
           position: 'top-center',

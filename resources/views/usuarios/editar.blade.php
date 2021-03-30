@@ -4,10 +4,11 @@
 @if (session('mensaje'))
 <div class="alert alert-success">{{ session('mensaje') }} </div>
 @endif
-<div class="row"> 
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-         <h2 class="text-lucida"><strong>Editar Usuario</strong></h2>
+         <h1 class="text-lucida"><strong>Editar Usuario</strong></h1>
     </div>
     
 </div>  
@@ -22,7 +23,7 @@
 </br>
 <div class="row">
 <div class="col-6">
-<label for="txtidRol">Rol:</label>
+<label for="txtidRol"><strong>Rol:</strong></label>
 {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="idRol" class="form-control" required>
         @foreach($rols as $rol)
@@ -36,7 +37,7 @@
       </select>
       </div>
       <div class="col-6">
-    <label for="nombre">Nombres y Apellidos:</label>
+    <label for="nombre"><strong>Nombres y Apellidos:</strong></label>
     {!! $errors->first('nombre','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $usuario->nombre }}" id="nombre" name="nombre" placeholder="Digite el Nombre" />
     
@@ -45,7 +46,7 @@
   </br>
     <div class="row">
     <div class="col-6">
-    <label for="txtTipoDocumento">Tipo Documento:</label>
+    <label for="txtTipoDocumento"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="tipoDocumento" class="form-control" >
         <option @if ($usuario->tipoDocumento=="Cedula Ciudadania") selected @endif>Cédula Ciudadanía</option>
@@ -56,7 +57,7 @@
       </select>
       </div>
     <div class="col-6">
-    <label for="identificacion">Identificación:</label>
+    <label for="identificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('identificacion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $usuario->identificacion }}" id="identificacion" name="identificacion" placeholder="Digite el Documento" />
     </div>
@@ -64,26 +65,26 @@
   </br>
     <div class="row">
    <div class="col-6">
-    <label for="celular">Celular:</label>
+    <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular" />
    </div>
      <div class="col-6">
-    <label for="telefonoFijo">Teléfono fijo:</label>
+    <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" />
+    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" />
     </div>
     </div>
   </br>
     <div class="row">
      <div class="col-6">
-    <label for="correo">Correo electrónico:</label>
+    <label for="correo"><strong>Correo electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="email" class="form-control" value="{{ $usuario->correo }}" id="correo'" name="correo" placeholder="Digite el Correo" />
     </div>
     
     <div class="col-6">
-    <label for="direccion">Dirección:</label>
+    <label for="direccion"><strong>Dirección:</strong></label>
     {!! $errors->first('direccion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" value="{{ $usuario->direccion }}" id="direccion" name="direccion" placeholder="Digite la Direccion" />
     </div>
@@ -91,7 +92,7 @@
   </br>
 
     <div class="col-12" align="center">
-    <label for="nombreUsuario">Usuario:</label>
+    <label for="nombreUsuario"><strong>Usuario:</strong></label>
     <input type="text" class="form-control" value="{{ $usuario->nombreUsuario }}" id="nombreUsuario" name="nombreUsuario" placeholder="Digite el Usuario" />
    </div>
    
@@ -113,6 +114,8 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+</div>
+</div>
 
 @endsection
 @section('scripts')
@@ -122,7 +125,13 @@
         registrar();
       });
   });
-
+  
+  $(document).ready(function(){
+    $(".form-control").change(function(){
+      $(this).css("background-color", "#D6D6FF");
+    });
+  });
+  
  // $("#registrar").hide();
 
   function registrar() {

@@ -7,8 +7,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
+            <div class="card" style="background-color:#E5E8E8;">
+                <div class="card-body" >
                    
                     <div class="form-group row">
                        
@@ -68,7 +68,9 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  {{$venta->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="created_at"><strong>Fecha:  {{$venta->created_at}} </strong></p>
+                        <p class="form-control-label" for="Estado"><strong>Estado:  {{$venta->Estado}} </strong></p>
                     
                     </div>
 

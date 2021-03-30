@@ -8,9 +8,12 @@
 @endif
     
 </div>  
-<div class="row w-100" align="center">
-<div class="col-lg-12">
-        <h2 class="text-lucida"><strong>Registrar Venta</strong></h2>
+
+<div class="row w-30" style="padding-left:50px; "> 
+    <div class="col-12" >
+        <div class="card" style="background-color:#E5E8E8;">
+            <div class="card-body" >
+        <h1 class="text-lucida" style="padding-left:50px;"><strong>Registrar Venta</strong></h1>
 </div>
 <div class="w-75 mx-auto">
 
@@ -38,15 +41,32 @@
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg> Cancelar</a>
 </div>
-
+</div>
+</div>
+</div>
+</div>
 @endsection
 @section('scripts')
 <script>
-$(document).ready(function() {
-    $("#agregar").click(function() {
-        agregar();
+
+
+    $(document).ready(function() {
+        $("#agregar").click(function() {
+            agregar();
+        })
+        mostrarValores();
     });
-});
+    
+    $("#idProducto").change(mostrarValores);
+    
+    function mostrarValores(){
+    
+        datosProducto = document.getElementById('idProducto').value.split('_');
+        $("#existencias").val(datosProducto[1]);
+        $("#valorProducto").val(datosProducto[2]);
+    }
+    
+
 
 var cont=0;
 total=0;
@@ -54,8 +74,12 @@ subtotal=[];
 
 $("#guardar").hide();
 
+
+
 function agregar(){
-    idProducto = $("#idProducto").val();
+
+    datosProducto = document.getElementById('idProducto').value.split('_');
+    idProducto = datosProducto[0];
     nombreProducto = $("#idProducto option:selected").text();
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
@@ -169,7 +193,19 @@ function eliminar(index){
         }
     }
     
-    
+   
     </script>
     
+<script>
+
+    $("#idProducto").change(mostrarValores);
+    
+    function mostrarValores(){
+        datosProducto = document.getElementById('idProducto').value.split('_');
+          $("#valorProducto").val(datosProducto[2]);
+          $("#existencias").val(datosProducto[1]);
+        
+    }
+    
+    </script>
 @endsection

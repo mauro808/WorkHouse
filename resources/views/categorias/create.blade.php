@@ -6,9 +6,11 @@
         {{ session('success') }}
     </div>
 @endif
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-        <h2 class="text-lucida"><strong>Registrar Categoría</strong></h2>
+        <h1 class="text-lucida"><strong>Registrar Categoría</strong></h1>
     </div>
     <div class="col-lg-11">
         
@@ -24,12 +26,12 @@
 <div class="form-group">
 </br>
   <input type="hidden" name="estado" id="estado" value="Activo">
-    <label for="nombreCategoria">Nombre:</label>
+    <label for="nombreCategoria"><strong>Nombre:</strong></label>
     {!! $errors->first('nombreCategoria','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" placeholder="Ingrese el nombre" value="{{old('nombreCategoria')}}"  />
     
      </br>
-    <label for="Descripcion">Descripción:</label>
+    <label for="Descripcion"><strong>Descripción:</strong></label>
     {!! $errors->first('Descripcion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <textarea class="form-control" id="Descripcion" name="Descripcion" rows="5" placeholder="Descripción categoría" value=" {{old('Descripcion')}}"  /></textarea>
   
@@ -48,6 +50,8 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+</div>
+</div>
 
 <script>
   $(document).ready(function() {
@@ -56,7 +60,12 @@
       });
   });
 
-
+  $(document).ready(function(){
+    $(".form-control").change(function(){
+      $(this).css("background-color", "#D6D6FF");
+    });
+  });
+  
   function registrar() {
 
    
@@ -72,9 +81,9 @@
           title: 'Registro exitoso',
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
-          timer: 1 500
+          timer: 1500
          
-        });
+        })
 
       }else {
       Swal.fire({

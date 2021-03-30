@@ -97,6 +97,7 @@
         <div id="fact">
           
                 <p><strong>Id Compra N° {{$compra->id}}</strong></p>
+                <p style="font-size: 10px;"><strong>Estado:  {{$compra->estado}} </strong></p>
         </div>
     </header>
     <br>

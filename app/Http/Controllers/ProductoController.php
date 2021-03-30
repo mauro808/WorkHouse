@@ -29,22 +29,20 @@ class ProductoController extends Controller
        
         $request->validate([
             'idCategoria'=>'required',
-            'nombreProducto'=>'required|unique:productos|regex:/^[\pL\s\-]+$/u',
+            'nombreProducto'=>'required|unique:productos',
             'existencias'=>'required|integer',
             'medida'=>'required',
-            'precio'=>'required|integer',
+            'valorProducto'=>'required',
         ],
 
     [
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
             'nombreProducto.unique' => '*Producto ya existe',
-            'nombreProducto.regex' => '*Ingresa sólo letras',
             'existencias.required' => '*Rellena este campo',
             'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
-            'precio.required' => '*Rellena este campo',
-            'precio.integer' => '*Ingresa sólo números',
+            'valorProducto.required' => '*Rellena este campo',
          
           
         ]
@@ -54,7 +52,7 @@ class ProductoController extends Controller
         $productoNuevo->nombreProducto = $request->nombreProducto;
         $productoNuevo->existencias = $request->existencias;
         $productoNuevo->medida = $request->medida;
-        $productoNuevo->precio = $request->precio;
+        $productoNuevo->valorProducto = $request->valorProducto;
         $productoNuevo->Estado = $request->estado;
 
         $productoNuevo->save();
@@ -81,21 +79,19 @@ class ProductoController extends Controller
 
         $request->validate([
             'idCategoria'=>'required',
-            'nombreProducto'=>'required|regex:/^[\pL\s\-]+$/u',
+            'nombreProducto'=>'required',
             'existencias'=>'required|integer',
             'medida'=>'required',
-            'precio'=>'required|integer',
+            'valorProducto'=>'required',
         ],
 
     [
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
-            'nombreProducto.regex' => '*Ingresa sólo letras',
             'existencias.required' => '*Rellena este campo',
             'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
-            'precio.required' => '*Rellena este campo',
-            'precio.integer' => '*Ingresa sólo números',
+            'valorProducto.required' => '*Rellena este campo',
          
           
         ]
@@ -106,8 +102,7 @@ class ProductoController extends Controller
         $producto->nombreProducto = $request->nombreProducto;
         $producto->existencias = $request->existencias;
         $producto->medida = $request->medida;
-        $producto->porcentajeIva = $request->porcentajeIva;
-        $producto->precio = $request->precio;
+        $producto->valorProducto = $request->valorProducto;
         $producto->save();
            
            return redirect('/productos')->with('Mensaje', 'Producto actualizado');

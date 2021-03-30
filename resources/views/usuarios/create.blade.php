@@ -6,9 +6,11 @@
         {{ session('success') }}
     </div>
 @endif
-    <div class="col-lg-12" align="center">
+<div class="card-body" style="background-color:#E5E8E8;">
+  <div class="row w-30" style="padding-left:60px; "> 
+    <div class="col-lg-12" align="left">
     </br>
-        <h2 class="text-lucida"><strong>Registrar Usuario</strong></h2>
+        <h1 class="text-lucida"><strong>Registrar Usuario</strong></h1>
     </div>
  
 </div>  
@@ -18,9 +20,9 @@
 <div class="col-lg-12">
 
   @if ($errors->any())
-    @foreach ($errors->all as $error) 
-    <p>{{ $error }}</p>
-    @endforeach
+  @foreach ($errors->all as $error) 
+  <p>{{ $error }}</p>
+  @endforeach
 @endif
 
 <form action="{{ route('agregarUsuario') }}" method="POST" class="w-60 p-3 mr-3 text-center">
@@ -30,7 +32,7 @@
     <div class="row">
     <div class="col-6">
     <input type="hidden" name="estado" id="estado" value="Activo">
-    <label for="txtidRol">Rol:</label>
+    <label for="txtidRol"><strong>Rol: </strong></label>
     {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="idRol" id="idRol" class="form-control" value="{{old('idRol')}}" />
       <option value="">Seleccione Un Rol</option>
@@ -40,7 +42,7 @@
       </select>
       </div>
       <div class="col-6">
-    <label for="nombre">Nombres y Apellidos:</label>
+    <label for="nombre"><strong>Nombres y Apellidos:</strong></label>
     {!! $errors->first('nombre','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Digite Nombres y Apellidos" value="{{old('nombre')}}" />
     
@@ -49,10 +51,10 @@
   </br>
     <div class="row">
     <div class="col-6">
-    <label for="txtTipoDocumento">Tipo Documento:</label>
-    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="tipoDocumento" id="tipoDocumento" class="form-control" value="{{old('tipoDocumento')}}" />
-      <option>Seleccione Tipo Documento</option>
+    <label for="tipoDocumento"><strong>Tipo Documento:</strong></label>
+    {!! $errors->first('tipoDocumento','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <select name="tipoDocumento" id="tipoDocumento" class="form-control" value="{{old('tipoDocumento')}}" >
+      <option value="">Seleccione el Tipo de Documento</option>
         <option>Cédula Ciudadanía</option>
         <option>Cédula Extranjería</option>
         <option>Permiso Permanencia</option>
@@ -62,7 +64,7 @@
       </div>
 
     <div class="col-6">
-    <label for="identificacion">Identificación:</label>
+    <label for="identificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('identificacion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text"  class="form-control" id="identificacion" name="identificacion" placeholder="Digite Número de Documento" value="{{old('identificacion')}}" />
    
@@ -71,13 +73,13 @@
   </br>
     <div class="row">
     <div class="col-6">
-      <label for="celular">Celular:</label>
+      <label for="celular"><strong>Celular:</strong></label>
       {!! $errors->first('celular','<small style="color:red;"><strong> :message</strong></small></br>') !!}
       <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite Celular" value="{{old('celular')}}"  />
    
     </div>
     <div class="col-6">
-    <label for="telefonoFijo">Teléfono fijo:</label>
+    <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite Teléfono Fijo" value="{{old('telefonoFijo')}}"  />
   
@@ -86,14 +88,14 @@
   </br>
     <div class="row">
    <div class="col-6">
-    <label for="correo">Correo electrónico:</label>
+    <label for="correo"><strong>Correo electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="email" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{old('correo')}}"  />
     
     
     </div>
     <div class="col-6">
-    <label for="direccion">Dirección:</label>
+    <label for="direccion"><strong>Dirección:</strong></label>
     {!! $errors->first('direccion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="direccion'" name="direccion" placeholder="Digite la Dirección" value="{{old('direccion')}}"  />
     
@@ -101,26 +103,33 @@
     </div>
   </br>
     <div class="col-12" align="center">
-    <label for="nombreUsuario">Usuario:</label>
+    <label for="nombreUsuario"><strong>Usuario (Alias):</strong></label>
     {!! $errors->first('nombreUsuario','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreUsuario'" name="nombreUsuario" placeholder="Digite un Alias (Máximo 8 caracteres)" value="{{old('nombreUsuario')}}" />
     
     </div>
   </br>
        <div class="row">
-    <div class="col-6">
-    <label for="contrasena">Contraseña:</label>
+    <div  class= "col-6">
+    <label for="contrasena"><strong>Contraseña:</strong></label>
     {!! $errors->first('contrasena','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <div class="input-group ">
     <input type="password" class="form-control" id="contrasena'" name="contrasena"  minlength="8" placeholder="Digite Contraseña (Mínimo 8 Caracteres)"  />
-    
+    <div class="input-group-append">
+      <button  class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="show"></i> </button>
     </div>
-    <div class="col-6">
-    <label for="contrasenac">Confirme Contraseña:</label>
+    </div>
+  </div>
+  <div  class= "col-6">
+    <label for="contrasenac"><strong>Confirme Contraseña:</strong></label>
     {!! $errors->first('contrasenac','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <div class="input-group">
     <input type="password" class="form-control" id="contrasenac'" name="contrasenac" minlength="8" placeholder="Confirme Contraseña (Mínimo 8 Caracteres)"  />
-    
-</div>
-</div>
+    <div class="input-group-append">
+      <button class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="showc"></i></button>
+    </div>    
+  </div>
+    </div>
 </div>
 </br>
 <button type="submit" class="btn btn-dark btn-lg " style="margin: 20px" id="registrar" >
@@ -138,9 +147,12 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
-
+</div>
+</div>
 @endsection
+
 @section('scripts')
+
 <script>
   $(document).ready(function() {
       $("#registrar").click(function() {
@@ -148,6 +160,12 @@
       });
   });
 
+  $(document).ready(function(){
+    $(".form-control").change(function(){
+      $(this).css("background-color", "#D6D6FF");
+    });
+  });
+  
  // $("#registrar").hide();
 
   function registrar() {
@@ -164,7 +182,9 @@
       contrasena  = $("#contrasena").val();
       contrasenac  = $("#contrasenac").val();
    
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != "" && contrasena != "" && contrasenac != "" )
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" 
+      && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != "" && contrasena != "" 
+      && contrasenac != "" )
       {
         Swal.fire({
           position: 'top-center',
@@ -187,7 +207,31 @@
       });
   }
 }
-
 </script>
-
+<script>
+  $(document).ready(function(){
+    $('#show').mousedown(function(){
+      $('#contrasena').removeAttr('type');
+      $('#show').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
+    });
+    
+    $('#show').mouseup(function(){
+      $('#contrasena').atrr('type','password');
+      $('#show').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#showc').mousedown(function(){
+      $('#contrasenac').removeAttr('type');
+      $('#showc').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
+    });
+    
+    $('#showc').mouseup(function(){
+      $('#contrasenac').atrr('type','password');
+      $('#showc').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
+    });
+  });
+</script>
 @endsection
