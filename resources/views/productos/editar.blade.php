@@ -102,17 +102,16 @@
 
 
 <script>
-  $(document).ready(function() {
-      $("#registrar").click(function() {
-        registrar();
-      });
-  });
 
- // $("#registrar").hide();
- 
  $(document).ready(function(){
   $(".form-control").change(function(){
     $(this).css("background-color", "#D6D6FF");
+  });
+});
+
+$(document).ready(function() {
+  $("#registrar").click(function() {
+    registrar();
   });
 });
 
@@ -124,7 +123,8 @@
       medida = $("#medida  option:selected").text();
       valorProducto  = $("#valorProducto").val();
 
-      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" ){
+      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" )
+      {
 
         Swal.fire({
           position: 'top-center',
@@ -133,18 +133,18 @@
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
           timer: 1500
-        })
+        });
 
-      }else {
+      }/*else {
       Swal.fire({
         type: 'error',
         icon: 'error',
-        text: 'Verifica todos los campos',
+        text: 'Diligencia correctamente todos los campos',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
         timer: 1500
-      })
-  }
+      });
+  }*/
 }
 
 </script>

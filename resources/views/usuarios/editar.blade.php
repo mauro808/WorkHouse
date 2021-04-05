@@ -26,14 +26,14 @@
 <label for="txtidRol"><strong>Rol:</strong></label>
 {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="idRol" class="form-control" required>
-        @foreach($rols as $rol)
-             @if($usuario->idRol == $rol->id)
-             <option value="{{$rol->id}}" selected>{{$rol->descripcion}}</td>
-            @endif 
-            @endforeach  
-        @foreach($rols as $rol)
-        <option value="{{$rol->id}}">{{$rol->descripcion}}</td>
-        @endforeach 
+      @foreach($rols as $rol)
+      @if($usuario->idRol == $rol->id)
+      <option value="{{$rol->id}}" selected>{{$rol->descripcion}}</td>
+     @endif 
+     @endforeach  
+ @foreach($rols as $rol)
+ <option value="{{$rol->id}}">{{$rol->descripcion}}</td>
+ @endforeach 
       </select>
       </div>
       <div class="col-6">
@@ -59,7 +59,7 @@
     <div class="col-6">
     <label for="identificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('identificacion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text" class="form-control" value="{{ $usuario->identificacion }}" id="identificacion" name="identificacion" placeholder="Digite el Documento" />
+    <input type="number" min="000000000000000" max="999999999999999" class="form-control" value="{{ $usuario->identificacion }}" id="identificacion" name="identificacion" min="1" pattern="^[0-9]+" placeholder="Digite el Documento" />
     </div>
     </div>
   </br>
@@ -67,20 +67,20 @@
    <div class="col-6">
     <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" min="0000000000" max="9999999999" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" placeholder="Digite el Celular" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" value="{{ $usuario->celular }}" id="celular" name="celular" min="1" pattern="^[0-9]+" placeholder="Digite el Celular" />
    </div>
      <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" />
+    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" min="1" pattern="^[0-9]+" placeholder="Digite el Telefono Fijo" />
     </div>
     </div>
   </br>
     <div class="row">
      <div class="col-6">
-    <label for="correo"><strong>Correo electrónico:</strong></label>
-    {!! $errors->first('correo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="email" class="form-control" value="{{ $usuario->correo }}" id="correo'" name="correo" placeholder="Digite el Correo" />
+    <label for="email"><strong>Correo electrónico:</strong></label>
+    {!! $errors->first('email','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <input type="email" class="form-control" value="{{ $usuario->email }}" id="email'" name="email" placeholder="Digite el Correo" />
     </div>
     
     <div class="col-6">
@@ -120,11 +120,7 @@
 @endsection
 @section('scripts')
 <script>
-  $(document).ready(function() {
-      $("#registrar").click(function() {
-        registrar();
-      });
-  });
+
   
   $(document).ready(function(){
     $(".form-control").change(function(){
@@ -134,20 +130,28 @@
   
  // $("#registrar").hide();
 
+ $(document).ready(function() {
+  $("#registrar").click(function() {
+    registrar();
+  });
+});
   function registrar() {
 
       idRol  = $("#idRol option:selected").text();
       nombre  = $("#nombre").val();
       tipoDocumento  = $("#tipoDocumento option:selected").text();
       identificacion  = $("#identificacion").val();
-      correo  = $("#correo").val();
+      email  = $("#email").val();
       telefonoFijo  = $("#telefonoFijo").val();
       celular  = $("#celular").val();
       direccion  = $("#direccion").val();
       nombreUsuario  = $("#nombreUsuario").val();
 
    
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != ""  ){
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && email != ""  && telefonoFijo != "" && telefonoFijo.length < 7 && 
+      celular != "" && celular.length < 10 && direccion != "" && nombreUsuario != ""  && nombreUsuario.length < 8 
+      && identificacion != "" && identificacion.length < 15 )
+      {
 
         Swal.fire({
           position: 'top-center',
@@ -158,15 +162,15 @@
          
         });
 
-      }else {
+      }/*else {
       Swal.fire({
         type: 'error',
         icon: 'error',
-        text: 'Verifica los campos',
+        text: 'Diligencia correctamente todos los campos',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
       });
-  }
+  }*/
 }
 
 </script>

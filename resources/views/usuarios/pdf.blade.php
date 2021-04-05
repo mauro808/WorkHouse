@@ -97,7 +97,7 @@ th {
                         <td>{{ $usuario->identificacion }}</td>
                         <td>{{ $usuario->celular }}</td>
                         <td>{{ $usuario->telefonoFijo }}</td>
-                        <td>{{ $usuario->correo }}</td>
+                        <td>{{ $usuario->email }}</td>
                         <td>{{ $usuario->nombreUsuario }}</td>
                         <td>{{ $usuario->Estado }}</td>
                     </tr>

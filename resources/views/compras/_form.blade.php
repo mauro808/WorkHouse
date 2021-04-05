@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-4">
 <label for="idUsuario"><strong>Usuario:</strong></label>
-<select name="idUsuario" class="form-control" id="idUsuario" required>
+<select name="idUsuario" class="form-control" id="idUsuario" >
         <option selected value="">Seleccione</option>
          @foreach($usuarios as $usuario)
         <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
@@ -12,7 +12,7 @@
 </div>
 <div class="col-4" >
 <label for="idProducto"><strong>Producto:</strong></label>
-<select name="idProducto" id="idProducto" class="form-control" required>
+<select name="idProducto" id="idProducto" class="form-control" >
         <option selected value="">Seleccione</option>
          @foreach($productos as $producto)
         <option value="{{$producto->id}}_{{$producto->existencias}}">{{$producto->nombreProducto}}</option>    
@@ -63,19 +63,19 @@
     <tfoot>
         <tr>
             <th colspan="4">
-                <p align="right">Total</p>
+                <p align="right" style="display:none;">Total</p>
             </th>
             <th colspan="4">
-                <p align="right"><span id="total">$/ </span></p>
+                <p align="right" style="display:none;"><span id="total">$</span></p>
             </th>
         </tr>
         <tr>
             <th colspan="4">
-                <p align="right">Total a pagar</p>
+                <p align="right">Total Compra</p>
             </th>
             <th colspan="4">
-                <p align="right"><span id="total_pagar_html" name="total_pagar_html">$/ </span>
-                <input readonly name="precioTotal" id="precioTotal" name="precioTotal"></p>
+                <p align="right"><span id="total_pagar_html" name="total_pagar_html">$</span>
+                <input type="hidden" name="precioTotal" id="precioTotal" name="precioTotal"></p>
             </th>
         </tr>
     </tfoot>
@@ -84,5 +84,3 @@
     </table>
 </div>
 </div>
-
-

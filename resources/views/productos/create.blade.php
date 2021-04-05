@@ -37,7 +37,7 @@
     <input type="hidden" name="estado" id="estado" value="Activo">
     <label for="txtidCategoria"><strong>Categoría:</strong></label>
     {!! $errors->first('idCategoria','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-    <select name="idCategoria" class="form-control" >
+    <select name="idCategoria" class="form-control"  value="{{old('idCategoria')}}">
        <option value="">Seleccione Categoría</option>
          @foreach($categorias as $categoria)
         <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
@@ -48,7 +48,6 @@
     <label for="nombreProducto"><strong>Nombre:</strong></label>
     {!! $errors->first('nombreProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Digite el Nombre" value="{{old('nombreProducto')}}"/>
-    
     </div>
     </div>
   </br>
@@ -56,13 +55,12 @@
     <div class="col-6">
     <label for="existencias"><strong>Existencias:</strong></label>
     {!! $errors->first('existencias','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" class="form-control" id="existencias" name="existencias" min="1" pattern="^[0-9]+" placeholder="Ingrese existencias" value="{{old('existencias')}}"/>
-  
+    <input type="number" class="form-control" id="existencias" name="existencias" min="0" pattern="^[0-9]+" placeholder="Ingrese existencias" value="{{old('existencias')}}"/>
     </div>
     <div class="col-6">
     <label for="medida"><strong>Medida:</strong></label> 
     {!! $errors->first('medida','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-    <select name="medida" class="form-control" >
+    <select name="medida" class="form-control"  value="{{old('medida')}}" >
       <option value="">Seleccione Medida</option>
         <option>Metro</option>
         <option>Unidad</option>
@@ -82,18 +80,17 @@
     </div>
     </div>
   </br>
-    <div class="row">
+   
     <div class="col-12">
     <label for="valorProducto"><strong>Precio:</strong></label>
     {!! $errors->first('valorProducto','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="valorProducto'" name="valorProducto" placeholder="Digite el Precio" value="{{old('precio')}}"/>
-    
+    <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="valorProducto'" name="valorProducto" placeholder="Digite el Precio de Venta" value="{{old('valorProducto')}}"/>
     </div>
-    </div>
-</div>
+  
+
 </br>
 </br>
-<button type="submit" class="btn btn-dark btn-lg " style="margin: 10px" id="registrar">
+<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px" id="registrar">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -110,33 +107,33 @@
 </div>
 </div>
 
+@endsection
+@section('scripts')
 
-<script>
+<script>  
+  
+  $(document).ready(function(){
+    $(".form-control").change(function(){
+      $(this).css("background-color", "#D6D6FF");
+    });
+  });
+
   $(document).ready(function() {
       $("#registrar").click(function() {
         registrar();
       });
   });
 
- // $("#registrar").hide();
-
- $(document).ready(function(){
-  $(".form-control").change(function(){
-    $(this).css("background-color", "#D6D6FF");
-  });
-});
-
 
   function registrar() {
+    idCategoria = $("#idCategoria  option:selected").text();
+    nombreProducto  = $("#nombreProducto").val();
+    existencias  = $("#existencias").val();
+    medida = $("#medida  option:selected").text();
+    valorProducto  = $("#valorProducto").val();
 
-      idCategoria = $("#idCategoria  option:selected").text();
-      nombreProducto  = $("#nombreProducto").val();
-      existencias  = $("#existencias").val();
-      medida = $("#medida  option:selected").text();
-      valorProducto  = $("#valorProducto").val();
-
-      if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" ){
-
+    if (idCategoria != "" && nombreProducto != "" &&  existencias != "" && medida != "" && valorProducto != "" )
+      {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
@@ -144,19 +141,20 @@
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
           timer: 1500
-        })
+         
+        });
 
       }else {
-      Swal.fire({
+     /* Swal.fire({
         type: 'error',
         icon: 'error',
-        text: 'Verifica todos los campos',
+        text: 'Diligencia correctamente todos los campos',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
         timer: 1500
-      })
+      });*/
   }
-}
+  }
 
 </script>
 @endsection

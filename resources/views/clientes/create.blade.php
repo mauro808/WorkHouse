@@ -54,14 +54,12 @@
     <div class="col-6">
     <label for="tipoIdentificacion"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoIdentificacion','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-    <select name="tipoIdentificacion" id="tipoIdentificacion" class="form-control" value="{{ old('tipoIdentificacion')}}">
+    <select name="tipoIdentificacion" id="tipoIdentificacion"   class="form-control" value="{{ old('tipoIdentificacion')}}">
       <option value="">Seleccione el Tipo de Documento</option>
         <option>Tarjeta Identidad</option>
         <option>Cédula Ciudadanía</option>
         <option>Cedula Extranjería</option>
         <option>Permiso Permanencia</option>
-        <option>Pasaporte</option>
-        <option>Otro</option>
       </select>
        
      </div>
@@ -71,13 +69,13 @@
      <div class="col-6">
     <label for="numeroIdentificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" value="{{ old('numeroIdentificacion')}}" />
+    <input type="number" class="form-control" min="000000000000000" max="999999999999999" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Digite el Documento" value="{{ old('numeroIdentificacion')}}" />
     
     </div>
     <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono Fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
+    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" min="1" pattern="^[0-9]+" placeholder="Digite el Telefono Fijo" value="{{ old('telefonoFijo')}}" />
     
      </div>
        </div>
@@ -86,7 +84,7 @@
      <div class="col-6">
     <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite el Celular" value="{{ old('celular')}}" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" min="1" pattern="^[0-9]+" placeholder="Digite el Celular" value="{{ old('celular')}}" />
     
        </div>
     <div class="col-6">
@@ -100,7 +98,7 @@
 <div class="col-12">
     <label for="correo"><strong>Correo Electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{ old('correo')}}" />
+    <input type="email" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{ old('correo')}}" />
    
 </div>
 </br>
@@ -123,18 +121,18 @@
 
 
 <script>
-  $(document).ready(function() {
-      $("#registrar").click(function() {
-        registrar();
-      });
-  });
-
+ 
   $(document).ready(function(){
     $(".form-control").change(function(){
       $(this).css("background-color", "#D6D6FF");
     });
   });
   
+  $(document).ready(function() {
+    $("#registrar").click(function() {  
+      registrar();
+    });
+});
 
   function registrar() {
 
@@ -147,7 +145,9 @@
     telefonoFijo  = $("#telefonoFijo").val();
     correo  = $("#correo").val();
 
-    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" && direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
+    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" 
+    && numeroIdentificacion.length < 15 && direccion != "" && celular != "" && celular.length < 10
+    && telefonoFijo != "" && telefonoFijo.length < 7 && correo != "" ) {
       
       Swal.fire({
         position: 'top-center',
@@ -163,7 +163,7 @@
     Swal.fire({
       type: 'error',
       icon: 'error',
-      text: 'Verifica todos los campos',
+      text: 'Diligencia correctamente todos los campos',
       showConfirmButton: false, 
       confirmButtonColor: '#1C2833',
       timer: 1500

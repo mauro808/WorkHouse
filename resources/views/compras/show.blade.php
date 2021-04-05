@@ -37,10 +37,10 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="3">
-                                            <p align="right">SUBTOTAL:</p>
+                                            <p align="right"  style="display:none;">SUBTOTAL:</p>
                                         </th>
                                         <th>
-                                            <p align="right">$/{{number_format($subtotal,2)}}</p>
+                                            <p align="right" style="display:none;">$/{{number_format($subtotal,2)}}</p>
                                         </th>
                                     </tr>
                                     
@@ -55,9 +55,13 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach($detalleCompras as $detalleCompra)
-                                    <tr>                                      
-                                        <td>{{$detalleCompra->idProducto}}</td>
-            
+                                    <tr>      
+                                      
+                                       @foreach ($productos as $producto)
+                                       @if($detalleCompra->idProducto == $producto->id)
+                                       <td>{{$producto->nombreProducto}}</td>
+                                       @endif
+                                       @endforeach
                                         <td>$/{{$detalleCompra->precio}}</td>
                                         <td>{{$detalleCompra->cantidad}}</td>
                                         <td>s/{{number_format($detalleCompra->cantidad*$detalleCompra->precio,2)}}</td>
@@ -69,7 +73,13 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario: {{$compra->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por: 
+                            @foreach ($usuarios as $usuario)
+                            @if($compra->idUsuario == $usuario->id)
+                            {{$usuario->nombre}}
+                            @endif
+                            @endforeach
+                            </strong></p>
                         <p class="form-control-label" for="created_at"><strong>Fecha:  {{$compra->created_at}} </strong></p>
                         <p class="form-control-label" for="estado"><strong>Estado:  {{$compra->estado}} </strong></p>
                     

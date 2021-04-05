@@ -62,8 +62,6 @@
         <option @if ($cliente->tipoDocumento=="Cédula Ciudadanía") selected @endif>Cédula Ciudadanía</option>
         <option @if ($cliente->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjera</option>
         <option @if ($cliente->tipoDocumento=="Permiso Permanencia") selected @endif>Permiso Permanencia</option>
-        <option @if ($cliente->tipoDocumento=="Pasaporte") selected @endif>Pasaporte</option>
-        <option @if ($cliente->tipoDocumento=="Otro") selected @endif>Otro</option>
       </select>
  </div>
     </div>
@@ -72,14 +70,14 @@
  <div class="col-6">
     <label for="numeroIdentificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('numeroIdentificacion','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="text" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" />
+    <input type="number" class="form-control" min="000000000000000" max="999999999999999"id="numeroIdentificacion" name="numeroIdentificacion" value="{{ $cliente->numeroIdentificacion }}" />
         </div>
     
         
 <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong>:message</strong></small>') !!}
-    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" value="{{ $cliente->telefonoFijo }}" />
+    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" min="1" pattern="^[0-9]+" value="{{ $cliente->telefonoFijo }}" />
     </div>
     </div>
   </br>
@@ -87,7 +85,7 @@
  <div class="col-6">
     <label for="celular"><strong>Celular:</strong></label>
     {!! $errors->first('celular','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" value="{{ $cliente->celular }}" />
+    <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" min="1" pattern="^[0-9]+" value="{{ $cliente->celular }}" />
     
          </div>
   
@@ -102,7 +100,7 @@
    <div class="col-12">
     <label for="correo"><strong>Coreo Electrónico:</strong></label>
     {!! $errors->first('correo','<small style="color:red;"><strong>:message</strong></small>') !!} 
-    <input type="text" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" />
+    <input type="email" class="form-control" id="correo'" name="correo" value="{{ $cliente->correo }}" />
 </div>
 </br>
 <button type="submit" class="btn btn-dark btn-lg " style="margin: 20px">
@@ -124,11 +122,6 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-      $("#registrar").click(function() {
-        registrar();
-      });
-  });
 
   $(document).ready(function(){
     $(".form-control").change(function(){
@@ -136,6 +129,15 @@
     });
   });
   
+
+  $(document).ready(function() {
+      $("#registrar").click(function() {
+    
+        registrar();
+      });
+  });
+
+ 
 
   function registrar() {
 
@@ -148,8 +150,9 @@
     telefonoFijo  = $("#telefonoFijo").val();
     correo  = $("#correo").val();
 
-    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" &&
-    direccion != "" && celular != "" && telefonoFijo != "" && correo != "" ) {
+    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" 
+    && numeroIdentificacion.length < 15 && direccion != "" && celular != "" && celular.length < 10
+    && telefonoFijo != "" && telefonoFijo.length < 7 && correo != "" ) {
       
       Swal.fire({
         position: 'top-center',
@@ -164,7 +167,7 @@
     Swal.fire({
       type: 'error',
       icon: 'error',
-      text: 'Rellene todos los campos',
+      text: 'Diligencia correctamente todos los campos',
       showConfirmButton: false, 
       confirmButtonColor: '#1C2833',
       timer: 1500
