@@ -42,7 +42,7 @@
         <tr>
             
             <td><strong>Correo Electrónico:</strong></td>
-            <td>{{$usuario->correo}}</td>
+            <td>{{$usuario->email}}</td>
              <td><strong>Dirección:</strong></td>
             <td>{{$usuario->direccion}}</td>
         </tr>

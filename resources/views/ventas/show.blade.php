@@ -37,10 +37,10 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="3">
-                                            <p align="right">SUBTOTAL:</p>
+                                            <p align="right" style="display:none;">SUBTOTAL:</p>
                                         </th>
                                         <th>
-                                            <p align="right">$/{{number_format($subtotal,2)}}</p>
+                                            <p align="right" style="display:none;">$/{{number_format($subtotal,2)}}</p>
                                         </th>
                                     </tr>
                                     
@@ -56,7 +56,11 @@
                                 <tbody>
                                     @foreach($detalleVentas as $detalleVenta)
                                     <tr>
-                                        <td>{{$detalleVenta->idProducto}}</td>
+                                        @foreach ($productos as $producto)
+                                       @if($detalleVenta->idProducto == $producto->id)
+                                       <td>{{$producto->nombreProducto}}</td>
+                                       @endif
+                                       @endforeach
                                         <td>s/{{$detalleVenta->precio}}</td>
                                         <td>{{$detalleVenta->cantidad}}</td>
                                         <td>s/{{number_format($detalleVenta->cantidad*$detalleVenta->precio,2)}}</td>
@@ -68,7 +72,13 @@
                     </div>
                     
                     <div class="col-md-4 text-center">
-                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  {{$venta->idUsuario}} </strong></p>
+                        <p class="form-control-label" for="idUsuario"><strong>Elaborado por Usuario:  
+                            @foreach ($usuarios as $usuario)
+                            @if($venta->idUsuario == $usuario->id)
+                            {{$usuario->nombre}}
+                            @endif
+                            @endforeach
+                            </strong></p>
                         <p class="form-control-label" for="created_at"><strong>Fecha:  {{$venta->created_at}} </strong></p>
                         <p class="form-control-label" for="Estado"><strong>Estado:  {{$venta->Estado}} </strong></p>
                     

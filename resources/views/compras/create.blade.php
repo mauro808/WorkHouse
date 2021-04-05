@@ -80,7 +80,7 @@ function agregar(){
     {
         subtotal[cont] = cantidad * precio;
         total = total + subtotal[cont];
-        var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" + nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number' id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$/ " + subtotal[cont] + "<td></tr>";
+        var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" + nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number' id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$" + subtotal[cont] + "<td></tr>";
         cont++;
      
         limpiar();
@@ -96,6 +96,8 @@ function agregar(){
           })
     }
 }
+
+
 function limpiar(){
     $('#idProducto').val('');
     $('#cantidad').val("");
@@ -103,9 +105,9 @@ function limpiar(){
     $('#existencias').val('');
 }
 function totales(){
-    $('#total').html("$/ " + total.toFixed(2));
+    $('#total').html("$" + total.toFixed(2));
     precioTotal=total;
-    $("#total_pagar_html").html("$/ " + precioTotal.toFixed(2));
+    $("#total_pagar_html").html("$" + precioTotal.toFixed(2));
     $("#precioTotal").val(precioTotal.toFixed(2));
 }
 function evaluar(){
@@ -118,8 +120,8 @@ function evaluar(){
 function eliminar(index){
     total = total - subtotal[index];
     total_pagar_html = total;
-    $("#total").html("$/ " + total);
-    $("#total_pagar_html").html("$/ " + total_pagar_html);
+    $("#total").html("$" + total);
+    $("#total_pagar_html").html("$" + total_pagar_html);
     $("#total_pagar").val(total_pagar_html.toFixed(2));
     $("#precioTotal").val(total_pagar_html.toFixed(2));
     $("#fila" + index).remove();
@@ -133,25 +135,34 @@ $(document).ready(function() {
         compraRegistrada();
     });
 });
+
 function compraRegistrada(){
     
+    idUsuario = $("#idUsuario").val();
+    estado = $("#estado").val();
     precioTotal = $("#precioTotal").val();
+    created_at = $("#created_at").val();
+   
     
-    if(precioTotal != ""  && precioTotal > 0) {
+    if(precioTotal != ""  && precioTotal > 0 && idUsuario != "" && estado != "" && created_at != "") {
         Swal.fire({
             position: 'top-center',
             icon: 'success',
             title: 'Registro exitoso',
             showConfirmButton: false, 
             confirmButtonColor: '#1C2833',
+            timer: 15000,
            
           })
     }else {
         Swal.fire({
             type: 'error',
             icon: 'error',
-            text: 'Compra no registrada',
+            title: 'Compra no registrada',
+            text: 'Diligencia todos los datos de la compra',
+            showConfirmButton: false, 
             confirmButtonColor: '#1C2833',
+            timer: 15000,
           })
     }
 }

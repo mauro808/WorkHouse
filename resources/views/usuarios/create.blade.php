@@ -66,7 +66,7 @@
     <div class="col-6">
     <label for="identificacion"><strong>Identificación:</strong></label>
     {!! $errors->first('identificacion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="text"  class="form-control" id="identificacion" name="identificacion" placeholder="Digite Número de Documento" value="{{old('identificacion')}}" />
+    <input type="number"  class="form-control" min="000000000000000" max="999999999999999" id="identificacion" name="identificacion" placeholder="Digite Número de Documento" min="1" pattern="^[0-9]+" value="{{old('identificacion')}}" />
    
     </div>
     </div>
@@ -75,22 +75,22 @@
     <div class="col-6">
       <label for="celular"><strong>Celular:</strong></label>
       {!! $errors->first('celular','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-      <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite Celular" value="{{old('celular')}}"  />
+      <input type="number" min="0000000000" max="9999999999" class="form-control" id="celular'" name="celular" placeholder="Digite Celular" min="1" pattern="^[0-9]+" value="{{old('celular')}}"  />
    
     </div>
     <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite Teléfono Fijo" value="{{old('telefonoFijo')}}"  />
+    <input type="number" min="0000000" max="9999999" class="form-control" id="telefonoFijo'" name="telefonoFijo" placeholder="Digite Teléfono Fijo" min="1" pattern="^[0-9]+" value="{{old('telefonoFijo')}}"  />
   
    </div>
    </div>
   </br>
     <div class="row">
    <div class="col-6">
-    <label for="correo"><strong>Correo electrónico:</strong></label>
-    {!! $errors->first('correo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="email" class="form-control" id="correo'" name="correo" placeholder="Digite Correo Electrónico" value="{{old('correo')}}"  />
+    <label for="email"><strong>Correo electrónico:</strong></label>
+    {!! $errors->first('email','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <input type="email" class="form-control" id="email'" name="email" placeholder="Digite Correo Electrónico" value="{{old('email')}}"  />
     
     
     </div>
@@ -111,23 +111,19 @@
   </br>
        <div class="row">
     <div  class= "col-6">
-    <label for="contrasena"><strong>Contraseña:</strong></label>
-    {!! $errors->first('contrasena','<small style="color:red;"><strong> :message</strong></small></br>') !!}
+    <label for="password"><strong>Contraseña:</strong></label>
+    {!! $errors->first('password','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <div class="input-group ">
-    <input type="password" class="form-control" id="contrasena'" name="contrasena"  minlength="8" placeholder="Digite Contraseña (Mínimo 8 Caracteres)"  />
-    <div class="input-group-append">
-      <button  class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="show"></i> </button>
-    </div>
+    <input type="password" class="form-control" id="password'" name="password"  minlength="8" placeholder="Digite Contraseña (Mínimo 8 Caracteres)"  />
+    
     </div>
   </div>
   <div  class= "col-6">
-    <label for="contrasenac"><strong>Confirme Contraseña:</strong></label>
-    {!! $errors->first('contrasenac','<small style="color:red;"><strong>:message</strong></small></br>') !!}
+    <label for="passwordc"><strong>Confirme Contraseña:</strong></label>
+    {!! $errors->first('passwordc','<small style="color:red;"><strong>:message</strong></small></br>') !!}
     <div class="input-group">
-    <input type="password" class="form-control" id="contrasenac'" name="contrasenac" minlength="8" placeholder="Confirme Contraseña (Mínimo 8 Caracteres)"  />
-    <div class="input-group-append">
-      <button class="btn btn-dark" type="button" > <i class="bi bi-eye-fill" id="showc"></i></button>
-    </div>    
+    <input type="password" class="form-control" id="passwordc'" name="passwordc" minlength="8" placeholder="Confirme Contraseña (Mínimo 8 Caracteres)"  />
+    
   </div>
     </div>
 </div>
@@ -153,20 +149,20 @@
 
 @section('scripts')
 
-<script>
+<script>  
+  
+  $(document).ready(function(){
+    $(".form-control").change(function(){
+      $(this).css("background-color", "#D6D6FF");
+    });
+  });
+
   $(document).ready(function() {
       $("#registrar").click(function() {
         registrar();
       });
   });
 
-  $(document).ready(function(){
-    $(".form-control").change(function(){
-      $(this).css("background-color", "#D6D6FF");
-    });
-  });
-  
- // $("#registrar").hide();
 
   function registrar() {
 
@@ -174,17 +170,17 @@
       nombre  = $("#nombre").val();
       tipoDocumento  = $("#tipoDocumento option:selected").text();
       identificacion  = $("#identificacion").val();
-      correo  = $("#correo").val();
+      email  = $("#email").val();
       telefonoFijo  = $("#telefonoFijo").val();
       celular  = $("#celular").val();
       direccion  = $("#direccion").val();
       nombreUsuario  = $("#nombreUsuario").val();
-      contrasena  = $("#contrasena").val();
-      contrasenac  = $("#contrasenac").val();
+      password  = $("#password").val();
+      passwordc  = $("#passwordc").val();
    
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && identificacion != "" && correo != "" 
-      && telefonoFijo != "" && celular != "" && direccion != "" && nombreUsuario != "" && contrasena != "" 
-      && contrasenac != "" )
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && email != ""  && telefonoFijo != "" && telefonoFijo.length < 7 && 
+      celular != "" && celular.length < 10 && direccion != "" && nombreUsuario != ""  && nombreUsuario.length < 8 
+      && password != ""  && password.length > 8 && passwordc != "" && passwordc.length > 8 && identificacion != "" && identificacion.length < 15 )
       {
         Swal.fire({
           position: 'top-center',
@@ -200,7 +196,7 @@
       Swal.fire({
         type: 'error',
         icon: 'error',
-        text: 'Verifica los campos',
+        text: 'Diligencia correctamente todos los campos',
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
         timer: 1500
@@ -208,31 +204,5 @@
   }
   }
 
-</script>
-<script>
-  $(document).ready(function(){
-    $('#show').mousedown(function(){
-      $('#contrasena').removeAttr('type');
-      $('#show').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
-    });
-    
-    $('#show').mouseup(function(){
-      $('#contrasena').atrr('type','password');
-      $('#show').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
-    });
-  });
-</script>
-<script>
-  $(document).ready(function(){
-    $('#showc').mousedown(function(){
-      $('#contrasenac').removeAttr('type');
-      $('#showc').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
-    });
-    
-    $('#showc').mouseup(function(){
-      $('#contrasenac').atrr('type','password');
-      $('#showc').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
-    });
-  });
 </script>
 @endsection

@@ -71,20 +71,20 @@
     </thead>
     <tfoot>
         <tr>
-            <th colspan="4">
-                <p align="right">Total</p>
+            <th colspan="4" >
+                <p align="right" style="display:none;">Total</p>
             </th>
             <th colspan="4">
-                <p align="right"><span id="total">$/ </span></p>
+                <p align="right"><span id="total" style="display:none;">$</span></p>
             </th>
         </tr>
         <tr>
             <th colspan="4">
-                <p align="right">Total a pagar</p>
+                <p align="right">Total Venta</p>
             </th>
             <th colspan="4">
-                <p align="right"><span id="total_pagar_html" name="total_pagar_html">$/ </span>
-                <input readonly name="precioTotal" id="precioTotal" name="precioTotal"></p>
+                <p align="right"><span id="total_pagar_html" name="total_pagar_html">$</span>
+                <input type="hidden" name="precioTotal" id="precioTotal" name="precioTotal"></p>
             </th>
         </tr>
     </tfoot>

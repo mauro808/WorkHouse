@@ -56,15 +56,17 @@
 @csrf 
 @if ($venta->Estado=="Activo")
     <a class="btn btn-danger" id="anular"   href="{{ route('ventas.inhabilitacion', $venta->id) }}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
-<path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
-</svg>  Anular</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>   Anular</a>
 @endif
 @if ($venta->Estado=="Inactivo")
     <a type="submit" class="btn btn-warning" id="anulada" onclick="anulada()" href="{{ route('ventas.habilitacion', $venta->id) }}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
-<path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-</svg> Anulada</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>  Anulada</a>
 @endif
 @csrf
 
@@ -120,8 +122,8 @@ $(document).ready(function () {
         e.preventDefault(); 
 
         Swal.fire({
-            title: 'Anular Venta: Esta seguro?',
-            text: "No se podra deshacer el cambio!",
+            title: 'Anular Venta ',
+            text: "No se podrá deshacer el cambio!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',

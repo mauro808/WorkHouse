@@ -126,7 +126,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{$venta->idUsuario}}</td>
+                        @foreach ($usuarios as $usuario)
+                            @if($venta->idUsuario == $usuario->id)
+                            <td>{{$usuario->nombre}}</td>
+                            @endif
+                            @endforeach
                         <td>{{$venta->created_at}}</td>
                     </tr>
                 </tbody>
@@ -148,7 +152,11 @@
                 <tbody>
                     @foreach ($detalleVentas as $detalleVenta)
                     <tr>
-                        <td>{{$detalleVenta->idProducto}}</td>
+                        @foreach ($productos as $producto)
+                        @if($detalleVenta->idProducto == $producto->id)
+                        <td>{{$producto->nombreProducto}}</td>
+                        @endif
+                        @endforeach
                         <td>{{$detalleVenta->cantidad}}</td>
                         <td>s/ {{$detalleVenta->precio}}</td>
                         <td>s/ {{number_format($detalleVenta->cantidad*$detalleVenta->precio,2)}}</td>

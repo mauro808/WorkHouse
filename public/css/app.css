@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans&display=swap');
 
+@import '~@sweetalert2/theme-bulma/bulma.scss';
 /*!
  * Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

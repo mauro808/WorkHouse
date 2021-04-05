@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Compra;
-use App\Usuario;
+use App\User;
 use App\Producto;
 use App\DetalleCompra;
 use Illuminate\Http\Request;
@@ -29,7 +29,7 @@ class CompraController extends Controller
     public function index()
     {
         $compras = Compra::all();
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('compras.index',compact('compras','usuarios'));
       
     }
@@ -37,7 +37,7 @@ class CompraController extends Controller
     public function create()
     {
         $compras = Compra::where('estado', 'Activo')->get();
-        $usuarios = Usuario::where('estado', 'Activo')->get();
+        $usuarios = User::where('estado', 'Activo')->get();
         $productos = Producto::where('estado', 'Activo')->get();
 
       return view('compras.create',["usuarios"=>$usuarios,"productos"=>$productos]);
@@ -46,6 +46,19 @@ class CompraController extends Controller
    
     public function store(Request $request)
     {
+                    
+        $request->validate([
+            'precioTotal'=>'required',
+            'idUsuario'=>'required',
+         
+        ],
+
+        [
+            
+        ]
+
+        );
+
         $compra = Compra::create($request->all()+[
             //'user_id'=>Auth::user()->id,
             'created_at'=>Carbon::now('America/Bogota'),
@@ -56,35 +69,51 @@ class CompraController extends Controller
             $results[] = array("idProducto"=>$request->idProducto[$key],"cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key]);
         }
         $compra->detalleCompra()->createMany($results);
-        return redirect()->route('compras.index');
-    }
-
-    public function show(Compra $compra)
-    {
+        //return redirect()->route('compras.index'.);
+        $productos = Producto::get();
+        $usuarios = User::get(); 
         $subtotal = 0 ;
         $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {
             $subtotal += $detalleCompra->cantidad * $detalleCompra->valorProducto;
         }
-        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal')); 
+      
+        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal','productos','usuarios')); 
+    }
+
+    public function show(Compra $compra, User $idUsuario, Producto $idProducto )
+    {
+       
+        $productos = Producto::get();
+        $usuarios = User::get(); 
+        $subtotal = 0 ;
+        $detalleCompras = $compra->detalleCompra;
+        foreach ($detalleCompras as $detalleCompra) {
+            $subtotal += $detalleCompra->cantidad * $detalleCompra->valorProducto;
+        }
+      
+        return view('compras.show', compact('compra', 'detalleCompras', 'subtotal','productos','usuarios')); 
+  
     }
 
     public function pdfCompras()
     {
        $compras = Compra::all();
-       $usuarios = Usuario::all();
+       $usuarios = User::all();
         $pdf = PDF::loadView('compras.pdf',compact('compras','usuarios'))->setOptions(['defaultFont' => 'sans-serif']);;
         return $pdf->stream('compras.pdf');
     }
 
-    public function pdfDetalle(Compra $compra)
+    public function pdfDetalle(Compra $compra, User $idUsuario, Producto $idProducto)
     {
+        $productos = Producto::get();
+        $usuarios = User::get(); 
         $subtotal = 0 ;
         $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {
             $subtotal += $detalleCompra->cantidad *  $detalleCompra->precio;
         }
-        $pdf = PDF::loadView('compras.pdfDetalle', compact('compra', 'subtotal', 'detalleCompras'))->setOptions(['defaultFont' => 'sans-serif']); 
+        $pdf = PDF::loadView('compras.pdfDetalle', compact('compra', 'detalleCompras', 'subtotal','productos','usuarios')) ->setOptions(['defaultFont' => 'sans-serif']); 
         return $pdf->stream('Comprobante_Compra'.$compra->id.'.pdf');
     }
 

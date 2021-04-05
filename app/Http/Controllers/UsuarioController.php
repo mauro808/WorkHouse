@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
-use App\Usuario;
+use App\User;
 use App\Rol;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +15,7 @@ class UsuarioController extends Controller
    
     public function listarUsuario()
     {
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         $rols = Rol::all();
         return view('usuarios/listar',compact('usuarios','rols'));
       
@@ -35,14 +35,14 @@ class UsuarioController extends Controller
             'idRol'=>'required',
             'nombre'=>'required|regex:/^[\pL\s\-]+$/u|max:50',
             'tipoDocumento'=>'required',
-            'identificacion'=>'required',
-            'correo'=>'required|email',
+            'identificacion'=>'required|unique:usuarios',
+            'email'=>'required|email',
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
-            'nombreUsuario'=>'required|regex:/^[\pL\s\-]+$/u|max:8',
-            'contrasena'=>'required|min:8|',
-            'contrasenac'=>'required|min:8|same:contrasena',
+            'nombreUsuario'=>'required|regex:/^[\pL\s\-]+$/u|max:8|unique:usuarios',
+            'password'=>'required|min:8|',
+            'passwordc'=>'required|min:8|same:password',
         ],
 
         [
@@ -52,37 +52,39 @@ class UsuarioController extends Controller
             'nombre.regex' => '*Ingresa sólo letras',
             'tipoDocumento.required' => '*Rellena este campo',
             'identificacion.required' => '*Rellena este campo',
-            'correo.required' => '*Rellena este campo',
-            'correo.email' => '*Ingresa un correo válido',
+            'identificacion.unique' => '*Documento ya registrado',
+            'email.required' => '*Rellena este campo',
+            'email.email' => '*Ingresa un E-mail válido',
             'telefonoFijo.required' => '*Rellena este campo',
             'celular.required' => '*Rellena este campo',
             'direccion.required' => '*Rellena este campo',
             'nombreUsuario.required' => '*Rellena este campo',
             'nombreUsuario.regex' => '*Ingresa sólo letras',
+            'nombreUsuario.unique' => '*Alias ya registrado',
             'nombreUsuario.max' => '*Ingresa máximo 8 caracteres',
-            'contrasena.required' => '*Rellena este campo',
-            'contrasenac.required' => '*Rellena este campo',
-            'contrasenac.same' => '*Las contraseñas no coinciden',
-            'contrasena.min' => '*Mínimo 8 caracteres',
-            'contrasenac.min' => '*Mínimo 8 caracteres',
+            'password.required' => '*Rellena este campo',
+            'passwordc.required' => '*Rellena este campo',
+            'password.same' => '*Las contraseñas no coinciden',
+            'password.min' => '*Mínimo 8 caracteres',
+            'passwordc.min' => '*Mínimo 8 caracteres',
         ]
 
         );
 
     
 
-        $usuarioNuevo = new App\Usuario;
+        $usuarioNuevo = new App\User;
         $usuarioNuevo->idRol = $request->idRol;
         $usuarioNuevo->nombre = $request->nombre;
         $usuarioNuevo->tipoDocumento = $request->tipoDocumento;
         $usuarioNuevo->identificacion = $request->identificacion;
-        $usuarioNuevo->correo = $request->correo;
+        $usuarioNuevo->email = $request->email;
         $usuarioNuevo->telefonoFijo = $request->telefonoFijo;
         $usuarioNuevo->celular = $request->celular;
         $usuarioNuevo->direccion = $request->direccion;
         $usuarioNuevo->nombreUsuario = $request->nombreUsuario;
-        $usuarioNuevo->contrasena = Hash::make($request->contrasena);
-        $usuarioNuevo->contrasenac = Hash::make($request->contrasenac);
+        $usuarioNuevo->password = Hash::make($request->password);
+        $usuarioNuevo->passwordc = Hash::make($request->passwordc);
         $usuarioNuevo->estado = $request->estado;
 
         $usuarioNuevo->save();
@@ -93,13 +95,13 @@ class UsuarioController extends Controller
     
     public function detalleUsuario($idUsuario)
     {
-        $usuario = App\Usuario::findOrFail($idUsuario);
+        $usuario = App\User::findOrFail($idUsuario);
         $rol = App\Rol::find($usuario->idRol);
         return view('usuarios.detalle', compact('usuario','rol'));
     }
 
     public function edit($idUsuario){
-        $usuario = App\Usuario::findOrFail($idUsuario);
+        $usuario = App\User::findOrFail($idUsuario);
         $rols = App\Rol::all();
         return view('usuarios.editar', compact('usuario', 'rols'));
     }
@@ -111,7 +113,7 @@ class UsuarioController extends Controller
             'nombre'=>'required|regex:/^[\pL\s\-]+$/u|max:50',
             'tipoDocumento'=>'required',
             'identificacion'=>'required',
-            'correo'=>'required|email',
+            'email'=>'required|email',
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
@@ -126,8 +128,8 @@ class UsuarioController extends Controller
             'nombre.regex' => '*Ingresa sólo letras',
             'tipoDocumento.required' => '*Rellena este campo',
             'identificacion.required' => '*Rellena este campo',
-            'correo.required' => '*Rellena este campo',
-            'correo.email' => '*Ingresa un correo válido',
+            'email.required' => '*Rellena este campo',
+            'email.email' => '*Ingresa un E-mail válido',
             'telefonoFijo.required' => '*Rellena este campo',
             'celular.required' => '*Rellena este campo',
             'direccion.required' => '*Rellena este campo',
@@ -140,12 +142,12 @@ class UsuarioController extends Controller
 
         );
        
-           $usuario= App\Usuario::findOrFail($id); //buscar producto por id
+           $usuario= App\User::findOrFail($id); //buscar producto por id
            $usuario->idRol=$request->idRol;
            $usuario->nombre=$request->nombre;
            $usuario->tipoDocumento=$request->tipoDocumento;
            $usuario->identificacion=$request->identificacion;
-           $usuario->correo=$request->correo;
+           $usuario->email=$request->email;
            $usuario->telefonoFijo=$request->telefonoFijo;
            $usuario->celular=$request->celular;
            $usuario->direccion=$request->direccion;
@@ -157,7 +159,7 @@ class UsuarioController extends Controller
 
     public function habilitar(Request $request, $id)
     {
-           $usuario= App\Usuario::findOrFail($id); //buscar producto por id
+           $usuario= App\User::findOrFail($id); //buscar producto por id
            $usuario->Estado="Activo";
            $usuario->update();
            
@@ -166,7 +168,7 @@ class UsuarioController extends Controller
 
     public function inhabilitar(Request $request, $id)
     {
-           $usuario= App\Usuario::findOrFail($id); //buscar producto por id
+           $usuario= App\User::findOrFail($id); //buscar producto por id
            $usuario->Estado="Inactivo";
            $usuario->update();
            
@@ -175,7 +177,7 @@ class UsuarioController extends Controller
 
     public function pdfUsuarios()
     {
-       $usuarios = Usuario::all();
+       $usuarios = User::all();
        $rols = Rol::all();
         $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'))->setOptions(['defaultFont' => 'sans-serif']); 
         return $pdf->setPaper('a4','landscape')->stream('usuarios.pdf');

@@ -79,7 +79,7 @@
           Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: 'Registro exitoso',
+            title: 'Actualización exitoso',
             showConfirmButton: false, 
             confirmButtonColor: '#1C2833',
            

@@ -15,10 +15,6 @@ class UpdateRequest extends FormRequest
   
     public function rules()
     {
-        return [
-              
-            'nombreCategoria'=>'required|unique:categorias|regex:/^[\pL\s\-]+$/u|max:50',
-            'Descripcion'=>'required|max:250',
-        ];
-    }              
+           
+    }
 }

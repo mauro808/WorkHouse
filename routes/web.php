@@ -1,10 +1,11 @@
 <?php
 
 Auth::routes();
-Route::auth();
+
 Route::get('/', function(){
     return view('auth.login');
 });
+
 
 
 // Rutas Clientes
@@ -64,3 +65,7 @@ Route::get('/habilitarVenta/{id}', 'VentaController@habilitar')->name('ventas.ha
 Route::get('/inhabilitarVenta/{id}', 'VentaController@inhabilitar')->name('ventas.inhabilitacion');
 Route::get('/pdfVentas', 'VentaController@pdfVentas')->name('PdfVentas');
 Route::get('/pdfDetalleV/{venta}', 'VentaController@pdfDetalleV')->name('PdfDetalleV');
+
+// Rutas Ayuda
+Route::get('/ayuda', 'AyudaController@index')->name('ayuda.index');
+

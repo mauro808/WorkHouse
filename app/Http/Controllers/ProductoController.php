@@ -30,7 +30,7 @@ class ProductoController extends Controller
         $request->validate([
             'idCategoria'=>'required',
             'nombreProducto'=>'required|unique:productos',
-            'existencias'=>'required|integer',
+            'existencias'=>'required',
             'medida'=>'required',
             'valorProducto'=>'required',
         ],
@@ -38,9 +38,8 @@ class ProductoController extends Controller
     [
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
-            'nombreProducto.unique' => '*Producto ya existe',
+            'nombreProducto.unique' => '*Producto ya registrado',
             'existencias.required' => '*Rellena este campo',
-            'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
             'valorProducto.required' => '*Rellena este campo',
          
@@ -80,7 +79,7 @@ class ProductoController extends Controller
         $request->validate([
             'idCategoria'=>'required',
             'nombreProducto'=>'required',
-            'existencias'=>'required|integer',
+            'existencias'=>'required',
             'medida'=>'required',
             'valorProducto'=>'required',
         ],
@@ -89,7 +88,6 @@ class ProductoController extends Controller
             'idCategoria.required' => '*Rellena este campo',
             'nombreProducto.required' => '*Rellena este campo',
             'existencias.required' => '*Rellena este campo',
-            'existencias.integer' => '*Ingresa sólo números',
             'medida.required' => '*Rellena este campo',
             'valorProducto.required' => '*Rellena este campo',
          

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App;
 use App\Cliente;
-use App\Usuario;
+use App\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -14,13 +14,13 @@ class ClienteController extends Controller
     public function listarClientes()
     {
         $clientes = Cliente::all();
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('clientes/listar',compact('clientes','usuarios'));
     }
 
 
     public function agregarCliente(){
-        $usuarios = Usuario::where('estado', 'Activo')->get();
+        $usuarios = User::where('estado', 'Activo')->get();
         return view('clientes.create',compact('usuarios'));
     }
 
@@ -30,9 +30,9 @@ class ClienteController extends Controller
             'idUsuario'=>'required',
             'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
-            'numeroIdentificacion'=>'required|integer|unique:clientes',
-            'telefonoFijo'=>'required|integer',
-            'celular'=>'required|integer',
+            'numeroIdentificacion'=>'required|unique:clientes',
+            'telefonoFijo'=>'required',
+            'celular'=>'required',
             'direccion'=>'required',
             'correo'=>'required|email|unique:clientes',
         ],
@@ -42,13 +42,10 @@ class ClienteController extends Controller
             'nombreCliente.required' => '*Rellena este campo',
             'nombreCliente.regex' => '*Ingresa sólo letras',
             'tipoIdentificacion.required' => '*Rellena este campo',
-            'numeroIdentificacion.required' => '*Rellena este campo',
-            'numeroIdentificacion.integer' => '*Ingresa sólo números',       
+            'numeroIdentificacion.required' => '*Rellena este campo',      
             'numeroIdentificacion.unique' => '*Documento ya registrado',
             'telefonoFijo.required' => '*Rellena este campo',
-            'telefonoFijo.integer' => '*Ingresa sólo números',
             'celular.required' => '*Rellena este campo',
-            'celular.integer' => '*Ingresa sólo números',
             'direccion.required' => '*Rellena este campo',
             'correo.required' => '*Rellena este campo',
             'correo.email' => '*Correo inválido',
@@ -76,14 +73,14 @@ class ClienteController extends Controller
     public function detalleCliente($idCliente)
     {
         $cliente = App\Cliente::findOrFail($idCliente);
-        $usuario = App\Usuario::find($cliente->idUsuario);
+        $usuario = App\User::find($cliente->idUsuario);
         return view('clientes.detalle', compact('cliente','usuario'));
     }
 
     public function edit($idCliente)
     {
         $cliente = App\Cliente::findOrFail($idCliente);
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('clientes.editar', compact('cliente','usuarios'));
     }
 
@@ -94,9 +91,9 @@ class ClienteController extends Controller
             'idUsuario'=>'required',
             'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
-            'numeroIdentificacion'=>'required|integer|',
-            'telefonoFijo'=>'required|integer',
-            'celular'=>'required|integer',
+            'numeroIdentificacion'=>'required',
+            'telefonoFijo'=>'required',
+            'celular'=>'required',
             'direccion'=>'required',
             'correo'=>'required|email|',
         ],
@@ -107,11 +104,8 @@ class ClienteController extends Controller
             'nombreCliente.regex' => '*Ingresa sólo letras',
             'tipoIdentificacion.required' => '*Rellena este campo',
             'numeroIdentificacion.required' => '*Rellena este campo',
-            'numeroIdentificacion.integer' => '*Ingresa sólo números',
             'telefonoFijo.required' => '*Rellena este campo',
-            'telefonoFijo.integer' => '*Ingresa sólo números',
             'celular.required' => '*Rellena este campo',
-            'celular.integer' => '*Ingresa sólo números',
             'direccion.required' => '*Rellena este campo',
             'correo.required' => '*Rellena este campo',
             'correo.email' => '*Correo inválido',
