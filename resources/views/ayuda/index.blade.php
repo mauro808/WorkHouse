@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <style type="text/css">
+        #cliclogin {
+            display: none
+        }
 
+    </style>
     <style type="text/css">
         #clicusuarios {
             display: none
@@ -260,6 +265,29 @@
             </div class="">
             </br>
 
+            <button type="submit" class="btn btn-dark btn-lg btn-block " onclick="mostrar_ocultar_login();"
+                style="margin: 10px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-lock"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                </svg><strong> </br>Login</strong></button>
+
+            <div id="cliclogin">
+                <p></br><strong>1.</strong> Para ingresar al sistema debe tener un usuario y contraseña previamente creado
+                    por el administrador.<strong></br>2.</strong>En la ventana de login, debe digitar el usuario y la contraseña,
+                    luego
+                    presionar el botón <strong>Ingresar</strong>. </br><strong>3.</strong>En caso de olvido de contraseña, debe
+                    presionar el
+                    botón <strong>Recordar Contraseña</strong> el cual le enviará su contraseña actual al correo electrónico
+                    registrado.
+                </br><strong>4.</strong>Si desea cambiar su contraseña, debe ingresar su usuario y luego presionar el botón Cambiar
+                    Contraseña. En el momento de utilizar esta opción se valida que esté previamente registrado,
+                    luego solicitará el ingreso de la contraseña anterior y la nueva.</br></br>
+                    <img width="900" height="480" src="img/login.jpg"></img>
+                    </br> 
+                </p>
+            </div>
 
             <button type="submit" class="btn btn-dark btn-lg btn-block " onclick="mostrar_ocultar_usuarios();"
                 style="margin: 10px">
@@ -437,10 +465,11 @@
                         presionar el botón <strong>Registrar</strong>.<strong></br>4.</strong> Si al momento de presionar el
                         botón Registrar, algún campo está diligenciado erróneamente o está vacío, verá en la pantalla un
                         mensaje
-                        de error indicándole qué campo debe corregir.</br> 
+                        de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Crearcliente.mov">
-                        </video></br></p>
+                        </video></br>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_editarC();" style="margin: 15px"><svg
@@ -465,7 +494,8 @@
                         de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Editarcliente.mov">
-                        </video></br></p>
+                        </video></br>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_verC();" style="margin: 15px"><svg
@@ -484,7 +514,8 @@
                         continuación, verá en la pantalla todos los datos registrados del cliente seleccionado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Vercliente.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_buscarC();" style="margin: 15px"><svg
@@ -506,7 +537,8 @@
                         o no coincidir con lo buscado, no arrojará ningún resultado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Buscarcliente.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_reporteC();" style="margin: 15px"><svg
                         xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-people"
@@ -567,7 +599,8 @@
                         de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Crearcategoria.mov">
-                        </video></br></p>
+                        </video></br>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_editarT();" style="margin: 8px"><svg
@@ -596,7 +629,9 @@
                         de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Editarcategoria.mov">
-                        </video></br></p></p>
+                        </video></br>
+                    </p>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_verT();" style="margin: 8px"><svg
@@ -618,7 +653,8 @@
                         continuación, verá en la pantalla todos los datos registrados de la categoría seleccionada.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Vercategoria.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_activarT();" style="margin: 8px"><svg
@@ -667,7 +703,8 @@
                         o no coincidir con lo buscado, no arrojará ningún resultado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Buscarcategoria.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
 
@@ -728,7 +765,8 @@
                         de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Crearproducto.mov">
-                        </video></br></p>
+                        </video></br>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_editarP();" style="margin: 10px"> <svg
@@ -754,7 +792,8 @@
                         de error indicándole qué campo debe corregir.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Editarproducto.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_verP();" style="margin: 10px"> <svg
@@ -773,7 +812,8 @@
                         continuación, verá en la pantalla todos los datos registrados del producto seleccionado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Verproducto.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_activarP();" style="margin: 10px">
@@ -816,7 +856,8 @@
                         o no coincidir con lo buscado, no arrojará ningún resultado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Buscarproducto.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
 
@@ -870,17 +911,19 @@
                         presionar el botón <strong>Agregar</strong> con el cual irá agregando los productos al
                         detalle.</br><strong>4.</strong> Si desea eliminar un producto debe dar clic
                         en el botón <strong>eliminar</strong></br><strong>5.</strong> Si al momento de presionar el
-                            botón <strong>Agregar</strong>, algún campo está diligenciado erróneamente o está vacío, verá en la pantalla un
-                            mensaje
-                            de error indicándole qué campo debe corregir.<strong></br>6.</strong>Para finalizar la compra, de
-                            clic en
-                            el botón<strong>Registrar</strong></br><strong>7.</strong> A continuación, verá el detalle de la
-                            compra registrada el cual podrá imprimir dando clc en el botón <strong>pdf</strong> el cual está
-                                    ubicado en el parte superior derecha.</br>
-                                    
-                                    <video width="700" height="480" autoplay muted loop controls>
-                                        <source src="videos/Crearcompra.mov">
-                                    </video></br></p>
+                        botón <strong>Agregar</strong>, algún campo está diligenciado erróneamente o está vacío, verá en la
+                        pantalla un
+                        mensaje
+                        de error indicándole qué campo debe corregir.<strong></br>6.</strong>Para finalizar la compra, de
+                        clic en
+                        el botón<strong>Registrar</strong></br><strong>7.</strong> A continuación, verá el detalle de la
+                        compra registrada el cual podrá imprimir dando clc en el botón <strong>pdf</strong> el cual está
+                        ubicado en el parte superior derecha.</br>
+
+                        <video width="700" height="480" autoplay muted loop controls>
+                            <source src="videos/Crearcompra.mov">
+                        </video></br>
+                    </p>
                 </div>
 
 
@@ -923,10 +966,11 @@
                         </br> <strong>3.</strong>
                         A continuación verá en la pantalla la compra encontrada por el aplicativo y en caso de no estar
                         registrada
-                        o no coincidir con lo buscado, no arrojará ningún resultado.</br><
-                        <video width="700" height="480" autoplay muted loop controls>
+                        o no coincidir con lo buscado, no arrojará ningún resultado.</br>
+                        < <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Buscarcompra.mov">
-                        </video></p>
+                            </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_activarO();" style="margin: 15px">
@@ -1001,16 +1045,18 @@
                         presionar el botón <strong>Agregar</strong> con el cual irá agregando los productos al
                         detalle.</br><strong>4.</strong> Si desea eliminar un producto debe dar clic
                         en el botón <strong>eliminar</strong></br><strong>5.</strong> Si al momento de presionar el
-                            botón <strong>Agregar</strong>, algún campo está diligenciado erróneamente o está vacío, verá en la pantalla un
-                            mensaje
-                            de error indicándole qué campo debe corregir.<strong></br>6.</strong>Para finalizar la venta, de
-                            clic en
-                            el botón<strong>Registrar</strong></br><strong>7.</strong> A continuación, verá el detalle de la
-                            venta registrada el cual podrá imprimir dando clc en el botón <strong>pdf</strong> el cual está
-                                    ubicado en el parte superior derecha.</br>
-                                    <video width="700" height="480" autoplay muted loop controls>
-                                        <source src="videos/Crearventa.mov">
-                                    </video></br></p>
+                        botón <strong>Agregar</strong>, algún campo está diligenciado erróneamente o está vacío, verá en la
+                        pantalla un
+                        mensaje
+                        de error indicándole qué campo debe corregir.<strong></br>6.</strong>Para finalizar la venta, de
+                        clic en
+                        el botón<strong>Registrar</strong></br><strong>7.</strong> A continuación, verá el detalle de la
+                        venta registrada el cual podrá imprimir dando clc en el botón <strong>pdf</strong> el cual está
+                        ubicado en el parte superior derecha.</br>
+                        <video width="700" height="480" autoplay muted loop controls>
+                            <source src="videos/Crearventa.mov">
+                        </video></br>
+                    </p>
                 </div>
 
 
@@ -1055,7 +1101,8 @@
                         o no coincidir con lo buscado, no arrojará ningún resultado.</br>
                         <video width="700" height="480" autoplay muted loop controls>
                             <source src="videos/Buscarventa.mov">
-                        </video></p>
+                        </video>
+                    </p>
                 </div>
 
                 <button type="submit" class="btn btn-light " onclick="mostrar_ocultar_activarV();" style="margin: 16px"><svg
@@ -1111,6 +1158,23 @@
 
 
     <script type="text/javascript">
+
+        function mostrarLogin() {
+            document.getElementById('cliclogin').style.display = "block";
+        }
+
+        function ocultarLogin() {
+            document.getElementById('cliclogin').style.display = "none";
+        }
+
+        function mostrar_ocultar_login() {
+            var cliclogin = document.getElementById('cliclogin');
+            if (cliclogin.style.display == "none") {
+                mostrarLogin();
+            } else {
+                ocultarLogin();
+            }
+        }
         function mostrarUsuarios() {
             document.getElementById('clicusuarios').style.display = "block";
         }
@@ -1213,605 +1277,605 @@
             }
         }
 
-            function mostrarcrearUsuario() {
-                document.getElementById('clic1').style.display = "block";
-            }
-
-            function ocultarcrearUsuario() {
-                document.getElementById('clic1').style.display = "none";
-            }
-
-            function mostrar_ocultar_crear() {
-                var clic1 = document.getElementById('clic1');
-                if (clic1.style.display == "none") {
-                    mostrarcrearUsuario();
-                } else {
-                    ocultarcrearUsuario();
-                }
-            }
-
-
-            function mostrareditarUsuario() {
-                document.getElementById('clic2').style.display = "block";
-            }
-
-            function ocultareditarUsuario() {
-                document.getElementById('clic2').style.display = "none";
-            }
-
-            function mostrar_ocultar_editar() {
-                var clic2 = document.getElementById('clic2');
-                if (clic2.style.display == "none") {
-                    mostrareditarUsuario();
-                } else {
-                    ocultareditarUsuario();
-                }
-            }
-
-            function mostrarbuscarUsuario() {
-                document.getElementById('clic3').style.display = "block";
-            }
-
-            function ocultarbuscarUsuario() {
-                document.getElementById('clic3').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscar() {
-                var clic3 = document.getElementById('clic3');
-                if (clic3.style.display == "none") {
-                    mostrarbuscarUsuario();
-                } else {
-                    ocultarbuscarUsuario();
-                }
-            }
-
-            function mostrarhabilitarUsuario() {
-                document.getElementById('clic4').style.display = "block";
-            }
-
-            function ocultarhabilitarUsuario() {
-                document.getElementById('clic4').style.display = "none";
-            }
-
-            function mostrar_ocultar_activar() {
-                var clic4 = document.getElementById('clic4');
-                if (clic4.style.display == "none") {
-                    mostrarhabilitarUsuario();
-                } else {
-                    ocultarhabilitarUsuario();
-                }
-            }
-
-            function mostrarreporteUsuario() {
-                document.getElementById('clic5').style.display = "block";
-            }
-
-            function ocultarreporteUsuario() {
-                document.getElementById('clic5').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporte() {
-                var clic5 = document.getElementById('clic5');
-                if (clic5.style.display == "none") {
-                    mostrarreporteUsuario();
-                } else {
-                    ocultarreporteUsuario();
-                }
-            }
-
-            function mostrarcrearCliente() {
-                document.getElementById('clic6').style.display = "block";
-            }
-
-            function ocultarcrearCliente() {
-                document.getElementById('clic6').style.display = "none";
-            }
-
-            function mostrar_ocultar_crearC() {
-                var clic6 = document.getElementById('clic6');
-                if (clic6.style.display == "none") {
-                    mostrarcrearCliente();
-                } else {
-                    ocultarcrearCliente();
-                }
-            }
-
-            function mostrareditarCliente() {
-                document.getElementById('clic7').style.display = "block";
-            }
-
-            function ocultareditarCliente() {
-                document.getElementById('clic7').style.display = "none";
-            }
-
-            function mostrar_ocultar_editarC() {
-                var clic7 = document.getElementById('clic7');
-                if (clic7.style.display == "none") {
-                    mostrareditarCliente();
-                } else {
-                    ocultareditarCliente();
-                }
-            }
-
-            function mostrarbuscarCliente() {
-                document.getElementById('clic8').style.display = "block";
-            }
-
-            function ocultarbuscarCliente() {
-                document.getElementById('clic8').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscarC() {
-                var clic8 = document.getElementById('clic8');
-                if (clic8.style.display == "none") {
-                    mostrarbuscarCliente();
-                } else {
-                    ocultarbuscarCliente();
-                }
-            }
-
-            function mostrarreporteCliente() {
-                document.getElementById('clic9').style.display = "block";
-            }
-
-            function ocultarreporteCliente() {
-                document.getElementById('clic9').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporteC() {
-                var clic9 = document.getElementById('clic9');
-                if (clic9.style.display == "none") {
-                    mostrarreporteCliente();
-                } else {
-                    ocultarreporteCliente();
-                }
-            }
-
-            function mostrarcrearCategoria() {
-                document.getElementById('clic10').style.display = "block";
-            }
-
-            function ocultarcrearCategoria() {
-                document.getElementById('clic10').style.display = "none";
-            }
-
-            function mostrar_ocultar_crearT() {
-                var clic10 = document.getElementById('clic10');
-                if (clic10.style.display == "none") {
-                    mostrarcrearCategoria();
-                } else {
-                    ocultarcrearCategoria();
-                }
-            }
-
-
-            function mostrareditarCategoria() {
-                document.getElementById('clic11').style.display = "block";
-            }
-
-            function ocultareditarCategoria() {
-                document.getElementById('clic11').style.display = "none";
-            }
-
-            function mostrar_ocultar_editarT() {
-                var clic11 = document.getElementById('clic11');
-                if (clic11.style.display == "none") {
-                    mostrareditarCategoria();
-                } else {
-                    ocultareditarCategoria();
-                }
-            }
-
-            function mostrarbuscarCategoria() {
-                document.getElementById('clic12').style.display = "block";
-            }
-
-            function ocultarbuscarCategoria() {
-                document.getElementById('clic12').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscarT() {
-                var clic12 = document.getElementById('clic12');
-                if (clic12.style.display == "none") {
-                    mostrarbuscarCategoria();
-                } else {
-                    ocultarbuscarCategoria();
-                }
-            }
-
-            function mostrarhabilitarCategoria() {
-                document.getElementById('clic13').style.display = "block";
-            }
-
-            function ocultarhabilitarCategoria() {
-                document.getElementById('clic13').style.display = "none";
-            }
-
-            function mostrar_ocultar_activarT() {
-                var clic13 = document.getElementById('clic13');
-                if (clic13.style.display == "none") {
-                    mostrarhabilitarCategoria();
-                } else {
-                    ocultarhabilitarCategoria();
-                }
-            }
-
-            function mostrarreporteCategoria() {
-                document.getElementById('clic14').style.display = "block";
-            }
-
-            function ocultarreporteCategoria() {
-                document.getElementById('clic14').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporteT() {
-                var clic14 = document.getElementById('clic14');
-                if (clic14.style.display == "none") {
-                    mostrarreporteCategoria();
-                } else {
-                    ocultarreporteCategoria();
-                }
-            }
-
-            function mostrarcrearProducto() {
-                document.getElementById('clic15').style.display = "block";
-            }
-
-            function ocultarcrearProducto() {
-                document.getElementById('clic15').style.display = "none";
-            }
-
-            function mostrar_ocultar_crearP() {
-                var clic15 = document.getElementById('clic15');
-                if (clic15.style.display == "none") {
-                    mostrarcrearProducto();
-                } else {
-                    ocultarcrearProducto();
-                }
-            }
-
-
-            function mostrareditarProducto() {
-                document.getElementById('clic16').style.display = "block";
-            }
-
-            function ocultareditarProducto() {
-                document.getElementById('clic16').style.display = "none";
-            }
-
-            function mostrar_ocultar_editarP() {
-                var clic16 = document.getElementById('clic16');
-                if (clic16.style.display == "none") {
-                    mostrareditarProducto();
-                } else {
-                    ocultareditarProducto();
-                }
-            }
-
-            function mostrarbuscarProducto() {
-                document.getElementById('clic17').style.display = "block";
-            }
-
-            function ocultarbuscarProducto() {
-                document.getElementById('clic17').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscarP() {
-                var clic17 = document.getElementById('clic17');
-                if (clic17.style.display == "none") {
-                    mostrarbuscarProducto();
-                } else {
-                    ocultarbuscarProducto();
-                }
-            }
-
-            function mostrarhabilitarProducto() {
-                document.getElementById('clic18').style.display = "block";
-            }
-
-            function ocultarhabilitarProducto() {
-                document.getElementById('clic18').style.display = "none";
-            }
-
-            function mostrar_ocultar_activarP() {
-                var clic18 = document.getElementById('clic18');
-                if (clic18.style.display == "none") {
-                    mostrarhabilitarProducto();
-                } else {
-                    ocultarhabilitarProducto();
-                }
-            }
-
-            function mostrarreporteProducto() {
-                document.getElementById('clic19').style.display = "block";
-            }
-
-            function ocultarreporteProducto() {
-                document.getElementById('clic19').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporteP() {
-                var clic19 = document.getElementById('clic19');
-                if (clic19.style.display == "none") {
-                    mostrarreporteProducto();
-                } else {
-                    ocultarreporteProducto();
-                }
-            }
-
-            function mostrarcrearCompra() {
-                document.getElementById('clic20').style.display = "block";
-            }
-
-            function ocultarcrearCompra() {
-                document.getElementById('clic20').style.display = "none";
-            }
-
-            function mostrar_ocultar_crearO() {
-                var clic20 = document.getElementById('clic20');
-                if (clic20.style.display == "none") {
-                    mostrarcrearCompra();
-                } else {
-                    ocultarcrearCompra();
-                }
-            }
-
-
-            function mostrareditarCompra() {
-                document.getElementById('clic21').style.display = "block";
-            }
-
-            function ocultareditarCompra() {
-                document.getElementById('clic21').style.display = "none";
-            }
-
-            function mostrar_ocultar_editarO() {
-                var clic21 = document.getElementById('clic21');
-                if (clic21.style.display == "none") {
-                    mostrareditarCompra();
-                } else {
-                    ocultareditarCompra();
-                }
-            }
-
-            function mostrarbuscarCompra() {
-                document.getElementById('clic22').style.display = "block";
-            }
-
-            function ocultarbuscarCompra() {
-                document.getElementById('clic22').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscarO() {
-                var clic22 = document.getElementById('clic22');
-                if (clic22.style.display == "none") {
-                    mostrarbuscarCompra();
-                } else {
-                    ocultarbuscarCompra();
-                }
-            }
-
-            function mostraranularCompra() {
-                document.getElementById('clic23').style.display = "block";
-            }
-
-            function ocultaranularCompra() {
-                document.getElementById('clic23').style.display = "none";
-            }
-
-            function mostrar_ocultar_activarO() {
-                var clic23 = document.getElementById('clic23');
-                if (clic23.style.display == "none") {
-                    mostraranularCompra();
-                } else {
-                    ocultaranularCompra();
-                }
-            }
-
-            function mostrarreporteCompra() {
-                document.getElementById('clic24').style.display = "block";
-            }
-
-            function ocultarreporteCompra() {
-                document.getElementById('clic24').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporteO() {
-                var clic24 = document.getElementById('clic24');
-                if (clic24.style.display == "none") {
-                    mostrarreporteCompra();
-                } else {
-                    ocultarreporteCompra();
-                }
-            }
-
-            function mostrarcrearVenta() {
-                document.getElementById('clic25').style.display = "block";
-            }
-
-            function ocultarcrearVenta() {
-                document.getElementById('clic25').style.display = "none";
-            }
-
-            function mostrar_ocultar_crearV() {
-                var clic25 = document.getElementById('clic25');
-                if (clic25.style.display == "none") {
-                    mostrarcrearVenta();
-                } else {
-                    ocultarcrearVenta();
-                }
-            }
-
-            function mostrareditarVenta() {
-                document.getElementById('clic26').style.display = "block";
-            }
-
-            function ocultareditarVenta() {
-                document.getElementById('clic26').style.display = "none";
-            }
-
-            function mostrar_ocultar_editarV() {
-                var clic26 = document.getElementById('clic26');
-                if (clic26.style.display == "none") {
-                    mostrareditarVenta();
-                } else {
-                    ocultareditarVenta();
-                }
-            }
-
-            function mostrarbuscarVenta() {
-                document.getElementById('clic27').style.display = "block";
-            }
-
-            function ocultarbuscarVenta() {
-                document.getElementById('clic27').style.display = "none";
-            }
-
-            function mostrar_ocultar_buscarV() {
-                var clic27 = document.getElementById('clic27');
-                if (clic27.style.display == "none") {
-                    mostrarbuscarVenta();
-                } else {
-                    ocultarbuscarVenta();
-                }
-            }
-
-            function mostraranularVenta() {
-                document.getElementById('clic28').style.display = "block";
-            }
-
-            function ocultaranularVenta() {
-                document.getElementById('clic28').style.display = "none";
-            }
-
-            function mostrar_ocultar_activarV() {
-                var clic28 = document.getElementById('clic28');
-                if (clic28.style.display == "none") {
-                    mostraranularVenta();
-                } else {
-                    ocultaranularVenta();
-                }
-            }
-
-            function mostrarreporteVenta() {
-                document.getElementById('clic29').style.display = "block";
-            }
-
-            function ocultarreporteVenta() {
-                document.getElementById('clic29').style.display = "none";
-            }
-
-            function mostrar_ocultar_reporteV() {
-                var clic29 = document.getElementById('clic29');
-                if (clic29.style.display == "none") {
-                    mostrarreporteVenta();
-                } else {
-                    ocultarreporteVenta();
-                }
-            }
+        function mostrarcrearUsuario() {
+            document.getElementById('clic1').style.display = "block";
+        }
+
+        function ocultarcrearUsuario() {
+            document.getElementById('clic1').style.display = "none";
+        }
+
+        function mostrar_ocultar_crear() {
+            var clic1 = document.getElementById('clic1');
+            if (clic1.style.display == "none") {
+                mostrarcrearUsuario();
+            } else {
+                ocultarcrearUsuario();
+            }
+        }
+
+
+        function mostrareditarUsuario() {
+            document.getElementById('clic2').style.display = "block";
+        }
+
+        function ocultareditarUsuario() {
+            document.getElementById('clic2').style.display = "none";
+        }
+
+        function mostrar_ocultar_editar() {
+            var clic2 = document.getElementById('clic2');
+            if (clic2.style.display == "none") {
+                mostrareditarUsuario();
+            } else {
+                ocultareditarUsuario();
+            }
+        }
+
+        function mostrarbuscarUsuario() {
+            document.getElementById('clic3').style.display = "block";
+        }
+
+        function ocultarbuscarUsuario() {
+            document.getElementById('clic3').style.display = "none";
+        }
+
+        function mostrar_ocultar_buscar() {
+            var clic3 = document.getElementById('clic3');
+            if (clic3.style.display == "none") {
+                mostrarbuscarUsuario();
+            } else {
+                ocultarbuscarUsuario();
+            }
+        }
+
+        function mostrarhabilitarUsuario() {
+            document.getElementById('clic4').style.display = "block";
+        }
+
+        function ocultarhabilitarUsuario() {
+            document.getElementById('clic4').style.display = "none";
+        }
+
+        function mostrar_ocultar_activar() {
+            var clic4 = document.getElementById('clic4');
+            if (clic4.style.display == "none") {
+                mostrarhabilitarUsuario();
+            } else {
+                ocultarhabilitarUsuario();
+            }
+        }
+
+        function mostrarreporteUsuario() {
+            document.getElementById('clic5').style.display = "block";
+        }
+
+        function ocultarreporteUsuario() {
+            document.getElementById('clic5').style.display = "none";
+        }
+
+        function mostrar_ocultar_reporte() {
+            var clic5 = document.getElementById('clic5');
+            if (clic5.style.display == "none") {
+                mostrarreporteUsuario();
+            } else {
+                ocultarreporteUsuario();
+            }
+        }
+
+        function mostrarcrearCliente() {
+            document.getElementById('clic6').style.display = "block";
+        }
+
+        function ocultarcrearCliente() {
+            document.getElementById('clic6').style.display = "none";
+        }
+
+        function mostrar_ocultar_crearC() {
+            var clic6 = document.getElementById('clic6');
+            if (clic6.style.display == "none") {
+                mostrarcrearCliente();
+            } else {
+                ocultarcrearCliente();
+            }
+        }
+
+        function mostrareditarCliente() {
+            document.getElementById('clic7').style.display = "block";
+        }
 
+        function ocultareditarCliente() {
+            document.getElementById('clic7').style.display = "none";
+        }
 
-            function mostrarverUsuario() {
-                document.getElementById('clic30').style.display = "block";
-            }
-
-            function ocultarverUsuario() {
-                document.getElementById('clic30').style.display = "none";
-            }
-
-            function mostrar_ocultar_ver() {
-                var clic30 = document.getElementById('clic30');
-                if (clic30.style.display == "none") {
-                    mostrarverUsuario();
-                } else {
-                    ocultarverUsuario();
-                }
-            }
-
-            function mostrarverCliente() {
-                document.getElementById('clic31').style.display = "block";
-            }
-
-            function ocultarverCliente() {
-                document.getElementById('clic31').style.display = "none";
-            }
-
-            function mostrar_ocultar_verC() {
-                var clic31 = document.getElementById('clic31');
-                if (clic31.style.display == "none") {
-                    mostrarverCliente();
-                } else {
-                    ocultarverCliente();
-                }
-            }
-
-            function mostrarverCategoria() {
-                document.getElementById('clic32').style.display = "block";
-            }
+        function mostrar_ocultar_editarC() {
+            var clic7 = document.getElementById('clic7');
+            if (clic7.style.display == "none") {
+                mostrareditarCliente();
+            } else {
+                ocultareditarCliente();
+            }
+        }
+
+        function mostrarbuscarCliente() {
+            document.getElementById('clic8').style.display = "block";
+        }
 
-            function ocultarverCategoria() {
-                document.getElementById('clic32').style.display = "none";
-            }
-
-            function mostrar_ocultar_verT() {
-                var clic32 = document.getElementById('clic32');
-                if (clic32.style.display == "none") {
-                    mostrarverCategoria();
-                } else {
-                    ocultarverCategoria();
-                }
-            }
-
-            function mostrarverProducto() {
-                document.getElementById('clic33').style.display = "block";
-            }
-
-            function ocultarverProducto() {
-                document.getElementById('clic33').style.display = "none";
-            }
+        function ocultarbuscarCliente() {
+            document.getElementById('clic8').style.display = "none";
+        }
 
-            function mostrar_ocultar_verP() {
-                var clic33 = document.getElementById('clic33');
-                if (clic33.style.display == "none") {
-                    mostrarverProducto();
-                } else {
-                    ocultarverProducto();
-                }
-            }
+        function mostrar_ocultar_buscarC() {
+            var clic8 = document.getElementById('clic8');
+            if (clic8.style.display == "none") {
+                mostrarbuscarCliente();
+            } else {
+                ocultarbuscarCliente();
+            }
+        }
+
+        function mostrarreporteCliente() {
+            document.getElementById('clic9').style.display = "block";
+        }
 
-            function mostrarverCompra() {
-                document.getElementById('clic34').style.display = "block";
-            }
+        function ocultarreporteCliente() {
+            document.getElementById('clic9').style.display = "none";
+        }
 
-            function ocultarverCompra() {
-                document.getElementById('clic34').style.display = "none";
+        function mostrar_ocultar_reporteC() {
+            var clic9 = document.getElementById('clic9');
+            if (clic9.style.display == "none") {
+                mostrarreporteCliente();
+            } else {
+                ocultarreporteCliente();
+            }
+        }
+
+        function mostrarcrearCategoria() {
+            document.getElementById('clic10').style.display = "block";
+        }
+
+        function ocultarcrearCategoria() {
+            document.getElementById('clic10').style.display = "none";
+        }
+
+        function mostrar_ocultar_crearT() {
+            var clic10 = document.getElementById('clic10');
+            if (clic10.style.display == "none") {
+                mostrarcrearCategoria();
+            } else {
+                ocultarcrearCategoria();
             }
+        }
+
+
+        function mostrareditarCategoria() {
+            document.getElementById('clic11').style.display = "block";
+        }
 
-            function mostrar_ocultar_verO() {
-                var clic34 = document.getElementById('clic34');
-                if (clic34.style.display == "none") {
-                    mostrarverCompra();
-                } else {
-                    ocultarverCompra();
-                }
-            }
+        function ocultareditarCategoria() {
+            document.getElementById('clic11').style.display = "none";
+        }
 
-            function mostrarverVenta() {
-                document.getElementById('clic35').style.display = "block";
-            }
+        function mostrar_ocultar_editarT() {
+            var clic11 = document.getElementById('clic11');
+            if (clic11.style.display == "none") {
+                mostrareditarCategoria();
+            } else {
+                ocultareditarCategoria();
+            }
+        }
+
+        function mostrarbuscarCategoria() {
+            document.getElementById('clic12').style.display = "block";
+        }
 
-            function ocultarverVenta() {
-                document.getElementById('clic35').style.display = "none";
-            }
+        function ocultarbuscarCategoria() {
+            document.getElementById('clic12').style.display = "none";
+        }
 
-            function mostrar_ocultar_verV() {
-                var clic35 = document.getElementById('clic35');
-                if (clic35.style.display == "none") {
-                    mostrarverVenta();
-                } else {
-                    ocultarverVenta();
-                }
-            }
+        function mostrar_ocultar_buscarT() {
+            var clic12 = document.getElementById('clic12');
+            if (clic12.style.display == "none") {
+                mostrarbuscarCategoria();
+            } else {
+                ocultarbuscarCategoria();
+            }
+        }
+
+        function mostrarhabilitarCategoria() {
+            document.getElementById('clic13').style.display = "block";
+        }
+
+        function ocultarhabilitarCategoria() {
+            document.getElementById('clic13').style.display = "none";
+        }
+
+        function mostrar_ocultar_activarT() {
+            var clic13 = document.getElementById('clic13');
+            if (clic13.style.display == "none") {
+                mostrarhabilitarCategoria();
+            } else {
+                ocultarhabilitarCategoria();
+            }
+        }
+
+        function mostrarreporteCategoria() {
+            document.getElementById('clic14').style.display = "block";
+        }
+
+        function ocultarreporteCategoria() {
+            document.getElementById('clic14').style.display = "none";
+        }
+
+        function mostrar_ocultar_reporteT() {
+            var clic14 = document.getElementById('clic14');
+            if (clic14.style.display == "none") {
+                mostrarreporteCategoria();
+            } else {
+                ocultarreporteCategoria();
+            }
+        }
+
+        function mostrarcrearProducto() {
+            document.getElementById('clic15').style.display = "block";
+        }
+
+        function ocultarcrearProducto() {
+            document.getElementById('clic15').style.display = "none";
+        }
+
+        function mostrar_ocultar_crearP() {
+            var clic15 = document.getElementById('clic15');
+            if (clic15.style.display == "none") {
+                mostrarcrearProducto();
+            } else {
+                ocultarcrearProducto();
+            }
+        }
+
+
+        function mostrareditarProducto() {
+            document.getElementById('clic16').style.display = "block";
+        }
+
+        function ocultareditarProducto() {
+            document.getElementById('clic16').style.display = "none";
+        }
+
+        function mostrar_ocultar_editarP() {
+            var clic16 = document.getElementById('clic16');
+            if (clic16.style.display == "none") {
+                mostrareditarProducto();
+            } else {
+                ocultareditarProducto();
+            }
+        }
+
+        function mostrarbuscarProducto() {
+            document.getElementById('clic17').style.display = "block";
+        }
+
+        function ocultarbuscarProducto() {
+            document.getElementById('clic17').style.display = "none";
+        }
+
+        function mostrar_ocultar_buscarP() {
+            var clic17 = document.getElementById('clic17');
+            if (clic17.style.display == "none") {
+                mostrarbuscarProducto();
+            } else {
+                ocultarbuscarProducto();
+            }
+        }
+
+        function mostrarhabilitarProducto() {
+            document.getElementById('clic18').style.display = "block";
+        }
+
+        function ocultarhabilitarProducto() {
+            document.getElementById('clic18').style.display = "none";
+        }
+
+        function mostrar_ocultar_activarP() {
+            var clic18 = document.getElementById('clic18');
+            if (clic18.style.display == "none") {
+                mostrarhabilitarProducto();
+            } else {
+                ocultarhabilitarProducto();
+            }
+        }
+
+        function mostrarreporteProducto() {
+            document.getElementById('clic19').style.display = "block";
+        }
+
+        function ocultarreporteProducto() {
+            document.getElementById('clic19').style.display = "none";
+        }
+
+        function mostrar_ocultar_reporteP() {
+            var clic19 = document.getElementById('clic19');
+            if (clic19.style.display == "none") {
+                mostrarreporteProducto();
+            } else {
+                ocultarreporteProducto();
+            }
+        }
+
+        function mostrarcrearCompra() {
+            document.getElementById('clic20').style.display = "block";
+        }
+
+        function ocultarcrearCompra() {
+            document.getElementById('clic20').style.display = "none";
+        }
+
+        function mostrar_ocultar_crearO() {
+            var clic20 = document.getElementById('clic20');
+            if (clic20.style.display == "none") {
+                mostrarcrearCompra();
+            } else {
+                ocultarcrearCompra();
+            }
+        }
+
+
+        function mostrareditarCompra() {
+            document.getElementById('clic21').style.display = "block";
+        }
+
+        function ocultareditarCompra() {
+            document.getElementById('clic21').style.display = "none";
+        }
+
+        function mostrar_ocultar_editarO() {
+            var clic21 = document.getElementById('clic21');
+            if (clic21.style.display == "none") {
+                mostrareditarCompra();
+            } else {
+                ocultareditarCompra();
+            }
+        }
+
+        function mostrarbuscarCompra() {
+            document.getElementById('clic22').style.display = "block";
+        }
+
+        function ocultarbuscarCompra() {
+            document.getElementById('clic22').style.display = "none";
+        }
+
+        function mostrar_ocultar_buscarO() {
+            var clic22 = document.getElementById('clic22');
+            if (clic22.style.display == "none") {
+                mostrarbuscarCompra();
+            } else {
+                ocultarbuscarCompra();
+            }
+        }
+
+        function mostraranularCompra() {
+            document.getElementById('clic23').style.display = "block";
+        }
+
+        function ocultaranularCompra() {
+            document.getElementById('clic23').style.display = "none";
+        }
+
+        function mostrar_ocultar_activarO() {
+            var clic23 = document.getElementById('clic23');
+            if (clic23.style.display == "none") {
+                mostraranularCompra();
+            } else {
+                ocultaranularCompra();
+            }
+        }
+
+        function mostrarreporteCompra() {
+            document.getElementById('clic24').style.display = "block";
+        }
+
+        function ocultarreporteCompra() {
+            document.getElementById('clic24').style.display = "none";
+        }
+
+        function mostrar_ocultar_reporteO() {
+            var clic24 = document.getElementById('clic24');
+            if (clic24.style.display == "none") {
+                mostrarreporteCompra();
+            } else {
+                ocultarreporteCompra();
+            }
+        }
+
+        function mostrarcrearVenta() {
+            document.getElementById('clic25').style.display = "block";
+        }
+
+        function ocultarcrearVenta() {
+            document.getElementById('clic25').style.display = "none";
+        }
+
+        function mostrar_ocultar_crearV() {
+            var clic25 = document.getElementById('clic25');
+            if (clic25.style.display == "none") {
+                mostrarcrearVenta();
+            } else {
+                ocultarcrearVenta();
+            }
+        }
+
+        function mostrareditarVenta() {
+            document.getElementById('clic26').style.display = "block";
+        }
+
+        function ocultareditarVenta() {
+            document.getElementById('clic26').style.display = "none";
+        }
+
+        function mostrar_ocultar_editarV() {
+            var clic26 = document.getElementById('clic26');
+            if (clic26.style.display == "none") {
+                mostrareditarVenta();
+            } else {
+                ocultareditarVenta();
+            }
+        }
+
+        function mostrarbuscarVenta() {
+            document.getElementById('clic27').style.display = "block";
+        }
+
+        function ocultarbuscarVenta() {
+            document.getElementById('clic27').style.display = "none";
+        }
+
+        function mostrar_ocultar_buscarV() {
+            var clic27 = document.getElementById('clic27');
+            if (clic27.style.display == "none") {
+                mostrarbuscarVenta();
+            } else {
+                ocultarbuscarVenta();
+            }
+        }
+
+        function mostraranularVenta() {
+            document.getElementById('clic28').style.display = "block";
+        }
+
+        function ocultaranularVenta() {
+            document.getElementById('clic28').style.display = "none";
+        }
+
+        function mostrar_ocultar_activarV() {
+            var clic28 = document.getElementById('clic28');
+            if (clic28.style.display == "none") {
+                mostraranularVenta();
+            } else {
+                ocultaranularVenta();
+            }
+        }
+
+        function mostrarreporteVenta() {
+            document.getElementById('clic29').style.display = "block";
+        }
+
+        function ocultarreporteVenta() {
+            document.getElementById('clic29').style.display = "none";
+        }
+
+        function mostrar_ocultar_reporteV() {
+            var clic29 = document.getElementById('clic29');
+            if (clic29.style.display == "none") {
+                mostrarreporteVenta();
+            } else {
+                ocultarreporteVenta();
+            }
+        }
+
+
+        function mostrarverUsuario() {
+            document.getElementById('clic30').style.display = "block";
+        }
+
+        function ocultarverUsuario() {
+            document.getElementById('clic30').style.display = "none";
+        }
+
+        function mostrar_ocultar_ver() {
+            var clic30 = document.getElementById('clic30');
+            if (clic30.style.display == "none") {
+                mostrarverUsuario();
+            } else {
+                ocultarverUsuario();
+            }
+        }
+
+        function mostrarverCliente() {
+            document.getElementById('clic31').style.display = "block";
+        }
+
+        function ocultarverCliente() {
+            document.getElementById('clic31').style.display = "none";
+        }
+
+        function mostrar_ocultar_verC() {
+            var clic31 = document.getElementById('clic31');
+            if (clic31.style.display == "none") {
+                mostrarverCliente();
+            } else {
+                ocultarverCliente();
+            }
+        }
+
+        function mostrarverCategoria() {
+            document.getElementById('clic32').style.display = "block";
+        }
+
+        function ocultarverCategoria() {
+            document.getElementById('clic32').style.display = "none";
+        }
+
+        function mostrar_ocultar_verT() {
+            var clic32 = document.getElementById('clic32');
+            if (clic32.style.display == "none") {
+                mostrarverCategoria();
+            } else {
+                ocultarverCategoria();
+            }
+        }
+
+        function mostrarverProducto() {
+            document.getElementById('clic33').style.display = "block";
+        }
+
+        function ocultarverProducto() {
+            document.getElementById('clic33').style.display = "none";
+        }
+
+        function mostrar_ocultar_verP() {
+            var clic33 = document.getElementById('clic33');
+            if (clic33.style.display == "none") {
+                mostrarverProducto();
+            } else {
+                ocultarverProducto();
+            }
+        }
+
+        function mostrarverCompra() {
+            document.getElementById('clic34').style.display = "block";
+        }
+
+        function ocultarverCompra() {
+            document.getElementById('clic34').style.display = "none";
+        }
+
+        function mostrar_ocultar_verO() {
+            var clic34 = document.getElementById('clic34');
+            if (clic34.style.display == "none") {
+                mostrarverCompra();
+            } else {
+                ocultarverCompra();
+            }
+        }
+
+        function mostrarverVenta() {
+            document.getElementById('clic35').style.display = "block";
+        }
+
+        function ocultarverVenta() {
+            document.getElementById('clic35').style.display = "none";
+        }
+
+        function mostrar_ocultar_verV() {
+            var clic35 = document.getElementById('clic35');
+            if (clic35.style.display == "none") {
+                mostrarverVenta();
+            } else {
+                ocultarverVenta();
+            }
+        }
 
     </script>
 
