@@ -37,7 +37,7 @@ class CompraController extends Controller
 
     public function show(Compra $compra)
     {
-        
+        var_dump($compra);
         $subtotal = 0 ;
         $detalleCompras = $compra->detalleCompra;
         foreach ($detalleCompras as $detalleCompra) {

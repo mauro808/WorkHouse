@@ -56,14 +56,14 @@
 
 @csrf 
 @if ($compra->estado=="Activo")
-<a class="btn btn-danger" id="anular" onclick="anular()" href="{{route('change.status.compras', $compra)}}"style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+<a class="btn btn-danger" id="compraAnular" onclick="anular()" style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
 <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
 </svg> 
 Anular</a>
 @endif
 @if ($compra->estado=="Inactivo")
-<a type="submit" id="anulada" onclick="anulada()" class="btn btn-warning" href="{{route('change.status.compras', $compra)}}" style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
+<a type="submit" id="compraAnulada" onclick="anulada_C()" class="btn btn-warning" href="{{route('change.status.compras', $compra)}}" style="margin-left: 10px; -moz-border-radius:18px; -webkit-border-radius:18px;">
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
 <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
 </svg> Anulada </a>
@@ -106,58 +106,53 @@ Anular</a>
 <script>
 
     $(document).ready(function() {
-        $("#anular").click(function() {
+        $("#compraAnular").click(function() {
             anular();
         });
     });
 
-    function anular() {
+    function anular() { 
+        event.preventDefault();
+        let form = event.target;
 
-        estado = $("#estado").val();
-
-        if(estado == Activo) {
-       
-            Swal.fire({
-                title: 'Anular Compra',
-                text: "Esta acción es irreversible",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Anular'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Compra Anulada',
-                    '',
-                    'success'
-                  )
-                }
-              })
-    }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success',
+                )
+            }else {
+                event.preventDefault();
+            }
+            })
 }
 
 
 $(document).ready(function() {
-    $("#anulada").click(function() {
-        anulada();
+    $("#compraAnulada").click(function() {
+        anulada_C();
     });
 });
 
-function anulada(){
+function anulada_C(){
     
-    estado = $("#estado").val();
 
-    if(estado == Anulada) {
-   
+        console.log("inactivo");
         Swal.fire({
             icon: 'error',
             title: 'Compra Anulada',
             text: 'No es posible reactivar una compra anulada',
-           
           })
 }
-
 </script>
 
 @endsection

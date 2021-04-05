@@ -49,6 +49,7 @@ class VentaController extends Controller
    
     public function show(Venta $venta)
     {
+        var_dump($venta);
         $subtotal = 0 ;
         $detalleVentas = $venta->detalleVenta;
         foreach ($detalleVentas as $detalleVenta) {
