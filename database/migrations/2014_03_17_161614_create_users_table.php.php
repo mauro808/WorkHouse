@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsuariosTable extends Migration
+class CreateUsersTable extends Migration
 {
 
     public function up()
     {
      
-        Schema::create('usuarios', function (Blueprint $table) 
+        Schema::create('users', function (Blueprint $table) 
         {
             $table->id();
             $table->unsignedBigInteger('idRol'); 
-            $table->foreign('idRol')->references('id')->on('rols');
             $table->string('nombre',30);
             $table->string('tipoDocumento',20);
             $table->biginteger('identificacion');
@@ -32,6 +31,6 @@ class CreateUsuariosTable extends Migration
    
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('users');
     }
 }

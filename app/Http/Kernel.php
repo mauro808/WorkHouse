@@ -76,5 +76,8 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\AuthenticateSession::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
+        'role'=>\Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        'allrole'=>\Caffeinated\Shinobi\Middleware\UserHasAllRoles::class,
+        'anyrole'=>\Caffeinated\Shinobi\Middleware\UserHasAnyRole::class,
     ];
 }

@@ -15,7 +15,7 @@ class CreateVentasTable extends Migration
             $table->timestamps();
             $table->decimal('precioTotal',11,2);
             $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario')->references('id')->on('usuarios');
+            $table->foreign('idUsuario')->references('id')->on('users');
             $table->enum('Estado',['Activo','Inactivo'])->default('Activo');
         });
     }

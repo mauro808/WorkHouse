@@ -13,7 +13,7 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario')->references('id')->on('usuarios');
+            $table->foreign('idUsuario')->references('id')->on('users');
             $table->decimal('precioTotal',11,2);
             $table->enum('estado',['Activo','Inactivo'])->default('Activo');
         });

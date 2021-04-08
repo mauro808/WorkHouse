@@ -36,9 +36,9 @@
                 <tr>
                     <td>{{$usuario->id}}</td>
                     <td>{{$usuario->nombre}}</td>
-                    @foreach($rols as $rol)
+                    @foreach($roles as $rol)
                     @if($usuario->idRol == $rol->id)
-                    <td>{{$rol->descripcion}}</td>
+                    <td>{{$rol->name}}</td>
                     <td>{{$usuario->nombreUsuario}}</td>
                         @endif 
                         @endforeach 

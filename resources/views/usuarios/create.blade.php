@@ -36,8 +36,8 @@
     {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
     <select name="idRol" id="idRol" class="form-control"/>
       <option selected value="">Seleccione Un Rol</option>
-        @foreach($rols as $rol)
-        <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
+        @foreach($roles as $rol)
+        <option value="{{$rol->id}}">{{$rol->name}}</option>
         @endforeach
       </select>
       </div>

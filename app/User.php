@@ -5,15 +5,17 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRolesAndPermissions;
 
+
+    protected $table ="users";
     public $timestamps = false;
-
-    protected $table = 'usuarios';
+   
 
     protected $fillable = [
     'idRol',

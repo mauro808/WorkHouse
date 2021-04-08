@@ -20,15 +20,15 @@ Route::get('/pdfClientes', 'ClienteController@pdfClientes')->name('PdfClientes')
 
 
 // Rutas Usuarios
-Route::get('usuarios', 'UsuarioController@listarUsuario')->name('usuario.listar');
-Route::get('/detalleUser/{id}', 'UsuarioController@detalleUsuario')->name('usuario.detalle');
-Route::get('/editarUser/{id}', 'UsuarioController@edit')->name('usuario.editar');
-Route::put('/editarUser/{id}', 'UsuarioController@update')->name('usuario.update');
-Route::get('/agregarUsuario', 'UsuarioController@agregarUsuario')->name('agregarUsuario');
-Route::post('/agregarUsuario', 'UsuarioController@store')->name('agregarUsuario');
-Route::get('/pdfUsuarios', 'UsuarioController@pdfUsuarios')->name('PdfUsuarios');
-Route::get('/habilitarUser/{id}', 'UsuarioController@habilitar')->name('usuario.habilitacion');
-Route::get('/inhabilitarUser/{id}', 'UsuarioController@inhabilitar')->name('usuario.inhabilitacion');
+Route::get('usuarios', 'UserController@listarUsuario')->name('usuario.listar');
+Route::get('/detalleUser/{id}', 'UserController@detalleUsuario')->name('usuario.detalle');
+Route::get('/editarUser/{id}', 'UserController@edit')->name('usuario.editar');
+Route::put('/editarUser/{id}', 'UserController@update')->name('usuario.update');
+Route::get('/agregarUsuario', 'UserController@agregarUsuario')->name('agregarUsuario');
+Route::post('/agregarUsuario', 'UserController@store')->name('agregarUsuario');
+Route::get('/pdfUsuarios', 'UserController@pdfUsuarios')->name('PdfUsuarios');
+Route::get('/habilitarUser/{id}', 'UserController@habilitar')->name('usuario.habilitacion');
+Route::get('/inhabilitarUser/{id}', 'UserController@inhabilitar')->name('usuario.inhabilitacion');
 
 // Rutas categorias
 Route::get('/categorias', 'CategoriaController@listarCategorias')->name('categoria.listar');

@@ -5,32 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use App\User;
-use App\Rol;
+use Caffeinated\Shinobi\Models\Role;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Hash;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
  
    
     public function listarUsuario()
     {
         $usuarios = User::all();
-        $rols = Rol::all();
-        return view('usuarios/listar',compact('usuarios','rols'));
+        $roles = Role::get();
+        return view('usuarios/listar',compact('usuarios','roles'));
       
     }
 
     public function agregarUsuario()
     {
-        $rols = App\Rol::all();
-        return view('usuarios.create', compact('rols'));
+        $usuarios = User::all();
+        $roles = Role::get();
+        return view('usuarios.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
 
-    
         $request->validate([
             'idRol'=>'required',
             'nombre'=>'required|regex:/^[\pL\s\-]+$/u|max:50',
@@ -72,7 +72,7 @@ class UsuarioController extends Controller
         );
 
     
-
+        $usuarios = User::all();
         $usuarioNuevo = new App\User;
         $usuarioNuevo->idRol = $request->idRol;
         $usuarioNuevo->nombre = $request->nombre;
@@ -87,7 +87,8 @@ class UsuarioController extends Controller
         $usuarioNuevo->passwordc = Hash::make($request->passwordc);
         $usuarioNuevo->estado = $request->estado;
 
-        $usuarioNuevo->save();
+        $usuarioNuevo = User::create($request->all());
+        $usuarioNuevo->roles()->sync($request->get("roles"));
         return redirect('/usuarios')->with('success','Registro Exitoso');
     
     }
@@ -96,14 +97,14 @@ class UsuarioController extends Controller
     public function detalleUsuario($idUsuario)
     {
         $usuario = App\User::findOrFail($idUsuario);
-        $rol = App\Rol::find($usuario->idRol);
-        return view('usuarios.detalle', compact('usuario','rol'));
+        $roles = Role::findOrFail($usuario->idRol);
+        return view('usuarios.detalle', compact('usuario','roles'));
     }
 
     public function edit($idUsuario){
         $usuario = App\User::findOrFail($idUsuario);
-        $rols = App\Rol::all();
-        return view('usuarios.editar', compact('usuario', 'rols'));
+        $roles = Role::get();
+        return view('usuarios.editar', compact('usuario', 'roles'));
     }
 
     public function update(Request $request, $id)
@@ -153,6 +154,7 @@ class UsuarioController extends Controller
            $usuario->direccion=$request->direccion;
            $usuario->nombreUsuario=$request->nombreUsuario;
            $usuario->save();
+           $usuario->roles()->sync($request->get("roles"));
 
            return redirect('/usuarios')->with('Mensaje', 'Usuario actualizado');
     }
@@ -178,7 +180,7 @@ class UsuarioController extends Controller
     public function pdfUsuarios()
     {
        $usuarios = User::all();
-       $rols = Rol::all();
+       $roles = Role::get();
         $pdf = PDF::loadView('usuarios.pdf',compact('usuarios','rols'))->setOptions(['defaultFont' => 'sans-serif']); 
         return $pdf->setPaper('a4','landscape')->stream('usuarios.pdf');
     }

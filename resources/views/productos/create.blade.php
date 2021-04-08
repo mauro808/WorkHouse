@@ -30,6 +30,8 @@
 <form action="{{ route('agregarProducto') }}" method="POST" class="w-60 p-3 mr-3 text-center">
 @csrf 
 
+
+
 <div class="form-group">
 </br>
     <div class="row">

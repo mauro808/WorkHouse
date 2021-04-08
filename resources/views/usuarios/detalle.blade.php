@@ -15,7 +15,7 @@
            <td><strong>Id:</strong></td>
             <td>{{$usuario->id}}</td>
              <td><strong>Rol:</strong></td>
-            <td>{{$rol->descripcion}}</td>
+            <td>{{$roles->name}}</td>
         </tr>
        
         <tr>

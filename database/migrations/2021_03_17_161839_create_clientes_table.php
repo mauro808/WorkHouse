@@ -12,10 +12,10 @@ class CreateClientesTable extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idUsuario');
-            $table->foreign('idUsuario')->references('id')->on('usuarios');
+            $table->foreign('idUsuario')->references('id')->on('users');
             $table->string('nombreCliente',50);
             $table->string('tipoIdentificacion',30);
-            $table->biginteger('numeroIdentificacion',30);
+            $table->biginteger('numeroIdentificacion');
             $table->string('direccion',50);
             $table->biginteger('celular');
             $table->integer('telefonoFijo');
