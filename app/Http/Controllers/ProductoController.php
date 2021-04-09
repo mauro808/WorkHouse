@@ -10,6 +10,18 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:agregarProducto')->only(['agregarProducto','store']);
+        $this->middleware('can:producto.listar')->only(['listarProductos']);
+        $this->middleware('can:producto.editar')->only(['edit','update']);
+        $this->middleware('can:producto.detalle')->only(['detalleProducto']);
+        $this->middleware('can:producto.habilitacion')->only(['habilitar']);
+        $this->middleware('can:producto.inhabilitacion')->only(['inhabilitar']);
+        
+
+    }
 
     public function listarProductos(){
         $productos = Producto::all();

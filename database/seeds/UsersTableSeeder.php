@@ -17,5 +17,11 @@ class UsersTableSeeder extends Seeder
             'slug'=>'admin',
             'special'=>'all-access',
         ]);
+
+        Role::create([
+            'name'=>'Admin',
+            'slug'=>'admin',
+            'special'=>'all-access',
+        ]);
     }
-}
+    }

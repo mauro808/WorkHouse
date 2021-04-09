@@ -10,6 +10,15 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:agregarCliente')->only(['agregarCliente','store']);
+        $this->middleware('can:cliente.listar')->only(['listarClientes']);
+        $this->middleware('can:cliente.editar')->only(['edit','update']);
+        $this->middleware('can:cliente.detalle')->only(['detalleCliente']);
+        $this->middleware('can:cliente.destroy')->only(['destroy']);
+    }
  
     public function listarClientes()
     {

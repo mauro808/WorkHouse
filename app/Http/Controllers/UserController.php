@@ -11,7 +11,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
- 
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:agregarUsuario')->only(['agregarUsuario','store']);
+        $this->middleware('can:usuario.listar')->only(['listarUsuario']);
+        $this->middleware('can:usuario.editar')->only(['edit']);
+        $this->middleware('can:usuario.update')->only(['update']);
+        $this->middleware('can:usuario.detalle')->only(['detalleUsuario']);
+        $this->middleware('can:usuario.habilitacion')->only(['habilitar']);
+        $this->middleware('can:usuario.inhabilitacion')->only(['inhabilitar']);
+        
+
+    }
    
     public function listarUsuario()
     {
@@ -35,12 +48,11 @@ class UserController extends Controller
             'idRol'=>'required',
             'nombre'=>'required|regex:/^[\pL\s\-]+$/u|max:50',
             'tipoDocumento'=>'required',
-            'identificacion'=>'required|unique:usuarios',
+            'identificacion'=>'required|unique:users',
             'email'=>'required|email',
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
-            'nombreUsuario'=>'required|regex:/^[\pL\s\-]+$/u|max:8|unique:usuarios',
             'password'=>'required|min:8|',
             'passwordc'=>'required|min:8|same:password',
         ],
@@ -87,7 +99,7 @@ class UserController extends Controller
         $usuarioNuevo->passwordc = Hash::make($request->passwordc);
         $usuarioNuevo->estado = $request->estado;
 
-        $usuarioNuevo = User::create($request->all());
+        $usuarioNuevo->save();
         $usuarioNuevo->roles()->sync($request->get("roles"));
         return redirect('/usuarios')->with('success','Registro Exitoso');
     

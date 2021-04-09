@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:agregarCategoria')->only(['agregarCategoria','store']);
+        $this->middleware('can:categoria.listar')->only(['listarCategorias']);
+        $this->middleware('can:categorias.editar')->only(['edit','update']);
+        $this->middleware('can:categorias.detalle')->only(['detalleCategoria']);
+        $this->middleware('can:habilitar')->only(['categoria.habilitacion']);
+        $this->middleware('can:inhabilitar')->only(['categoria.inhabilitacion']);
+    }
 
     public function listarCategorias()
     {

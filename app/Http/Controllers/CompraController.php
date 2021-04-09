@@ -15,16 +15,15 @@ use Carbon\Carbon;
 class CompraController extends Controller
 {
 
-   /* public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:compras.create')->only(['create','store']);
         $this->middleware('can:compras.index')->only(['index']);
+        $this->middleware('can:compras.create')->only(['create','store']);
         $this->middleware('can:compras.show')->only(['show']);
-        $this->middleware('can:change.status.compras')->only(['change_status']);
-        $this->middleware('can:compras.pdf')->only(['pdf']);
-    } */
-  
+        
+
+    }
 
     public function index()
     {

@@ -42,6 +42,7 @@ Route::get('/inhabilitarCategria/{id}', 'CategoriaController@inhabilitar')->name
 Route::get('/pdfCategorias', 'CategoriaController@pdfCategorias')->name('PdfCategorias');
 
 // Rutas del Producto
+Route::get('/home', 'ClienteController@listarClientes')->name('home');
 Route::get('productos', 'ProductoController@listarProductos')->name('producto.listar');
 Route::get('/detalleProducto/{id}', 'ProductoController@detalleProducto')->name('producto.detalle');
 Route::get('/agregarProducto', 'ProductoController@agregarProducto')->name('agregarProducto');

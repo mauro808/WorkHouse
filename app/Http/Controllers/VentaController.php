@@ -12,6 +12,19 @@ use Carbon\Carbon;
 
 class VentaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:ventas.index')->only(['index']);
+        $this->middleware('can:ventas.create')->only(['create','store']);
+        $this->middleware('can:ventas.show')->only(['show']);
+        $this->middleware('can:ventas.habilitacion')->only(['habilitar']);
+        $this->middleware('can:ventas.inhabilitacion')->only(['inhabilitar']);
+        
+
+    }
+
     public function index()
     {
         $ventas = Venta::all();
