@@ -10,7 +10,6 @@
     </br>
          <h1 class="text-lucida"><strong>Editar Usuario</strong></h1>
     </div>
-    
 </div>  
 </br>
 <div class="row">
@@ -25,7 +24,7 @@
 <div class="col-6">
 <label for="txtidRol"><strong>Rol:</strong></label>
 {!! $errors->first('idRol','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="idRol" class="form-control" required>
+    <select name="idRol" id="idRol" class="form-control" required>
       @foreach($roles as $rol)
       @if($usuario->idRol == $rol->id)
       <option value="{{$rol->id}}" selected>{{$rol->name}}</td>
@@ -48,7 +47,7 @@
     <div class="col-6">
     <label for="txtTipoDocumento"><strong>Tipo Documento:</strong></label>
     {!! $errors->first('tipoDocumento','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <select name="tipoDocumento" class="form-control" >
+    <select id="tipoDocumento" name="tipoDocumento" class="form-control" >
         <option @if ($usuario->tipoDocumento=="Cedula Ciudadania") selected @endif>Cédula Ciudadanía</option>
         <option @if ($usuario->tipoDocumento=="Cedula Extranjeria") selected @endif>Cedula Extranjería</option>
         <option @if ($usuario->tipoDocumento=="Permiso Permanencia") selected @endif>Permiso Permanencia</option>
@@ -72,7 +71,7 @@
      <div class="col-6">
     <label for="telefonoFijo"><strong>Teléfono fijo:</strong></label>
     {!! $errors->first('telefonoFijo','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo'" name="telefonoFijo" min="1" pattern="^[0-9]+" placeholder="Digite el Telefono Fijo" />
+    <input type="number" min="0000000" max="9999999" class="form-control" value="{{ $usuario->telefonoFijo }}" id="telefonoFijo" name="telefonoFijo" min="1" pattern="^[0-9]+" placeholder="Digite el Telefono Fijo" />
     </div>
     </div>
   </br>
@@ -80,9 +79,8 @@
      <div class="col-6">
     <label for="email"><strong>Correo electrónico:</strong></label>
     {!! $errors->first('email','<small style="color:red;"><strong> :message</strong></small></br>') !!}
-    <input type="email" class="form-control" value="{{ $usuario->email }}" id="email'" name="email" placeholder="Digite el Correo" />
+    <input type="email" class="form-control" value="{{ $usuario->email }}" id="email" name="email" placeholder="Digite el Correo" />
     </div>
-    
     <div class="col-6">
     <label for="direccion"><strong>Dirección:</strong></label>
     {!! $errors->first('direccion','<small style="color:red;"><strong> :message</strong></small></br>') !!}
@@ -95,8 +93,6 @@
     <label for="nombreUsuario"><strong>Usuario:</strong></label>
     <input type="text" class="form-control" value="{{ $usuario->nombreUsuario }}" id="nombreUsuario" name="nombreUsuario" placeholder="Digite el Usuario" />
    </div>
-   
-      
 
 </div>
 </br>
@@ -118,13 +114,15 @@
 </div>
 
 @endsection
+
 @section('scripts')
+
 <script>
 
   $(document).ready(function(){
     $(".form-control").change(function(){
       $(this).css("background-color", "#D6D6FF");
-    }
+    });
   });
   
  // $("#registrar").hide();
@@ -135,8 +133,7 @@
   });
 });
   function registrar() {
-
-      idRol  = $("#idRol option:selected").text();
+      idRol  = $("#idRol option:selected").val();
       nombre  = $("#nombre").val();
       tipoDocumento  = $("#tipoDocumento option:selected").text();
       identificacion  = $("#identificacion").val();
@@ -145,22 +142,20 @@
       celular  = $("#celular").val();
       direccion  = $("#direccion").val();
       nombreUsuario  = $("#nombreUsuario").val();
-   
-      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && email != ""  && telefonoFijo != "" && telefonoFijo.length < 7 && 
-      celular != "" && celular.length < 10 && direccion != "" && nombreUsuario != ""  && nombreUsuario.length < 8 
-      && identificacion != "" && identificacion.length < 15 )
+      if (idRol != "" && nombre != "" &&  tipoDocumento != "" && email != ""  && telefonoFijo != "" && telefonoFijo.length < 8 && 
+      celular != "" && celular.length < 11 && direccion != "" && nombreUsuario != ""  && nombreUsuario.length < 9 
+      && identificacion != "" && identificacion.length < 16 )
       {
-
         Swal.fire({
           position: 'top-center',
           icon: 'success',
           title: 'Registro exitoso',
           showConfirmButton: false, 
           confirmButtonColor: '#1C2833',
-         
         });
 
       }else {
+      
       Swal.fire({
         type: 'error',
         icon: 'error',
@@ -168,8 +163,8 @@
         showConfirmButton: false, 
         confirmButtonColor: '#1C2833',
       });
-  }*/
-}
+  }
+  }
 
 </script>
 @endsection

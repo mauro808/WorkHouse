@@ -107,7 +107,7 @@ class UserController extends Controller
         return view('usuarios.editar', compact('usuario', 'roles'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
         $request->validate([
             'idRol'=>'required',
@@ -118,8 +118,7 @@ class UserController extends Controller
             'telefonoFijo'=>'required',
             'celular'=>'required',
             'direccion'=>'required',
-            'nombreUsuario'=>'required|regex:/^[\pL\s\-]+$/u|max:8',
-           
+
         ],
 
         [
@@ -142,8 +141,8 @@ class UserController extends Controller
         ]
 
         );
-       
-           $usuario= App\User::findOrFail($id); //buscar producto por id
+           
+           $usuario= App\User::findOrFail($id); 
            $usuario->idRol=$request->idRol;
            $usuario->nombre=$request->nombre;
            $usuario->tipoDocumento=$request->tipoDocumento;
@@ -161,7 +160,7 @@ class UserController extends Controller
 
     public function habilitar(Request $request, $id)
     {
-           $usuario= App\User::findOrFail($id); //buscar producto por id
+           $usuario= App\User::findOrFail($id); 
            $usuario->Estado="Activo";
            $usuario->update();
            
