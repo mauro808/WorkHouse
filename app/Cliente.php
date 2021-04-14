@@ -15,6 +15,7 @@ class Cliente extends Model
         'numeroIdentificacion',
         'direccion',
         'telefonoFijo',
-        'celular'
+        'celular',
+        'correo'
     ];
 }

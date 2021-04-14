@@ -31,19 +31,7 @@
 
 
 <div class="form-group" >
-  <div class="col-12">
-      <label for="txtidUsuario"><strong>Usuario Creador:</strong></label>
-      {!! $errors->first('idUsuario','<small style="color:red;"><strong>:message</strong></small></br>') !!}
-       <select name="idUsuario" id="idUsuario" class="form-control"  value="{{ old('idUsuario')}}" />
-       <option value=""><strong>Seleccione el Usuario Creador</strong></option>
-         @foreach($usuarios as $usuario)
-        <option value="{{$usuario->id}}">{{$usuario->nombreUsuario}}</option>
-        @endforeach
-      </select>
-     
-      </div>
-    </div>
-  </br>
+
    <div class="row">
      <div class="col-6">
     <label for="nombreCliente"><strong>Nombres y Apellidos:</strong></label>
@@ -102,7 +90,7 @@
    
 </div>
 </br>
-<button type="submit" class="btn btn-dark btn-lg " style="margin: 20px"  id="registrar">
+<button type="submit" class="btn btn-dark btn-lg" id="registrado" style="margin: 20px"  >
 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -120,8 +108,9 @@
 </div>
 
 
+@endsection
+@section('scripts')
 <script>
- 
   $(document).ready(function(){
     $(".form-control").change(function(){
       $(this).css("background-color", "#D6D6FF");
@@ -129,14 +118,12 @@
   });
   
   $(document).ready(function() {
-    $("#registrar").click(function() {  
-      registrar();
+    $("#registrado").click(function() {
+        registrado();
     });
 });
 
-  function registrar() {
-
-    idUsuario  = $("#idUsuario option:selected").text();
+  function registrado() {
     nombreCliente  = $("#nombreCliente").val();
     tipoIdentificacion  = $("#tipoIdentificacion option:selected").text();
     numeroIdentificacion  = $("#numeroIdentificacion").val();
@@ -145,7 +132,7 @@
     telefonoFijo  = $("#telefonoFijo").val();
     correo  = $("#correo").val();
 
-    if (idUsuario != "" &&  nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" 
+    if (nombreCliente != "" && tipoIdentificacion != "" && numeroIdentificacion != "" 
     && numeroIdentificacion.length < 15 && direccion != "" && celular != "" && celular.length < 10
     && telefonoFijo != "" && telefonoFijo.length < 7 && correo != "" ) {
       

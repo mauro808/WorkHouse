@@ -5,6 +5,8 @@ use App;
 use App\Cliente;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\Compras\StoreRequest;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 
 
@@ -36,7 +38,6 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idUsuario'=>'required',
             'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
             'numeroIdentificacion'=>'required|unique:clientes',
@@ -47,7 +48,6 @@ class ClienteController extends Controller
         ],
 
         [
-            'idUsuario.required' => '*Rellena este campo',
             'nombreCliente.required' => '*Rellena este campo',
             'nombreCliente.regex' => '*Ingresa sólo letras',
             'tipoIdentificacion.required' => '*Rellena este campo',
@@ -72,8 +72,11 @@ class ClienteController extends Controller
         $clienteNuevo->celular = $request->celular;
         $clienteNuevo->direccion = $request->direccion;
         $clienteNuevo->correo = $request->correo;
+        var_dump($clienteNuevo->correo);
 
-        $clienteNuevo->save();
+        $clienteNuevo = Cliente::create($request->all()+[
+            'idUsuario'=>Auth::user()->id,
+        ]);
         return redirect('/clientes')->with('success','Registro Exitoso');
     }
 
@@ -97,7 +100,6 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'idUsuario'=>'required',
             'nombreCliente'=>'required|regex:/^[\pL\s\-]+$/u',
             'tipoIdentificacion'=>'required',
             'numeroIdentificacion'=>'required',
@@ -108,7 +110,6 @@ class ClienteController extends Controller
         ],
 
         [
-            'idUsuario.required' => '*Rellena este campo',
             'nombreCliente.required' => '*Rellena este campo',
             'nombreCliente.regex' => '*Ingresa sólo letras',
             'tipoIdentificacion.required' => '*Rellena este campo',
@@ -123,7 +124,7 @@ class ClienteController extends Controller
 
 
         $cliente= App\Cliente::findOrFail($id); //buscar producto por id
-        $cliente->idUsuario = $request->idUsuario;
+        $cliente->idUsuario = Auth::user()->id;
         $cliente->nombreCliente = $request->nombreCliente;
         $cliente->tipoIdentificacion = $request->tipoIdentificacion;
         $cliente->numeroIdentificacion = $request->numeroIdentificacion;

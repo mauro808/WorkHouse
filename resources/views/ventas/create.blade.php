@@ -75,25 +75,16 @@ function agregar(){
     cantidad = $("#cantidad").val();
     precio = $("#valorProducto").val();
     existencias = $('#existencias').val();
-        if ($("#idProducto[cont]").val()==idProducto){  
-            subtotal[cont] = cantidad * precio;
-            total = total + subtotal[cont];
-            $("#cantidad[cont]").val(cantidad+$("#cantidad[cont]".val()));
-            SumarProducto();
-            limpiar();
-            evaluar();
-            console.log("exito");
-        }else{
             if(idProducto != "" && cantidad != "" && cantidad > 0 && precio != "") 
             {
-                if(existencias >= cantidad )
+                if(parseInt(cantidad) <= parseInt(existencias))
                 {
                 
                 subtotal[cont] = cantidad * precio;
                 total = total + subtotal[cont];
                 var fila = "<tr class='selected' id='fila" + cont + "'><td><button type='button' class='btn btn-danger btn-sm' onclick='eliminar("+ cont + ")';><i class='bi bi-trash'><strong></strong></i></button></td><td><input type='hidden' name='idProducto[]' value='" + idProducto + "'>" +  nombreProducto + "</td><td><input type='hidden' name='precio[]' id='precio[]' value='" + precio + "'><input class='form-control' type='number'     id='precio[]' value='" + precio + "'disabled></td><td><input type='hidden' name='cantidad[]' id='cantidad[]' value='" + cantidad + "'><input     class='form-control' type='number' value='" + cantidad + "'disabled></td><td align='right'>$" + subtotal[cont] + "<td></tr>";
                 cont++;
-                console.log(cantidad, precio, subtotal[cont], total)
+                console.log(cantidad, precio, subtotal[cont], total, existencias)
                 limpiar();
                 totales();
                 evaluar();
@@ -104,6 +95,7 @@ function agregar(){
                 } 
                 else
                 {
+                    console.log(cantidad, existencias)
                     Swal.fire({
                         type: 'error',
                         icon: 'error',
@@ -112,6 +104,7 @@ function agregar(){
                       })
                 }
     }else {
+        console.log(cantidad, precio, subtotal[cont], total, existencias)
         Swal.fire({
             type: 'error',
             icon: 'error',
@@ -119,7 +112,7 @@ function agregar(){
             confirmButtonColor: '#1C2833',
           })
     }
-} 
+
 }
 function limpiar(){
     $('#idProducto').val('');
@@ -172,14 +165,13 @@ function eliminar(index){
     
     function ventaRegistrada(){
         
-        idUsuario = $("#idUsuario").val();
         idCliente = $("#idCliente").val();
         Estado = $("#Estado").val();
         precioTotal = $("#precioTotal").val();
         created_at = $("#created_at").val();
        
         
-        if(precioTotal != ""  && precioTotal > 0 && idUsuario != ""  && idCliente != ""  && Estado != "" && created_at != "") {
+        if(precioTotal != ""  && precioTotal > 0 &&  idCliente != ""  && Estado != "" && created_at != "") {
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',

@@ -11,15 +11,6 @@
 </select>
 </div>
 <div class="col-4">
-<label for="idUsuario"><strong>Usuario:</strong></label>
-<select name="idUsuario" class="form-control"  >
-        <option selected value="">Seleccione</option>
-         @foreach($usuarios as $usuario)
-        <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
-        @endforeach
-</select>
-</div>
-<div class="col-4">
 <label for="idProducto"><strong>Producto:</strong></label>
 <select name="idProducto" id="idProducto" class="form-control" >
         <option selected value="">Seleccione</option>
@@ -36,7 +27,7 @@
 
 <div class="col-4" >
     <label for="existencias"><strong>Stock Actual:</strong></label>
-    <input type="number" disabled id="existencias" name="existencias" class="form-control" readonly/>
+    <input type="text|" disabled id="existencias" name="existencias" class="form-control"  readonly/>
    
 </div>
 

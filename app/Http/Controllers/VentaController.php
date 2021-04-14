@@ -6,6 +6,7 @@ use App\User;
 use App\Cliente;
 use App\Venta;
 use App\Producto;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\venta\StoreRequest;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
@@ -50,7 +51,6 @@ class VentaController extends Controller
         $request->validate([
 
             'precioTotal'=>'required',
-            'idUsuario'=>'required',
             'idCliente'=>'required',
            
         
@@ -64,7 +64,7 @@ class VentaController extends Controller
 
         
         $venta = Venta::create($request->all()+[
-            //'idUsuario'=>Auth::user()->id,
+            'idUsuario'=>Auth::user()->id,
             'created_at'=>Carbon::now('America/Bogota'),
         ]);
         

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Role_user;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -31,4 +32,8 @@ class User extends Authenticatable
     'passwordc',
     'Estado',
     ];
+
+    public function Role_user(){
+        return $this -> belongsTo(Role_user::class);
+    }
 }

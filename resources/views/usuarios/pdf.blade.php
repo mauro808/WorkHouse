@@ -88,7 +88,7 @@ th {
                 @foreach($usuarios as $usuario)
                     <tr >
                         <th scope="row">{{ $usuario->id }}</th>
-                         @foreach($rols as $rol)
+                         @foreach($roles as $rol)
                     @if($usuario->idRol == $rol->id)
                     <td>{{$rol->descripcion}}</td>
                         @endif 

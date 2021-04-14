@@ -48,7 +48,6 @@ class CompraController extends Controller
                     
         $request->validate([
             'precioTotal'=>'required',
-            'idUsuario'=>'required',
          
         ],
 
@@ -57,9 +56,8 @@ class CompraController extends Controller
         ]
 
         );
-
         $compra = Compra::create($request->all()+[
-            //'user_id'=>Auth::user()->id,
+            'idUsuario'=>Auth::user()->id,
             'created_at'=>Carbon::now('America/Bogota'),
         ]);
         
